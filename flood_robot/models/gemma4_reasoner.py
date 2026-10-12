@@ -8,6 +8,7 @@ The model is advisory and never directly controls robot actuators.
 from __future__ import annotations
 
 import json
+import os
 from typing import Any, Dict, Optional
 
 MODEL_ID = "google/gemma-4-31B-it"
@@ -26,9 +27,16 @@ class Gemma4FloodReasoner:
         if self._model is not None:
             return
         from transformers import AutoModelForMultimodalLM, AutoProcessor
-        self._processor = AutoProcessor.from_pretrained(self.model_id)
+
+        # No network downloads by default. Set PUI89_ALLOW_MODEL_DOWNLOAD=1
+        # deliberately when you accept the download size, license, and network use.
+        allow_download = os.getenv("PUI89_ALLOW_MODEL_DOWNLOAD", "").strip().lower() in {
+            "1", "true", "yes"
+        }
+        load_options = {"local_files_only": not allow_download}
+        self._processor = AutoProcessor.from_pretrained(self.model_id, **load_options)
         self._model = AutoModelForMultimodalLM.from_pretrained(
-            self.model_id, device_map="auto"
+            self.model_id, device_map="auto", **load_options
         )
 
     def reason(self, prompt: str, image_url: Optional[str] = None) -> str:
