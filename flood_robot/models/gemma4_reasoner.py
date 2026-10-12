@@ -44,6 +44,13 @@ class Gemma4FloodReasoner:
         self._load()
         content = []
         if image_url:
+            # Avoid fetching evidence from a third-party URL. Use only a local
+            # image path; remote HTTP(S) image URLs are intentionally blocked.
+            if image_url.strip().lower().startswith(("http://", "https://")):
+                raise ValueError(
+                    "Remote image URLs are disabled for local-only operation; "
+                    "provide a local image path instead."
+                )
             content.append({"type": "image", "url": image_url})
         content.append({"type": "text", "text": prompt})
         messages = [{"role": "user", "content": content}]
