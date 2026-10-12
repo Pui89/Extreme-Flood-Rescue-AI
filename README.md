@@ -15,6 +15,17 @@ AI application concept for flood reconnaissance and rescue support, combining mu
 
 > **Status and evidence:** This repository documents a research/prototype workflow. The illustration is concept artwork, not a live demonstration or proof of field performance. Reported capability and performance must be supported by reproducible tests and benchmark results.
 
+### Platform scope: AI application + embodied robotics
+
+**This platform is designed to support both an AI application and embodied AI in a robot.** These are two connected layers of one research platform:
+
+- **AI application layer (runs on a computer):** process image/sensor datasets, detect and localize possible people or hazards, build flood/hazard maps, estimate uncertainty, visualize evidence, and prepare reviewable rescue-route or mission proposals.
+- **Embodied robotics layer (robot-facing architecture):** connect perception and planning to a simulated or physical search-and-rescue robot through interfaces such as ROS 2, with localization, mapping, navigation, obstacle checks, communications/telemetry, and independent safety supervision.
+- **Shared pipeline:** sensor/data quality → perception and mapping → 3D/temporal scene representation → uncertainty-aware planning → safety validation → human review and audit.
+
+The AI application can be developed and evaluated on a computer without robot hardware. The embodied layer is the intended robotics integration path; **this architecture and concept artwork do not prove completed physical robot integration, validated victim detection, autonomous navigation, or rescue capability.** Begin with synthetic/recorded data and simulation, then require measured benchmarks and independent safety validation before hardware trials.
+
+
 ### Quick start
 
 Clone the renamed repository and install the project dependencies:
