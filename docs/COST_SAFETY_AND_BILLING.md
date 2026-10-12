@@ -71,3 +71,5 @@ For a strict $0 operating target:
 - Keep deployments and physical robot/actuator paths disabled unless you deliberately review and approve them.
 
 This repository cannot inspect or change account-level billing settings, disable Actions for the account, or guarantee that third-party pricing stays unchanged.
+
+Flood model-download safeguard: the Gemma 4 reasoner uses cached local weights only by default. It does not fetch missing weights over the network unless `PUI89_ALLOW_MODEL_DOWNLOAD=1` is explicitly set in the environment. Before opting in, check the model size, local storage, network usage, hardware requirements, and model license. This is a download opt-in, not a cloud API or paid-service opt-in.
