@@ -1,7 +1,7 @@
 """Gemma 4 multimodal reasoning adapter for flood-rescue scene analysis.
 
 Uses the official Transformers interface for google/gemma-4-31B-it.
-Model weights are downloaded at runtime and are not stored here.
+Model weights are cache-only by default; network downloads require explicit opt-in.
 The model is advisory and never directly controls robot actuators.
 """
 
