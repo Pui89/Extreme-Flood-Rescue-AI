@@ -3,6 +3,39 @@
 
 ## AI Application Overview
 
+### How the Flood Rescue AI application works
+
+The application is designed to help trained emergency coordinators understand a flood scene and review possible rescue actions. It is a **human-supervised decision-support prototype**; this workflow does not imply that all capabilities are implemented or validated in real flood conditions.
+
+```mermaid
+flowchart TD
+    A["1. Collect evidence<br/>Drone / CCTV / robot cameras<br/>Water sensors / weather / reports"] --> B["2. Check data quality<br/>Timestamps / sensor health<br/>Missing or conflicting inputs"]
+    B --> C["3. AI perception<br/>Possible people / flood extent<br/>Debris / blocked access"]
+    C --> D["4. Build risk map<br/>Location / water conditions<br/>Hazards / uncertainty"]
+    D --> E["5. Suggest rescue options<br/>Priorities / candidate routes<br/>Evidence and confidence"]
+    E --> F{"6. Human review"}
+    F -->|Approved for further action| G["Authorized rescue team<br/>or validated robot safety stack"]
+    F -->|Uncertain / unsafe| H["Request more evidence<br/>or escalate to coordinator"]
+    G --> I["7. Verify and log outcome<br/>Update incident status"]
+    H --> I
+```
+
+**In plain language:** sensors and images provide evidence; AI highlights possible people and hazards; mapping combines those findings with water and access information; the system proposes priorities and routes; a trained person verifies the proposal; and the team records what happened. Uncertain detections must remain uncertain—not be treated as proof that someone is safe or has been rescued.
+
+| Stage | What the application does | Important limitation |
+|---|---|---|
+| Collect | Receives recorded/live images, sensor readings and reports | Data may be delayed, incomplete or unavailable |
+| Detect | Flags possible people, floodwater, debris and blocked routes | Rain, reflections, occlusion and darkness can cause false alarms or misses |
+| Map | Combines locations, hazards, water conditions and confidence | Maps and water estimates require verification |
+| Plan | Suggests candidate priorities and safer routes | A suggestion is not a guarantee that a route is safe |
+| Review | Shows evidence and uncertainty to a human coordinator | A trained responder remains responsible for operational decisions |
+| Verify | Records confirmed status and new observations | Loss of camera contact does not prove a rescue succeeded |
+
+![Flood Rescue AI workflow concept](docs/images/flood-rescue-ai-demo.svg)
+
+*Concept illustration only—not a live sensor feed, a recorded robot demonstration, or proof of validated field performance. Start with recorded or simulated data; real deployments require rescue-agency authorization, independent safety testing and validated safeguards.*
+
+
 ### Animated Concept Preview
 
 ![Flood Rescue AI animated concept demo](https://raw.githubusercontent.com/Pui89/Flood-Rescue-AI/main/docs/images/flood-rescue-ai-demo.svg)
