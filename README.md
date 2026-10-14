@@ -1,6 +1,5 @@
 # Flood Rescue AI Application
 
-
 ## AI Application Overview
 
 ### How the Flood Rescue AI application works
@@ -34,14 +33,6 @@ flowchart TD
 ![Flood Rescue AI workflow concept](docs/images/flood-rescue-ai-demo.svg)
 
 *Concept illustration only—not a live sensor feed, a recorded robot demonstration, or proof of validated field performance. Start with recorded or simulated data; real deployments require rescue-agency authorization, independent safety testing and validated safeguards.*
-
-
-### Animated Concept Preview
-
-![Flood Rescue AI animated concept demo](https://raw.githubusercontent.com/Pui89/Flood-Rescue-AI/main/docs/images/flood-rescue-ai-demo.svg)
-
-*Animated SVG concept preview. This illustrates a proposed workflow only; it is not a recorded 4D video, a live sensor feed, or evidence of validated real-world performance.*
-
 
 ### Real flood reference from Thailand and AI-robot use case
 
@@ -77,7 +68,6 @@ AI application concept for flood reconnaissance and rescue support, combining mu
 - **Shared pipeline:** sensor/data quality → perception and mapping → 3D/temporal scene representation → uncertainty-aware planning → safety validation → human review and audit.
 
 The AI application can be developed and evaluated on a computer without robot hardware. The embodied layer is the intended robotics integration path; **this architecture and concept artwork do not prove completed physical robot integration, validated victim detection, autonomous navigation, or rescue capability.** Begin with synthetic/recorded data and simulation, then require measured benchmarks and independent safety validation before hardware trials.
-
 
 ### Interactive Flood Rescue AI application example
 
@@ -125,9 +115,6 @@ The end-to-end demo and tests are intended for local development with the projec
 **Documentation:** [End-to-end simulation guide](docs/END_TO_END_SIMULATION.md) · [Simulation directory](simulation/)
 
 ### Animated AI application demo
-
-
-
 
 ## PUI89 AI Robotics Platform
 
@@ -227,7 +214,6 @@ See:
 - [Simulation scenarios](docs/SIMULATION_SCENARIOS.md)
 
 **Implementation status:** prototype/research engineering. No capability is presented as field-validated unless repeatable measurements are available.
-
 
 Flood rescue requires robots to perceive unstable terrain, detect victims, avoid obstacles, and prioritize safe navigation under poor visual conditions. This project models that pipeline in a modular, deployable way.
 
@@ -329,7 +315,6 @@ pytest tests/test_tracker.py -q
 
 ## 3D / 4D Realistic Flood Rescue Robot Concept
 
-
 The concept shows the flood-response robot operating in a dynamic disaster scene with RGB-D/LiDAR perception, thermal sensing, victim tracking, an articulated rescue arm, and a time-aware 4D trajectory.
 
 - [3D/4D concept image](docs/flood_rescue_robot_3d_4d_concept.svg)
@@ -339,9 +324,7 @@ The concept shows the flood-response robot operating in a dynamic disaster scene
 
 **Sense → Perceive → Localize → Reason → Plan → Safety Gate → Navigate → Rescue → Verify → Report**
 
-
 See the full architecture and mission flow in [docs/PIPELINE_OVERVIEW.md](docs/PIPELINE_OVERVIEW.md).
-
 
 ## Research, competition and commercialization
 
@@ -698,7 +681,6 @@ GitHub: [Pui89/flood-rescue-ai-robot](https://github.com/Pui89/Flood-Rescue-AI)
 
 Use GitHub Issues and Discussions for technical questions, collaboration, bug reports, feature requests, and research/engineering feedback.
 
-
 ## Project website
 
 The PUI89 Flood Recon project website introduces the product scope, system architecture, benchmark protocol, engineering roadmap, safety boundaries, and third-party licensing policy.
@@ -714,7 +696,6 @@ The PUI89 Flood Recon project website introduces the product scope, system archi
 The GitHub Pages workflow is at [\.github/workflows/pages.yml](.github/workflows/pages.yml). After merging the website to `main`, set **Settings → Pages → Source** to **GitHub Actions**. The expected project URL is https://pui89.github.io/flood-rescue-ai-robot/ after a successful deployment.
 
 The site describes a research prototype; it does not claim measured benchmark results, safety certification, or readiness for real floodwater operations.
-
 
 ## Free tools, funding and hardware support
 
