@@ -9,6 +9,26 @@
 
 *Animated SVG concept preview. This illustrates a proposed workflow only; it is not a recorded 4D video, a live sensor feed, or evidence of validated real-world performance.*
 
+
+### Real flood reference from Thailand and AI-robot use case
+
+![Real photograph from the 2010 Hat Yai flood in Songkhla, Thailand](https://commons.wikimedia.org/wiki/Special:FilePath/Amphoe%20Hat%20Yai%20flood.jpg?width=1280)
+
+*Historical real-world photograph: the Government of Thailand's photographer documented flood conditions in Hat Yai, Songkhla, on 2 November 2010. Wikimedia Commons lists the photograph under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/); attribution: Government of Thailand / photographer Peerapat Wimolrungkarat. [Original image and licence details](https://commons.wikimedia.org/wiki/File:Amphoe_Hat_Yai_flood.jpg). This photo is a visual context reference, not robot training data.*
+
+**Real satellite flood evidence from Thailand:** GISTDA published Sentinel-1A satellite analysis of flooding in northern Thailand on 23 August 2024, including affected areas around Chiang Rai, Phayao, Sukhothai and nearby provinces. The agency notes that satellite-derived flooded-area estimates are preliminary and need ground verification. [View GISTDA's original satellite report and images](https://www.gistda.or.th/ewtadmin/ewt/gistda_web/news_view.php?lang=EN&n_id=8041). GISTDA also published high-resolution THEOS-2 imagery of flooded areas in Sukhothai in August 2025: [official satellite report](https://gistda.or.th/th/news/gistda-%E0%B9%80%E0%B8%9C%E0%B8%A2%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%A1-5/).
+
+**How an AI robot could help in Thai floods (proposed research use cases):**
+- **Reconnaissance before responders enter:** use cameras, depth sensing and LiDAR to map water-covered roads, debris, damaged access routes and visible hazards.
+- **Search support:** detect possible people or distress cues from robot-mounted cameras/thermal sensors, mark locations and send evidence to trained rescue coordinators. A detection is only a lead; occlusion, rain, reflections and warm objects can cause misses or false alarms.
+- **Safer route planning:** combine the robot's local map with official flood maps, water-level reports and blocked-road information to propose routes, while a separate safety controller prevents unsafe motion.
+- **Supply delivery and communication relay:** in a suitable, validated amphibious or surface platform, carry lightweight supplies or a radio relay to accessible locations; never assume the robot can safely enter fast-flowing or electrically hazardous water.
+- **Situation dashboard:** combine timestamped observations, uncertainty, sensor-health status and human-confirmed reports to help prioritize inspections and coordinate response.
+
+**Practical development path:** start with public satellite reports and appropriately licensed photographs as contextual references, then use legally accessible, labelled datasets and simulated flood scenes for evaluation. Measure victim-detection recall, false alarms, mapping error, route safety, communications reliability and performance in rain, darkness and partial submersion. Before field trials, require rescue-agency authorization, independent safety testing, privacy protections and human supervision.
+
+**Evidence boundary:** these are proposed applications, not evidence that this repository's robot has been used in a Thai flood or has validated victim-detection/rescue performance. The 2010 photograph and GISTDA satellite images are contextual references, not a labelled training dataset. External image hosting can change; no paid image subscription is needed for the CC BY photo under its stated licence, but this does not guarantee every future hosting, cloud or AI service will be free.
+
 AI application concept for flood reconnaissance and rescue support, combining multimodal sensing, hazard mapping, uncertainty-aware planning, and human-supervised mission proposals.
 
 ![3D/4D concept visualization](docs/flood_rescue_robot_3d_4d_concept.svg)
