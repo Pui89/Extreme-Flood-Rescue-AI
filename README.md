@@ -126,9 +126,7 @@ The end-to-end demo and tests are intended for local development with the projec
 
 ### Animated AI application demo
 
-![Animated Flood Rescue AI concept demo](docs/images/flood-rescue-ai-demo.svg)
 
-*This is an animated SVG concept visualization, not a recorded 4D video, a live sensor feed, or proof of real-world performance.*
 
 
 ## PUI89 AI Robotics Platform
@@ -331,7 +329,6 @@ pytest tests/test_tracker.py -q
 
 ## 3D / 4D Realistic Flood Rescue Robot Concept
 
-![Realistic 3D/4D Flood Rescue Robot](docs/flood_rescue_robot_3d_4d_concept.svg)
 
 The concept shows the flood-response robot operating in a dynamic disaster scene with RGB-D/LiDAR perception, thermal sensing, victim tracking, an articulated rescue arm, and a time-aware 4D trajectory.
 
@@ -342,7 +339,6 @@ The concept shows the flood-response robot operating in a dynamic disaster scene
 
 **Sense → Perceive → Localize → Reason → Plan → Safety Gate → Navigate → Rescue → Verify → Report**
 
-![Pipeline overview](docs/flood_rescue_robot_3d_4d_concept.svg)
 
 See the full architecture and mission flow in [docs/PIPELINE_OVERVIEW.md](docs/PIPELINE_OVERVIEW.md).
 
