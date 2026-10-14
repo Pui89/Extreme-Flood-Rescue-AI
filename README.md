@@ -79,6 +79,32 @@ AI application concept for flood reconnaissance and rescue support, combining mu
 The AI application can be developed and evaluated on a computer without robot hardware. The embodied layer is the intended robotics integration path; **this architecture and concept artwork do not prove completed physical robot integration, validated victim detection, autonomous navigation, or rescue capability.** Begin with synthetic/recorded data and simulation, then require measured benchmarks and independent safety validation before hardware trials.
 
 
+### Interactive Flood Rescue AI application example
+
+Try the local web dashboard to review a simulated flood scene and submit manually entered observations to the existing API. You can change camera/thermal/LiDAR availability, timestamp alignment, water-depth/current estimates and a possible-person track, then inspect the API's safety status and export a JSON report.
+
+**Run it locally** from the repository root:
+
+```bash
+python -m pip install -r apps/pui89_app/requirements.txt
+```
+
+Terminal 1:
+```bash
+uvicorn apps.pui89_app.main:app --reload
+```
+
+Terminal 2:
+```bash
+streamlit run apps/pui89_app/web_demo.py
+```
+
+- [Dashboard source](apps/pui89_app/web_demo.py)
+- [Dashboard and API instructions](apps/pui89_app/README.md)
+- [OpenAPI interactive docs](http://127.0.0.1:8000/docs) (available after starting the API)
+
+**Important:** this is a local example, not a hosted public demo. Uploaded photos are preview-only; the dashboard does not run a trained vision model on them. Results come from manually entered values and the repository's existing illustrative rules. It does not dispatch responders or control a robot, and it cannot certify a route as safe.
+
 ### Quick start
 
 Clone the renamed repository and install the project dependencies:
