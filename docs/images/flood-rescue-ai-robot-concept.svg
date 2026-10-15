@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Flood Rescue AI — amphibious rescue robot concept</title>
+<desc id="desc">Original vector concept illustration of an amphibious tracked flood-response robot with RGB and thermal cameras, LiDAR, flotation pontoons, a rescue supply pod, floodwater, a stranded-person marker, and a remote human coordinator. Research concept only.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#102a43"/><stop offset="1" stop-color="#24566a"/></linearGradient>
+  <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#168aad"/><stop offset="1" stop-color="#073b4c"/></linearGradient>
+  <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8fbfc"/><stop offset="1" stop-color="#a8c2cd"/></linearGradient>
+  <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffbd59"/><stop offset="1" stop-color="#f07832"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur stdDeviation="13"/></filter>
+  <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#9edbe7" stroke-opacity=".12" stroke-width="1"/></pattern>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/><rect width="1600" height="900" fill="url(#grid)"/>
+<g opacity=".3" fill="#8eb8c7"><path d="M0 330L90 260 175 305 255 225 345 315 435 255 525 330V485H0Z"/><path d="M1100 330L1200 250 1290 300 1380 205 1460 285 1600 220V500H1100Z"/></g>
+<g opacity=".45" stroke="#b6f0f7" fill="none" stroke-width="3"><path d="M0 470Q150 445 300 470T600 470T900 470T1200 470T1600 470"/><path d="M0 520Q150 495 300 520T600 520T900 520T1200 520T1600 520"/><path d="M0 580Q150 555 300 580T600 580T900 580T1200 580T1600 580"/></g>
+<path d="M0 480Q200 455 400 485T800 480T1200 490T1600 475V900H0Z" fill="url(#water)"/>
+<g opacity=".22" stroke="#c6f7ff" stroke-width="4" fill="none"><path d="M0 620Q170 590 340 620T680 620T1020 620T1360 620T1700 620"/><path d="M-50 730Q120 700 290 730T630 730T970 730T1310 730T1650 730"/><path d="M0 815Q180 785 360 815T720 815T1080 815T1440 815"/></g>
+<!-- title -->
+<text x="72" y="82" fill="#b7f2fa" font-family="Arial,sans-serif" font-size="22" letter-spacing="5" font-weight="700">PUI89  /  FLOOD RESCUE AI</text>
+<text x="72" y="139" fill="#ffffff" font-family="Arial,sans-serif" font-size="46" font-weight="700">Amphibious Rescue Robot</text>
+<text x="74" y="178" fill="#c5dce6" font-family="Arial,sans-serif" font-size="21">Multimodal sensing • flood reconnaissance • human-supervised response</text>
+<!-- robot shadow -->
+<ellipse cx="690" cy="692" rx="420" ry="58" fill="#001722" opacity=".55" filter="url(#shadow)"/>
+<!-- rear flotation pontoons -->
+<path d="M365 564L880 564Q915 565 930 595L905 634Q890 650 850 649L380 638Q345 634 340 607Z" fill="#f07832" stroke="#ffd29b" stroke-width="5"/>
+<path d="M390 592L885 600" stroke="#ffe2b7" stroke-width="5" opacity=".7"/>
+<!-- tracks -->
+<g transform="translate(405 535)"><rect x="0" y="0" width="535" height="114" rx="48" fill="#162d3b" stroke="#9fb9c5" stroke-width="6"/><rect x="20" y="18" width="495" height="78" rx="37" fill="#304d5d" stroke="#5e8290" stroke-width="4"/><g fill="#91acb7" stroke="#102633" stroke-width="4"><circle cx="65" cy="57" r="27"/><circle cx="150" cy="57" r="27"/><circle cx="235" cy="57" r="27"/><circle cx="320" cy="57" r="27"/><circle cx="405" cy="57" r="27"/><circle cx="480" cy="57" r="20"/></g><g fill="#304d5d"><circle cx="65" cy="57" r="10"/><circle cx="150" cy="57" r="10"/><circle cx="235" cy="57" r="10"/><circle cx="320" cy="57" r="10"/><circle cx="405" cy="57" r="10"/></g></g>
+<!-- chassis -->
+<path d="M390 432Q390 405 426 394L813 394Q854 398 872 432L910 533Q913 548 892 552H416Q390 548 390 526Z" fill="url(#body)" stroke="#e8f7fb" stroke-width="6"/>
+<path d="M420 424L835 424L866 507H413Z" fill="#1e5367" stroke="#83c3d3" stroke-width="4"/>
+<path d="M450 442H570V493H450Z" fill="#0c2b3a" stroke="#ffae45" stroke-width="4"/><text x="510" y="463" text-anchor="middle" fill="#ffca76" font-family="Arial,sans-serif" font-size="13" font-weight="700">FLOOD</text><text x="510" y="482" text-anchor="middle" fill="#ffca76" font-family="Arial,sans-serif" font-size="13" font-weight="700">RESCUE AI</text>
+<!-- lights -->
+<g fill="#9ff8ff" stroke="#ffffff" stroke-width="2"><circle cx="820" cy="450" r="11"/><circle cx="839" cy="478" r="8"/></g>
+<!-- mast -->
+<path d="M635 400V278" stroke="#c3d7df" stroke-width="18"/><path d="M635 290V390" stroke="#607f8c" stroke-width="5"/>
+<rect x="573" y="244" width="124" height="52" rx="14" fill="#dce8ec" stroke="#ffffff" stroke-width="4"/><rect x="588" y="255" width="42" height="28" rx="7" fill="#143a50"/><circle cx="609" cy="269" r="9" fill="#65e8ff"/><rect x="641" y="255" width="36" height="28" rx="6" fill="#182e3c"/><circle cx="659" cy="269" r="8" fill="#ffab61"/>
+<!-- lidar puck -->
+<rect x="606" y="222" width="58" height="20" rx="9" fill="#f9fbfc" stroke="#9ab8c4" stroke-width="3"/><path d="M613 222Q635 205 657 222" fill="none" stroke="#74efff" stroke-width="4"/>
+<!-- antenna -->
+<path d="M674 249L695 208" stroke="#d7e8ed" stroke-width="5"/><circle cx="697" cy="204" r="8" fill="#ffad45"/>
+<!-- sensor callout -->
+<path d="M704 266L824 223H934" stroke="#a8f3ff" stroke-width="2" fill="none"/><circle cx="704" cy="266" r="5" fill="#a8f3ff"/><text x="944" y="218" fill="#ffffff" font-family="Arial,sans-serif" font-size="18" font-weight="700">RGB + THERMAL</text><text x="944" y="243" fill="#c5dce6" font-family="Arial,sans-serif" font-size="15">Camera / depth / LiDAR</text>
+<!-- supply pod -->
+<rect x="700" y="337" width="126" height="54" rx="12" fill="url(#orange)" stroke="#ffe0b5" stroke-width="4"/><path d="M762 344V383M739 363H785" stroke="#fff0d5" stroke-width="5"/><path d="M825 364L940 338H1010" stroke="#ffc47a" stroke-width="2" fill="none"/><circle cx="825" cy="364" r="5" fill="#ffc47a"/><text x="1020" y="334" fill="#ffffff" font-family="Arial,sans-serif" font-size="18" font-weight="700">SUPPLY POD</text><text x="1020" y="358" fill="#c5dce6" font-family="Arial,sans-serif" font-size="15">First-aid / radio / essentials</text>
+<!-- rescue beacon marker -->
+<g transform="translate(1120 487)"><circle r="43" fill="#ffb74d" opacity=".15"/><circle r="28" fill="none" stroke="#ffcd76" stroke-width="4"/><circle r="8" fill="#ffcd76"/><path d="M0 -48V-72M-48 0H-70M48 0H70" stroke="#ffcd76" stroke-width="3"/></g>
+<path d="M1093 487L1030 448H967" fill="none" stroke="#ffcd76" stroke-width="2"/><text x="960" y="425" fill="#ffe0a7" font-family="Arial,sans-serif" font-size="17" font-weight="700">POSSIBLE PERSON</text><text x="960" y="448" fill="#d6e7eb" font-family="Arial,sans-serif" font-size="14">Candidate location — verify</text>
+<!-- floating debris -->
+<path d="M245 666L305 649L342 665L323 686L261 688Z" fill="#b28d65" stroke="#e4c59a" stroke-width="3"/><path d="M1080 680L1148 660L1190 678L1165 697L1095 698Z" fill="#98785c" stroke="#d6b28a" stroke-width="3"/>
+<!-- remote human coordinator panel -->
+<rect x="1190" y="520" width="340" height="232" rx="20" fill="#0a2030" stroke="#80c7d8" stroke-width="3"/>
+<rect x="1212" y="542" width="296" height="142" rx="10" fill="#16394a" stroke="#477a8c" stroke-width="2"/>
+<text x="1232" y="570" fill="#a9f3fa" font-family="Arial,sans-serif" font-size="14" letter-spacing="2" font-weight="700">MISSION REVIEW</text>
+<path d="M1234 648L1280 612L1316 630L1360 588L1400 616L1450 580L1488 605" stroke="#70e2ef" stroke-width="3" fill="none"/>
+<g fill="#ffbd59"><circle cx="1316" cy="630" r="6"/><circle cx="1400" cy="616" r="6"/><circle cx="1450" cy="580" r="6"/></g>
+<rect x="1232" y="659" width="100" height="10" rx="5" fill="#ffb74d"/><rect x="1342" y="659" width="145" height="10" rx="5" fill="#5a8190"/>
+<text x="1360" y="718" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="17" font-weight="700">HUMAN COORDINATOR</text>
+<!-- lower status ribbon -->
+<rect x="60" y="792" width="1480" height="64" rx="16" fill="#071c2a" stroke="#3d7283" stroke-width="2"/>
+<circle cx="92" cy="824" r="8" fill="#ffbd59"/><text x="116" y="831" fill="#ffffff" font-family="Arial,sans-serif" font-size="18" font-weight="700">AI SUGGESTS</text><text x="252" y="831" fill="#a8cbd6" font-family="Arial,sans-serif" font-size="18">→</text><text x="280" y="831" fill="#ffffff" font-family="Arial,sans-serif" font-size="18" font-weight="700">SAFETY CHECKS</text><text x="458" y="831" fill="#a8cbd6" font-family="Arial,sans-serif" font-size="18">→</text><text x="487" y="831" fill="#ffffff" font-family="Arial,sans-serif" font-size="18" font-weight="700">HUMAN APPROVAL</text><text x="682" y="831" fill="#a8cbd6" font-family="Arial,sans-serif" font-size="18">→</text><text x="712" y="831" fill="#ffffff" font-family="Arial,sans-serif" font-size="18" font-weight="700">AUTHORIZED RESPONSE</text><text x="1130" y="831" fill="#ffcd76" font-family="Arial,sans-serif" font-size="15">CONCEPT ONLY • NOT FIELD-VALIDATED</text>
+</svg>
