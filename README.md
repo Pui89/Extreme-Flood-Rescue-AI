@@ -217,6 +217,16 @@ See:
 
 Flood rescue requires robots to perceive unstable terrain, detect victims, avoid obstacles, and prioritize safe navigation under poor visual conditions. This project models that pipeline in a modular, deployable way.
 
+## New Flood Rescue AI Robot Concept
+
+![Original Flood Rescue AI amphibious robot concept](docs/images/flood-rescue-ai-robot-concept.svg)
+
+**Concept:** a flood-response robot with an elevated RGB/thermal camera mast, LiDAR/depth sensing, flotation support, tracked mobility for suitable terrain, a removable first-aid/radio supply pod, and a human-supervised mission dashboard. The design illustrates a possible research direction; it is not a photograph of a built robot, a working prototype, or evidence of field performance.
+
+**Safety-first workflow:** AI flags possible people and hazards → the system reports evidence and uncertainty → deterministic checks and a trained coordinator review proposals → only an authorized, validated control system may execute a response. Unknown or occluded targets remain unconfirmed. Never send an unvalidated robot into fast-flowing, electrically hazardous, or otherwise unsafe floodwater.
+
+**Free image note:** this is an original SVG vector illustration stored in this repository. It requires no paid stock-photo subscription or paid image-generation API to view or reuse under the repository's applicable license. Third-party assets and software elsewhere in the project may have separate terms.
+
 ## 3D Robot Concept
 
 ![Flood rescue robot concept](docs/robot_concept.svg)
