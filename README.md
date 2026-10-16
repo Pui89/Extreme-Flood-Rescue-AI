@@ -725,3 +725,18 @@ This project includes an optional guide for adding local text-to-speech announce
 ## Robot Design Concept
 
 See the [low-cost robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, no paid hosted APIs, and human supervision.
+
+## Runnable local simulation (free, no external packages)
+
+A dependency-free synthetic 2D reconnaissance simulation is available at [`scripts/flood_rescue_sim.py`](scripts/flood_rescue_sim.py), with a Windows guide at [`docs/LOCAL_SIMULATION_QUICKSTART.md`](docs/LOCAL_SIMULATION_QUICKSTART.md) and standard-library tests at [`tests/test_flood_rescue_sim.py`](tests/test_flood_rescue_sim.py).
+
+From Command Prompt in the repository folder:
+
+```bat
+python scripts\flood_rescue_sim.py
+python scripts\flood_rescue_sim.py --seed 7 --fail-comms-at 2 --out runs\comms_failure
+python -m unittest discover -s tests -v
+```
+
+**Evidence status:** the script implements grid-based shortest-path planning, simulated movement, scripted possible-person markers, event logging, JSON/CSV export, and injected communication-loss safe-stop behavior. The map and observations are synthetic; no trained perception model, ROS/Gazebo, physical robot, flood physics, or real rescue is demonstrated. Outputs are software-simulation results only, not field-performance or safety validation. This section supplements the README; existing content is preserved.
+
