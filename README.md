@@ -20,6 +20,10 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 [Detailed project status, checks, next steps and future plan](docs/PROJECT_STATUS_2026-10-18.md)
 
+## Commercial and award readiness
+
+See [docs/COMMERCIAL_READINESS_ROADMAP.md](docs/COMMERCIAL_READINESS_ROADMAP.md) for product stages, evidence required before selling, immediate priorities, acceptance gates and award-application preparation. The roadmap distinguishes verified software checks from unvalidated real-world capability; it does not claim commercial readiness or market leadership.
+
 ## Latest status update — 18 October 2026
 
 - **Successful:** Python CI passed on 3.10/3.11/3.12 in [run 39096446071](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39096446071); repository has workflow/safety tests, dataset manifest tools and a benchmark protocol. This does not establish real-world detection or rescue performance.
