@@ -63,3 +63,43 @@ def test_report_is_json_serializable_and_keeps_human_review():
     report = EndToEndRescuePipeline().run([obs("rgb-1", "rgb", [victim()])], now=T0)
     assert json.loads(json.dumps(report.to_dict()))["human_review_required"] is True
     assert report.actuator_commands_sent is False
+
+
+def test_invalid_timestamp_is_rejected_without_crashing():
+    report = EndToEndRescuePipeline().run(
+        [obs("rgb-bad-time", "rgb", [victim()], timestamp="not-a-timestamp")],
+        now=T0,
+    )
+    assert report.status == "SAFE_HOLD"
+    assert report.accepted_observations == 0
+    assert any("invalid_timestamp" in reason for reason in report.reasons)
+    assert report.actuator_commands_sent is False
+
+
+def test_invalid_candidate_confidence_is_ignored_and_audited():
+    bad_candidate = {
+        "object_id": "bad-person",
+        "kind": "victim_candidate",
+        "confidence": 1.5,
+        "position_xyz_m": [0.0, 0.0, 0.0],
+    }
+    report = EndToEndRescuePipeline().run(
+        [obs("rgb-1", "rgb", [bad_candidate])],
+        now=T0,
+    )
+    assert report.victim_hypotheses == []
+    assert "candidate_confidence_invalid" in report.reasons
+    assert report.status == "HUMAN_REVIEW"
+    assert report.actuator_commands_sent is False
+
+
+def test_valid_candidate_still_requires_human_approval():
+    report = EndToEndRescuePipeline().run(
+        [obs("rgb-1", "rgb", [victim()])],
+        now=T0,
+        collision_check_passed=True,
+        human_approved=False,
+    )
+    assert report.status == "HUMAN_REVIEW"
+    assert "human_mission_approval_required" in report.reasons
+    assert report.actuator_commands_sent is False
