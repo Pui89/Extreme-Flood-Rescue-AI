@@ -103,3 +103,14 @@ def test_valid_candidate_still_requires_human_approval():
     assert report.status == "HUMAN_REVIEW"
     assert "human_mission_approval_required" in report.reasons
     assert report.actuator_commands_sent is False
+
+
+def test_report_verifier_detects_audit_record_tampering():
+    report = EndToEndRescuePipeline().run(
+        [obs("rgb-1", "rgb", [victim()])],
+        now=T0,
+    )
+    report.audit_record["evidence_digest"] = "rescue-tampered"
+    errors = verify_rescue_report(report)
+    assert "audit_digest_mismatch" in errors
+    assert report.actuator_commands_sent is False
