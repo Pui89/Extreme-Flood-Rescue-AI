@@ -22,7 +22,7 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 ## Latest status update — 18 October 2026
 
-- **Successful:** Python CI passed on 3.10/3.11/3.12; repository has workflow/safety tests, dataset manifest tools and a benchmark protocol.
+- **Successful:** Python CI passed on 3.10/3.11/3.12 in [run 39096446071](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39096446071); repository has workflow/safety tests, dataset manifest tools and a benchmark protocol. This does not establish real-world detection or rescue performance.
 - **Continuing:** verify dataset licences and labels; test missing/stale/conflicting sensors, uncertainty, communication loss and fail-closed behavior.
 - **Next:** separate flood-scene segmentation from person detection; audit manifests and data splits; run repeatable fixed-seed scenarios and report failures as well as successes.
 - **Future:** evaluate geographic/weather shifts, then reproducible ROS 2/Nav2/Gazebo simulation and independent safety review before any hardware/field trial.
