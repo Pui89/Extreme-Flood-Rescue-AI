@@ -20,6 +20,16 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 [Detailed project status, checks, next steps and future plan](docs/PROJECT_STATUS_2026-10-18.md)
 
+## Latest status update — 18 October 2026
+
+- **Successful:** Python CI passed on 3.10/3.11/3.12; repository has workflow/safety tests, dataset manifest tools and a benchmark protocol.
+- **Continuing:** verify dataset licences and labels; test missing/stale/conflicting sensors, uncertainty, communication loss and fail-closed behavior.
+- **Next:** separate flood-scene segmentation from person detection; audit manifests and data splits; run repeatable fixed-seed scenarios and report failures as well as successes.
+- **Future:** evaluate geographic/weather shifts, then reproducible ROS 2/Nav2/Gazebo simulation and independent safety review before any hardware/field trial.
+- **Corrections:** FloodNet scene labels do not prove person detection; synthetic observations are not model detections; a supplied collision-check flag is not itself a collision checker. No real rescue performance is validated. Free/open-source-first.
+
+
+
 ## Project status overview — updated 18 October 2026
 
 **Current stage: software prototype and safety/regression testing. Not yet a field-validated rescue robot.**
