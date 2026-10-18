@@ -123,6 +123,35 @@ class DatasetToolTests(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("appears in multiple splits", result.stdout)
 
+    def test_auditor_accepts_complete_verified_record(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            image = root / "sample.jpg"
+            image.write_bytes(b"verified fixture")
+            row = {field: "" for field in FIELDS}
+            row.update({
+                "image_path": "sample.jpg",
+                "source_url": "https://example.org/data",
+                "source_name": "test dataset",
+                "dataset_version": "fixture-v1",
+                "license_name": "Test licence",
+                "license_url": "https://example.org/license",
+                "license_status": "approved",
+                "attribution": "Attribution recorded for test fixture",
+                "source_group_id": "scene-1",
+                "sha256": hashlib.sha256(image.read_bytes()).hexdigest(),
+                "label_status": "human_verified",
+                "label_reviewer": "qualified reviewer",
+                "ground_truth_basis": "independently verified fixture",
+                "split": "test",
+            })
+            manifest = root / "manifest.csv"
+            write_manifest(manifest, [row])
+            result = run_tool(AUDITOR, str(manifest), "--root", str(root), "--require-ready")
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertIn("Errors: 0", result.stdout)
+            self.assertIn("Rows passing basic verified-label/hash/split checks: 1", result.stdout)
+
     def test_auditor_rejects_path_traversal(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
