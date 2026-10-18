@@ -1,5 +1,12 @@
 # Flood Rescue AI Application
 
+## Robot concept illustration
+
+![Flood Rescue AI amphibious reconnaissance robot concept](docs/images/flood-rescue-robot-concept-2026.svg)
+
+*Original concept artwork—not a live sensor feed, field-tested vehicle, or evidence of a real rescue.*
+
+
 > **Complete-system architecture and acceptance gates:** [COMPLETE_SYSTEM_BLUEPRINT.md](docs/COMPLETE_SYSTEM_BLUEPRINT.md). This is a build-and-validation plan, not a claim of field-validated rescue.
 > **Current validation matrix:** [VALIDATION_MATRIX.md](docs/VALIDATION_MATRIX.md) — implementation evidence, automated checks, and remaining unvalidated capabilities.
 
