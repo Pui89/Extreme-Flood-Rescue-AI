@@ -204,4 +204,10 @@ def verify_rescue_report(report: RescueReport) -> list[str]:
         errors.append("approved_proposal_requires_collision_check")
     if not report.evidence_id.startswith("rescue-"):
         errors.append("missing_evidence_id")
+    if report.audit_record.get("evidence_digest") != report.evidence_id:
+        errors.append("audit_digest_mismatch")
+    if report.audit_record.get("human_review_required") is not True:
+        errors.append("audit_record_must_require_human_review")
+    if report.audit_record.get("actuator_commands_sent") is not False:
+        errors.append("audit_record_must_confirm_no_actuator_commands")
     return errors
