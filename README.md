@@ -8,6 +8,8 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 **Free dataset and labelling workflow:** see [dataset sources, licence checks, annotation and training plan](docs/DATASET_ACQUISITION_AND_LABELING.md), the [manifest template](data/manifest.template.csv), and the [local manifest audit tool](tools/audit_dataset_manifest.py). No images are automatically considered licensed or correctly labelled; the manifest must be completed and audited locally before training.
 
+[Detailed project status, checks, next steps and future plan](docs/PROJECT_STATUS_2026-10-18.md)
+
 ## Project status overview — updated 18 October 2026
 
 **Current stage: software prototype and safety/regression testing. Not yet a field-validated rescue robot.**
