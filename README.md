@@ -776,3 +776,18 @@ No real-dataset metrics are listed because this documentation update did not run
 **Buyer position:** suitable now for research collaboration, simulation evaluation and feasibility studies. Do not market it as a field-ready autonomous rescue robot. Commercial deployment requires independent safety review, agency authorization, privacy/security review, robust communications and safe-stop tests, measured perception/mapping performance, controlled field trials and customer-agreed acceptance criteria.
 
 See the [validation and commercial roadmap](docs/VALIDATION_AND_COMMERCIAL_ROADMAP.md).
+
+
+## Automated safety regression checks
+
+The GitHub Actions test workflow now runs on pushes and pull requests affecting the core pipeline or tests, and can also be started manually. The end-to-end tests cover invalid timestamps, low-quality and misaligned observations, invalid candidate confidence, required human approval, blocked proposals when independent collision checks are missing, no actuator commands, and tampered audit digests.
+
+Run locally after installing the project's development dependencies:
+
+```bash
+python -m pip install -e ".[dev]"
+python -m pytest
+python demo_end_to_end.py
+```
+
+A passing software test only verifies the tested software behavior. It does not validate a trained perception model, collision checker, simulator physics, physical robot, or field rescue performance. Check the [GitHub Actions workflow](.github/workflows/ci.yml) for automated test status.
