@@ -98,8 +98,11 @@ def main() -> int:
             errors.append(f"line {line}: unknown label_status {state!r}")
         if state != "human_verified":
             warnings.append(f"line {line}: labels are not human_verified")
-        if not (row.get("source_url") or "").strip() or not (row.get("license_url") or "").strip():
-            errors.append(f"line {line}: source_url and license_url are required")
+        for key in ("source_url", "source_name", "dataset_version", "license_name",
+                    "license_url", "attribution", "source_group_id",
+                    "label_reviewer", "ground_truth_basis"):
+            if not (row.get(key) or "").strip():
+                errors.append(f"line {line}: {key} is required for an auditable dataset")
         if not (row.get("source_group_id") or "").strip():
             errors.append(f"line {line}: source_group_id is required to audit split leakage")
         split = (row.get("split") or "").strip().lower()
@@ -112,7 +115,9 @@ def main() -> int:
 
         if (state == "human_verified" and recorded_hash == actual_hash
                 and split in ALLOWED_SPLITS and (row.get("source_group_id") or "").strip()
-                and (row.get("source_url") or "").strip() and (row.get("license_url") or "").strip()):
+                and all((row.get(key) or "").strip() for key in
+                        ("source_url", "source_name", "dataset_version", "license_name",
+                         "license_url", "attribution", "label_reviewer", "ground_truth_basis"))):
             ready += 1
 
     for group, splits in sorted(group_splits.items()):
