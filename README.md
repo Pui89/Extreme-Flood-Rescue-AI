@@ -6,6 +6,8 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 **Cost boundary:** the plan uses downloaded local weights only; it does not require paid Hugging Face inference, cloud GPUs, paid notebooks, or a subscription. Model integration and performance must be verified by running tests locally.
 
+**Free dataset and labelling workflow:** see [dataset sources, licence checks, annotation and training plan](docs/DATASET_ACQUISITION_AND_LABELING.md), the [manifest template](data/manifest.template.csv), and the [local manifest audit tool](tools/audit_dataset_manifest.py). No images are automatically considered licensed or correctly labelled; the manifest must be completed and audited locally before training.
+
 ## Project status overview — updated 18 October 2026
 
 **Current stage: software prototype and safety/regression testing. Not yet a field-validated rescue robot.**
