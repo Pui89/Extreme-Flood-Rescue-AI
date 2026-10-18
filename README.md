@@ -6,6 +6,21 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 **Cost boundary:** the plan uses downloaded local weights only; it does not require paid Hugging Face inference, cloud GPUs, paid notebooks, or a subscription. Model integration and performance must be verified by running tests locally.
 
+## Project status overview — updated 18 October 2026
+
+**Current stage: software prototype and safety/regression testing. Not yet a field-validated rescue robot.**
+
+| Status | What it means today |
+|---|---|
+| **Successful** | The main-branch Python CI run passed; deterministic simulation and software-level safety checks are available. The workflow includes audit-evidence consistency checks and safeguards that require human review and do not authorize actuator commands. |
+| **In progress** | Improving repeatability, documenting the validation protocol, and preparing the project for measured experiments. |
+| **Not yet demonstrated** | Reliable person detection on independent real flood imagery; validated flood segmentation/depth estimates; real-world navigation performance; physical rescue or field safety. |
+| **Next** | (1) Select a lawful, licensed dataset and record its version; (2) define train/validation/test splits before training; (3) train or integrate a baseline detector/segmenter; (4) report precision, recall, false negatives, latency and failure cases on held-out data; (5) test navigation and fail-safe behavior in simulation. |
+| **Future** | Reproducible multi-scenario simulation, sensor-failure and communication-loss tests, hardware-in-the-loop testing, then controlled field trials with qualified safety oversight. |
+
+**Evidence boundary:** CI success means the tested software checks passed; it does not mean a trained model achieved real-world accuracy or that a robot has rescued anyone. No real-world model metrics should be claimed until a documented independent evaluation exists. See the [validation and commercial roadmap](docs/VALIDATION_AND_COMMERCIAL_ROADMAP.md) and [GitHub Actions](https://github.com/Pui89/Flood-Rescue-AI/actions).
+
+---
 
 ## AI Application Overview
 
