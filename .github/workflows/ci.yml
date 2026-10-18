@@ -5,12 +5,16 @@ on:
     paths:
       - "flood_robot/**"
       - "tests/**"
+      - "tools/**"
+      - "scripts/**"
       - "pyproject.toml"
       - ".github/workflows/ci.yml"
   pull_request:
     paths:
       - "flood_robot/**"
       - "tests/**"
+      - "tools/**"
+      - "scripts/**"
       - "pyproject.toml"
       - ".github/workflows/ci.yml"
   workflow_dispatch:
@@ -35,6 +39,8 @@ jobs:
           cache: pip
       - name: Install project and development dependencies
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Syntax-check local dataset tooling
+        run: python -m py_compile tools/audit_dataset_manifest.py tools/dataset_inventory.py tools/group_split_manifest.py
       - name: Run test suite
         run: python -m pytest
       - name: Run deterministic end-to-end demo
