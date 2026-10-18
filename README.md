@@ -740,3 +740,39 @@ python -m unittest discover -s tests -v
 
 **Evidence status:** the script implements grid-based shortest-path planning, simulated movement, scripted possible-person markers, event logging, JSON/CSV export, and injected communication-loss safe-stop behavior. The map and observations are synthetic; no trained perception model, ROS/Gazebo, physical robot, flood physics, or real rescue is demonstrated. Outputs are software-simulation results only, not field-performance or safety validation. This section supplements the README; existing content is preserved.
 
+
+
+---
+
+## Validation status, training, testing and measured results
+
+**Evidence status:** this repository contains a local API/dashboard for manually entered illustrative sensor observations and a deterministic software workflow. The documented end-to-end demo uses synthetic, hand-authored observations. The dashboard's uploaded image is preview-only and does not run a trained flood/person detector. No real-world accuracy, rescue success rate, route-safety result or trained-checkpoint result is claimed.
+
+| Workstream | Current evidence | Status / next step |
+|---|---|---|
+| Application/API | Local API and review dashboard | Prototype; run a clean-install smoke test |
+| Decision workflow | Quality, timestamp, uncertainty and human-approval gates | Software behavior only; add fault-injection tests |
+| Labelled data | No verified task-specific benchmark established here | Obtain permitted data; label people, water masks, debris and hazards under separate schemas |
+| Training | No verified trained flood/person checkpoint established here | Train one task-specific baseline after data and licence review |
+| Evaluation | No real held-out metrics established here | Freeze test data and report class-wise metrics, failure cases and latency |
+| Robotics | Concept architecture and simulation-first workflow | Physical robot and field performance not validated |
+| Commercial readiness | Research/feasibility prototype | Not ready to sell as a validated rescue robot |
+
+### Reproducible development sequence
+
+1. Define a single task first: person detection, flood segmentation, hazard detection and route planning must be evaluated separately.
+2. Collect lawfully usable data. Record source, licence/permission, event/location group, modality, annotation version, reviewer and privacy restrictions. Context photos are not automatically training data.
+3. Label visible people/hazards with boxes and class names; create pixel masks for flood segmentation. Record occlusion and ambiguous cases explicitly.
+4. Split by event, location or source to reduce near-duplicate leakage. Keep the final test split frozen.
+5. Train a local baseline and record code commit, dataset checksum/version, split counts, package versions, random seed, device, configuration, elapsed time and checkpoint checksum.
+6. Evaluate actual model predictions on the held-out set. For detection report precision, recall, F1 and AP; for segmentation report IoU/Dice. Include class counts, latency, device, and failures under rain, darkness, reflections, blur and occlusion.
+7. Test software behavior separately: missing/stale/conflicting sensors, invalid inputs, uncertainty handling and fail-closed gates. Software tests are not model accuracy.
+8. Validate robot motion separately in a physics-backed simulator with an independently tested collision checker, safe-stop behavior and human approval before any authorized hardware trial.
+
+### Honest results and release gate
+
+No real-dataset metrics are listed because this documentation update did not run training or a held-out evaluation. Synthetic fixtures show software behavior only. A publishable benchmark must include dataset provenance, annotation policy, frozen split counts, model/checkpoint checksum, exact reproduction command, machine-readable results and failure analysis.
+
+**Buyer position:** suitable now for research collaboration, simulation evaluation and feasibility studies. Do not market it as a field-ready autonomous rescue robot. Commercial deployment requires independent safety review, agency authorization, privacy/security review, robust communications and safe-stop tests, measured perception/mapping performance, controlled field trials and customer-agreed acceptance criteria.
+
+See the [validation and commercial roadmap](docs/VALIDATION_AND_COMMERCIAL_ROADMAP.md).
