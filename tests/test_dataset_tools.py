@@ -34,6 +34,23 @@ def write_manifest(path: Path, rows: list[dict[str, str]]) -> None:
         writer.writerows(rows)
 
 
+def verified_row(index: int, group: str) -> dict[str, str]:
+    row = {field: "" for field in FIELDS}
+    row.update({
+        "image_path": f"image-{index}.jpg",
+        "source_url": "https://example.org/data",
+        "license_name": "Test licence",
+        "license_url": "https://example.org/license",
+        "license_status": "approved",
+        "source_group_id": group,
+        "sha256": hashlib.sha256(f"image-{index}".encode()).hexdigest(),
+        "label_status": "human_verified",
+        "label_reviewer": "qualified reviewer",
+        "ground_truth_basis": "verified fixture label",
+    })
+    return row
+
+
 class DatasetToolTests(unittest.TestCase):
     def test_inventory_never_invents_labels_or_licence_approval(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -56,37 +73,26 @@ class DatasetToolTests(unittest.TestCase):
     def test_splitter_rejects_unreviewed_data(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             manifest = Path(temp) / "manifest.csv"
-            row = {field: "" for field in FIELDS}
-            row.update({
-                "image_path": "sample.jpg", "source_url": "https://example.org/data",
-                "license_url": "https://example.org/license", "license_status": "pending_review",
-                "label_status": "unreviewed", "source_group_id": "scene-1",
-                "ground_truth_basis": "pending human review",
-            })
+            row = verified_row(0, "scene-1")
+            row["license_status"] = "pending_review"
+            row["label_status"] = "unreviewed"
             write_manifest(manifest, [row])
             result = run_tool(SPLITTER, str(manifest))
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("licence is not approved", result.stderr)
 
+    def test_splitter_rejects_fewer_than_three_source_groups(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            manifest = Path(temp) / "manifest.csv"
+            write_manifest(manifest, [verified_row(0, "only-one-source")])
+            result = run_tool(SPLITTER, str(manifest))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("at least three distinct source_group_id", result.stderr)
+
     def test_splitter_keeps_each_group_in_one_partition(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             manifest = Path(temp) / "manifest.csv"
-            rows = []
-            for i in range(12):
-                row = {field: "" for field in FIELDS}
-                row.update({
-                    "image_path": f"image-{i}.jpg",
-                    "source_url": "https://example.org/data",
-                    "license_name": "Test licence",
-                    "license_url": "https://example.org/license",
-                    "license_status": "approved",
-                    "source_group_id": f"group-{i // 2}",
-                    "sha256": hashlib.sha256(f"image-{i}".encode()).hexdigest(),
-                    "label_status": "human_verified",
-                    "label_reviewer": "qualified reviewer",
-                    "ground_truth_basis": "verified fixture label",
-                })
-                rows.append(row)
+            rows = [verified_row(i, f"group-{i // 2}") for i in range(12)]
             write_manifest(manifest, rows)
             output = Path(temp) / "split.csv"
             result = run_tool(SPLITTER, str(manifest), "--seed", "89", "--output", str(output))
