@@ -1,10 +1,14 @@
 # Validation Matrix — Flood Rescue AI
 
-Last reviewed: 18 October 2026. This matrix separates software evidence from rescue capability.
+Last reviewed: 20 October 2026. This matrix separates software evidence from rescue capability.
+
+## Latest automated evidence
+
+The latest main-branch CI run [39276988264](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39276988264) passed test jobs on Python 3.10, 3.11 and 3.12, including dataset-tool syntax checks, the test suite and a deterministic end-to-end demo. This is software-level evidence only; it does not validate real-world person detection, flood mapping, navigation or rescue.
 
 | Capability | Repository evidence | Current status | What is still required |
 |---|---|---|---|
-| Workflow orchestration and audit | `flood_robot/`, `demo_end_to_end.py` | Software prototype and regression tests exist | Continue running full CI for changes; review audit output |
+| Workflow orchestration and audit | `flood_robot/`, `demo_end_to_end.py` | Software prototype and regression tests exist; latest CI passed | Review audit output and continue testing changes |
 | Fail-safe decision gates | Existing end-to-end and safety tests | Tests include human-review requirement and no actuator command | Independent hazard analysis and simulation fault injection |
 | Dataset provenance | `tools/dataset_inventory.py`, `tools/audit_dataset_manifest.py` | Local inventory and licence/label audit tools; regression tests passed in CI | Download and inspect actual source files; verify licence and attribution per dataset |
 | Leakage-aware splitting | `tools/group_split_manifest.py` | Requires approved rights and human-verified labels; tests passed in CI | Group images by scene/video/location; preserve official benchmark splits |
