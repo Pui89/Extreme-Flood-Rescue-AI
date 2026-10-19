@@ -28,9 +28,9 @@ See [docs/PRODUCT_BRIEF.md](docs/PRODUCT_BRIEF.md) for a concise description of 
 
 The latest Python test workflow passed on the current main-branch change in [run 39276988264](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39276988264). The workflow includes the dataset-tool checks and deterministic end-to-end demo. This is software-level evidence only; it does **not** validate real-world person detection, safe navigation, or a rescue outcome.
 
-## Latest status update — 19 October 2026
+## Latest status update — 20 October 2026
 
-- **Current status: software prototype and evaluation planning.** Repository CI and software-level tests have passed in the previously linked run; this is evidence for those automated checks only, not proof of real-world person detection, flood mapping, navigation or rescue.
+- **Current status: software prototype and evaluation planning.** The validation matrix was refreshed on 20 October to match [the latest passing CI run](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39276988264). This is evidence for those automated checks only, not proof of real-world person detection, flood mapping, navigation or rescue.
 - **Data readiness:** dataset sourcing, source-rights/licence checks, annotation, manifest auditing and group-aware splitting remain required before training or reporting real-image metrics. A dataset source or scene-segmentation label must not be treated as a validated person-detection label.
 - **Next checks:** audit permitted data and labels; freeze leakage-safe splits; establish separate baselines for person detection and flood-scene segmentation; report held-out precision/recall, false negatives, latency and failure cases; then test missing/stale/conflicting sensors, communication loss and fail-closed behavior in repeatable simulation.
 - **Not yet demonstrated:** independently validated victim/person detection, validated water-depth estimates, safe real-world navigation, physical rescue, or field-tested robot safety. Synthetic observations and concept images are not real model detections.
