@@ -1,6 +1,6 @@
 # Product brief — Flood Rescue AI
 
-**One-line description:** A local-first, human-supervised AI decision-support prototype and simulation-first reconnaissance-robot research workflow for flood-scene evidence and hazard mapping.
+**Product direction:** A local-first AI decision-support application paired with a future flood-reconnaissance robot, designed to help trained responders review flood-scene evidence and hazards. Today it remains a human-supervised software prototype and simulation-first engineering project.
 
 ## The problem
 Flood response is complicated by changing water, debris, visibility, access and communication conditions. Responders need timely evidence with uncertainty visible; a model's output must not be treated as confirmation that a person is present, absent or safe.
@@ -39,5 +39,5 @@ The research direction emphasizes auditable evidence, explicit uncertainty, faul
 - **60 days:** produce baseline results or document the blocking data gaps; run fixed-seed fault scenarios.
 - **90 days:** review results with qualified research/responder stakeholders and define a controlled study. Dates are targets, not promises of completion.
 
-## Short award pitch
-Flood Rescue AI investigates how auditable AI and embodied reconnaissance could help responders interpret flood-scene evidence without hiding uncertainty. The project prioritizes task-specific benchmarks, fault-aware workflows and simulation-first evaluation before any real-world deployment. The next phase will establish evidence and requirements with qualified partners.
+## Product positioning
+Flood Rescue AI is intended to provide responders with an auditable view of possible people, flood extent, hazards, data quality and uncertainty. A credible product must separate person detection from scene segmentation, expose failure modes, support human review, and behave safely when sensors or communications fail. The current prototype is not a rescue service, validated navigation system, or tool for dispatching responders. Commercial use would require lawful data, independent task-specific benchmarks, responder-led workflow design, safety/security review, and formal authorization.
