@@ -24,10 +24,6 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 See [docs/PRODUCT_BRIEF.md](docs/PRODUCT_BRIEF.md) for a concise description of the problem, current evidence, intended audiences, demonstration plan and milestones for potential partners or award applications.
 
-## Commercial and award readiness
-
-See [docs/COMMERCIAL_READINESS_ROADMAP.md](docs/COMMERCIAL_READINESS_ROADMAP.md) for product stages, evidence required before selling, immediate priorities, acceptance gates and award-application preparation. The roadmap distinguishes verified software checks from unvalidated real-world capability; it does not claim commercial readiness or market leadership.
-
 ## Latest status update — 19 October 2026
 
 ## Latest status update — 19 October 2026
