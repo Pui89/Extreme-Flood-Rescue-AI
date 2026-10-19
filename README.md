@@ -28,7 +28,18 @@ See [docs/PRODUCT_BRIEF.md](docs/PRODUCT_BRIEF.md) for a concise description of 
 
 See [docs/COMMERCIAL_READINESS_ROADMAP.md](docs/COMMERCIAL_READINESS_ROADMAP.md) for product stages, evidence required before selling, immediate priorities, acceptance gates and award-application preparation. The roadmap distinguishes verified software checks from unvalidated real-world capability; it does not claim commercial readiness or market leadership.
 
-## Latest status update — 18 October 2026
+## Latest status update — 19 October 2026
+
+## Latest status update — 19 October 2026
+
+- **Current status: software prototype and evaluation planning.** Repository CI and software-level tests have passed in the previously linked run; this is evidence for those automated checks only, not proof of real-world person detection, flood mapping, navigation or rescue.
+- **Data readiness:** dataset sourcing, source-rights/licence checks, annotation, manifest auditing and group-aware splitting remain required before training or reporting real-image metrics. A dataset source or scene-segmentation label must not be treated as a validated person-detection label.
+- **Next checks:** audit permitted data and labels; freeze leakage-safe splits; establish separate baselines for person detection and flood-scene segmentation; report held-out precision/recall, false negatives, latency and failure cases; then test missing/stale/conflicting sensors, communication loss and fail-closed behavior in repeatable simulation.
+- **Not yet demonstrated:** independently validated victim/person detection, validated water-depth estimates, safe real-world navigation, physical rescue, or field-tested robot safety. Synthetic observations and concept images are not real model detections.
+- **Future path:** reproducible ROS 2/Nav2/Gazebo scenarios, sensor-failure and stop tests, independent safety review, and only then any authorised, supervised hardware or field trial.
+- **Cost and safety boundary:** keep the workflow free/local-first where feasible; do not claim a rescue outcome or allow an AI hypothesis to replace trained human responders.
+
+## Previous status update — 18 October 2026
 
 - **Successful:** Python CI passed on 3.10/3.11/3.12 in [run 39096446071](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39096446071); repository has workflow/safety tests, dataset manifest tools and a benchmark protocol. This does not establish real-world detection or rescue performance.
 - **Continuing:** verify dataset licences and labels; test missing/stale/conflicting sensors, uncertainty, communication loss and fail-closed behavior.
