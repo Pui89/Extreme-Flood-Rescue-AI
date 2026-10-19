@@ -7,6 +7,8 @@ on:
       - "tests/**"
       - "tools/**"
       - "scripts/**"
+      - "docs/**"
+      - "README.md"
       - "pyproject.toml"
       - ".github/workflows/ci.yml"
   pull_request:
@@ -15,6 +17,8 @@ on:
       - "tests/**"
       - "tools/**"
       - "scripts/**"
+      - "docs/**"
+      - "README.md"
       - "pyproject.toml"
       - ".github/workflows/ci.yml"
   workflow_dispatch:
