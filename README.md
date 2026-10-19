@@ -24,6 +24,10 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 See [docs/PRODUCT_BRIEF.md](docs/PRODUCT_BRIEF.md) for a concise description of the problem, current evidence, intended audiences, demonstration plan and milestones for potential partners and product stakeholders.
 
+## Latest automated CI verification — 20 October 2026
+
+The latest Python test workflow passed on the current main-branch change in [run 39276988264](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39276988264). The workflow includes the dataset-tool checks and deterministic end-to-end demo. This is software-level evidence only; it does **not** validate real-world person detection, safe navigation, or a rescue outcome.
+
 ## Latest status update — 19 October 2026
 
 - **Current status: software prototype and evaluation planning.** Repository CI and software-level tests have passed in the previously linked run; this is evidence for those automated checks only, not proof of real-world person detection, flood mapping, navigation or rescue.
