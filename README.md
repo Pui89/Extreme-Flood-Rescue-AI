@@ -22,9 +22,7 @@ This repository's recommended local model, intended tasks, licence checks, setup
 
 ## Product brief
 
-See [docs/PRODUCT_BRIEF.md](docs/PRODUCT_BRIEF.md) for a concise description of the problem, current evidence, intended audiences, demonstration plan and milestones for potential partners or award applications.
-
-## Latest status update — 19 October 2026
+See [docs/PRODUCT_BRIEF.md](docs/PRODUCT_BRIEF.md) for a concise description of the problem, current evidence, intended audiences, demonstration plan and milestones for potential partners and product stakeholders.
 
 ## Latest status update — 19 October 2026
 
@@ -209,7 +207,7 @@ MLOps / Fleet Learning
 
 ### Product tiers
 
-- **PUI89 Research** — universities, robotics competitions, researchers
+- **PUI89 Research** — universities, researchers, and potential product partners
 - **PUI89 Professional** — rescue organizations, municipalities, infrastructure operators
 - **PUI89 Enterprise** — large corporations, governments, logistics, ports, infrastructure
 
@@ -396,19 +394,19 @@ The concept shows the flood-response robot operating in a dynamic disaster scene
 
 See the full architecture and mission flow in [docs/PIPELINE_OVERVIEW.md](docs/PIPELINE_OVERVIEW.md).
 
-## Research, competition and commercialization
+## Research and product development
 
 This project is being developed on three parallel tracks:
 
 - **Real-world rescue robotics:** rugged mobility, multimodal sensing, GNSS-denied navigation, rescue payloads, degraded-mode operation and deterministic safety.
-- **World-class competition:** a complete end-to-end mission demonstration with quantified victim localization, dynamic hazard avoidance, recovery, energy and operator-intervention metrics.
 - **PhD research:** a proposed **Trustworthy 4D Rescue World Model (T4D-RWM)** connecting multimodal perception, temporal prediction, uncertainty/OOD, active perception and risk-aware action. See [PhD research program](docs/PHd_RESEARCH_PROGRAM.md).
 
 See also:
-- [Competition & product plan](docs/COMPETITION_AND_PRODUCT_PLAN.md)
 - [Research dataset specification](docs/RESEARCH_DATASET_SPEC.md)
 - [Cybersecurity policy](SECURITY.md)
 - [3D/4D world model implementation](flood_robot/world_model.py)
+
+- **Product direction:** turn the validated software and simulation workflow into a dependable decision-support product, with repeatable tests, deployment documentation, operator review and explicit safety limits.
 
 The project should not be judged by the number of AI models integrated. The key engineering target is **measurable end-to-end rescue performance under uncertainty and failure**.
 
