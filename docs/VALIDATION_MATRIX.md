@@ -17,6 +17,19 @@ The latest main-branch CI run [39276988264](https://github.com/Pui89/Flood-Rescu
 | Navigation and hazard mapping | Blueprint for ROS 2 / Gazebo / Nav2 integration | Architecture/adapter work remains | Runnable simulation, coordinate-frame validation, traversability checks and route-failure tests |
 | Real flood rescue | No field validation established | **Not validated** | Authorised rescue partners, suitable hardware, supervised non-hazardous trials, safety review and documented results |
 
+## Immediate zero-cost next actions
+
+Work in this order; do not skip ahead to hardware or operational claims.
+
+1. **Dataset rights and integrity:** run the existing inventory and manifest audit tools on a user-approved local dataset; verify source URL, licence/permission, attribution, label meaning, hashes and duplicates. Keep downloaded data outside Git unless redistribution is expressly permitted.
+2. **Freeze a clean evaluation split:** group by source, scene, capture session or physical item; keep near-duplicates out of different splits. Preserve official benchmark splits where required.
+3. **Keep tasks separate:** flood-scene segmentation, person detection and obstacle detection require distinct labels, baselines and metrics. Do not use scene-segmentation labels as person labels.
+4. **Record reproducible evidence:** document exact commands, environment, dataset version and split, fixed seed, per-class precision/recall, false negatives, latency, and representative failure cases. If not run, mark **NOT RUN**.
+5. **Simulation before hardware:** add deterministic scenarios for missing/stale/conflicting sensor data, invalid transforms, unknown map cells, blocked routes and communication loss. Each failure must reach STOP or human review.
+6. **No-cost boundary:** prefer the current local Python tools and available hardware. Do not enable paid APIs, cloud GPUs, hosted inference or subscriptions. If a future step may incur a charge, stop and ask first.
+
+**Next milestone:** a lawful, audited dataset manifest and a baseline evaluation report—not a claim of successful flood rescue.
+
 ## Data and safety rules
 
 - Flood segmentation is not person detection, and RGB imagery alone does not provide reliable water-depth measurements.
