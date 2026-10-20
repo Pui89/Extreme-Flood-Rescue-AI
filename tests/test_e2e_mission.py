@@ -84,3 +84,9 @@ def test_cli_writes_machine_readable_report(tmp_path):
 def test_invalid_grid_is_rejected():
     with pytest.raises(ValueError, match="rectangular"):
         plan_grid_route([[0, 0], [0]], [0, 0], [1, 1])
+
+
+def test_grid_rejects_boolean_and_float_cells():
+    for bad_cell in (False, True, 0.0, 1.0, "0"):
+        with pytest.raises(ValueError, match="grid cells must be integer"):
+            plan_grid_route([[bad_cell]], [0, 0], [0, 0])
