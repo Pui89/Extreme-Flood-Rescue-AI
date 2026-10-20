@@ -781,6 +781,12 @@ This project includes an optional guide for adding local text-to-speech announce
 
 See the [low-cost robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, no paid hosted APIs, and human supervision.
 
+## Interactive visual simulation (free, no external packages)
+
+Open [the standalone visual flood simulation](demos/visual_flood_sim.html) in a browser, or view its [source on GitHub](https://github.com/Pui89/Flood-Rescue-AI/blob/main/demos/visual_flood_sim.html). It includes a synthetic hazard map, step-by-step rover movement, a proposed route, possible-person markers, an event log, and buttons to inject communication loss or an unknown hazard and trigger a fail-closed stop.
+
+The page uses only browser-native HTML, CSS and JavaScript: no install, network request, API, subscription, cloud GPU or hardware connection is required. **All map cells and person markers are synthetic.** This is not flood physics, a trained detector, or proof of safe navigation/rescue.
+
 ## Runnable local simulation (free, no external packages)
 
 A dependency-free synthetic 2D reconnaissance simulation is available at [`scripts/flood_rescue_sim.py`](scripts/flood_rescue_sim.py), with a Windows guide at [`docs/LOCAL_SIMULATION_QUICKSTART.md`](docs/LOCAL_SIMULATION_QUICKSTART.md) and standard-library tests at [`tests/test_flood_rescue_sim.py`](tests/test_flood_rescue_sim.py).
