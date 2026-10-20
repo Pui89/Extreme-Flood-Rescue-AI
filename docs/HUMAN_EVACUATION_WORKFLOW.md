@@ -37,12 +37,24 @@ Coordinate three complementary platforms to locate people in flooded homes, asse
 6. **Person candidate detection:** AI outputs POSSIBLE_PERSON, confidence, image/map location, and evidence source. It must not output a medical diagnosis. Low confidence, occlusion, or sensor disagreement becomes HUMAN_REVIEW.
 7. **Conservative assistance assessment:** report observable cues only, e.g. visible movement, response to a voice prompt, apparent entrapment, or person not visible. A lack of movement is not proof of unconsciousness; thermal/audio data alone do not determine condition.
 8. **Human triage:** trained rescuers decide urgency and method. If there may be immediate danger, notify the incident commander promptly; do not wait for a model confidence threshold.
-9. **Select extraction plan:** 
-   - Person appears able to follow instructions: rescuer gives instructions; robot may provide light, location, and a route suggestion.
-   - Person's mobility/condition is unknown: treat as needing human assessment; dispatch trained rescuers and suitable flotation/medical support.
-   - Person cannot move, is trapped, or is in water: trained rescue personnel choose appropriate specialist equipment and extraction technique. No improvised robotic lifting.
+9. **Select extraction plan:**
+   - **Person can walk and follow instructions:** a trained human rescuer or dispatcher communicates calmly and in short steps. The AI may suggest a route only if it is mapped, currently observed, and within verified platform/environment limits. Prefer the shortest verified route to a designated safe rendezvous, not simply the nearest exit. Keep the person away from moving water, submerged steps, electrical hazards, unstable walls, and unknown-depth areas. The ground robot may illuminate or mark the route from a safe position; it must not physically herd, pull, or block the person. The drone can relay exterior hazards and rendezvous location. The rescue boat and crew wait at a verified safe pickup point if the route ends at water. A human rescuer remains responsible for instructions and confirms that the person reaches the rendezvous.
+   - **Person's ability to walk is uncertain or changes:** stop treating the person as an independent evacuee; tell the operator, request a human assessment, and arrange trained rescue support. Do not infer walking ability from pose detection alone.
+   - **Person cannot move, is trapped, or is in water:** trained rescue personnel choose appropriate specialist equipment and extraction technique. No improvised robotic lifting.
 10. **Evacuate and confirm:** trained team moves the person to a designated safe zone and confirms handoff. AI logs only the operational status, not an unverified claim that the person is medically safe.
 11. **Debrief:** preserve logs, sensor failures, route decisions, near misses, false detections, and outcomes for review.
+
+## Walkable-person evacuation sequence
+
+1. **Make contact:** use a human-controlled speaker or responder when available. Identify the response as a rescue communication; avoid alarming or contradictory automated commands.
+2. **Confirm the person understands:** ask for a simple verbal/visual acknowledgement where feasible. A detected response is not medical clearance.
+3. **Offer one verified route:** show the route and destination to the operator first. Exclude unknown cells, unverified water depth/current, stairs or doors the robot has not assessed, electrical hazards, and any route beyond robot/boat limits.
+4. **Guide, do not control the person:** the person remains free to stop; no robot should push, pull, restrain, or physically steer them. A human rescuer gives instructions and can cancel the route at any time.
+5. **Observe progress:** report only visible progress and timestamp. If the person stops responding, falls, appears distressed, changes direction into danger, or is obscured, alert the operator and request human assistance rather than diagnosing the cause.
+6. **Transfer at a safe rendezvous:** a trained rescuer confirms arrival and takes responsibility. If water crossing is necessary, the person should not be instructed to wade through unknown or moving floodwater; the rescue team selects a suitable method.
+7. **Close the incident:** mark handoff only after human confirmation; record the chosen route, hazards, alerts, and any intervention.
+
+**Walkable-person safety rule:** “can walk and follow instructions” is an incident-provided assumption, not a permanent AI conclusion. Reassess when conditions change. Never ask a person to follow a robot through water or a building that has not been assessed as safe.
 
 ## Required state machine
 
