@@ -24,8 +24,12 @@ def _validate_grid(grid: list[list[int]]) -> tuple[int, int]:
     width = len(grid[0])
     if any(len(row) != width for row in grid):
         raise ValueError("grid must be rectangular")
-    if any(cell not in (0, 1) for row in grid for cell in row):
-        raise ValueError("grid cells must be 0 (free) or 1 (blocked)")
+    if any(
+        isinstance(cell, bool) or not isinstance(cell, int) or cell not in (0, 1)
+        for row in grid
+        for cell in row
+    ):
+        raise ValueError("grid cells must be integer 0 (free) or integer 1 (blocked)")
     return len(grid), width
 
 
