@@ -9,6 +9,20 @@ This is the first runnable, local-only robotics demonstration for Flood Rescue A
 - **Not implemented or validated here:** camera perception, trained victim detector, flood physics, ROS 2/Gazebo integration, SLAM, depth/LiDAR, real-time control, physical robot, or field rescue performance.
 - **Proposed next:** connect the simulator interface to Gazebo Sim / ROS 2 after the pure-Python baseline and tests are reproducible.
 
+## Interactive visual demo
+
+A separate browser-native visual version is available at [`demos/visual_flood_sim.html`](../demos/visual_flood_sim.html). It uses synthetic cells and markers and needs no Python packages.
+
+From the repository root on Windows, you can double-click `demos\\visual_flood_sim.html` to open it in a browser. If your browser restricts local files, run this built-in Python web server from the repository root:
+
+```bat
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000/demos/visual_flood_sim.html` and stop the server with Ctrl+C when finished. This is local-only and does not use a hosted API or cloud service.
+
+The page supports one-step movement, autoplay/pause, reset, and injected communication-loss/unknown-hazard stop scenarios. The visual demo is separate from the Python CLI simulator and does not replace its automated tests.
+
 ## Windows setup
 
 Install Python 3.10 or newer from the official Python distribution if it is not already installed. No third-party package is required for this demo.
