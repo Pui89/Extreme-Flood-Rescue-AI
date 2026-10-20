@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Local, synthetic Flood Rescue AI visual grid simulation.">
+<title>Flood Rescue AI — Visual Simulation</title>
+<style>
+:root{color-scheme:dark;--bg:#081521;--panel:#102434;--line:#294557;--text:#edf6fb;--muted:#abc0cd;--cyan:#5de1d0;--amber:#ffd17d;--red:#ff8e8e;--blue:#8bbdff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,Segoe UI,sans-serif}main{max-width:1120px;margin:auto;padding:24px}h1{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.15;margin:.25rem 0 .6rem}.muted{color:var(--muted)}.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:3px 9px;font-size:.78rem;color:var(--cyan)}.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:16px;margin-top:20px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}canvas{width:100%;height:auto;display:block;background:#0b1d2b;border-radius:8px;image-rendering:pixelated}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}button,select{font:inherit;color:var(--text);background:#18384a;border:1px solid #456578;border-radius:8px;padding:9px 12px;cursor:pointer}button:hover{border-color:var(--cyan)}button:focus-visible,select:focus-visible{outline:3px solid var(--amber);outline-offset:2px}.primary{background:#155448;border-color:#3c9e8d}.status{padding:12px;border-radius:10px;border:1px solid var(--line);margin:10px 0}.status strong{display:block}.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{background:#0b1d2b;padding:10px;border-radius:9px}.stat small{display:block;color:var(--muted)}.stat b{font-size:1.1rem}.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:.82rem;color:var(--muted);margin-top:10px}.swatch{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px}.log{max-height:190px;overflow:auto;padding-left:20px;font-size:.88rem}.warning{border-color:#795d2b;color:#ffe0a6}.disclaimer{font-size:.88rem;border-left:3px solid var(--amber);padding-left:12px;margin-top:18px}.route{color:var(--cyan)}@media(max-width:760px){.layout{grid-template-columns:1fr}main{padding:16px}}
+</style>
+</head>
+<body><main>
+<span class="tag">LOCAL · NO DEPENDENCIES · SYNTHETIC DATA</span>
+<h1>Flood Rescue AI — Visual Grid Simulation</h1>
+<p class="muted">Explore a fictional flood-reconnaissance mission. Move one step at a time, test communications loss, and observe how unknown hazards trigger a stop for human review.</p>
+<div class="layout">
+<section class="panel">
+<h2>Mission map</h2>
+<canvas id="map" width="700" height="450" role="img" aria-label="Synthetic grid map with rover, possible survivor locations, water, debris, and unknown cells"></canvas>
+<div class="legend">
+<span><i class="swatch" style="background:#294657"></i>Traversable</span>
+<span><i class="swatch" style="background:#287ea0"></i>Water — no-go</span>
+<span><i class="swatch" style="background:#9a6c44"></i>Debris/wall — blocked</span>
+<span><i class="swatch" style="background:#7b548f"></i>Unknown — stop</span>
+<span><i class="swatch" style="background:#ffcf75"></i>Possible person (synthetic)</span>
+<span><i class="swatch" style="background:#5de1d0"></i>Rover</span>
+</div>
+<div class="controls">
+<button class="primary" id="step">Step rover</button><button id="run">Run / pause</button><button id="reset">Reset mission</button>
+</div>
+<div class="controls">
+<button id="comms">Inject communications loss</button>
+<button id="unknown">Test unknown hazard stop</button>
+</div>
+<p class="muted" id="map-note">The map and all detections are invented for software demonstration; no camera or AI model is connected.</p>
+</section>
+<aside class="panel">
+<h2>Mission monitor</h2>
+<div class="status" id="status" aria-live="polite"><strong>READY</strong>Simulation ready. Start a step to plan a route.</div>
+<div class="stats">
+<div class="stat"><small>Rover cell</small><b id="pos">0, 0</b></div>
+<div class="stat"><small>Route steps left</small><b id="remaining">—</b></div>
+<div class="stat"><small>Possible-person reports</small><b id="people">2 synthetic</b></div>
+<div class="stat"><small>Actuator authorization</small><b>FALSE</b></div>
+</div>
+<h3>Event log</h3><ol class="log" id="log" aria-live="polite"><li>Loaded synthetic map. No real sensors connected.</li></ol>
+<div class="status warning"><strong>Safety rule</strong>Unknown water depth, blocked route, or communication loss means STOP and request human review. This demo cannot determine whether a route is safe in a real flood.</div>
+<h3>Evidence boundary</h3>
+<p class="muted">Implemented in this page: a small deterministic grid, route steps, synthetic markers, event log, and fail-closed stop scenarios. Not implemented: flood physics, person-detection AI, ROS 2/Gazebo, real robot control, water-depth estimation, or rescue capability.</p>
+</aside>
+</div>
+<p class="disclaimer"><strong>Research prototype only.</strong> Never use this simulation to guide a real evacuation. A trained incident commander/rescue team must make operational decisions. The page sends no network requests, uses no paid service, and issues no hardware commands.</p>
+</main>
+<script>
+(function(){
+'use strict';
+const W=14,H=9,START={x:0,y:0},GOAL={x:12,y:7};
+const debris=[[3,0],[3,1],[3,2],[3,3],[6,2],[7,2],[8,2],[8,3],[8,4],[5,5],[6,5],[7,5],[10,6],[10,7]];
+const water=[[1,4],[2,4],[3,4],[4,4],[9,0],[9,1],[9,2],[11,4],[11,5],[11,6],[4,7],[5,7]];
+const unknown=[[4,1],[4,2],[9,5],[12,3]];
+const people=[[11,7],[12,6]];
+const key=(p)=>p[0]+','+p[1], set=(a)=>new Set(a.map(key));
+const blocked=new Set([...set(debris),...set(water),...set(unknown)]);
+const $=id=>document.getElementById(id), canvas=$('map'),ctx=canvas.getContext('2d');
+let rover={...START},path=[],stopped=false,reason='',running=false,timer=null,visited=new Set([key([0,0])]),found=new Set(),eventCount=0;
+function log(msg){const li=document.createElement('li');li.textContent=msg;$('log').prepend(li);eventCount++;}
+function status(title,msg){$('status').replaceChildren();const b=document.createElement('strong');b.textContent=title;$('status').append(b,document.createTextNode(msg));}
+function bfs(start,goal){const q=[start],prev=new Map([[key([start.x,start.y]),null]]);for(let i=0;i<q.length;i++){const p=q[i];if(p.x===goal.x&&p.y===goal.y){const out=[];let k=key([p.x,p.y]);while(k){const [x,y]=k.split(',').map(Number);out.push({x,y});k=prev.get(k)}return out.reverse()}for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const x=p.x+dx,y=p.y+dy,k=key([x,y]);if(x<0||y<0||x>=W||y>=H||blocked.has(k)||prev.has(k))continue;prev.set(k,key([p.x,p.y]));q.push({x,y})}}return null}
+function draw(){const cw=canvas.width/W,ch=canvas.height/H;ctx.clearRect(0,0,canvas.width,canvas.height);for(let y=0;y<H;y++)for(let x=0;x<W;x++){const k=key([x,y]);ctx.fillStyle=blocked.has(k)?(set(debris).has(k)?'#9a6c44':set(water).has(k)?'#287ea0':'#7b548f'):'#294657';ctx.fillRect(x*cw+2,y*ch+2,cw-4,ch-4);if(visited.has(k)&&!blocked.has(k)){ctx.fillStyle='#397363';ctx.globalAlpha=.45;ctx.fillRect(x*cw+2,y*ch+2,cw-4,ch-4);ctx.globalAlpha=1}}
+if(path.length&&!stopped){ctx.strokeStyle='#5de1d0';ctx.lineWidth=4;ctx.beginPath();path.forEach((p,i)=>i?ctx.lineTo((p.x+.5)*cw,(p.y+.5)*ch):ctx.moveTo((p.x+.5)*cw,(p.y+.5)*ch));ctx.stroke()}
+people.forEach(p=>{ctx.fillStyle='#ffcf75';ctx.beginPath();ctx.arc((p[0]+.5)*cw,(p[1]+.5)*ch,Math.min(cw,ch)*.24,0,Math.PI*2);ctx.fill();ctx.fillStyle='#2b2110';ctx.font='bold 13px sans-serif';ctx.textAlign='center';ctx.fillText('?',(p[0]+.5)*cw,(p[1]+.5)*ch+4)});
+ctx.fillStyle='#5de1d0';ctx.beginPath();ctx.arc((rover.x+.5)*cw,(rover.y+.5)*ch,Math.min(cw,ch)*.31,0,Math.PI*2);ctx.fill();ctx.fillStyle='#06231f';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.fillText('R',(rover.x+.5)*cw,(rover.y+.5)*ch+4);
+ctx.fillStyle='#edf6fb';ctx.font='12px sans-serif';ctx.textAlign='left';ctx.fillText('START',(0.15)*cw,(0.5)*ch);ctx.textAlign='right';ctx.fillText('OBS',(13.8)*cw,(8.7)*ch)}
+function update(){ $('pos').textContent=rover.x+', '+rover.y;$('remaining').textContent=stopped?'STOP':path.length?Math.max(0,path.length-1):'—';draw()}
+function stop(why){stopped=true;reason=why;running=false;if(timer)clearInterval(timer);timer=null;$('run').textContent='Run / pause';status('STOPPED — HUMAN REVIEW REQUIRED',why);log('Fail-closed stop: '+why);update()}
+function plan(){path=bfs(rover,GOAL);if(!path){stop('No route found through cells not marked as hazards.');return false}status('ROUTE PROPOSED','Synthetic grid path found. This is not a real-world safety assessment.');log('Planner proposed a path of '+(path.length-1)+' grid steps; human review still required.');update();return true}
+function step(){if(stopped){status('STOPPED — HUMAN REVIEW REQUIRED',reason);return}if(!path.length&&!plan())return;if(path.length<=1){status('OBSERVATION POINT REACHED','Mission endpoint reached in synthetic grid. Possible-person markers remain unverified.');log('Reached simulated observation point; no rescue outcome implied.');running=false;if(timer)clearInterval(timer);timer=null;$('run').textContent='Run / pause';update();return}const next=path[1];if(unknown.some(p=>p[0]===next.x&&p[1]===next.y)){stop('Next cell has unknown hazard status.');return}if(blocked.has(key([next.x,next.y]))){stop('Planner attempted a blocked cell; fail-closed guard engaged.');return}rover=next;visited.add(key([rover.x,rover.y]));path=path.slice(1);if(people.some(p=>p[0]===rover.x&&p[1]===rover.y)){found.add(key([rover.x,rover.y]));log('Synthetic possible-person marker encountered; treat as unverified and request human review.')}status('MOVING IN SIMULATION','One grid step completed. No physical robot is connected.');update()}
+function pause(){running=!running;if(running){if(stopped){running=false;return}if(!path.length&&!plan()){running=false;return}timer=setInterval(step,650);$('run').textContent='Pause';log('Autoplay started.')}else{if(timer)clearInterval(timer);timer=null;$('run').textContent='Run / pause';log('Autoplay paused.')} }
+function reset(){if(timer)clearInterval(timer);timer=null;running=false;stopped=false;reason='';rover={...START};path=[];visited=new Set([key([0,0])]);found.clear();$('log').replaceChildren();log('Reset to synthetic start. No real sensors connected.');$('run').textContent='Run / pause';status('READY','Simulation ready. Start a step to plan a route.');update()}
+$('step').addEventListener('click',step);$('run').addEventListener('click',pause);$('reset').addEventListener('click',reset);
+$('comms').addEventListener('click',()=>stop('Communications loss injected. Rover stops; a human responder must assess status.'));
+$('unknown').addEventListener('click',()=>stop('Unknown hazard injected. Do not enter cells with unknown water depth/current or unseen obstacles.'));
+update();
+})();
+</script></body></html>
