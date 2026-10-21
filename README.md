@@ -21,13 +21,13 @@
 > **Current validation matrix:** [VALIDATION_MATRIX.md](docs/VALIDATION_MATRIX.md) — implementation evidence, automated checks, and remaining unvalidated capabilities.
 > **Engineering assurance plan:** [ENGINEERING_ASSURANCE_PLAN.md](docs/ENGINEERING_ASSURANCE_PLAN.md) — project requirements, hazard log, verification/validation gates, and evidence rules.
 
-## Free local Hugging Face model plan
+## Local Hugging Face model plan
 
 This repository's recommended local model, intended tasks, licence checks, setup notes, and no-surprise-billing rules are documented in **[HUGGINGFACE_LOCAL_MODELS.md](docs/HUGGINGFACE_LOCAL_MODELS.md)**.
 
 **Cost boundary:** the plan uses downloaded local weights only; it does not require paid Hugging Face inference, cloud GPUs, paid notebooks, or a subscription. Model integration and performance must be verified by running tests locally.
 
-**Free dataset and labelling workflow:** see [dataset sources, licence checks, annotation and training plan](docs/DATASET_ACQUISITION_AND_LABELING.md), the [Windows opt-in dataset helper](scripts/prepare_free_datasets.ps1), the [image inventory/manifest generator](tools/dataset_inventory.py), the [manifest template](data/manifest.template.csv), the [group-aware train/validation/test splitter](tools/group_split_manifest.py), and the [local manifest audit tool](tools/audit_dataset_manifest.py). Downloads require local user confirmation; no images are automatically considered licensed or correctly labelled. Keep datasets and weights out of Git.
+**Dataset and labelling workflow:** see [dataset sources, licence checks, annotation and training plan](docs/DATASET_ACQUISITION_AND_LABELING.md), the [Windows opt-in dataset helper](scripts/prepare_free_datasets.ps1), the [image inventory/manifest generator](tools/dataset_inventory.py), the [manifest template](data/manifest.template.csv), the [group-aware train/validation/test splitter](tools/group_split_manifest.py), and the [local manifest audit tool](tools/audit_dataset_manifest.py). Downloads require local user confirmation; no images are automatically considered licensed or correctly labelled. Keep datasets and weights out of Git.
 
 [Detailed project status, checks, next steps and future plan](docs/PROJECT_STATUS_2026-10-18.md)
 
@@ -46,7 +46,7 @@ The latest Python test workflow passed on the current main-branch change in [run
 - **Next checks:** audit permitted data and labels; freeze leakage-safe splits; establish separate baselines for person detection and flood-scene segmentation; report held-out precision/recall, false negatives, latency and failure cases; then test missing/stale/conflicting sensors, communication loss and fail-closed behavior in repeatable simulation.
 - **Not yet demonstrated:** independently validated victim/person detection, validated water-depth estimates, safe real-world navigation, physical rescue, or field-tested robot safety. Synthetic observations and concept images are not real model detections.
 - **Future path:** reproducible ROS 2/Nav2/Gazebo scenarios, sensor-failure and stop tests, independent safety review, and only then any authorised, supervised hardware or field trial.
-- **Cost and safety boundary:** keep the workflow free/local-first where feasible; do not claim a rescue outcome or allow an AI hypothesis to replace trained human responders.
+- **Cost and safety boundary:** keep the workflow cost-conscious and local-first where feasible; do not claim a rescue outcome or allow an AI hypothesis to replace trained human responders.
 
 ## Previous status update — 18 October 2026
 
@@ -54,7 +54,7 @@ The latest Python test workflow passed on the current main-branch change in [run
 - **Continuing:** verify dataset licences and labels; test missing/stale/conflicting sensors, uncertainty, communication loss and fail-closed behavior.
 - **Next:** separate flood-scene segmentation from person detection; audit manifests and data splits; run repeatable fixed-seed scenarios and report failures as well as successes.
 - **Future:** evaluate geographic/weather shifts, then reproducible ROS 2/Nav2/Gazebo simulation and independent safety review before any hardware/field trial.
-- **Corrections:** FloodNet scene labels do not prove person detection; synthetic observations are not model detections; a supplied collision-check flag is not itself a collision checker. No real rescue performance is validated. Free/open-source-first.
+- **Corrections:** FloodNet scene labels do not prove person detection; synthetic observations are not model detections; a supplied collision-check flag is not itself a collision checker. No real rescue performance is validated. Open-source-first.
 
 
 
@@ -125,7 +125,7 @@ flowchart TD
 
 **Practical development path:** start with public satellite reports and appropriately licensed photographs as contextual references, then use legally accessible, labelled datasets and simulated flood scenes for evaluation. Measure victim-detection recall, false alarms, mapping error, route safety, communications reliability and performance in rain, darkness and partial submersion. Before field trials, require rescue-agency authorization, independent safety testing, privacy protections and human supervision.
 
-**Evidence boundary:** these are proposed applications, not evidence that this repository's robot has been used in a Thai flood or has validated victim-detection/rescue performance. The 2010 photograph and GISTDA satellite images are contextual references, not a labelled training dataset. External image hosting can change; no paid image subscription is needed for the CC BY photo under its stated licence, but this does not guarantee every future hosting, cloud or AI service will be free.
+**Evidence boundary:** these are proposed applications, not evidence that this repository's robot has been used in a Thai flood or has validated victim-detection/rescue performance. The 2010 photograph and GISTDA satellite images are contextual references, not a labelled training dataset. External image hosting can change; no paid image subscription is needed for the CC BY photo under its stated licence, but this does not guarantee every future hosting, cloud or AI service will remain available at no additional cost.
 
 AI application concept for flood reconnaissance and rescue support, combining multimodal sensing, hazard mapping, uncertainty-aware planning, and human-supervised mission proposals.
 
@@ -298,7 +298,7 @@ Flood rescue requires robots to perceive unstable terrain, detect victims, avoid
 
 **Safety-first workflow:** AI flags possible people and hazards → the system reports evidence and uncertainty → deterministic checks and a trained coordinator review proposals → only an authorized, validated control system may execute a response. Unknown or occluded targets remain unconfirmed. Never send an unvalidated robot into fast-flowing, electrically hazardous, or otherwise unsafe floodwater.
 
-**Free image note:** this is an original SVG vector illustration stored in this repository. It requires no paid stock-photo subscription or paid image-generation API to view or reuse under the repository's applicable license. Third-party assets and software elsewhere in the project may have separate terms.
+**Image note:** this is an original SVG vector illustration stored in this repository. It requires no paid stock-photo subscription or paid image-generation API to view or reuse under the repository's applicable license. Third-party assets and software elsewhere in the project may have separate terms.
 
 ## 3D Robot Concept
 
@@ -527,7 +527,7 @@ The architecture intentionally separates multimodal reasoning from authoritative
 | RGB-D | RGB + aligned depth | 3D localization and geometry | Prototype |
 | Thermal | Thermal image/video | Low-light and heat-signature evidence | Prototype |
 | NIR | NIR image/video | Low-visibility complementary evidence | Planned |
-| LiDAR | Point cloud | Mapping, obstacle geometry, free space | Prototype |
+| LiDAR | Point cloud | Mapping, obstacle geometry, traversable space | Prototype |
 | Multimodal | RGB-D + thermal + LiDAR + optional NIR | Evidence fusion | Prototype |
 | Temporal / 4D | Sequential multimodal observations | Tracking, motion and future-state estimation | Prototype |
 | Open-set / anomaly | Multimodal features | Unknown/degraded-scene handling | Planned |
@@ -780,9 +780,9 @@ The GitHub Pages workflow is at [\.github/workflows/pages.yml](.github/workflows
 
 The site describes a research prototype; it does not claim measured benchmark results, safety certification, or readiness for real floodwater operations.
 
-## Free tools, funding and hardware support
+## Open-source tools, funding and hardware support
 
-See [Free and Open-Source Resources, Funding, Compute and Hardware Support](docs/OPEN_SOURCE_FREE_RESOURCES_AND_SUPPORT.md) for open-source tools, eligible grant and cloud-credit routes, potential hardware-loan contacts, project-specific priorities, and 2026–2028 planning. Support is competitive and subject to each program's current eligibility and terms; no funding or hardware is guaranteed.
+See [Open-Source Resources, Funding, Compute and Hardware Support](docs/OPEN_SOURCE_FREE_RESOURCES_AND_SUPPORT.md) for open-source tools, eligible grant and cloud-credit routes, potential hardware-loan contacts, project-specific priorities, and 2026–2028 planning. Support is competitive and subject to each program's current eligibility and terms; no funding or hardware is guaranteed.
 
 ## Optional Local Voice Alerts
 
@@ -792,15 +792,15 @@ This project includes an optional guide for adding local text-to-speech announce
 
 See the [low-cost robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, no paid hosted APIs, and human supervision.
 
-## Interactive visual simulation (free, no external packages)
+## Interactive visual simulation (no external packages required)
 
 Open [the standalone visual flood simulation](demos/visual_flood_sim.html) in a browser, or view its [source on GitHub](https://github.com/Pui89/Flood-Rescue-AI/blob/main/demos/visual_flood_sim.html). It includes a synthetic hazard map, step-by-step rover movement, a proposed route, possible-person markers, an event log, and buttons to inject communication loss or an unknown hazard and trigger a fail-closed stop.
 
 The page uses only browser-native HTML, CSS and JavaScript: no install, network request, API, subscription, cloud GPU or hardware connection is required. **All map cells and person markers are synthetic.** This is not flood physics, a trained detector, or proof of safe navigation/rescue.
 
-## Runnable local simulation (free, no external packages)
+## Runnable local simulation (no external packages required)
 
-A dependency-free synthetic 2D reconnaissance simulation is available at [`scripts/flood_rescue_sim.py`](scripts/flood_rescue_sim.py), with a Windows guide at [`docs/LOCAL_SIMULATION_QUICKSTART.md`](docs/LOCAL_SIMULATION_QUICKSTART.md) and standard-library tests at [`tests/test_flood_rescue_sim.py`](tests/test_flood_rescue_sim.py).
+A synthetic 2D reconnaissance simulation using the Python standard library is available at [`scripts/flood_rescue_sim.py`](scripts/flood_rescue_sim.py), with a Windows guide at [`docs/LOCAL_SIMULATION_QUICKSTART.md`](docs/LOCAL_SIMULATION_QUICKSTART.md) and standard-library tests at [`tests/test_flood_rescue_sim.py`](tests/test_flood_rescue_sim.py).
 
 From Command Prompt in the repository folder:
 
