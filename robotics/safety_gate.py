@@ -22,8 +22,22 @@ def validate_proposed_action(
 
     This function does not command hardware. It only accepts or blocks a
     proposed action before an authorized robotics control layer can consume it.
-    Confidence must be a finite probability in [0, 1]; malformed values fail closed.
+    Confidence must be a finite probability in [0, 1]. Safety flags must be
+    actual booleans; malformed or ambiguous inputs fail closed.
     """
+    # Validate safety-critical flags by type before interpreting their values.
+    # For example, the string "false" is truthy in Python and must not be
+    # mistaken for a valid sensor or authorization signal.
+    flags = (
+        ("emergency_stop", emergency_stop, "invalid_emergency_stop_flag"),
+        ("sensor_health_ok", sensor_health_ok, "invalid_sensor_health_flag"),
+        ("collision_free", collision_free, "invalid_collision_free_flag"),
+        ("authorized", authorized, "invalid_authorization_flag"),
+    )
+    for _name, value, reason in flags:
+        if not isinstance(value, bool):
+            return SafetyDecision(False, reason)
+
     if emergency_stop:
         return SafetyDecision(False, "emergency_stop")
     if not sensor_health_ok:

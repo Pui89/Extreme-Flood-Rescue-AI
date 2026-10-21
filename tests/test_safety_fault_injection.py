@@ -46,6 +46,27 @@ def test_injected_safety_fault_never_allows_action(fault, expected_reason):
     assert decision.reason == expected_reason
 
 
+@pytest.mark.parametrize(
+    "field, malformed_value, expected_reason",
+    [
+        pytest.param("emergency_stop", "false", "invalid_emergency_stop_flag", id="estop-string"),
+        pytest.param("emergency_stop", 0, "invalid_emergency_stop_flag", id="estop-integer"),
+        pytest.param("sensor_health_ok", "true", "invalid_sensor_health_flag", id="sensor-string"),
+        pytest.param("sensor_health_ok", None, "invalid_sensor_health_flag", id="sensor-null"),
+        pytest.param("collision_free", 1, "invalid_collision_free_flag", id="collision-integer"),
+        pytest.param("collision_free", "yes", "invalid_collision_free_flag", id="collision-string"),
+        pytest.param("authorized", "false", "invalid_authorization_flag", id="authorization-string"),
+        pytest.param("authorized", 1, "invalid_authorization_flag", id="authorization-integer"),
+    ],
+)
+def test_malformed_safety_flags_fail_closed(field, malformed_value, expected_reason):
+    """Truthiness must never substitute for explicit boolean safety signals."""
+    decision = validate_proposed_action(**nominal_inputs(**{field: malformed_value}))
+
+    assert decision.allowed is False
+    assert decision.reason == expected_reason
+
+
 def test_nominal_control_case_allows_candidate_action():
     """Control case ensures the test suite distinguishes a fault from nominal input."""
     decision = validate_proposed_action(**nominal_inputs())
