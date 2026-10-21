@@ -73,3 +73,20 @@ def test_nominal_control_case_allows_candidate_action():
 
     assert decision.allowed is True
     assert decision.reason == "validated"
+
+
+@pytest.mark.parametrize(
+    "confidence, expected_allowed, expected_reason",
+    [
+        pytest.param(0.8, True, "validated", id="localization-exact-threshold"),
+        pytest.param(math.nextafter(0.8, 0.0), False, "low_localization_confidence", id="localization-just-below-threshold"),
+        pytest.param(1.0, True, "validated", id="localization-upper-bound"),
+        pytest.param(0.0, False, "low_localization_confidence", id="localization-lower-bound"),
+    ],
+)
+def test_localization_confidence_boundary_is_explicit(confidence, expected_allowed, expected_reason):
+    """Pin the inclusive 0.8 acceptance threshold and probability endpoints."""
+    decision = validate_proposed_action(**nominal_inputs(localization_confidence=confidence))
+
+    assert decision.allowed is expected_allowed
+    assert decision.reason == expected_reason
