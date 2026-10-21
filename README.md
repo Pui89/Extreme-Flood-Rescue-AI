@@ -8,7 +8,6 @@ PUI89 welcomes robotics and disaster-response research feedback, simulation test
 
 - **Support and sponsorship brief:** [ways to collaborate with PUI89](https://github.com/Pui89/Pui89.github.io/blob/main/SUPPORT_AND_SPONSORSHIP.md)
 - **Project website:** [PUI89 AI Robotics](https://pui89.github.io/)
-- **Contribute code or report an issue:** [GitHub Issues](https://github.com/Pui89/Flood-Rescue-AI/issues)
 - **Open-source resources and support pathways:** [project resource guide](docs/OPEN_SOURCE_FREE_RESOURCES_AND_SUPPORT.md)
 
 Contributions should improve reproducibility, simulation, reliability, or safety. This remains a research/prototype project; real rescue capability and field performance are not claimed.
