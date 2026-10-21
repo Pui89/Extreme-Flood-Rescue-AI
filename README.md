@@ -2,6 +2,17 @@
 
 > **Product quality standard:** [benchmark protocol and fair comparison criteria](docs/PRODUCT_BENCHMARK_STANDARD.md). Simulation results must remain separate from real-world rescue claims.
 
+## Support, sponsorship and open-source collaboration
+
+PUI89 welcomes robotics and disaster-response research feedback, simulation testing, safety-focused code review, open-source contributions, introductions to authorised stakeholders, and scoped sponsorship discussions.
+
+- **Support and sponsorship brief:** [ways to collaborate with PUI89](https://github.com/Pui89/Pui89.github.io/blob/main/SUPPORT_AND_SPONSORSHIP.md)
+- **Project website:** [PUI89 AI Robotics](https://pui89.github.io/)
+- **Contribute code or report an issue:** [GitHub Issues](https://github.com/Pui89/Flood-Rescue-AI/issues)
+- **Open-source resources and support pathways:** [project resource guide](docs/OPEN_SOURCE_FREE_RESOURCES_AND_SUPPORT.md)
+
+Contributions should improve reproducibility, simulation, reliability, or safety. This remains a research/prototype project; real rescue capability and field performance are not claimed.
+
 ## Latest engineering update — 21 October 2026
 
 - **Safety-gate hardening merged:** [PR #25](https://github.com/Pui89/Flood-Rescue-AI/pull/25) is merged. It rejects extremely large localization-confidence inputs safely and adds a regression test for `10**10000`. This is software-level input-validation evidence only; check the PR's Actions results for the exact CI status.
