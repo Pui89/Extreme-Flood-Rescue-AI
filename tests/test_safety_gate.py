@@ -35,6 +35,14 @@ def test_invalid_confidence_fails_closed(confidence):
     assert decision.reason == "invalid_localization_confidence"
 
 
+def test_extremely_large_integer_confidence_fails_closed():
+    decision = validate_proposed_action(
+        **safe_inputs(localization_confidence=10**10000)
+    )
+    assert decision.allowed is False
+    assert decision.reason == "invalid_localization_confidence"
+
+
 @pytest.mark.parametrize("confidence", [0.0, 0.79, 0.799999])
 def test_low_but_valid_confidence_fails_closed(confidence):
     decision = validate_proposed_action(
