@@ -2,6 +2,8 @@
 
 > **Product quality standard:** [benchmark protocol and fair comparison criteria](docs/PRODUCT_BENCHMARK_STANDARD.md). Simulation results must remain separate from real-world rescue claims.
 
+> **Next research milestone — simulation evidence:** choose a lawful, versioned dataset or a clearly labelled synthetic scenario; freeze test cases; record detection/mapping outputs and failure cases; then test route planning and fail-safe behaviour in simulation. Report measurable results only for the exact tests run. Passing software tests or concept imagery does not establish real-world flood navigation, victim detection, or rescue capability. Start with the [validation matrix](docs/VALIDATION_MATRIX.md) and [validation/commercial roadmap](docs/VALIDATION_AND_COMMERCIAL_ROADMAP.md).
+
 ## Support, sponsorship and open-source collaboration
 
 PUI89 welcomes robotics and disaster-response research feedback, simulation testing, safety-focused code review, open-source contributions, introductions to authorised stakeholders, and scoped sponsorship discussions.
