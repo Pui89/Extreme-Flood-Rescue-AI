@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 
 
 @dataclass(frozen=True)
@@ -21,11 +22,19 @@ def validate_proposed_action(
 
     This function does not command hardware. It only accepts or blocks a
     proposed action before an authorized robotics control layer can consume it.
+    Confidence must be a finite probability in [0, 1]; malformed values fail closed.
     """
     if emergency_stop:
         return SafetyDecision(False, "emergency_stop")
     if not sensor_health_ok:
         return SafetyDecision(False, "sensor_health")
+    if (
+        isinstance(localization_confidence, bool)
+        or not isinstance(localization_confidence, (int, float))
+        or not math.isfinite(localization_confidence)
+        or not 0.0 <= localization_confidence <= 1.0
+    ):
+        return SafetyDecision(False, "invalid_localization_confidence")
     if localization_confidence < 0.8:
         return SafetyDecision(False, "low_localization_confidence")
     if not collision_free:
