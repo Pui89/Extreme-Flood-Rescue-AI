@@ -2,7 +2,7 @@
 
 ## Latest engineering update — 21 October 2026
 
-- **Safety-gate hardening in review:** [PR #25](https://github.com/Pui89/Flood-Rescue-AI/pull/25) handles overflow from extremely large localization-confidence inputs and adds a regression test. It is **not merged yet**; review its GitHub Actions result before treating the change as part of the default branch.
+- **Safety-gate hardening merged:** [PR #25](https://github.com/Pui89/Flood-Rescue-AI/pull/25) is merged. It rejects extremely large localization-confidence inputs safely and adds a regression test for `10**10000`. This is software-level input-validation evidence only; check the PR's Actions results for the exact CI status.
 - **Existing software boundary:** the deterministic safety gate validates candidate actions in software; it does not directly command hardware and is not a certified safety controller.
 - **Evidence boundary:** passing software tests cannot establish real-world flood navigation, amphibious mobility, human evacuation performance, or physical rescue safety. Simulation and supervised validation remain necessary.
 
