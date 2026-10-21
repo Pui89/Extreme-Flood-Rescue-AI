@@ -42,13 +42,19 @@ def validate_proposed_action(
         return SafetyDecision(False, "emergency_stop")
     if not sensor_health_ok:
         return SafetyDecision(False, "sensor_health")
-    if (
-        isinstance(localization_confidence, bool)
-        or not isinstance(localization_confidence, (int, float))
-        or not math.isfinite(localization_confidence)
-        or not 0.0 <= localization_confidence <= 1.0
+
+    if isinstance(localization_confidence, bool) or not isinstance(
+        localization_confidence, (int, float)
     ):
         return SafetyDecision(False, "invalid_localization_confidence")
+    try:
+        confidence_is_finite = math.isfinite(localization_confidence)
+    except (OverflowError, TypeError, ValueError):
+        # Huge integers can overflow during float conversion inside isfinite.
+        return SafetyDecision(False, "invalid_localization_confidence")
+    if not confidence_is_finite or not 0.0 <= localization_confidence <= 1.0:
+        return SafetyDecision(False, "invalid_localization_confidence")
+
     if localization_confidence < 0.8:
         return SafetyDecision(False, "low_localization_confidence")
     if not collision_free:
