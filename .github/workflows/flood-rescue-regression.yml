@@ -1,0 +1,32 @@
+name: Flood Rescue AI regression checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "robotics/**"
+      - "tests/**"
+      - ".github/workflows/flood-rescue-regression.yml"
+  pull_request:
+    paths:
+      - "robotics/**"
+      - "tests/**"
+      - ".github/workflows/flood-rescue-regression.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  safety-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: python -m pip install --upgrade pip pytest numpy
+      - name: Run safety gate regression tests
+        run: python -m pytest tests/test_safety_gate.py -q
