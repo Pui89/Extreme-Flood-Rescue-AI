@@ -18,6 +18,19 @@ Sensor / perception inputs → localization and route-safety checks → operator
 
 > **Next research milestone — simulation evidence:** choose a lawful, versioned dataset or a clearly labelled synthetic scenario; freeze test cases; record detection/mapping outputs and failure cases; then test route planning and fail-safe behaviour in simulation. Report measurable results only for the exact tests run. Passing software tests or concept imagery does not establish real-world flood navigation, victim detection, or rescue capability. Start with the [validation matrix](docs/VALIDATION_MATRIX.md) and [validation/commercial roadmap](docs/VALIDATION_AND_COMMERCIAL_ROADMAP.md).
 
+
+## Run the agent tests
+
+Run the focused, lightweight unit tests locally with Python 3.10 or newer:
+
+```bash
+python -m pip install pytest
+python -m py_compile agents/project_agent.py tests/test_project_agent.py
+python -m pytest -q tests/test_project_agent.py
+```
+
+A dedicated [GitHub Actions workflow](https://github.com/Pui89/Flood-Rescue-AI/actions/workflows/agent-tests.yml) is configured to run the agent tests on Python 3.10, 3.11, and 3.12 when relevant files change. Check the Actions page for the actual run status; adding this workflow does not itself mean the tests have passed.
+
 ## Support, sponsorship and open-source collaboration
 
 PUI89 welcomes robotics and disaster-response research feedback, simulation testing, safety-focused code review, open-source contributions, introductions to authorised stakeholders, and scoped sponsorship discussions.
