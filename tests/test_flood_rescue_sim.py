@@ -32,5 +32,30 @@ class FloodRescueSimulationTests(unittest.TestCase):
         self.assertIn("SYNTHETIC_GRID_SIMULATION", result["evidence_type"])
 
 
+    def test_communication_loss_before_first_move_keeps_rover_at_start(self):
+        result = run_simulation(seed=7, fail_comms_at=1)
+        self.assertEqual(result["status"], "SAFE_STOP_SIMULATED")
+        self.assertEqual(result["mission"]["visited_path_xy"], [list(START)])
+        self.assertFalse(result["mission"]["reached_observation_waypoint"])
+        self.assertEqual(result["synthetic_observations"], [])
+        self.assertEqual(result["events"][-1]["event"], "SAFE_STOP")
+
+    def test_no_route_returns_none_when_goal_is_blocked(self):
+        self.assertIsNone(find_path(START, OBSERVATION_POINT, OBSTACLES | WATER | {OBSERVATION_POINT}))
+
+    def test_planned_and_visited_paths_never_enter_blocked_cells(self):
+        result = run_simulation(seed=89)
+        blocked = OBSTACLES | WATER
+        for cell in result["mission"]["planned_path_xy"]:
+            self.assertNotIn(tuple(cell), blocked)
+        for cell in result["mission"]["visited_path_xy"]:
+            self.assertNotIn(tuple(cell), blocked)
+
+    def test_communication_failure_does_not_create_person_observations(self):
+        result = run_simulation(seed=7, fail_comms_at=2)
+        self.assertEqual(result["synthetic_observations"], [])
+        self.assertFalse(result["mission"]["reached_observation_waypoint"])
+
+
 if __name__ == "__main__":
     unittest.main()
