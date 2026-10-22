@@ -33,6 +33,7 @@ AI outputs are hypotheses for trained responders. They must not independently di
 | Unsafe route around current, debris, wires, or unstable structures | Injury, entrapment, robot loss | Conservative geofencing, verified vehicle limits, collision checks, responder approval |
 | Communication/power loss | Robot becomes unobservable or stranded | Fault-injection tests, safe-stop/recovery policy, independent emergency controls |
 | Stale/conflicting sensors | Incorrect map or action | Timestamp/health checks, conflict handling, uncertainty propagation |
+| Malformed VLA guard inputs (non-finite/out-of-range confidence or non-Boolean safety flags) | A legacy software guard could approve an invalid proposal | Harden `flood_robot/action/vla_guard.py`; add regression tests before integrating it into any control path. Current physical integration is not established. |
 | False rescue-success report | Search stops prematurely | Explicit outcome confirmation and audit trail |
 | Data leakage or unlicensed data | Inflated metrics or rights violation | Provenance/licence audit and group-aware split |
 
