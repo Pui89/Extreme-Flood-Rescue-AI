@@ -939,3 +939,16 @@ A passing software test only verifies the tested software behavior. It does not 
 ## Decision-support agent (rule-based prototype)
 
 A local, standard-library-only agent module is available in [`agents/project_agent.py`](agents/project_agent.py), with focused tests in [`tests/test_project_agent.py`](tests/test_project_agent.py) and integration notes in [`docs/AGENT_GUIDE.md`](docs/AGENT_GUIDE.md). It produces reviewable recommendations from supplied observations; it does not run a perception model, call a hosted API, or issue actuator commands. These rules and tests are not evidence of trained-model accuracy or real-world validation.
+
+
+## Automation roadmap (free-first)
+
+The GitHub Actions workflow runs on relevant changes, manual dispatch, and a weekly schedule. Each test run writes test counts to the workflow summary; inspect the run logs if a report is missing.
+
+**Next automated milestones**
+1. Keep unit tests, syntax checks, and the deterministic end-to-end demo reproducible.
+2. Expand deterministic fault scenarios for sensor loss, localization failure, communication loss, low battery, unsafe water depth, blocked routes, and corrupted inputs.
+3. Add manifest checks for source provenance, file hashes, human-verified labels, and source-group separation before evaluation.
+4. Add repeatable simulation reports that separate simulated outcomes from real-world results and record failure cases.
+
+**Safety gate:** automation can test software responses to reported faults; it cannot detect actual gunfire, malware, tampering, or physical danger without suitable sensors and validated integrations. Do not deploy a real rescue robot based on software tests alone.
