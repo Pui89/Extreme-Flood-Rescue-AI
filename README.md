@@ -1,6 +1,16 @@
 # Flood Rescue AI
 
 
+## Fail-safe operating modes (design requirements)
+
+The rescue-robot concept should use three modes: **AI operation**, **limited safe operation**, and **manual recovery**. If AI, perception, localization, or communications become unreliable, the system must not continue a risky rescue task or enter unsafe water. Rescue actions require a conservative stop/hold response, an operator alert, and manual control where available.
+
+- **AI operation:** AI may assist with detection and route proposals; independent safety controls and a human operator govern hazardous movement.
+- **Limited safe operation:** no rescue manipulation or hazardous movement; only a verified safe action may continue when all required sensors, localization, communication, and power reserve are healthy.
+- **Manual recovery:** stop autonomous mission actions, keep hazardous actuators disabled, alert the operator, and follow a recovery procedure.
+
+**Status and limitation:** these are documented design requirements, not evidence that a physical rescue robot has been built or validated. Any vehicle, boat, or drone requires independent emergency stop, manual override, loss-of-link behaviour, and staged simulation/physical testing before field use.
+
 ## Project status — 22 October 2026
 
 **Current stage:** rule-based operator decision support and software regression testing; not a validated autonomous rescue robot.
