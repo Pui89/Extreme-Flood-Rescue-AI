@@ -5,6 +5,8 @@ It is not an antivirus, intrusion detector, gunshot detector, or hardware safety
 Do not log passwords, tokens, private imagery, or other sensitive payloads.
 """
 from __future__ import annotations
+
+import copy
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
@@ -106,11 +108,11 @@ class FaultMonitor:
         with self._lock:
             self._events.append(event)
             self._events = self._events[-self._max_events:]
-        return event.copy()
+        return copy.deepcopy(event)
 
     def snapshot(self) -> list[dict[str, Any]]:
         with self._lock:
-            return [event.copy() for event in self._events]
+            return copy.deepcopy(self._events)
 
     def clear_for_test_or_acknowledgement(self) -> None:
         with self._lock:
