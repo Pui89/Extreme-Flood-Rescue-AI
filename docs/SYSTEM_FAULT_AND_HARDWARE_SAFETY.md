@@ -40,3 +40,20 @@ For each fault, record detection, safe response, operator alert, recovery method
 ## Current project boundary
 
 This repository's software checks and simulation plans do not prove physical rescue capability, waterproofing, electrical safety, or platform-specific fail-safe operation. A qualified robotics, electrical, marine, or aviation safety review is required for the relevant hardware before field use.
+
+## Security, intrusion, and physical-threat scenarios
+
+These are requirements to design and validate for each ground robot, boat, and drone—not evidence of deployed protections.
+
+| Threat or incident | Required response to design |
+|---|---|
+| Stolen credentials, unauthorised operator, or account takeover | Require MFA where supported, least privilege, revoke sessions/tokens, rotate exposed credentials, and review logs. |
+| Malware, ransomware, destructive virus, or compromised update | Isolate the affected system; reject commands from compromised components; preserve incident evidence; restore verified software/configuration from known-good backups. |
+| Spoofed GPS, replayed command, radio interference, or command tampering | Validate command freshness/authenticity; detect inconsistent positioning where possible; switch to the platform-specific safe state and notify the operator. Never assume one generic stop action is safe for every boat, drone, and ground vehicle. |
+| Stolen vehicle, tampering, or suspected sabotage | Protect sensitive data, flag unexpected movement or enclosure access if equipped, and require inspection and re-authorisation. Do not pursue or confront a suspected thief. |
+| Robbery, violent threat, or unauthorised person near operations | Prioritise rescuers and the public; suspend hazardous mission actions when safe; follow incident command and site emergency procedures. |
+| Gunshot, firearm, or armed threat | Do not approach, track, pursue, or confront the threat. If safe, withdraw/hold according to the platform's validated procedure, move responders to cover, and contact emergency services. Never deploy the robot as a weapon. |
+| Fire, damaged battery, sabotage, or electrical hazard | Keep people away; follow the site's battery/fire emergency plan; isolate energy only if trained and safe; request qualified emergency support. |
+| Cyber incident during a rescue | Preserve human command authority, use verified backup communications/procedures, and do not let an untrusted system continue a hazardous rescue task. |
+
+**No autonomous pursuit, weaponisation, or confrontation.** A rescue platform should help authorised responders, protect bystanders, and remain recoverable—not escalate violence.
