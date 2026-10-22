@@ -875,3 +875,8 @@ python demo_end_to_end.py
 ```
 
 A passing software test only verifies the tested software behavior. It does not validate a trained perception model, collision checker, simulator physics, physical robot, or field rescue performance. Check the [GitHub Actions workflow](.github/workflows/ci.yml) for automated test status.
+
+
+## Decision-support agent (rule-based prototype)
+
+A local, standard-library-only agent module is available in [`agents/project_agent.py`](agents/project_agent.py), with focused tests in [`tests/test_project_agent.py`](tests/test_project_agent.py) and integration notes in [`docs/AGENT_GUIDE.md`](docs/AGENT_GUIDE.md). It produces reviewable recommendations from supplied observations; it does not run a perception model, call a hosted API, or issue actuator commands. These rules and tests are not evidence of trained-model accuracy or real-world validation.
