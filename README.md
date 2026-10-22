@@ -959,3 +959,25 @@ The GitHub Actions workflow runs on relevant changes, manual dispatch, and a wee
 4. Add repeatable simulation reports that separate simulated outcomes from real-world results and record failure cases.
 
 **Safety gate:** automation can test software responses to reported faults; it cannot detect actual gunfire, malware, tampering, or physical danger without suitable sensors and validated integrations. Do not deploy a real rescue robot based on software tests alone.
+
+
+---
+
+## Free Local Automation Framework
+
+This repository includes a shared PUI89 health-check script for repeatable, zero-cost local checks.
+
+- [Automation guide](docs/PROJECT_AUTOMATION.md)
+- [Local health-check script](scripts/pui89_project_health_check.py)
+
+Run from the repository root:
+
+```bat
+python scripts\pui89_project_health_check.py
+```
+
+The checker verifies repository structure, scans Python source syntax, discovers test files, and prints a JSON report. It does not install packages, download models, use APIs, or call cloud services. To run tests, explicitly use `--run-tests`; pytest is run only if already installed.
+
+**Project focus:** simulation scenario completeness, navigation/sensor/communications failure tests, safe-stop behavior and no claims of real rescue validation.
+
+**Evidence boundary:** a syntax scan is not a full test run; passing tests do not establish field performance or safety. Report only verified outcomes and keep proposed features separate from demonstrated results.
