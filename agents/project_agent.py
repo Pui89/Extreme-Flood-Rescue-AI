@@ -6,6 +6,7 @@ Standard-library only; inputs are measurements supplied by the calling system.
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+import math
 from typing import Any
 
 
@@ -39,7 +40,7 @@ def run_agent(observation: dict[str, Any]) -> AgentDecision:
         return AgentDecision("flood-rescue", "NEED_DATA", "HOLD_AND_RELOCALIZE",
                              ("Reliable localization is not confirmed.",))
     depth = observation.get("water_depth_m")
-    if not isinstance(depth, (int, float)) or isinstance(depth, bool) or depth < 0:
+    if not isinstance(depth, (int, float)) or isinstance(depth, bool) or not math.isfinite(depth) or depth < 0:
         return AgentDecision("flood-rescue", "NEED_DATA", "REQUEST_VALID_WATER_DEPTH",
                              ("A non-negative water-depth measurement is required.",))
     if observation.get("route_clear") is not True:
@@ -47,7 +48,7 @@ def run_agent(observation: dict[str, Any]) -> AgentDecision:
                              ("Route safety has not been confirmed; the agent will not authorize entry.",))
     if observation.get("person_detected", False):
         confidence = observation.get("detection_confidence")
-        if not isinstance(confidence, (int, float)) or isinstance(confidence, bool) or not 0 <= confidence <= 1:
+        if not isinstance(confidence, (int, float)) or isinstance(confidence, bool) or not math.isfinite(confidence) or not 0 <= confidence <= 1:
             return AgentDecision("flood-rescue", "NEED_DATA", "REQUEST_VALID_DETECTION_CONFIDENCE",
                                  ("Person-detection confidence is missing or invalid.",))
         if confidence >= 0.50:
