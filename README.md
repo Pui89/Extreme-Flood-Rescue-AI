@@ -1,5 +1,16 @@
 # Flood Rescue AI
 
+
+## Project status — 22 October 2026
+
+**Current stage:** rule-based operator decision support and software regression testing; not a validated autonomous rescue robot.
+
+- **Verified CI:** the latest Python tests, Flood Rescue regression checks, and agent unit tests completed successfully. [Latest Python-test run](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39729381023) · [Latest regression-check run](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39729380999).
+- **Implemented:** input validation and safety gates for supplied sensor status, localization, water depth, route clearance, and possible-person alerts; human operators retain rescue decisions.
+- **Next milestone:** freeze a lawful, versioned dataset or clearly labelled synthetic scenario set; run repeatable simulation tests; report mapping/navigation outputs, failure cases, and fail-safe behaviour with exact test conditions.
+- **Limits:** passing unit tests does not establish real-world flood navigation, victim detection, waterproofing, or rescue capability. Simulation and field results must be reported separately.
+
+
 ## Free decision-support agent (current scope)
 
 **Additional cost for this rule-based agent: $0.** It uses the repository's Python code and supplied inputs; it does not require a paid AI API, cloud service, or model download. Local Python/test tooling and GitHub usage remain subject to their own terms and limits.
