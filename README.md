@@ -980,4 +980,6 @@ The checker verifies repository structure, scans Python source syntax, discovers
 
 **Project focus:** simulation scenario completeness, navigation/sensor/communications failure tests, safe-stop behavior and no claims of real rescue validation.
 
+**Focused regression tests:** [Flood simulation regression tests](tests/test_flood_rescue_sim.py). Checks blocked-cell avoidance, reproducibility, communication-loss safe stop, no route behavior, and suppression of synthetic observations when the waypoint is not reached.
+
 **Evidence boundary:** a syntax scan is not a full test run; passing tests do not establish field performance or safety. Report only verified outcomes and keep proposed features separate from demonstrated results.
