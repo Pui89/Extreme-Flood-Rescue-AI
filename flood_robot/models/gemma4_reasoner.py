@@ -12,6 +12,7 @@ import os
 from typing import Any, Dict, Optional
 
 MODEL_ID = "google/gemma-4-31B-it"
+MODEL_REVISION = "842da3794e"  # Reviewed upstream model commit; update only after review.
 
 
 class Gemma4FloodReasoner:
@@ -33,7 +34,7 @@ class Gemma4FloodReasoner:
         allow_download = os.getenv("PUI89_ALLOW_MODEL_DOWNLOAD", "").strip().lower() in {
             "1", "true", "yes"
         }
-        load_options = {"local_files_only": not allow_download}
+        load_options = {"local_files_only": not allow_download, "revision": MODEL_REVISION}
         self._processor = AutoProcessor.from_pretrained(self.model_id, **load_options)
         self._model = AutoModelForMultimodalLM.from_pretrained(
             self.model_id, device_map="auto", **load_options
