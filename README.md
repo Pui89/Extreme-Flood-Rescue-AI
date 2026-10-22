@@ -1,4 +1,18 @@
-# Flood Rescue AI Application
+# Flood Rescue AI
+
+## Free decision-support agent (current scope)
+
+**Additional cost for this rule-based agent: $0.** It uses the repository's Python code and supplied inputs; it does not require a paid AI API, cloud service, or model download. Local Python/test tooling and GitHub usage remain subject to their own terms and limits.
+
+**What it does:** Checks supplied sensor status, localization, water depth, route clearance, and possible-person alerts. It does not autonomously navigate or perform a rescue.
+
+```text
+Sensor / perception inputs → localization and route-safety checks → operator alert or STOP → human rescue decision
+```
+
+- **Run guide:** [Agent guide](docs/AGENT_GUIDE.md)
+- **Important limitation:** this is a rule-based decision-support prototype, not proof of real-world performance. Hardware, optional third-party services, or future model training may have separate costs.
+ Application
 
 > **Product quality standard:** [benchmark protocol and fair comparison criteria](docs/PRODUCT_BENCHMARK_STANDARD.md). Simulation results must remain separate from real-world rescue claims.
 
