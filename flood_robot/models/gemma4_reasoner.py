@@ -34,10 +34,14 @@ class Gemma4FloodReasoner:
         allow_download = os.getenv("PUI89_ALLOW_MODEL_DOWNLOAD", "").strip().lower() in {
             "1", "true", "yes"
         }
-        load_options = {"local_files_only": not allow_download, "revision": MODEL_REVISION}
-        self._processor = AutoProcessor.from_pretrained(self.model_id, **load_options)
+        self._processor = AutoProcessor.from_pretrained(
+            self.model_id, local_files_only=not allow_download, revision=MODEL_REVISION
+        )
         self._model = AutoModelForMultimodalLM.from_pretrained(
-            self.model_id, device_map="auto", **load_options
+            self.model_id,
+            device_map="auto",
+            local_files_only=not allow_download,
+            revision=MODEL_REVISION,
         )
 
     def reason(self, prompt: str, image_url: Optional[str] = None) -> str:
