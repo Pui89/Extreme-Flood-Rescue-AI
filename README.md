@@ -11,6 +11,8 @@ The rescue-robot concept should use three modes: **AI operation**, **limited saf
 
 **Status and limitation:** these are documented design requirements, not evidence that a physical rescue robot has been built or validated. Any vehicle, boat, or drone requires independent emergency stop, manual override, loss-of-link behaviour, and staged simulation/physical testing before field use.
 
+- [System fault, hardware, electrical, and recovery playbook](docs/SYSTEM_FAULT_AND_HARDWARE_SAFETY.md)
+
 ## Project status — 22 October 2026
 
 **Current stage:** rule-based operator decision support and software regression testing; not a validated autonomous rescue robot.
