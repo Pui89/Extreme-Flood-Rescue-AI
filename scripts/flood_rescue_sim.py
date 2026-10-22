@@ -92,6 +92,8 @@ def render_map(path: list[tuple[int, int]], rover: tuple[int, int]) -> str:
 
 def run_simulation(seed: int = 7, fail_comms_at: int | None = None) -> dict:
     """Run a synthetic reconnaissance mission and return auditable results."""
+    if fail_comms_at is not None and fail_comms_at < 1:
+        raise ValueError("fail_comms_at must be >= 1 when provided")
     rng = random.Random(seed)
     blocked = OBSTACLES | WATER
     path = find_path(START, OBSERVATION_POINT, blocked)
