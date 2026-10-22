@@ -19,3 +19,7 @@ def test_possible_person_alerts_operator():
 
 def test_invalid_depth_requests_data():
     assert run_agent({"localization_ok": True, "water_depth_m": -1}).status == "NEED_DATA"
+
+
+def test_rejects_non_finite_water_depth():
+    assert run_agent({"localization_ok": True, "water_depth_m": float('inf')}).status == "NEED_DATA"
