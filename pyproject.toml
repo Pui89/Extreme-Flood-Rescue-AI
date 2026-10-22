@@ -33,6 +33,7 @@ where = ["."]
 include = ["flood_robot*"]
 
 [tool.pytest.ini_options]
+pythonpath = ["apps"]
 testpaths = ["tests"]
 addopts = "-ra"
 
