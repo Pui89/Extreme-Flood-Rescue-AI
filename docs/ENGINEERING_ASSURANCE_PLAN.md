@@ -23,6 +23,7 @@ AI outputs are hypotheses for trained responders. They must not independently di
 | FR-REQ-005 | Related scenes/near-duplicates do not leak across data splits. | Manifest audit and split tests | Group key, dataset version, source rights, and split audit recorded. | Tools exist; each dataset needs audit. |
 | FR-REQ-006 | Model metrics are reproducible on independent held-out data. | Benchmark rerun/report audit | Dataset/model versions, metric definitions, environment, failures published. | Real-world detector benchmark not established. |
 | FR-REQ-007 | Rescue outcome is confirmed by an authorised responder, not inferred from lost contact or an AI score. | Acceptance review | Confirmed, unconfirmed, failed, and unknown states separated. | Physical rescue not demonstrated. |
+| FR-REQ-008 | VLA proposal guard rejects malformed flags, missing actions, and confidence values outside finite [0, 1]. | Unit/regression tests | Cases cover strings/numbers used as flags, null actions, NaN/infinity, and confidence boundaries. | Gap identified; implementation and tests not yet verified. |
 
 ## 3. Initial hazard log
 
@@ -49,14 +50,22 @@ This initial hazard log is not a completed formal safety analysis. Add owners, s
 
 Verification checks requirements; validation checks suitability for intended use. Passing CI is evidence about tested software only, not a safe route or successful rescue.
 
-## 5. Evidence and change control
+## 5. Specific follow-up: VLA proposal guard
+
+On 2026-10-23, inspection of `flood_robot/action/vla_guard.py` found that confidence is only compared with the configured minimum, rather than validated as a finite number in [0, 1]. As a result, NaN can evade the less-than comparison, and values above 1 can be treated as sufficiently confident. The current truthiness checks also allow a string such as `"false"` for `collision_free` to behave as true. A missing `action=None` is not explicitly rejected.
+
+**Required software fix:** validate the minimum-confidence threshold at construction; require confidence to be a finite numeric value in [0, 1]; require all safety flags to be actual Boolean values; reject a missing action; and add regression tests for these cases.
+
+**Status:** identified, not implemented or tested in this update. The connected GitHub tool blocked the attempted code write, so no claim is made that the guard is fixed. This software guard is not a certified safety controller and must not be treated as sufficient for physical actuation.
+
+## 6. Evidence and change control
 
 Record commit, environment, command, dataset/model version, seed, scenario parameters, raw output, metric definitions, and limitations for each result. Separate simulation from real-world results. Safety-related changes require regression tests and human review.
 
-## 6. Cost and licensing
+## 7. Cost and licensing
 
 Prefer local execution and free/open-source tools. Check dependency and dataset licences. Do not add paid APIs, hosted inference, cloud GPUs, subscriptions, or billing-triggering workflows without explicit approval.
 
-## 7. Review boundary
+## 8. Review boundary
 
 This project-level plan supports disciplined engineering and evidence tracking. It does not replace independent safety, legal, privacy, domain-expert, or operational review.
