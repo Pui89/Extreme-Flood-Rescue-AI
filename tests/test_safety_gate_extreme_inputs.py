@@ -1,37 +1,54 @@
-"""Edge tests for fail-closed navigation gating.
+"""Edge tests for the implemented fail-closed action validator.
 
-This checks a software decision function, not physical robot safety or rescue
-performance.
+These test software decisions only; they do not validate physical robot safety
+or rescue performance.
 """
-from robotics.safety_gate import NavigationState, SafetyGate
+from robotics.safety_gate import validate_proposed_action
 
 
-def test_wrong_state_type_fails_closed():
-    assert SafetyGate().allow_motion({"localization_confidence": 1.0}) is False
+def _valid_kwargs():
+    return {
+        "sensor_health_ok": True,
+        "localization_confidence": 0.99,
+        "collision_free": True,
+        "authorized": True,
+        "emergency_stop": False,
+    }
+
+
+def test_wrong_flag_type_fails_closed():
+    decision = validate_proposed_action(**{**_valid_kwargs(), "sensor_health_ok": "true"})
+    assert decision.allowed is False
+    assert decision.reason == "invalid_sensor_health_flag"
 
 
 def test_huge_integer_localization_confidence_fails_closed():
-    state = NavigationState(
-        localization_confidence=10**10000,
-        obstacle_distance_m=10.0,
+    decision = validate_proposed_action(
+        **{**_valid_kwargs(), "localization_confidence": 10**10000}
     )
-    assert SafetyGate().allow_motion(state) is False
-
-
-def test_huge_integer_obstacle_distance_fails_closed():
-    state = NavigationState(
-        localization_confidence=0.99,
-        obstacle_distance_m=10**10000,
-    )
-    assert SafetyGate().allow_motion(state) is False
+    assert decision.allowed is False
+    assert decision.reason == "invalid_localization_confidence"
 
 
 def test_boolean_confidence_is_not_accepted_as_numeric():
-    state = NavigationState(localization_confidence=True, obstacle_distance_m=10.0)
-    assert SafetyGate().allow_motion(state) is False
+    decision = validate_proposed_action(
+        **{**_valid_kwargs(), "localization_confidence": True}
+    )
+    assert decision.allowed is False
+    assert decision.reason == "invalid_localization_confidence"
 
 
-def test_exact_thresholds_are_inclusive():
-    gate = SafetyGate(min_localization_confidence=0.7, min_obstacle_distance_m=0.5)
-    state = NavigationState(localization_confidence=0.7, obstacle_distance_m=0.5)
-    assert gate.allow_motion(state) is True
+def test_exact_confidence_threshold_is_inclusive():
+    decision = validate_proposed_action(
+        **{**_valid_kwargs(), "localization_confidence": 0.8}
+    )
+    assert decision.allowed is True
+    assert decision.reason == "validated"
+
+
+def test_emergency_stop_blocks_otherwise_valid_action():
+    decision = validate_proposed_action(
+        **{**_valid_kwargs(), "emergency_stop": True}
+    )
+    assert decision.allowed is False
+    assert decision.reason == "emergency_stop"
