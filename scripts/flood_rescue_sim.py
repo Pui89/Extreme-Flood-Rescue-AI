@@ -38,9 +38,31 @@ def neighbors(cell: tuple[int, int]):
             yield candidate
 
 
+def _validate_cell(cell: tuple[int, int], name: str) -> None:
+    """Reject malformed or out-of-grid coordinates before path planning."""
+    if (
+        not isinstance(cell, (tuple, list))
+        or len(cell) != 2
+        or any(isinstance(value, bool) or not isinstance(value, int) for value in cell)
+    ):
+        raise ValueError(f"{name} must be a pair of integer grid coordinates")
+    x, y = cell
+    if not (0 <= x < W and 0 <= y < H):
+        raise ValueError(f"{name} must be inside the grid (x: 0..{W - 1}, y: 0..{H - 1})")
+
+
 def find_path(start: tuple[int, int], goal: tuple[int, int],
               blocked: set[tuple[int, int]]) -> list[tuple[int, int]] | None:
-    """Breadth-first shortest path through free cells; None means no route."""
+    """Breadth-first shortest path through free cells; None means no route.
+
+    Invalid start/goal coordinates raise ValueError; a valid but blocked or
+    unreachable endpoint returns None. This prevents malformed coordinates
+    from being silently treated as a route-planning result.
+    """
+    _validate_cell(start, "start")
+    _validate_cell(goal, "goal")
+    start = (start[0], start[1])
+    goal = (goal[0], goal[1])
     if start in blocked or goal in blocked:
         return None
     queue = deque([start])

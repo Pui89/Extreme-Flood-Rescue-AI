@@ -43,6 +43,19 @@ class FloodRescueSimulationTests(unittest.TestCase):
     def test_no_route_returns_none_when_goal_is_blocked(self):
         self.assertIsNone(find_path(START, OBSERVATION_POINT, OBSTACLES | WATER | {OBSERVATION_POINT}))
 
+    def test_invalid_path_coordinates_are_rejected(self):
+        invalid_cases = [
+            ((-1, 0), OBSERVATION_POINT),
+            (START, (14, 2)),
+            ((1.5, 2), OBSERVATION_POINT),
+            (START, (True, 2)),
+            ((1,), OBSERVATION_POINT),
+        ]
+        for start, goal in invalid_cases:
+            with self.subTest(start=start, goal=goal):
+                with self.assertRaises(ValueError):
+                    find_path(start, goal, OBSTACLES | WATER)
+
     def test_planned_and_visited_paths_never_enter_blocked_cells(self):
         result = run_simulation(seed=89)
         blocked = OBSTACLES | WATER
