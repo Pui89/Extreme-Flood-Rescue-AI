@@ -506,7 +506,7 @@ See the full architecture and mission flow in [docs/PIPELINE_OVERVIEW.md](docs/P
 This project is being developed on three parallel tracks:
 
 - **Real-world rescue robotics:** rugged mobility, multimodal sensing, GNSS-denied navigation, rescue payloads, degraded-mode operation and deterministic safety.
-- **PhD research:** a proposed **Trustworthy 4D Rescue World Model (T4D-RWM)** connecting multimodal perception, temporal prediction, uncertainty/OOD, active perception and risk-aware action. See [PhD research program](docs/PHd_RESEARCH_PROGRAM.md).
+- **World-model research direction:** a proposed **Trustworthy 4D Rescue World Model (T4D-RWM)** connecting multimodal perception, temporal prediction, uncertainty/OOD, active perception and risk-aware action. This remains a development direction, not a validated capability; see the [3D/4D world model implementation](flood_robot/world_model.py) and [robustness benchmark](docs/ROBUSTNESS_BENCHMARK.md).
 
 See also:
 - [Research dataset specification](docs/RESEARCH_DATASET_SPEC.md)
