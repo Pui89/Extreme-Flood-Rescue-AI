@@ -7,6 +7,20 @@
 *Illustrative design concept only. This image is not evidence of a built, tested, validated, or operational system. Capabilities shown remain proposed unless separately documented and verified.*
 
 
+## Project at a glance
+
+| Topic | Current position |
+|---|---|
+| Project type | AI-assisted flood reconnaissance and rescue robotics research prototype |
+| Available software | Local decision-support logic, regression tests, dataset/validation tooling, and documented demo/simulation workflows |
+| Robot architecture | Ground robot, boat, and drone coordination is a proposed development direction; complete physical deployment is not demonstrated |
+| AI and rescue performance | No representative held-out benchmark currently establishes real-world victim detection, flood mapping, or rescue success |
+| Safety boundary | Software checks and simulation are not proof of field safety; no autonomous real-world rescue readiness is claimed |
+| Development approach | Simulation-first, local-first, and free/open-source where practical |
+| Immediate focus | Freeze versioned scenarios, measure route safety and task outcomes, inject sensor/communication faults, and record recovery behavior |
+
+**Explore:** [Complete-system blueprint](docs/COMPLETE_SYSTEM_BLUEPRINT.md) · [Validation matrix](docs/VALIDATION_MATRIX.md) · [Local simulation quickstart](docs/LOCAL_SIMULATION_QUICKSTART.md) · [Automated tests](https://github.com/Pui89/Flood-Rescue-AI/actions)
+
 ## Local fault-monitoring software (initial implementation)
 
 A small, dependency-light Python module accepts explicit fault reports, suggests conservative responses, and keeps a bounded in-memory event log. It includes automated unit tests and a GitHub Actions test workflow. It is not an antivirus, intrusion detector, gunshot detector, or physical safety controller; hardware shutdown, persistent audit storage, alerts, and real-world threat detection require separate implementations and validation.
