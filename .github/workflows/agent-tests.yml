@@ -4,14 +4,18 @@ on:
   push:
     paths:
       - "agents/**"
+      - "flood_robot/action/**"
       - "tests/test_project_agent.py"
+      - "tests/test_vla_guard_validation.py"
       - ".github/workflows/agent-tests.yml"
       - "docs/AI_AGENT_REVIEW_PLAN.md"
       - "docs/STEP_BY_STEP_TESTING.md"
   pull_request:
     paths:
       - "agents/**"
+      - "flood_robot/action/**"
       - "tests/test_project_agent.py"
+      - "tests/test_vla_guard_validation.py"
       - ".github/workflows/agent-tests.yml"
       - "docs/AI_AGENT_REVIEW_PLAN.md"
       - "docs/STEP_BY_STEP_TESTING.md"
@@ -40,7 +44,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install lightweight test dependency
         run: python -m pip install --disable-pip-version-check pytest
-      - name: Syntax-check agent and tests
-        run: python -m py_compile agents/project_agent.py tests/test_project_agent.py
-      - name: Run agent unit tests
-        run: python -m pytest -q tests/test_project_agent.py
+      - name: Syntax-check agent, VLA guard and tests
+        run: python -m py_compile agents/project_agent.py tests/test_project_agent.py flood_robot/action/vla_guard.py tests/test_vla_guard_validation.py
+      - name: Run agent and VLA guard regression tests
+        run: python -m pytest -q tests/test_project_agent.py tests/test_vla_guard_validation.py
