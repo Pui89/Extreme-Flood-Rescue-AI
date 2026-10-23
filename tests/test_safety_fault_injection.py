@@ -90,3 +90,13 @@ def test_localization_confidence_boundary_is_explicit(confidence, expected_allow
 
     assert decision.allowed is expected_allowed
     assert decision.reason == expected_reason
+
+@pytest.mark.parametrize(
+    "confidence",
+    [pytest.param(10**10000, id="huge-integer"), pytest.param(-10**10000, id="huge-negative-integer")],
+)
+def test_unrepresentably_large_localization_confidence_fails_closed(confidence):
+    """Huge numeric inputs must not raise or accidentally pass the safety gate."""
+    decision = validate_proposed_action(**nominal_inputs(localization_confidence=confidence))
+    assert decision.allowed is False
+    assert decision.reason == "invalid_localization_confidence"
