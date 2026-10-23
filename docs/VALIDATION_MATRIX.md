@@ -55,3 +55,19 @@
 | [NIST AI Risk Management Framework 1.0 (2023)](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10) | Govern, map, measure and manage AI risk | Human-supervised mission boundary, data governance and uncertainty scenarios | Voluntary framework; project-specific risk analysis and field validation remain outstanding |
 
 Selected practices are **NASA-inspired**, not NASA-certified/compliant. Formal conformity is not claimed.
+
+
+## Internal weighted scorecard — evidence-gated, not a certification
+
+Proposed internal weights only: AI/model performance 25, end-to-end task success 25, safety/fault handling 20, repeatability/reproducibility 15, runtime/resources 10, documentation/evidence 5. No numeric category points are assigned yet because real-task results and a predeclared category-level scoring rubric are not sufficient. **N/A is not zero.**
+
+| Category | Weight | Score | Evidence and confidence in status | Missing evidence / next action |
+|---|---:|---|---|---|
+| AI/model performance | 25 | N/A | The repository defines a simulation-first workflow and benchmark protocol; no project-held-out flood/person/hazard model result is documented. FloodNet is a context reference for aerial scene segmentation, not a rescue-navigation benchmark. High confidence. | Obtain lawful task-matched labels; freeze a leakage-safe split; report per-class precision/recall/IoU and false negatives. |
+| End-to-end task success | 25 | N/A | A deterministic synthetic 2D grid demo exists; it is not a physics simulator or physical rescue trial, and a repeatable scenario-suite denominator/report is not recorded. High confidence. | Run nominal, blocked-route, changing-obstacle, localization-loss, sensor-dropout and link-loss scenarios; save JSON results and failures. |
+| Safety/fault handling | 20 | N/A (system-level) | Software guard tests passed on PR #35's review branch; no physical E-stop, waterproofing, vehicle/boat/drone interlock or field validation is established. Medium-high confidence. | Keep all critical software tests passing; separately verify independent hardware stop/manual override before any field trial. |
+| Repeatability/reproducibility | 15 | N/A | CI exercised Python 3.10–3.12 on review branches, including a deterministic demo step; no frozen scenario artifact or independent clean-environment rerun is recorded. Medium confidence. | Record exact current-head run, seed/config, scenario denominator, logs and a clean rerun. |
+| Runtime/resources | 10 | N/A | No task-matched latency, RAM/GPU, power, thermal or recovery-time benchmark is documented. High confidence. | Measure on a named hardware profile; keep synthetic, simulation, HIL and field results separate. |
+| Documentation/evidence | 5 | N/A | A detailed matrix and benchmark protocol are on review branches; the default README still contains one PhD-specific line pending PR #33 review. High confidence. | Review PR #33; keep public claims aligned with current code and completed evidence. |
+
+**Verified-row coverage:** 3/11 requirements marked Verified in this matrix branch (27.3%). This is a status-coverage indicator, not a readiness score; some evidence is review-branch/software-only. The benchmark YAML remains protocol-only, with 0 measured scenario outcomes recorded in the matrix.
