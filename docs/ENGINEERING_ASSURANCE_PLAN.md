@@ -23,6 +23,7 @@ AI outputs are hypotheses for trained responders. They must not independently di
 | FR-REQ-005 | Related scenes/near-duplicates do not leak across data splits. | Manifest audit and split tests | Group key, dataset version, source rights, and split audit recorded. | Tools exist; each dataset needs audit. |
 | FR-REQ-006 | Model metrics are reproducible on independent held-out data. | Benchmark rerun/report audit | Dataset/model versions, metric definitions, environment, failures published. | Real-world detector benchmark not established. |
 | FR-REQ-007 | Rescue outcome is confirmed by an authorised responder, not inferred from lost contact or an AI score. | Acceptance review | Confirmed, unconfirmed, failed, and unknown states separated. | Physical rescue not demonstrated. |
+| FR-REQ-008 | The VLA proposal guard rejects missing actions, malformed safety flags, and confidence values that are non-finite or outside [0, 1]. | Unit/regression tests | Tests cover NaN/infinity, out-of-range and non-numeric confidence, invalid flag types, invalid thresholds, and action=None. | Implementation and tests committed to a review branch; full CI pending. |
 
 ## 3. Initial hazard log
 
