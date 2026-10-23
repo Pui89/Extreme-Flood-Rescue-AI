@@ -5,7 +5,10 @@ import pytest
 from flood_robot.action.vla_guard import VLAGuard
 
 
-@pytest.mark.parametrize("confidence", [math.nan, math.inf, -math.inf, -0.1, 1.01, True, "0.9", None])
+@pytest.mark.parametrize(
+    "confidence",
+    [math.nan, math.inf, -math.inf, -0.1, 1.01, True, "0.9", None, [], {}, 10**400],
+)
 def test_rejects_invalid_confidence(confidence):
     decision = VLAGuard().validate(
         {"move": "forward"}, confidence=confidence, collision_free=True
@@ -29,7 +32,9 @@ def test_rejects_missing_action():
     assert decision.reason == "missing_action"
 
 
-@pytest.mark.parametrize("threshold", [math.nan, math.inf, -0.1, 1.01, True, "0.7"])
+@pytest.mark.parametrize(
+    "threshold", [math.nan, math.inf, -0.1, 1.01, True, "0.7", None, 10**400]
+)
 def test_rejects_invalid_confidence_threshold(threshold):
     with pytest.raises(ValueError):
         VLAGuard(min_confidence=threshold)
