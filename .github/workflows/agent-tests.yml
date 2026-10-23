@@ -16,6 +16,9 @@ on:
       - "docs/AI_AGENT_REVIEW_PLAN.md"
       - "docs/STEP_BY_STEP_TESTING.md"
   workflow_dispatch:
+  schedule:
+    # Weekly free-first regression run; local time is Thailand UTC+7.
+    - cron: "37 2 * * 2"
 
 permissions:
   contents: read
