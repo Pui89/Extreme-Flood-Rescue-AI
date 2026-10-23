@@ -993,3 +993,15 @@ The checker verifies repository structure, scans Python source syntax, discovers
 - [Supervisor implementation](pui89_autonomy/supervisor.py) · [unit tests](tests/test_autonomy_supervisor.py)
 
 The supervisor evaluates supplied status values and recommends an advisory mode: autonomous candidate, safe hold, manual recovery, or stopped. It does not acquire sensor data or command hardware. An autonomous-candidate result is not a safety certification; physical systems require independent safety controls and validation.
+
+## Free-first AI engineering stack
+
+Use a small, reproducible toolchain for the simulation-first rescue-support prototype.
+
+- **Perception and sensor processing:** OpenCV and PyTorch when a defined, lawful dataset and suitable local hardware are available.
+- **Simulation and robotics:** prefer open-source local simulation components only when needed for a specific acceptance test; check each dependency's licence and laptop resource requirements before installation.
+- **Automation:** Python scripts and GitHub Actions for repeatable checks and test summaries, subject to applicable GitHub quotas.
+- **Testing and observability:** pytest, structured logs, versioned scenarios, and repeatable reports that distinguish synthetic/simulation evidence from field evidence.
+- **Agent workflow:** retain the current rule-based decision-support approach; add LangGraph or another agent framework only for a demonstrated multi-step need.
+
+**Cost and safety guardrails:** no paid API, cloud GPU, subscription, or automatic hardware control is required by this plan. Ask before introducing costs. AI output remains advisory; simulation results do not prove waterproofing, safe navigation, victim detection, or real-world rescue capability. Physical deployment requires independent safety systems and staged validation.
