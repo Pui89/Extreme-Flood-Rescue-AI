@@ -5,6 +5,8 @@
 
 **Stage:** decision-support software, concept/simulation experiences and regression testing. This repository does not demonstrate a validated physical flood-rescue robot.
 
+![Flood Rescue robot concept — illustrative design, not a validated physical robot](docs/images/flood-rescue-robot-concept-2026.svg)
+
 **Protection policy:** [Automated protection and fail-safe policy](docs/AUTOMATED_PROTECTION_POLICY.md). This documents required software safeguards and validation gates; it does not claim physical safety or validated operational performance.
 
 - **SAM 3 segmentation:** the optional local smoke-test script and guide are merged ([PR #54](https://github.com/Pui89/Flood-Rescue-AI/pull/54)). No SAM 3 inference result has been verified yet. Model weights are downloaded only when the script is run; check compatibility, access terms, disk space and GPU memory first.
