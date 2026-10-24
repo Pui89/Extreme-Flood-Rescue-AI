@@ -110,7 +110,7 @@ def assess_flood_hazard(
         if inputs.water_depth_m is not None and _valid_nonnegative(inputs.water_depth_m):
             if inputs.platform_depth_limit_m is None:
                 hard_holds.append("platform depth limit is not configured")
-            elif inputs.water_depth_m > inputs.platform_depth_limit_m:
+            elif _valid_nonnegative(inputs.platform_depth_limit_m) and inputs.water_depth_m > inputs.platform_depth_limit_m:
                 hard_holds.append("water depth exceeds the configured platform limit")
         if inputs.current_speed_mps is not None and _valid_nonnegative(inputs.current_speed_mps):
             if (
