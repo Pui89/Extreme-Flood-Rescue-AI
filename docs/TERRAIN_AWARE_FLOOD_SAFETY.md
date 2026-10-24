@@ -10,7 +10,7 @@ It does **not** acquire sensors, estimate current or depth from imagery, control
 
 - `proceed_simulation`: supplied inputs passed configured software checks only; not a field authorization.
 - `human_review`: conflicting sensor inputs need review.
-- `safe_hold`: required input missing/invalid/stale, communications/localization unavailable, depth/current exceeds a configured limit, or ground-robot depth is at least 5.5 m.
+- `safe_hold`: required input missing/invalid/stale, communications/localization unavailable, a required platform depth limit is not configured, or depth/current exceeds an explicitly configured limit.
 - `replan_handoff`: route edge/bank, debris, structure clearance or configured slope makes the current route unsuitable.
 
 Unknown required values fail safe. Do not use visual appearance alone to infer flood depth, current, foundation strength, or structural safety. A building that remains standing is not automatically safe to approach or enter.
@@ -31,4 +31,4 @@ Each decision returns a structured in-memory `audit_record` with timestamp, supp
 
 ## Platform boundaries
 
-The 5.5 m safe-hold rule applies to the **ground robot**. Boat and drone operation requires separate platform-specific limits and validation. Configured thresholds must come from documented engineering evidence; this module does not invent universal safe depth/current/slope values. A `proceed_simulation` result is only a software test state and never proof that a physical route is safe.
+The simulation scenario range is **0–15 m**; it is not a physical capability rating. There is no universal hard-coded 5.5 m cutoff in this gate. Ground and boat decisions require an explicit platform depth limit; current and slope limits should also be configured from documented platform-specific engineering evidence. Drone operation requires its own relevant limits and validation. A `proceed_simulation` result is only a software test state and never proof that a physical route is safe.
