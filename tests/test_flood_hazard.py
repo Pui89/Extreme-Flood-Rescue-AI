@@ -107,6 +107,20 @@ class FloodHazardTests(unittest.TestCase):
         self.assertEqual(decision.state, HazardState.SAFE_HOLD)
         self.assertTrue(any("current speed exceeds" in reason for reason in decision.reasons))
 
+    def test_ground_or_boat_missing_current_limit_fails_safe(self):
+        for platform in ("ground", "boat"):
+            values = dict(safe_ground().__dict__)
+            values.update(platform=platform, platform_current_limit_mps=None)
+            decision = assess_flood_hazard(FloodHazardInputs(**values))
+            with self.subTest(platform=platform):
+                self.assertEqual(decision.state, HazardState.SAFE_HOLD)
+                self.assertTrue(any("current limit is not configured" in reason for reason in decision.reasons))
+
+    def test_ground_missing_slope_limit_fails_safe(self):
+        decision = assess_flood_hazard(safe_ground(platform_slope_limit_deg=None))
+        self.assertEqual(decision.state, HazardState.SAFE_HOLD)
+        self.assertTrue(any("slope limit is not configured" in reason for reason in decision.reasons))
+
     def test_unstable_bank_or_debris_requests_replan(self):
         for overrides in ({"bank_stable": False}, {"debris_clear": False}, {"structure_clear": False}):
             with self.subTest(overrides=overrides):
