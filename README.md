@@ -6,6 +6,10 @@
 
 *Original project concept illustration. It depicts a proposed design; it is not a photograph, a built robot, or evidence of flood-rated performance.*
 
+## Optional local Hugging Face perception experiment
+
+Try open-vocabulary detection on a local image with [`tools/huggingface_local_vision_demo.py`](tools/huggingface_local_vision_demo.py). Read [`docs/HUGGINGFACE_LOCAL_VISION.md`](docs/HUGGINGFACE_LOCAL_VISION.md) first. This is an exploratory perception demo—not a validated flood-rescue capability or a safe navigation system.
+
 **Start with the motion demonstrations:** these self-contained browser demos show how a proposed AI-assisted rescue system could support responders in city streets, residential areas, high-rise districts and rural communities during floods. They are animated concept/simulation experiences—not footage of a real robot.
 
 - **[Play the cinematic rescue storyboard](docs/demos/flood-rescue-cinematic-video-concept.html)** — a 75-second animated sequence with play/pause and timeline scrubbing: aerial reconnaissance, ground-robot approach, a proposed walk/float transition, identifying a person who may need help, offering a communication/supply aid, and handover to trained responders.
