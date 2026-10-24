@@ -5,6 +5,10 @@
 
 **Stage:** decision-support software, concept/simulation experiences and regression testing. This repository does not demonstrate a validated physical flood-rescue robot.
 
+![Flood Rescue robot concept — illustrative design, not a validated physical robot](docs/images/flood-rescue-robot-concept-2026.svg)
+
+**Protection policy:** [Automated protection and fail-safe policy](docs/AUTOMATED_PROTECTION_POLICY.md). This documents required software safeguards and validation gates; it does not claim physical safety or validated operational performance. **Extreme-flood design:** [Mission architecture and verification plan for 0–15 m scenarios](docs/EXTREME_FLOOD_MISSION_ARCHITECTURE.md) separates aerial reconnaissance, surface craft, ground/amphibious platforms, and a future pressure-rated submersible; it is a design proposal, not a claim of tested 15 m capability.
+
 - **SAM 3 segmentation:** the optional local smoke-test script and guide are merged ([PR #54](https://github.com/Pui89/Flood-Rescue-AI/pull/54)). No SAM 3 inference result has been verified yet. Model weights are downloaded only when the script is run; check compatibility, access terms, disk space and GPU memory first.
 - **Automated checks for the SAM 3 change:** security checks and Ruff helper review passed; the Python test workflow was still running at the last status check. Confirm its final result before treating the change as fully checked.
 - **Open review:** the shared fault-monitor contract remains a draft proposal in [PR #53](https://github.com/Pui89/Flood-Rescue-AI/pull/53); it is not merged into the default branch.
@@ -19,9 +23,9 @@
 
 *Updated Himalayan extreme-flood concept illustration. It proposes coordinated aerial reconnaissance, a suitable craft only when conditions allow, and a ground robot held on verified accessible terrain. It is not a photograph, a built robot, or evidence of flood-rated performance.*
 
-## Extreme-flood design target — up to 15 m simulated depth
+## Extreme-flood simulation envelope — 0–15 m (not a power or depth rating)
 
-The interactive scenario slider covers **0–15 m** for extreme-flood hazard-awareness and mission-planning scenarios. This is a **simulation input, not a robot depth rating**. The visual demo does not impose a fixed 5.5 m cutoff, but its movement is not a safety assessment. The software hazard gate requires explicit platform-specific limits and checks for current, slope, bank stability, debris, structures, localization, communications and sensor freshness. At extreme depths, prioritise remote/aerial reconnaissance and human-led decisions about suitable platforms.
+The interactive scenario slider covers **0–15 m of simulated water depth** for hazard-awareness and mission-planning experiments. This does **not** mean the robot has the power, buoyancy, pressure resistance, waterproofing, stability, communications or structural strength to operate at 15 m. Water depth is not a measure of robot power. The visual demo does not impose a fixed 5.5 m cutoff, but its movement is illustrative and is not a safety assessment. The software hazard gate must use evidence-backed, platform-specific limits and check current, slope, bank stability, debris, structures, localization, communications and sensor freshness. At extreme depths, prioritise remote/aerial reconnaissance and human-led decisions about suitable platforms; do not send a platform beyond its verified operating envelope.
 
 ## Optional local Hugging Face perception experiment
 
