@@ -1,21 +1,17 @@
 # Flood Rescue AI
 
-## Flood Rescue AI — Concept visualization
+## Flood Rescue AI — cinematic robot movement concept
 
-![Concept illustration of a coordinated flood response system with a ground rover, rescue boat and aerial drone.](docs/images/flood-rescue-concept.svg)
+**Start with the motion demonstrations:** these self-contained browser demos show how a proposed AI-assisted rescue system could support responders in city streets, residential areas, high-rise districts and rural communities during floods. They are animated concept/simulation experiences—not footage of a real robot.
 
-*Illustrative design concept only. This image is not evidence of a built, tested, validated, or operational system. Capabilities shown remain proposed unless separately documented and verified.*
+- **[Play the cinematic rescue storyboard](docs/demos/flood-rescue-cinematic-video-concept.html)** — a 75-second animated sequence with play/pause and timeline scrubbing: aerial reconnaissance, ground-robot approach, a proposed walk/float transition, identifying a person who may need help, offering a communication/supply aid, and handover to trained responders.
+- **[Explore the interactive flood simulation](docs/demos/flood-rescue-interactive-4d-simulation.html)** — control scene movement and choose urban, residential, tower-district or rural settings; adjust *simulated* flood depth from 0–6 m and rain intensity; explore proposed walking, floating and hybrid modes, routes, and synthetic person/animal markers.
 
-## Cinematic video concept and interactive 4D-style simulation
+**Intended assistance workflow:** drone/overhead reconnaissance helps responders survey an area; the ground platform explores an accessible route; the system flags possible people or blocked paths for human review; communications or flotation/supply aids may be offered only when the situation and hardware are verified safe; trained emergency personnel make rescue and evacuation decisions. The concepts do not show or claim autonomous lifting of people.
 
-Explore the proposed hybrid rescue robot in a synthetic urban flood environment. The concept combines four articulated walking legs with a buoyant chassis/pontoons for controlled shallow-water movement, with responder-supervised assistance for people and animals.
+**Flood-level boundary:** the 0–6 m control is a *scenario range for visual exploration only*. It does **not** mean one robot can safely operate at every depth, current speed, debris load, wave condition, or flood environment. Real capability would depend on validated buoyancy, sealing, stability, traction, sensor limits, communications, battery reserve, and safe recovery. At unsafe or unknown conditions, the intended response is to stop/hold and alert a human operator—not proceed.
 
-- **[Open cinematic video concept](docs/demos/flood-rescue-cinematic-video-concept.html)** — animated 75-second storyboard with play/pause, timeline scrubbing, urban reconnaissance, walking/float concept, human assistance, animal assistance and responder handover.
-- **[Open interactive 4D-style simulation](docs/demos/flood-rescue-interactive-4d-simulation.html)** — time-evolving isometric scene with movement controls, selectable urban/residential/tower/rural scenarios, simulated flood depth from 0–6 m, rain intensity, hybrid/walk/float modes, route display and synthetic person/animal markers.
-
-**What “4D-style” means here:** an interactive 3D-style/isometric illustration changing over time, implemented as self-contained HTML Canvas. It is not a physics-accurate digital twin, real-time flood map, trained perception system, validated navigation stack or live robot feed. Depth and rain are illustrative scenario controls, not real measurements or certified operating limits. The demo uses no external libraries or paid APIs and sends no commands to hardware.
-
-**Rescue and safety boundary:** all people and animals are synthetic scene markers, not detected victims. The robot concept does not autonomously lift people or animals; trained responders direct contact and handover. The demo enters a simulated safe-hold state at the highest depth setting, but this is only a software illustration, not proof of real-world safety. No field rescue, amphibious performance, waterproofing or physical robot capability is claimed.
+**Evidence boundary:** “4D-style” means an interactive isometric scene changing over time, implemented with self-contained HTML/Canvas. It is not a physics-accurate digital twin, live flood map, trained victim detector, validated navigation stack, real sensor feed, or operational robot. All people and animals are synthetic scene markers. The demos use no external libraries or paid APIs and send no commands to hardware.
 
 
 
@@ -100,11 +96,9 @@ Contributions should improve reproducibility, simulation, reliability, or safety
 
 
 
-## Robot concept illustration
+## Visual demo status
 
-![Flood Rescue AI amphibious reconnaissance robot concept](docs/images/flood-rescue-robot-concept-2026.svg)
-
-*Original concept artwork—not a live sensor feed, field-tested vehicle, or evidence of a real rescue.*
+The cinematic storyboard and interactive simulation above are the primary visual demonstrations. Older static concept illustrations are intentionally no longer featured in this README; their files are left untouched for now so that no assets are permanently deleted before the replacement visuals are reviewed.
 
 
 > **Complete-system architecture and acceptance gates:** [COMPLETE_SYSTEM_BLUEPRINT.md](docs/COMPLETE_SYSTEM_BLUEPRINT.md). This is a build-and-validation plan, not a claim of field-validated rescue.
