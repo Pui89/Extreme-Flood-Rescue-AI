@@ -7,7 +7,7 @@
 
 - **SAM 3 segmentation:** the optional local smoke-test script and guide are merged ([PR #54](https://github.com/Pui89/Flood-Rescue-AI/pull/54)). No SAM 3 inference result has been verified yet. Model weights are downloaded only when the script is run; check compatibility, access terms, disk space and GPU memory first.
 - **Automated checks for the SAM 3 change:** security checks and Ruff helper review passed; the Python test workflow was still running at the last status check. Confirm its final result before treating the change as fully checked.
-- **Open review:** the shared fault-monitor contract remains a draft proposal in [PR #53](https://github.com/Pui89/Flood-Rescue-AI/pull/53); it is not merged into the default branch.
+- **Fault-monitor contract:** documentation-only contract merged in [PR #53](https://github.com/Pui89/Flood-Rescue-AI/pull/53). The software component does not itself control physical actuators or provide hardware safety.
 - **Next:** confirm the Python test result; test one local image with a prompt such as “person” or “boat”; then build repeatable, clearly labelled simulation scenarios for perception, route safety, communications loss and safe-stop behaviour.
 - **Flood-depth boundary:** 0–6 m controls in the interactive demo are simulated scenario values, not evidence that a robot can operate safely at those depths. Real flood navigation, victim detection, waterproofing, flotation and rescue performance remain unvalidated.
 
