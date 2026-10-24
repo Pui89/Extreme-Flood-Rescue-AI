@@ -1,5 +1,17 @@
 # Flood Rescue AI
 
+
+## Current verified status — 25 October 2026
+
+**Stage:** decision-support software, concept/simulation experiences and regression testing. This repository does not demonstrate a validated physical flood-rescue robot.
+
+- **SAM 3 segmentation:** the optional local smoke-test script and guide are merged ([PR #54](https://github.com/Pui89/Flood-Rescue-AI/pull/54)). No SAM 3 inference result has been verified yet. Model weights are downloaded only when the script is run; check compatibility, access terms, disk space and GPU memory first.
+- **Automated checks for the SAM 3 change:** security checks and Ruff helper review passed; the Python test workflow was still running at the last status check. Confirm its final result before treating the change as fully checked.
+- **Open review:** the shared fault-monitor contract remains a draft proposal in [PR #53](https://github.com/Pui89/Flood-Rescue-AI/pull/53); it is not merged into the default branch.
+- **Next:** confirm the Python test result; test one local image with a prompt such as “person” or “boat”; then build repeatable, clearly labelled simulation scenarios for perception, route safety, communications loss and safe-stop behaviour.
+- **Flood-depth boundary:** 0–6 m controls in the interactive demo are simulated scenario values, not evidence that a robot can operate safely at those depths. Real flood navigation, victim detection, waterproofing, flotation and rescue performance remain unvalidated.
+
+
 ## Flood Rescue AI — cinematic robot movement concept
 
 ![Flood Rescue AI amphibious reconnaissance robot concept — illustrative artwork, not a validated physical robot](docs/images/flood-rescue-amphibious-robot-concept.svg)
