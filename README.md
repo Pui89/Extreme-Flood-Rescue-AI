@@ -9,6 +9,7 @@
 - **Automated checks for the SAM 3 change:** security checks and Ruff helper review passed; the Python test workflow was still running at the last status check. Confirm its final result before treating the change as fully checked.
 - **Open review:** the shared fault-monitor contract remains a draft proposal in [PR #53](https://github.com/Pui89/Flood-Rescue-AI/pull/53); it is not merged into the default branch.
 - **Next:** confirm the Python test result; test one local image with a prompt such as “person” or “boat”; then build repeatable, clearly labelled simulation scenarios for perception, route safety, communications loss and safe-stop behaviour.
+- **Robot protection:** the software hazard gate now requires explicit emergency-stop, safety-monitor, battery and propulsion status in addition to environmental checks. Missing or faulty inputs produce a simulated `safe_hold`; this does not physically stop hardware. See [Robot protection and safety case](docs/ROBOT_PROTECTION_AND_SAFETY_CASE.md). Physical protection remains unvalidated.
 - **Flood-depth boundary:** the interactive demo explores 0–15 m simulated scenarios. These are visual scenario values, not evidence that a physical robot can operate safely at those depths. The demo has no fixed 5.5 m cutoff; its movement is illustrative only. Physical movement limits must be configured from platform-specific engineering evidence, and real flood navigation, victim detection, waterproofing, flotation and rescue performance remain unvalidated.
 
 
