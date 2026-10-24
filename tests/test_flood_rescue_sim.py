@@ -26,6 +26,26 @@ class FloodRescueSimulationTests(unittest.TestCase):
         self.assertFalse(result["mission"]["reached_observation_waypoint"])
         self.assertEqual(result["events"][-1]["event"], "SAFE_STOP")
 
+    def test_sensor_failure_triggers_safe_stop_without_observations(self):
+        result = run_simulation(seed=7, fail_sensor_at=2)
+        self.assertEqual(result["status"], "SAFE_STOP_SIMULATED")
+        self.assertFalse(result["mission"]["reached_observation_waypoint"])
+        self.assertEqual(result["synthetic_observations"], [])
+        self.assertEqual(result["events"][-1]["event"], "SAFE_STOP")
+        self.assertIn("sensor failure", result["stop_reason"])
+
+    def test_sensor_failure_before_first_move_keeps_rover_at_start(self):
+        result = run_simulation(seed=7, fail_sensor_at=1)
+        self.assertEqual(result["status"], "SAFE_STOP_SIMULATED")
+        self.assertEqual(result["mission"]["visited_path_xy"], [list(START)])
+        self.assertEqual(result["synthetic_observations"], [])
+
+    def test_invalid_sensor_failure_step_is_rejected(self):
+        for step in (0, -1):
+            with self.subTest(step=step):
+                with self.assertRaises(ValueError):
+                    run_simulation(fail_sensor_at=step)
+
     def test_unknown_cells_are_reported_not_marked_safe(self):
         result = run_simulation()
         self.assertTrue(result["mission"]["unknown_cells_preserved"])
