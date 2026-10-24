@@ -12,15 +12,15 @@
 - **Flood-depth boundary:** the interactive demo is being extended to 0–15 m simulated scenarios. These are visual scenario values, not evidence that a physical robot can operate safely at those depths. Ground-robot movement remains blocked in the demo at 5.5 m and above; real flood navigation, victim detection, waterproofing, flotation and rescue performance remain unvalidated.
 
 
-## Flood Rescue AI — cinematic robot movement concept
+## Flood Rescue AI — Himalayan extreme-flood response concept
 
-![Flood Rescue AI amphibious reconnaissance robot concept — illustrative artwork, not a validated physical robot](docs/images/flood-rescue-amphibious-robot-concept.svg)
+![Flood Rescue AI Himalayan extreme-flood concept: aerial reconnaissance, a suitable rescue craft, and a ground robot held on higher terrain; concept art only](docs/images/flood-rescue-amphibious-robot-concept.svg)
 
-*Original project concept illustration. It depicts a proposed design; it is not a photograph, a built robot, or evidence of flood-rated performance.*
+*Updated Himalayan extreme-flood concept illustration. It proposes coordinated aerial reconnaissance, a suitable craft only when conditions allow, and a ground robot held on verified accessible terrain. It is not a photograph, a built robot, or evidence of flood-rated performance.*
 
 *Related design reference: [Flood Rescue robot concept (SVG)](docs/images/flood-rescue-robot-concept-2026.svg). This is also a concept illustration, not evidence of a validated physical robot.*
 
-## Optional local Hugging Face perception experiment
+## Extreme-flood design target — up to 15 m simulated depth\n\nThe interactive scenario slider covers **0–15 m** to support hazard-awareness and mission-planning discussions for extreme events, including Himalayan-valley scenarios. This is a **simulation input, not a robot depth rating**. The demo blocks ground-robot movement at 5.5 m and above. At extreme depths, the intended system response is to prioritise aerial/remote reconnaissance, map hazards, relay verified locations, and request a suitable craft only when trained responders determine conditions are safe. Current speed, debris, waves, slope failure, communications and safe recovery must be modelled separately.\n\n## Optional local Hugging Face perception experiment
 
 Try open-vocabulary detection on a local image with [`tools/huggingface_local_vision_demo.py`](tools/huggingface_local_vision_demo.py). Read [`docs/HUGGINGFACE_LOCAL_VISION.md`](docs/HUGGINGFACE_LOCAL_VISION.md) first. This is an exploratory perception demo—not a validated flood-rescue capability or a safe navigation system.
 
