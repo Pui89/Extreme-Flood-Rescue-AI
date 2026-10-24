@@ -5,6 +5,8 @@
 
 **Stage:** decision-support software, concept/simulation experiences and regression testing. This repository does not demonstrate a validated physical flood-rescue robot.
 
+**Protection policy:** [Automated protection and fail-safe policy](docs/AUTOMATED_PROTECTION_POLICY.md). This documents required software safeguards and validation gates; it does not claim physical safety or validated operational performance.
+
 - **SAM 3 segmentation:** the optional local smoke-test script and guide are merged ([PR #54](https://github.com/Pui89/Flood-Rescue-AI/pull/54)). No SAM 3 inference result has been verified yet. Model weights are downloaded only when the script is run; check compatibility, access terms, disk space and GPU memory first.
 - **Automated checks for the SAM 3 change:** security checks and Ruff helper review passed; the Python test workflow was still running at the last status check. Confirm its final result before treating the change as fully checked.
 - **Open review:** the shared fault-monitor contract remains a draft proposal in [PR #53](https://github.com/Pui89/Flood-Rescue-AI/pull/53); it is not merged into the default branch.
