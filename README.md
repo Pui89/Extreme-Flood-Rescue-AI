@@ -23,9 +23,9 @@
 
 *Updated Himalayan extreme-flood concept illustration. It proposes coordinated aerial reconnaissance, a suitable craft only when conditions allow, and a ground robot held on verified accessible terrain. It is not a photograph, a built robot, or evidence of flood-rated performance.*
 
-## Extreme-flood design target — up to 15 m simulated depth
+## Extreme-flood simulation envelope — 0–15 m (not a power or depth rating)
 
-The interactive scenario slider covers **0–15 m** for extreme-flood hazard-awareness and mission-planning scenarios. This is a **simulation input, not a robot depth rating**. The visual demo does not impose a fixed 5.5 m cutoff, but its movement is not a safety assessment. The software hazard gate requires explicit platform-specific limits and checks for current, slope, bank stability, debris, structures, localization, communications and sensor freshness. At extreme depths, prioritise remote/aerial reconnaissance and human-led decisions about suitable platforms.
+The interactive scenario slider covers **0–15 m of simulated water depth** for hazard-awareness and mission-planning experiments. This does **not** mean the robot has the power, buoyancy, pressure resistance, waterproofing, stability, communications or structural strength to operate at 15 m. Water depth is not a measure of robot power. The visual demo does not impose a fixed 5.5 m cutoff, but its movement is illustrative and is not a safety assessment. The software hazard gate must use evidence-backed, platform-specific limits and check current, slope, bank stability, debris, structures, localization, communications and sensor freshness. At extreme depths, prioritise remote/aerial reconnaissance and human-led decisions about suitable platforms; do not send a platform beyond its verified operating envelope.
 
 ## Optional local Hugging Face perception experiment
 
