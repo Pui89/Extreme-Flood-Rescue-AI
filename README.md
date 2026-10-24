@@ -2,6 +2,10 @@
 
 ## Flood Rescue AI — cinematic robot movement concept
 
+![Flood Rescue AI amphibious reconnaissance robot concept — illustrative artwork, not a validated physical robot](docs/images/flood-rescue-amphibious-robot-concept.svg)
+
+*Original project concept illustration. It depicts a proposed design; it is not a photograph, a built robot, or evidence of flood-rated performance.*
+
 **Start with the motion demonstrations:** these self-contained browser demos show how a proposed AI-assisted rescue system could support responders in city streets, residential areas, high-rise districts and rural communities during floods. They are animated concept/simulation experiences—not footage of a real robot.
 
 - **[Play the cinematic rescue storyboard](docs/demos/flood-rescue-cinematic-video-concept.html)** — a 75-second animated sequence with play/pause and timeline scrubbing: aerial reconnaissance, ground-robot approach, a proposed walk/float transition, identifying a person who may need help, offering a communication/supply aid, and handover to trained responders.
