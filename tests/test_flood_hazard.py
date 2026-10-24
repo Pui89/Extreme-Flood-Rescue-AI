@@ -24,6 +24,10 @@ def safe_ground(**overrides):
         platform_depth_limit_m=1.0,
         platform_current_limit_mps=0.5,
         platform_slope_limit_deg=15.0,
+        emergency_stop_active=False,
+        safety_monitor_ok=True,
+        battery_ok=True,
+        propulsion_ok=True,
     )
     values.update(overrides)
     return FloodHazardInputs(**values)
@@ -66,12 +70,29 @@ class FloodHazardTests(unittest.TestCase):
                 self.assertEqual(decision.state, HazardState.SAFE_HOLD)
 
     def test_missing_status_fails_safe(self):
-        for field in ("bank_stable", "debris_clear", "structure_clear", "localization_ok", "communication_ok"):
+        for field in ("bank_stable", "debris_clear", "structure_clear", "localization_ok", "communication_ok", "emergency_stop_active", "safety_monitor_ok", "battery_ok", "propulsion_ok"):
             with self.subTest(field=field):
                 self.assertEqual(
                     assess_flood_hazard(safe_ground(**{field: None})).state,
                     HazardState.SAFE_HOLD,
                 )
+
+    def test_emergency_stop_or_robot_health_fault_fails_safe(self):
+        for overrides in (
+            {"emergency_stop_active": True},
+            {"safety_monitor_ok": False},
+            {"battery_ok": False},
+            {"propulsion_ok": False},
+        ):
+            with self.subTest(overrides=overrides):
+                decision = assess_flood_hazard(safe_ground(**overrides))
+                self.assertEqual(decision.state, HazardState.SAFE_HOLD)
+
+    def test_non_boolean_safety_status_is_rejected(self):
+        for field in ("emergency_stop_active", "safety_monitor_ok", "battery_ok", "propulsion_ok"):
+            with self.subTest(field=field):
+                with self.assertRaises(ValueError):
+                    assess_flood_hazard(safe_ground(**{field: "yes"}))
 
     def test_lost_localization_or_communications_fails_safe(self):
         for field in ("localization_ok", "communication_ok"):

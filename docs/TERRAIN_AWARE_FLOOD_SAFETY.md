@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`pui89_autonomy/flood_hazard.py` is a dependency-free, software-only route-hazard gate for repeatable tests and simulation. It evaluates supplied values for platform, water depth/current, slope, bank stability, debris/structure clearance, localization, communications, and sensor freshness.
+`pui89_autonomy/flood_hazard.py` is a dependency-free, software-only route-hazard gate for repeatable tests and simulation. It evaluates supplied values for platform, water depth/current, slope, bank stability, debris/structure clearance, localization, communications, sensor freshness, emergency-stop status, safety-monitor health, battery status, and propulsion/drive health.
 
 It does **not** acquire sensors, estimate current or depth from imagery, control hardware, or validate real-world safety.
 
@@ -13,7 +13,9 @@ It does **not** acquire sensors, estimate current or depth from imagery, control
 - `safe_hold`: required input missing/invalid/stale, communications/localization unavailable, a required platform depth limit is not configured, or depth/current exceeds an explicitly configured limit.
 - `replan_handoff`: route edge/bank, debris, structure clearance or configured slope makes the current route unsuitable.
 
-Unknown required values fail safe. Do not use visual appearance alone to infer flood depth, current, foundation strength, or structural safety. A building that remains standing is not automatically safe to approach or enter.
+Unknown required values fail safe. The software gate requires explicit emergency-stop, safety-monitor, battery and propulsion status; an active emergency stop or reported fault leads to `safe_hold`. This does not physically stop a robot because the module does not control hardware. Do not use visual appearance alone to infer flood depth, current, foundation strength, or structural safety. A building that remains standing is not automatically safe to approach or enter.
+
+See [Robot protection and safety case](ROBOT_PROTECTION_AND_SAFETY_CASE.md) for layered protective design, independent hardware stop/watchdog requirements, and the evidence ladder. The protective design practices are requirements—not proof that a physical robot is safe.
 
 ## Run tests (Python standard library only)
 

@@ -35,6 +35,10 @@ class FloodHazardInputs:
     platform_current_limit_mps: Optional[float] = None
     platform_slope_limit_deg: Optional[float] = None
     sensor_conflict: bool = False
+    emergency_stop_active: Optional[bool] = None
+    safety_monitor_ok: Optional[bool] = None
+    battery_ok: Optional[bool] = None
+    propulsion_ok: Optional[bool] = None
 
 
 @dataclass(frozen=True)
@@ -67,12 +71,32 @@ def assess_flood_hazard(
     if inputs.platform not in {"ground", "boat", "drone"}:
         raise ValueError("platform must be 'ground', 'boat', or 'drone'")
 
+    boolean_inputs = {
+        "bank_stable": inputs.bank_stable,
+        "debris_clear": inputs.debris_clear,
+        "structure_clear": inputs.structure_clear,
+        "localization_ok": inputs.localization_ok,
+        "communication_ok": inputs.communication_ok,
+        "sensor_conflict": inputs.sensor_conflict,
+        "emergency_stop_active": inputs.emergency_stop_active,
+        "safety_monitor_ok": inputs.safety_monitor_ok,
+        "battery_ok": inputs.battery_ok,
+        "propulsion_ok": inputs.propulsion_ok,
+    }
+    malformed_booleans = [name for name, value in boolean_inputs.items() if value is not None and not isinstance(value, bool)]
+    if malformed_booleans:
+        raise ValueError("status inputs must be booleans or None: " + ", ".join(malformed_booleans))
+
     required_common = {
         "bank_stable": inputs.bank_stable,
         "debris_clear": inputs.debris_clear,
         "structure_clear": inputs.structure_clear,
         "localization_ok": inputs.localization_ok,
         "communication_ok": inputs.communication_ok,
+        "emergency_stop_active": inputs.emergency_stop_active,
+        "safety_monitor_ok": inputs.safety_monitor_ok,
+        "battery_ok": inputs.battery_ok,
+        "propulsion_ok": inputs.propulsion_ok,
     }
     missing = [name for name, value in required_common.items() if value is None]
     if missing:
@@ -88,9 +112,14 @@ def assess_flood_hazard(
     if inputs.sensor_conflict:
         review.append("sensor inputs conflict; human review required")
 
+    if inputs.emergency_stop_active is True:
+        hard_holds.append("emergency stop is active")
     for name, value in (
         ("localization_ok", inputs.localization_ok),
         ("communication_ok", inputs.communication_ok),
+        ("safety_monitor_ok", inputs.safety_monitor_ok),
+        ("battery_ok", inputs.battery_ok),
+        ("propulsion_ok", inputs.propulsion_ok),
     ):
         if value is False:
             hard_holds.append(name.replace("_", " ") + " is unavailable")
