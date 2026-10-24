@@ -1,5 +1,15 @@
-# Flood Rescue AI
+# Extreme Flood Rescue AI
 
+**A PUI89 AI-assisted disaster-response platform for extreme-flood search, hazard assessment and multi-platform rescue planning.**
+
+## Project at a glance
+
+- **Mission target:** support planning and evaluation across flood scenarios from 0–15 m, including severe urban, rural and mountain-flood environments.
+- **Platform strategy:** coordinate aerial reconnaissance, suitable surface craft, ground/amphibious robots and a separately engineered future submersible where appropriate.
+- **AI support:** explore person/animal candidate detection, flood-scene understanding, hazard mapping, route proposals, uncertainty reporting and operator alerts.
+- **Safety principle:** each platform must stay within its own evidence-backed operating envelope; unknown or unsafe conditions trigger hold, replan or human review.
+- **Current evidence:** software decision support, concept visuals and simulations. No validated physical 15 m rescue capability is claimed.
+- **Cost approach:** free-first and local-first where feasible; no paid API or cloud GPU is required by the design plan.
 
 ## Current verified status — 25 October 2026
 
@@ -17,7 +27,7 @@
 - **Flood-depth boundary:** the interactive demo explores 0–15 m simulated scenarios. These are visual scenario values, not evidence that a physical robot can operate safely at those depths. The demo has no fixed 5.5 m cutoff; its movement is illustrative only. Physical movement limits must be configured from platform-specific engineering evidence, and real flood navigation, victim detection, waterproofing, flotation and rescue performance remain unvalidated.
 
 
-## Flood Rescue AI — Himalayan extreme-flood response concept
+## Extreme Flood Rescue AI — Himalayan extreme-flood response concept
 
 ![Flood Rescue AI Himalayan extreme-flood concept: aerial reconnaissance, a suitable rescue craft, and a ground robot held on higher terrain; concept art only](docs/images/flood-rescue-amphibious-robot-concept.svg)
 
