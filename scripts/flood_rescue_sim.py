@@ -112,10 +112,13 @@ def render_map(path: list[tuple[int, int]], rover: tuple[int, int]) -> str:
     return "\n".join(lines)
 
 
-def run_simulation(seed: int = 7, fail_comms_at: int | None = None) -> dict:
-    """Run a synthetic reconnaissance mission and return auditable results."""
+def run_simulation(seed: int = 7, fail_comms_at: int | None = None,
+                   fail_sensor_at: int | None = None) -> dict:
+    """Run a synthetic reconnaissance mission with optional fault injection."""
     if fail_comms_at is not None and fail_comms_at < 1:
         raise ValueError("fail_comms_at must be >= 1 when provided")
+    if fail_sensor_at is not None and fail_sensor_at < 1:
+        raise ValueError("fail_sensor_at must be >= 1 when provided")
     rng = random.Random(seed)
     blocked = OBSTACLES | WATER
     path = find_path(START, OBSERVATION_POINT, blocked)
@@ -128,6 +131,12 @@ def run_simulation(seed: int = 7, fail_comms_at: int | None = None) -> dict:
     stop_reason = None
     # Simulated comms failure is injected before taking the indexed step.
     for step_index, cell in enumerate(path[1:], start=1):
+        if fail_sensor_at is not None and step_index >= fail_sensor_at:
+            state = "SAFE_STOP_SIMULATED"
+            stop_reason = f"Injected sensor failure at step {step_index}"
+            events.append({"step": step_index, "event": "SAFE_STOP",
+                           "detail": stop_reason, "cell": list(visited[-1])})
+            break
         if fail_comms_at is not None and step_index >= fail_comms_at:
             state = "SAFE_STOP_SIMULATED"
             stop_reason = f"Injected communication loss at step {step_index}"
@@ -203,11 +212,15 @@ def main() -> int:
     parser.add_argument("--out", default="runs/flood_rescue_sim", help="Output path prefix; writes .json and .csv.")
     parser.add_argument("--fail-comms-at", type=int, default=None,
                         help="Inject simulated communication loss at this 1-based movement step.")
+    parser.add_argument("--fail-sensor-at", type=int, default=None,
+                        help="Inject simulated sensor-health failure at this 1-based movement step.")
     args = parser.parse_args()
     if args.fail_comms_at is not None and args.fail_comms_at < 1:
         parser.error("--fail-comms-at must be >= 1")
+    if args.fail_sensor_at is not None and args.fail_sensor_at < 1:
+        parser.error("--fail-sensor-at must be >= 1")
 
-    result = run_simulation(args.seed, args.fail_comms_at)
+    result = run_simulation(args.seed, args.fail_comms_at, args.fail_sensor_at)
     prefix = Path(args.out)
     prefix.parent.mkdir(parents=True, exist_ok=True)
     json_path = prefix.with_suffix(".json")
