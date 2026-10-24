@@ -141,20 +141,23 @@ def assess_flood_hazard(
                 hard_holds.append("platform depth limit is not configured")
             elif _valid_nonnegative(inputs.platform_depth_limit_m) and inputs.water_depth_m > inputs.platform_depth_limit_m:
                 hard_holds.append("water depth exceeds the configured platform limit")
-        if inputs.current_speed_mps is not None and _valid_nonnegative(inputs.current_speed_mps):
-            if (
-                inputs.platform_current_limit_mps is not None
-                and _valid_nonnegative(inputs.platform_current_limit_mps)
-                and inputs.current_speed_mps > inputs.platform_current_limit_mps
-            ):
-                hard_holds.append("current speed exceeds the configured platform limit")
+        if inputs.platform_current_limit_mps is None:
+            hard_holds.append("platform current limit is not configured")
+        elif (
+            _valid_nonnegative(inputs.current_speed_mps)
+            and inputs.current_speed_mps > inputs.platform_current_limit_mps
+        ):
+            hard_holds.append("current speed exceeds the configured platform limit")
 
     if inputs.slope_deg is None or not isinstance(inputs.slope_deg, (int, float)) or not math.isfinite(inputs.slope_deg):
         hard_holds.append("terrain slope is missing or invalid")
     elif inputs.slope_deg < 0 or inputs.slope_deg > 90:
         hard_holds.append("terrain slope is outside the valid [0, 90] degree range")
+    elif inputs.platform == "ground" and inputs.platform_slope_limit_deg is None:
+        hard_holds.append("platform slope limit is not configured")
     elif (
-        inputs.platform_slope_limit_deg is not None
+        inputs.platform == "ground"
+        and inputs.platform_slope_limit_deg is not None
         and _valid_nonnegative(inputs.platform_slope_limit_deg)
         and inputs.slope_deg > inputs.platform_slope_limit_deg
     ):
