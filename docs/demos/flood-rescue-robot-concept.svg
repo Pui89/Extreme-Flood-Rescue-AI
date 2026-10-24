@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">PUI89 Flood Rescue Robot — Realistic Industrial Design Concept</title>
+<desc id="desc">A technical concept sheet of a rugged hybrid quadruped flood-response robot with sensor mast, sealed body, modular rescue bay, articulated legs, and optional flotation pods. Not a validated physical robot.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07131f"/><stop offset="1" stop-color="#183243"/></linearGradient>
+ <linearGradient id="shell" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#edf2f3"/><stop offset=".35" stop-color="#9aadb7"/><stop offset=".7" stop-color="#536c79"/><stop offset="1" stop-color="#243c49"/></linearGradient>
+ <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#506b78"/><stop offset="1" stop-color="#132b38"/></linearGradient>
+ <linearGradient id="lens" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c7fbff"/><stop offset=".45" stop-color="#35b8d0"/><stop offset="1" stop-color="#12374d"/></linearGradient>
+ <linearGradient id="rescue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd887"/><stop offset="1" stop-color="#e36b22"/></linearGradient>
+ <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#8bb5c5" stroke-opacity=".08"/></pattern>
+ <filter id="blur"><feGaussianBlur stdDeviation="13"/></filter>
+ <style>
+ .head{font:700 35px Arial,sans-serif;fill:#f1f7f8;letter-spacing:2px}.sub{font:15px Arial,sans-serif;fill:#a9c1cb;letter-spacing:1.5px}.label{font:700 16px Arial,sans-serif;fill:#bfe8f0;letter-spacing:1.6px}.small{font:13px Arial,sans-serif;fill:#9bb7c2;letter-spacing:.5px}.call{fill:none;stroke:#6de1ed;stroke-width:1.7}.fine{fill:none;stroke:#80a7b5;stroke-opacity:.5}.bolt{fill:#dce5e8;stroke:#324b58;stroke-width:2}
+ </style>
+</defs>
+<rect width="1600" height="1000" fill="url(#bg)"/><rect width="1600" height="1000" fill="url(#grid)"/>
+<path d="M45 128H1555M45 900H1555" stroke="#4e899a" stroke-opacity=".55"/>
+<text x="62" y="58" class="sub">PUI89 / FIELD ROBOTICS</text><text x="62" y="100" class="head">FLOOD RESPONSE PLATFORM</text><text x="64" y="121" class="sub">HYBRID QUADRUPED • FLOOD-ENVIRONMENT CONCEPT • HUMAN-LED RESCUE</text>
+<rect x="1260" y="43" width="275" height="50" rx="5" fill="#f4a64c" fill-opacity=".12" stroke="#f4a64c" stroke-opacity=".7"/><text x="1397" y="64" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#ffc477" letter-spacing="2">CONCEPT DESIGN</text><text x="1397" y="82" text-anchor="middle" font-family="Arial" font-size="11" fill="#e7c99f">NOT BUILT OR FIELD-TESTED</text>
+<ellipse cx="805" cy="697" rx="470" ry="38" fill="#000" opacity=".45" filter="url(#blur)"/>
+<!-- rear limbs and buoyancy pods -->
+<path d="M554 489L492 541L464 632L414 651L409 672L483 678L506 654L535 579L608 537Z" fill="url(#metal)" stroke="#8da7b2" stroke-width="4"/>
+<path d="M1007 489L1071 541L1100 631L1151 650L1156 672L1081 678L1058 654L1028 579L954 537Z" fill="url(#metal)" stroke="#8da7b2" stroke-width="4"/>
+<path d="M404 611Q423 596 454 607L504 625L504 650Q473 670 419 659Q398 650 404 611Z" fill="url(#rescue)" stroke="#ffe0a0" stroke-width="3"/>
+<path d="M1070 611Q1089 596 1120 607L1170 625L1170 650Q1139 670 1085 659Q1064 650 1070 611Z" fill="url(#rescue)" stroke="#ffe0a0" stroke-width="3"/>
+<path d="M426 628H483M1090 628H1148" stroke="#78451f" stroke-width="3"/>
+<!-- articulated near legs -->
+<g fill="url(#shell)" stroke="#c0d0d5" stroke-width="4" stroke-linejoin="round">
+ <path d="M642 499L589 545L557 632L517 652L515 674L581 680L602 655L630 581L693 543Z"/>
+ <path d="M930 499L987 545L1019 632L1059 652L1061 674L995 680L974 655L947 581L882 543Z"/>
+</g>
+<g fill="url(#metal)" stroke="#d1dce0" stroke-width="3"><circle cx="642" cy="501" r="28"/><circle cx="590" cy="546" r="23"/><circle cx="557" cy="633" r="19"/><circle cx="930" cy="501" r="28"/><circle cx="986" cy="546" r="23"/><circle cx="1019" cy="633" r="19"/></g>
+<g fill="#172f3c" stroke="#90a9b4" stroke-width="3"><rect x="500" y="666" width="88" height="20" rx="7"/><rect x="987" y="666" width="88" height="20" rx="7"/></g>
+<g stroke="#8fa8b3" stroke-width="2"><path d="M519 671l15 10m0-10l15 10m0-10l15 10m0-10l15 10M1006 671l15 10m0-10l15 10m0-10l15 10m0-10l15 10"/></g>
+<!-- central rugged chassis -->
+<path d="M546 389Q557 360 594 351L675 326H883L970 352Q1001 364 1014 393L1001 489Q995 518 965 530H611Q578 521 565 493Z" fill="url(#metal)" stroke="#c0d0d5" stroke-width="4"/>
+<path d="M573 391Q586 370 614 362L687 341H875L953 365Q978 375 988 399L978 439H584Z" fill="url(#shell)" stroke="#e7eef0" stroke-width="3"/>
+<path d="M584 444H978L968 491Q963 509 943 514H626Q600 508 594 488Z" fill="#304a57" stroke="#77919d" stroke-width="2"/>
+<path d="M612 370L660 356L654 428H599Z" fill="#dbe4e7" stroke="#657d89" stroke-width="2"/><path d="M680 353H746V428H670Z" fill="#a8bac2" stroke="#607985" stroke-width="2"/><path d="M759 353H833V428H759Z" fill="#cbd6da" stroke="#6c8490" stroke-width="2"/><path d="M846 354L912 368L935 428H846Z" fill="#8ea4ae" stroke="#4b6572" stroke-width="2"/>
+<!-- removable payload bay -->
+<rect x="687" y="449" width="167" height="49" rx="7" fill="#132b38" stroke="#ffb75c" stroke-width="2.5"/><rect x="700" y="458" width="141" height="28" rx="4" fill="#234453" stroke="#698d9b"/><path d="M714 467H826M714 477H799" stroke="#6ed8e4" stroke-width="2" opacity=".8"/>
+<text x="770" y="518" text-anchor="middle" font-family="Arial" font-size="10" fill="#ffc477" letter-spacing="1.2">MODULAR MEDICAL / SUPPLY BAY</text>
+<!-- warning lights and side sensor -->
+<g><rect x="603" y="389" width="11" height="22" rx="3" fill="#ff9b3d"/><rect x="947" y="389" width="11" height="22" rx="3" fill="#ff9b3d"/><circle cx="608" cy="399" r="4" fill="#fff0c2"/><circle cx="952" cy="399" r="4" fill="#fff0c2"/></g>
+<path d="M977 414L1013 420L1007 450L975 445Z" fill="#1b3d4e" stroke="#7cdce8" stroke-width="2"/><circle cx="995" cy="432" r="7" fill="url(#lens)" stroke="#c3f8ff" stroke-width="2"/>
+<path d="M1003 383Q1040 374 1056 397L1050 420" fill="none" stroke="#e6a04c" stroke-width="7"/><rect x="1041" y="415" width="21" height="16" rx="4" fill="#e6a04c"/>
+<!-- sensor mast -->
+<path d="M658 328L682 303H855L884 328Z" fill="url(#shell)" stroke="#d9e2e6" stroke-width="3"/><rect x="752" y="255" width="38" height="55" rx="8" fill="url(#metal)" stroke="#a5bbc4" stroke-width="3"/><path d="M770 256V213" stroke="#c2d2d8" stroke-width="8"/><path d="M770 219V204" stroke="#6de1ed" stroke-width="3"/>
+<rect x="714" y="169" width="112" height="43" rx="11" fill="url(#metal)" stroke="#d3e0e4" stroke-width="3"/><path d="M727 181H813L804 199H736Z" fill="url(#lens)" stroke="#65d9ed" stroke-width="2"/><circle cx="742" cy="190" r="6" fill="#102e40" stroke="#c5f9ff" stroke-width="2"/><circle cx="773" cy="190" r="6" fill="#102e40" stroke="#c5f9ff" stroke-width="2"/><circle cx="800" cy="190" r="4" fill="#102e40" stroke="#c5f9ff" stroke-width="2"/><path d="M741 166Q770 146 799 166L794 175H746Z" fill="#b8c8ce" stroke="#edf4f6" stroke-width="2"/><ellipse cx="770" cy="163" rx="25" ry="7" fill="#4f6b78" stroke="#d5e1e5" stroke-width="2"/>
+<!-- technical callouts -->
+<path class="call" d="M824 186H1070V160H1150"/><circle cx="824" cy="186" r="4" fill="#6de1ed"/><text x="1165" y="154" class="label">MULTI-SENSOR HEAD</text><text x="1165" y="176" class="small">RGB • DEPTH • OPTIONAL THERMAL</text><text x="1165" y="196" class="small">Situational-awareness concept</text>
+<path class="call" d="M951 374L1100 312H1150"/><circle cx="951" cy="374" r="4" fill="#6de1ed"/><text x="1165" y="306" class="label">SEALED CENTRAL POD</text><text x="1165" y="328" class="small">Protected electronics enclosure</text><text x="1165" y="348" class="small">Sealing level requires testing</text>
+<path class="call" d="M846 470L1090 482H1150"/><circle cx="846" cy="470" r="4" fill="#6de1ed"/><text x="1165" y="476" class="label">MODULAR PAYLOAD</text><text x="1165" y="498" class="small">First aid • radio • flotation aid</text><text x="1165" y="518" class="small">Responder-controlled handoff</text>
+<path class="call" d="M1130 635L1200 600H1250"/><circle cx="1130" cy="635" r="4" fill="#6de1ed"/><text x="1260" y="594" class="label">BUOYANCY PODS</text><text x="1260" y="616" class="small">Optional stability concept</text><text x="1260" y="636" class="small">Not a certified flotation system</text>
+<path class="call" d="M557 633L440 590H280"/><circle cx="557" cy="633" r="4" fill="#6de1ed"/><text x="70" y="578" class="label">ARTICULATED LIMBS</text><text x="70" y="600" class="small">Adaptive foothold concept</text><text x="70" y="620" class="small">Gait and stability need validation</text>
+<path class="call" d="M610 409L460 350H280"/><circle cx="610" cy="409" r="4" fill="#6de1ed"/><text x="70" y="330" class="label">HIGH-VISIBILITY MARKERS</text><text x="70" y="352" class="small">Rescue-orange panels and lights</text><text x="70" y="372" class="small">Proposed, not certified equipment</text>
+<!-- footer -->
+<g><rect x="60" y="790" width="470" height="82" rx="5" fill="#102534" stroke="#436878"/><text x="82" y="818" class="label">MISSION PROFILE</text><text x="82" y="844" class="small">SCOUT • MAP HAZARDS • CARRY SUPPLIES • RELAY LOCATION</text><text x="82" y="862" class="small">Trained responders make all rescue decisions.</text></g>
+<g><rect x="550" y="790" width="470" height="82" rx="5" fill="#102534" stroke="#436878"/><text x="572" y="818" class="label">DESIGN INTENT</text><text x="572" y="844" class="small">MODULAR, SERVICEABLE, LOW-SPEED FIELD ROBOT</text><text x="572" y="862" class="small">Quadruped mobility plus optional buoyancy aids.</text></g>
+<g><rect x="1040" y="790" width="495" height="82" rx="5" fill="#2a211b" stroke="#b9783d"/><text x="1062" y="818" font-family="Arial" font-size="16" font-weight="700" fill="#ffc477" letter-spacing="1.5">ENGINEERING LIMIT</text><text x="1062" y="844" font-family="Arial" font-size="13" fill="#e4c6a1">Illustrative geometry only. No verified depth, payload,</text><text x="1062" y="862" font-family="Arial" font-size="13" fill="#e4c6a1">waterproofing, stability, autonomy or rescue performance.</text></g>
+<text x="62" y="943" class="small">Sensor options depend on cost, environmental sealing and test results.</text><text x="1535" y="943" text-anchor="end" class="small">PUI89 • CONCEPT SHEET 01 • 2026</text>
+</svg>
