@@ -1,72 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-<title id="title">Flood Rescue AI — concept of an amphibious reconnaissance robot assisting emergency responders</title>
-<desc id="desc">Original vector concept illustration of a compact tracked amphibious robot with sensor mast in a flooded mixed urban and rural landscape. A drone surveys overhead and a responder communicates with a resident from a safe raised area. Concept artwork only, not a real deployment or validated hardware.</desc>
-<defs>
- <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#10223d"/><stop offset=".62" stop-color="#527b91"/><stop offset="1" stop-color="#c0d7d5"/></linearGradient>
- <linearGradient id="water" x2="0" y2="1"><stop stop-color="#59b7c9"/><stop offset="1" stop-color="#174968"/></linearGradient>
- <linearGradient id="shell" x2=".8" y2="1"><stop stop-color="#f3f4e8"/><stop offset=".48" stop-color="#b8c7c9"/><stop offset="1" stop-color="#657f91"/></linearGradient>
- <linearGradient id="glass" x2="1" y2="1"><stop stop-color="#8ce8f2"/><stop offset="1" stop-color="#1d597d"/></linearGradient>
- <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
- <pattern id="rain" width="70" height="70" patternUnits="userSpaceOnUse"><path d="M12 0L2 28 M54 26L44 54" stroke="#d9f6fa" stroke-width="2" opacity=".25"/></pattern>
-</defs>
-<rect width="1600" height="900" fill="url(#sky)"/>
-<circle cx="1300" cy="140" r="62" fill="#e6f5eb" opacity=".55"/>
-<path d="M0 390L140 280 270 360 420 240 565 370 710 275 850 370 1010 240 1150 350 1300 255 1450 345 1600 275V590H0Z" fill="#3b5d6a" opacity=".62"/>
-<!-- skyline / village -->
-<g stroke="#243e52" stroke-width="5" stroke-linejoin="round">
- <path d="M70 290H230V590H70Z" fill="#8da7ac"/><path d="M92 320H130V368H92ZM165 320H203V368H165ZM92 395H130V443H92ZM165 395H203V443H165Z" fill="#d4e5e0" stroke="none"/>
- <path d="M270 360H420V590H270Z" fill="#aabbb7"/><path d="M292 390H330V435H292ZM354 390H392V435H354ZM292 458H330V503H292ZM354 458H392V503H354Z" fill="#d9e9e2" stroke="none"/>
- <path d="M480 335H630V590H480Z" fill="#859ca4"/><path d="M500 365H540V410H500ZM565 365H605V410H565ZM500 435H540V480H500ZM565 435H605V480H565Z" fill="#d7e6e1" stroke="none"/>
- <path d="M1090 340L1170 280 1250 340V590H1090Z" fill="#b9c9bd"/><path d="M1265 380L1340 325 1415 380V590H1265Z" fill="#8da6a5"/>
- <path d="M1440 390L1505 345 1570 390V590H1440Z" fill="#c0cbbf"/>
-</g>
-<!-- trees and raised road -->
-<g fill="#284f4a"><path d="M700 430l-65 90h38l-52 68h158l-52-68h38z"/><path d="M850 440l-60 80h35l-48 64h146l-48-64h35z"/><path d="M1000 420l-64 90h36l-50 68h156l-50-68h36z"/></g>
-<path d="M0 540Q220 500 430 545T850 535T1200 550T1600 520V900H0Z" fill="url(#water)"/>
-<path d="M0 625Q190 600 370 630T740 620T1100 635T1600 610" fill="none" stroke="#9ce1e3" stroke-width="5" opacity=".55"/>
-<path d="M0 750Q230 710 440 755T880 750T1280 755T1600 730" fill="none" stroke="#9ce1e3" stroke-width="4" opacity=".45"/>
-<rect width="1600" height="900" fill="url(#rain)"/>
-<!-- rooftop and human -->
-<path d="M70 555L220 500 370 555V600H70Z" fill="#d7ded1" stroke="#3a5360" stroke-width="7"/>
-<g transform="translate(285 455)"><circle cx="0" cy="0" r="17" fill="#e6b89a"/><path d="M-20 22Q0 8 20 22L25 70H-25Z" fill="#ed8b46"/><path d="M-16 70L-30 102M16 70L32 102" stroke="#243e52" stroke-width="13" stroke-linecap="round"/><path d="M-20 32L-43 55M20 32L43 48" stroke="#e6b89a" stroke-width="10" stroke-linecap="round"/></g>
-<!-- drone -->
-<g transform="translate(900 160)" stroke="#d9edf0" stroke-width="7" stroke-linecap="round" fill="none"><path d="M-55 0L-20 15H20L55 0"/><path d="M-55 -10L-55 10M55 -10L55 10"/><ellipse cx="-55" cy="0" rx="28" ry="6"/><ellipse cx="55" cy="0" rx="28" ry="6"/><path d="M0 15V35"/><rect x="-12" y="32" width="24" height="16" rx="5" fill="#7bd5df" stroke="none"/></g>
-<path d="M900 208L820 500H980Z" fill="#7be0e8" opacity=".09"/>
-<!-- robot shadow and amphibious body -->
-<ellipse cx="810" cy="755" rx="275" ry="46" fill="#102b3d" opacity=".48" filter="url(#shadow)"/>
-<g transform="translate(800 0)">
- <!-- track assemblies -->
- <path d="M-225 675Q-225 642 -190 635H175Q220 640 220 678V735Q220 770 185 778H-185Q-225 770 -225 735Z" fill="#182b3b" stroke="#9aaeb6" stroke-width="8"/>
- <path d="M-198 675Q-198 660 -176 657H172Q195 661 195 682V730Q195 750 172 754H-176Q-198 750 -198 730Z" fill="#4a6675" stroke="#b5c7c9" stroke-width="4"/>
- <g fill="#b7c6c8" stroke="#1d3546" stroke-width="5"><circle cx="-160" cy="705" r="22"/><circle cx="-100" cy="705" r="22"/><circle cx="-40" cy="705" r="22"/><circle cx="20" cy="705" r="22"/><circle cx="80" cy="705" r="22"/><circle cx="140" cy="705" r="22"/></g>
- <!-- hull -->
- <path d="M-220 620L-170 570H135L205 615L180 678H-190Z" fill="url(#shell)" stroke="#304c5f" stroke-width="8" stroke-linejoin="round"/>
- <path d="M-145 586H100L150 616H-175Z" fill="#dfe9e5" opacity=".9"/>
- <path d="M-75 601H45L76 640H-95Z" fill="url(#glass)" stroke="#34566a" stroke-width="6"/>
- <path d="M-170 650H155" stroke="#eef5e9" stroke-width="7" opacity=".7"/>
- <rect x="-185" y="630" width="32" height="24" rx="6" fill="#ffbf5a" stroke="#304c5f" stroke-width="4"/><rect x="154" y="630" width="32" height="24" rx="6" fill="#ffbf5a" stroke="#304c5f" stroke-width="4"/>
- <!-- sensor mast -->
- <path d="M-5 570V475" stroke="#d4e0df" stroke-width="17"/><path d="M-5 570V475" stroke="#526d7c" stroke-width="5"/>
- <rect x="-40" y="443" width="72" height="43" rx="10" fill="#dce8e6" stroke="#304c5f" stroke-width="6"/>
- <rect x="-27" y="453" width="46" height="19" rx="6" fill="url(#glass)"/>
- <circle cx="-5" cy="463" r="7" fill="#0e2f48"/>
- <path d="M-5 443V423" stroke="#dce8e6" stroke-width="5"/><path d="M-33 425H23" stroke="#dce8e6" stroke-width="5" stroke-linecap="round"/>
- <!-- side payload / beacon -->
- <rect x="98" y="594" width="46" height="35" rx="7" fill="#ef9d47" stroke="#304c5f" stroke-width="5"/>
- <path d="M121 596V579" stroke="#e8f3ec" stroke-width="5"/><circle cx="121" cy="574" r="8" fill="#f4d36b"/>
-</g>
-<!-- callout leaders -->
-<g font-family="Arial,Helvetica,sans-serif" font-weight="700">
- <path d="M790 450L1030 345H1160" fill="none" stroke="#b9f4f3" stroke-width="3"/>
- <rect x="1155" y="315" width="350" height="66" rx="12" fill="#102b43" opacity=".92"/>
- <text x="1180" y="342" fill="#a8eef0" font-size="20">SENSOR MAST</text><text x="1180" y="365" fill="#f3f7f2" font-size="16" font-weight="400">Camera / mapping concept</text>
- <path d="M925 648L1080 710H1200" fill="none" stroke="#b9f4f3" stroke-width="3"/>
- <rect x="1195" y="680" width="320" height="70" rx="12" fill="#102b43" opacity=".92"/>
- <text x="1218" y="708" fill="#a8eef0" font-size="20">TRACKED PLATFORM</text><text x="1218" y="733" fill="#f3f7f2" font-size="16" font-weight="400">Mobility concept, not tested</text>
-</g>
-<rect x="38" y="36" width="650" height="112" rx="18" fill="#10243a" opacity=".91"/>
-<text x="70" y="78" font-family="Arial,Helvetica,sans-serif" font-size="31" font-weight="700" fill="#f3f7f4">FLOOD RESCUE AI</text>
-<text x="70" y="111" font-family="Arial,Helvetica,sans-serif" font-size="19" fill="#aee7e7">Amphibious reconnaissance · concept illustration</text>
-<rect x="38" y="820" width="820" height="44" rx="10" fill="#10243a" opacity=".88"/>
-<text x="60" y="848" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#ffffff">CONCEPT ART ONLY · NOT A BUILT OR VALIDATED RESCUE ROBOT</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+<title id="title">Flood Rescue AI — Himalayan extreme-flood concept</title><desc id="desc">Illustrative Himalayan valley with inundated settlement, aerial reconnaissance drone, a rescue craft in a safer channel, and a ground robot held on higher ground. 15 metres is a simulation scenario, not a verified robot rating.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#0b1a2b"/><stop offset="1" stop-color="#7797a2"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#52b2c3"/><stop offset="1" stop-color="#10364f"/></linearGradient><linearGradient id="mount" x2=".1" y2="1"><stop stop-color="#e2e9df"/><stop offset=".35" stop-color="#64848a"/><stop offset="1" stop-color="#1c3c50"/></linearGradient><linearGradient id="robot" x2="0" y2="1"><stop stop-color="#e0eee6"/><stop offset="1" stop-color="#538f91"/></linearGradient></defs>
+<rect width="1200" height="680" fill="url(#sky)"/><path d="M0 340 100 210 155 252 255 70 333 190 418 124 510 257 612 82 705 220 796 139 895 254 1015 93 1114 225 1200 148V470H0Z" fill="url(#mount)"/><path d="M222 132 255 70 291 133 268 121 252 139 239 119ZM573 142 612 82 650 148 622 130 607 149 590 127ZM980 147 1015 93 1052 154 1026 138 1011 157 997 135Z" fill="#f4f5e9"/>
+<path d="M0 390 140 350 250 382 370 330 490 374 610 338 730 380 850 340 970 379 1085 343 1200 378V680H0Z" fill="#224a5c"/><path d="M0 426Q120 396 240 429T480 432T720 427T960 429T1200 422V680H0Z" fill="url(#water)"/><path d="M0 474Q120 444 240 477T480 480T720 475T960 477T1200 470M0 550Q120 520 240 553T480 556T720 551T960 553T1200 546M0 620Q120 590 240 623T480 626T720 621T960 623T1200 616" fill="none" stroke="#c7f2ed" stroke-opacity=".36" stroke-width="4"/>
+<g stroke="#b3c8c4" stroke-width="4"><path d="M60 405 120 357 180 405Z" fill="#7f776e"/><rect x="73" y="405" width="94" height="48" fill="#304b59"/><path d="M188 425 240 383 292 425Z" fill="#867d72"/><rect x="199" y="425" width="82" height="40" fill="#314e5b"/><path d="M344 410 393 370 442 410Z" fill="#8b8277"/><rect x="355" y="410" width="76" height="49" fill="#344e5a"/></g>
+<g transform="translate(34 30)"><rect width="356" height="95" rx="13" fill="#071522" fill-opacity=".94" stroke="#a4d7dc"/><text x="19" y="28" fill="#9ee6d2" font-family="system-ui,sans-serif" font-size="14" font-weight="800" letter-spacing="2">PUI89 • FLOOD RESCUE AI</text><text x="19" y="61" fill="#fff" font-family="system-ui,sans-serif" font-size="30" font-weight="850">15 m SCENARIO</text><text x="19" y="81" fill="#d8e8ee" font-family="system-ui,sans-serif" font-size="11">SIMULATED DEPTH • NOT A ROBOT RATING</text></g>
+<!-- reconnaissance drone --><g transform="translate(777 150)" stroke="#e2f5ef" stroke-width="5" stroke-linecap="round"><path d="M-45 0H45M-24 -10 24 10M-24 10 24 -10" fill="none"/><rect x="-20" y="-9" width="40" height="18" rx="5" fill="#244253" stroke="#b1e4e0" stroke-width="3"/><circle cx="-47" cy="0" r="10" fill="#122a3a"/><circle cx="47" cy="0" r="10" fill="#122a3a"/><path d="M0 13V28" stroke="#ffcf80" stroke-width="3"/><circle cy="0" r="4" fill="#ffcf80" stroke="none"/></g><path d="M777 190 667 340 912 360Z" fill="#b9f0e6" opacity=".09" stroke="#c8f3ec" stroke-opacity=".4" stroke-dasharray="8 8"/>
+<g transform="translate(826 218)"><rect width="280" height="49" rx="9" fill="#071522" fill-opacity=".93" stroke="#83c8d0"/><text x="14" y="20" fill="#9ee6d2" font-family="system-ui,sans-serif" font-size="12" font-weight="800">AERIAL RECONNAISSANCE</text><text x="14" y="37" fill="#d5e6ec" font-family="system-ui,sans-serif" font-size="11">Locate • map • relay to responders</text></g>
+<!-- craft --> <g transform="translate(660 482)"><path d="M-102 0H94L66 31H-73Z" fill="#132e40" stroke="#d8eee8" stroke-width="4"/><path d="M-59 -2 -36 -28H24L46 -2Z" fill="url(#robot)" stroke="#e3f2eb" stroke-width="3"/><rect x="-14" y="-21" width="26" height="15" rx="3" fill="#18384b"/><path d="M-109 17Q-65 34 -20 18T75 19T116 16" fill="none" stroke="#b8eee7" stroke-width="4"/></g><g transform="translate(515 527)"><rect width="318" height="48" rx="9" fill="#071522" fill-opacity=".94" stroke="#83c8d0"/><text x="13" y="20" fill="#9ee6d2" font-family="system-ui,sans-serif" font-size="11" font-weight="800">SUITABLE CRAFT — IF CONDITIONS ALLOW</text><text x="13" y="37" fill="#d5e6ec" font-family="system-ui,sans-serif" font-size="11">Never deploy into an unsafe torrent</text></g>
+<!-- ground robot on higher terrain --> <g transform="translate(1010 433)"><path d="M-85 32H80L64 57H-65Z" fill="#0e2638" stroke="#b8d9d7" stroke-width="4"/><path d="M-54 22 -35 -9H36L58 22Z" fill="url(#robot)" stroke="#e6f4e9" stroke-width="4"/><rect x="-22" y="-1" width="42" height="14" rx="4" fill="#193b4d"/><path d="M0 -9V-38" stroke="#d9eee7" stroke-width="5"/><circle cy="-43" r="8" fill="#ffca79"/><g fill="#142a3b" stroke="#8daeb3" stroke-width="4"><circle cx="-49" cy="34" r="14"/><circle cx="-12" cy="34" r="14"/><circle cx="25" cy="34" r="14"/><circle cx="59" cy="34" r="14"/></g></g><g transform="translate(900 320)"><rect width="266" height="56" rx="9" fill="#071522" fill-opacity=".94" stroke="#ffca79"/><text x="13" y="22" fill="#ffcf82" font-family="system-ui,sans-serif" font-size="12" font-weight="800">GROUND ROBOT: SAFE HOLD</text><text x="13" y="41" fill="#e0eaf0" font-family="system-ui,sans-serif" font-size="11">Stay on verified accessible terrain</text></g>
+<g fill="#ff887d" stroke="#fff0e9" stroke-width="2"><path d="M454 459l16 28h-32Z"/><path d="M420 498l11 20h-22Z"/></g><rect x="34" y="620" width="1132" height="38" rx="7" fill="#071522" fill-opacity=".94"/><text x="50" y="644" fill="#f2f7f8" font-family="system-ui,sans-serif" font-size="14" font-weight="750">HIMALAYAN EXTREME-FLOOD RESPONSE • CONCEPT ART ONLY • NOT FIELD FOOTAGE OR VALIDATED HARDWARE</text>
 </svg>
