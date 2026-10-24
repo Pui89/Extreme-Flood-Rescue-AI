@@ -36,12 +36,22 @@ class FloodHazardTests(unittest.TestCase):
         self.assertFalse(decision.audit_record["physical_safety_validated"])
         self.assertEqual(decision.audit_record["evidence_type"], "SUPPLIED_INPUT_SOFTWARE_GATE")
 
-    def test_ground_robot_holds_at_and_above_5_5_metres(self):
-        for depth in (5.5, 6.0, 15.0):
+    def test_ground_depth_is_checked_against_explicit_configured_limit(self):
+        for depth in (1.01, 5.5, 15.0):
             with self.subTest(depth=depth):
                 decision = assess_flood_hazard(safe_ground(water_depth_m=depth))
                 self.assertEqual(decision.state, HazardState.SAFE_HOLD)
-                self.assertTrue(any("5.5 m safe-hold boundary" in reason for reason in decision.reasons))
+                self.assertTrue(any("configured platform limit" in reason for reason in decision.reasons))
+
+    def test_ground_requires_an_explicit_platform_depth_limit(self):
+        decision = assess_flood_hazard(safe_ground(platform_depth_limit_m=None))
+        self.assertEqual(decision.state, HazardState.SAFE_HOLD)
+        self.assertTrue(any("depth limit is not configured" in reason for reason in decision.reasons))
+
+    def test_configured_ground_limit_can_be_above_5_5_for_simulation_only(self):
+        decision = assess_flood_hazard(safe_ground(water_depth_m=15.0, platform_depth_limit_m=15.0))
+        self.assertEqual(decision.state, HazardState.PROCEED_SIMULATION)
+        self.assertFalse(decision.audit_record["physical_safety_validated"])
 
     def test_missing_depth_or_current_fails_safe(self):
         for field in ("water_depth_m", "current_speed_mps"):
