@@ -51,7 +51,7 @@ Report metrics per task:
 
 ## Project boundary
 
-This source plan does not claim that the robot can operate at any real-world flood depth. The project's 0–15 m slider is a simulation scenario range; it is not a physical rating. Ground-robot motion must remain blocked at the current 5.5 m safety boundary and above. Any amphibious platform, boat or drone capability requires its own engineering design and validation.
+This source plan does not claim that the robot can operate at any real-world flood depth. The project's 0–15 m slider is a simulation scenario range; it is not a physical rating. The software hazard gate requires an explicit platform-specific depth limit; the visual 0–15 m slider is not a physical operating envelope. Any amphibious platform, boat or drone capability requires its own engineering design and validation.
 
 ## Best-robot training priorities: coordinated ground + boat + drone system
 
@@ -87,7 +87,7 @@ For water depth, consider [SERVIR-HKH's Flood Inundation Mapping Tool](https://s
 4. Add ground-view and boat-view datasets only when lawful real imagery and defensible labels are available.
 5. Keep Nepal/Himalayan events as location/event holdouts where enough valid labelled data exists.
 6. Measure per-class precision/recall and segmentation IoU. Measure depth error only against trustworthy numeric depth labels.
-7. Validate each platform independently in simulation and controlled tests. The 0–15 m scenario range remains a simulation range, not a real robot rating; the ground robot remains in safe hold at 5.5 m and above.
+7. Validate each platform independently in simulation and controlled tests. The 0–15 m scenario range remains a simulation range, not a real robot rating; the ground robot must be evaluated against an explicit platform-specific depth limit.
 
 ## Terrain-aware flood hazard assessment (new engineering requirement)
 
@@ -117,7 +117,7 @@ Do not hard-code universal flood thresholds from this document. Thresholds must 
 |---|---|---|
 | Shallow water, stable mapped road | Low depth but ordinary perception uncertainty | Proceed only within the configured platform envelope; log the decision |
 | Fast current despite low depth | Depth alone gives a misleading impression | Stop or request review when current is unknown or exceeds the platform limit |
-| Deep water with debris | Logs, floating objects and submerged obstacles | Keep ground robot in safe-hold at the existing 5.5 m boundary and above; do not claim boat safety without separate validation |
+| Deep water with debris | Logs, floating objects and submerged obstacles | Apply the configured ground-platform limit and other hazard checks; do not claim boat safety without separate validation |
 | Eroded bank / hidden drop | Route edge is unstable or occluded | Block the route or request human review |
 | Damaged bridge / standing building | Structure may look intact but stability is unknown | Do not enter or cross without an independent safety clearance |
 | Sensor disagreement or stale readings | Water/terrain sensors conflict or data are outdated | Fail safe and record the reason |
@@ -128,7 +128,7 @@ Do not hard-code universal flood thresholds from this document. Thresholds must 
 
 - Unit tests for missing, stale, out-of-range and conflicting hazard inputs.
 - Tests that confirm each decision state and its reason are logged.
-- Regression tests for the existing ground-robot 5.5 m-and-above safe-hold boundary.
+- Regression tests for explicit platform-specific depth limits across the 0–15 m simulation scenario range.
 - Scenario-based simulation reports with pass/fail criteria defined before running.
 - Separate controlled validation for each physical platform before any real-world capability claim.
 
