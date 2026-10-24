@@ -18,9 +18,11 @@
 
 *Updated Himalayan extreme-flood concept illustration. It proposes coordinated aerial reconnaissance, a suitable craft only when conditions allow, and a ground robot held on verified accessible terrain. It is not a photograph, a built robot, or evidence of flood-rated performance.*
 
-*Related design reference: [Flood Rescue robot concept (SVG)](docs/images/flood-rescue-robot-concept-2026.svg). This is also a concept illustration, not evidence of a validated physical robot.*
+## Extreme-flood design target — up to 15 m simulated depth
 
-## Extreme-flood design target — up to 15 m simulated depth\n\nThe interactive scenario slider covers **0–15 m** to support hazard-awareness and mission-planning discussions for extreme events, including Himalayan-valley scenarios. This is a **simulation input, not a robot depth rating**. The demo blocks ground-robot movement at 5.5 m and above. At extreme depths, the intended system response is to prioritise aerial/remote reconnaissance, map hazards, relay verified locations, and request a suitable craft only when trained responders determine conditions are safe. Current speed, debris, waves, slope failure, communications and safe recovery must be modelled separately.\n\n## Optional local Hugging Face perception experiment
+The interactive scenario slider covers **0–15 m** for extreme-flood hazard-awareness and mission-planning scenarios. This is a **simulation input, not a robot depth rating**. The demo blocks ground-robot movement at 5.5 m and above. At extreme depths, prioritise remote/aerial reconnaissance, hazard mapping, verified location relays and human-led decisions about whether a suitable craft can be used. Current speed, debris, waves, slope failure, communications and safe recovery must be modelled separately.
+
+## Optional local Hugging Face perception experiment
 
 Try open-vocabulary detection on a local image with [`tools/huggingface_local_vision_demo.py`](tools/huggingface_local_vision_demo.py). Read [`docs/HUGGINGFACE_LOCAL_VISION.md`](docs/HUGGINGFACE_LOCAL_VISION.md) first. This is an exploratory perception demo—not a validated flood-rescue capability or a safe navigation system.
 
@@ -210,15 +212,7 @@ flowchart TD
 | Review | Shows evidence and uncertainty to a human coordinator | A trained responder remains responsible for operational decisions |
 | Verify | Records confirmed status and new observations | Loss of camera contact does not prove a rescue succeeded |
 
-![Flood Rescue AI workflow concept](docs/images/flood-rescue-ai-demo.svg)
-
-*Concept illustration only—not a live sensor feed, a recorded robot demonstration, or proof of validated field performance. Start with recorded or simulated data; real deployments require rescue-agency authorization, independent safety testing and validated safeguards.*
-
 ### Real flood reference from Thailand and AI-robot use case
-
-![Real photograph from the 2010 Hat Yai flood in Songkhla, Thailand](https://commons.wikimedia.org/wiki/Special:FilePath/Amphoe%20Hat%20Yai%20flood.jpg?width=1280)
-
-*Historical real-world photograph: the Government of Thailand's photographer documented flood conditions in Hat Yai, Songkhla, on 2 November 2010. Wikimedia Commons lists the photograph under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/); attribution: Government of Thailand / photographer Peerapat Wimolrungkarat. [Original image and licence details](https://commons.wikimedia.org/wiki/File:Amphoe_Hat_Yai_flood.jpg). This photo is a visual context reference, not robot training data.*
 
 **Real satellite flood evidence from Thailand:** GISTDA published Sentinel-1A satellite analysis of flooding in northern Thailand on 23 August 2024, including affected areas around Chiang Rai, Phayao, Sukhothai and nearby provinces. The agency notes that satellite-derived flooded-area estimates are preliminary and need ground verification. [View GISTDA's original satellite report and images](https://www.gistda.or.th/ewtadmin/ewt/gistda_web/news_view.php?lang=EN&n_id=8041). GISTDA also published high-resolution THEOS-2 imagery of flooded areas in Sukhothai in August 2025: [official satellite report](https://gistda.or.th/th/news/gistda-%E0%B9%80%E0%B8%9C%E0%B8%A2%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%A1-5/).
 
@@ -234,10 +228,6 @@ flowchart TD
 **Evidence boundary:** these are proposed applications, not evidence that this repository's robot has been used in a Thai flood or has validated victim-detection/rescue performance. The 2010 photograph and GISTDA satellite images are contextual references, not a labelled training dataset. External image hosting can change; no paid image subscription is needed for the CC BY photo under its stated licence, but this does not guarantee every future hosting, cloud or AI service will remain available at no additional cost.
 
 AI application concept for flood reconnaissance and rescue support, combining multimodal sensing, hazard mapping, uncertainty-aware planning, and human-supervised mission proposals.
-
-![3D/4D concept visualization](docs/flood_rescue_robot_3d_4d_concept.svg)
-
-> **Status and evidence:** This repository documents a research/prototype workflow. The illustration is concept artwork, not a live demonstration or proof of field performance. Reported capability and performance must be supported by reproducible tests and benchmark results.
 
 ### Platform scope: AI application + embodied robotics
 
@@ -396,25 +386,17 @@ See:
 
 Flood rescue requires robots to perceive unstable terrain, detect victims, avoid obstacles, and prioritize safe navigation under poor visual conditions. This project models that pipeline in a modular, deployable way.
 
-## New Flood Rescue AI Robot Concept
+## 15 m extreme-flood response concept
 
-![Original Flood Rescue AI amphibious robot concept](docs/images/flood-rescue-ai-robot-concept.svg)
-
-**Concept:** a flood-response robot with an elevated RGB/thermal camera mast, LiDAR/depth sensing, flotation support, tracked mobility for suitable terrain, a removable first-aid/radio supply pod, and a human-supervised mission dashboard. The design illustrates a possible research direction; it is not a photograph of a built robot, a working prototype, or evidence of field performance.
+The selected Himalayan concept illustration at the top of this README is the only robot-concept image retained here. It shows a coordinated response proposal, not a physical prototype or a validated 15 m operating capability.
 
 **Safety-first workflow:** AI flags possible people and hazards → the system reports evidence and uncertainty → deterministic checks and a trained coordinator review proposals → only an authorized, validated control system may execute a response. Unknown or occluded targets remain unconfirmed. Never send an unvalidated robot into fast-flowing, electrically hazardous, or otherwise unsafe floodwater.
 
 **Image note:** this is an original SVG vector illustration stored in this repository. It requires no paid stock-photo subscription or paid image-generation API to view or reuse under the repository's applicable license. Third-party assets and software elsewhere in the project may have separate terms.
 
-## 3D Robot Concept
+## Detailed engineering notes
 
-![Flood rescue robot concept](docs/robot_concept.svg)
-
-![3D Flood Rescue AI Robot](docs/robot_concept_3d.svg)
-
-**Concept features:** amphibious flotation and thrusters, RGB-D/thermal/NIR/LiDAR perception, rescue manipulator, 3D semantic world modeling, multimodal AI reasoning, and a deterministic safety gate.
-
-See [docs/3D_ROBOT_CONCEPT.md](docs/3D_ROBOT_CONCEPT.md) for the design concept.
+See [docs/3D_ROBOT_CONCEPT.md](docs/3D_ROBOT_CONCEPT.md) for the written design discussion. Older concept images are no longer embedded in this README.
 
 ## Real-time upgrade
 
@@ -501,13 +483,6 @@ Run the smoke test:
 ```bash
 pytest tests/test_tracker.py -q
 ```
-
-## 3D / 4D Realistic Flood Rescue Robot Concept
-
-The concept shows the flood-response robot operating in a dynamic disaster scene with RGB-D/LiDAR perception, thermal sensing, victim tracking, an articulated rescue arm, and a time-aware 4D trajectory.
-
-- [3D/4D concept image](docs/flood_rescue_robot_3d_4d_concept.svg)
-- [3D/4D video preview](docs/flood_rescue_robot_3d_4d_preview.mp4)
 
 ## Pipeline Overview
 
