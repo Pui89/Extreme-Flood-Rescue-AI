@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PUI89 Flood Rescue AI — Cinematic Video Concept</title>
+<style>
+:root{color-scheme:dark;--cyan:#70e7ff;--amber:#ffcb7a;--panel:rgba(6,18,32,.82)}*{box-sizing:border-box}body{margin:0;background:#06111f;color:#eaf7ff;font:15px/1.5 system-ui,Segoe UI,sans-serif}header{padding:22px clamp(16px,4vw,52px);display:flex;justify-content:space-between;gap:20px;align-items:center;border-bottom:1px solid #244258;background:#071827}h1{font-size:clamp(1.3rem,3vw,2rem);margin:0}p{margin:.45rem 0;color:#b9d2e0}.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.74rem}.pill{border:1px solid #41647a;border-radius:999px;padding:5px 10px;color:#bceeff;font-size:.78rem}main{max-width:1400px;margin:auto;padding:20px clamp(12px,3vw,36px) 40px}.stage{position:relative;border:1px solid #24475d;border-radius:16px;overflow:hidden;background:#081a2b;box-shadow:0 24px 80px #0008}canvas{display:block;width:100%;height:auto;aspect-ratio:16/9}.hud{position:absolute;left:16px;top:14px;max-width:min(390px,80%);background:var(--panel);border:1px solid #35556b;border-radius:10px;padding:12px 14px;backdrop-filter:blur(8px)}.hud strong{color:var(--cyan);display:block;letter-spacing:.12em;font-size:.75rem}.hud span{font-size:1.05rem;font-weight:700}.bottomhud{position:absolute;right:16px;bottom:14px;background:var(--panel);padding:9px 12px;border:1px solid #35556b;border-radius:9px;color:#d6edf9;font-size:.82rem}.controls{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px;background:#0b1d2d;border-top:1px solid #24475d}.btn{background:#11334a;color:#effbff;border:1px solid #3c6a82;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer}.btn:hover{background:#184a62}.btn:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}input{width:100%;accent-color:#70e7ff}.time{font-variant-numeric:tabular-nums;color:#b9d8e8;min-width:96px;text-align:right}.scenes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.scene{padding:12px;border:1px solid #25485d;background:#0b1d2d;border-radius:10px}.scene b{display:block;color:#e4f9ff}.scene small{color:#9bb8c8}.note{border-left:3px solid var(--amber);padding:12px 15px;background:#151f2b;border-radius:0 8px 8px 0;color:#d6e5ed;margin-top:16px}.foot{font-size:.86rem;color:#8faebf;margin-top:18px}@media(max-width:700px){header{align-items:flex-start;flex-direction:column}.controls{grid-template-columns:1fr}.time{text-align:left}.scenes{grid-template-columns:repeat(2,1fr)}.bottomhud{left:12px;right:auto;bottom:10px;font-size:.7rem}.hud{top:8px;left:8px;padding:8px 10px}.hud span{font-size:.9rem}}
+</style></head>
+<body>
+<header><div><div class="eyebrow">PUI89 • Disaster response robotics</div><h1>Flood Rescue AI — cinematic video concept</h1><p>Hybrid quadruped amphibious rescuer • people and animal assistance • urban flood scenarios</p></div><span class="pill">CONCEPT ANIMATION · NOT FIELD FOOTAGE</span></header>
+<main><section class="stage" aria-label="Animated flood rescue concept video">
+<canvas id="film" width="1280" height="720" aria-label="Animated concept showing a rescue robot moving through a flooded city"></canvas>
+<div class="hud"><strong id="chapter">01 / RECONNAISSANCE</strong><span id="headline">A city under rising water</span><p id="caption">Scan access routes from a safe stand-off position.</p></div><div class="bottomhud" id="telemetry">SIMULATED SCENE • HUMAN OPERATOR IN CONTROL</div>
+<div class="controls"><button class="btn" id="play" type="button">❚❚ Pause</button><input id="scrub" type="range" min="0" max="75" value="0" step=".1" aria-label="Video concept timeline"><div class="time"><span id="clock">00:00</span> / 01:15</div></div></section>
+<div class="scenes"><div class="scene"><b>01 · Survey</b><small>Street, houses and rising water</small></div><div class="scene"><b>02 · Traverse</b><small>Four articulated legs + buoyant hull</small></div><div class="scene"><b>03 · Assist</b><small>Stabilized human / animal support</small></div><div class="scene"><b>04 · Handover</b><small>Responder confirms safe transfer</small></div></div>
+<div class="note"><b>Safety and evidence boundary.</b> This is a synthetic browser animation for communication and design exploration. It is not real video, a physics simulation, a validated robot, or evidence of rescue performance. The robot does not enter hazardous deep/fast water or lift a person without a separately engineered, tested rescue interface. Trained responders retain control; animal handling is shown as calm, non-coercive support.</div>
+<p class="foot">Free, self-contained HTML animation; no external libraries, API keys, paid services, or downloads required. Use the timeline to scrub through the 75-second storyboard.</p></main>
+<script>
+(()=>{const c=document.getElementById('film'),x=c.getContext('2d'),scrub=document.getElementById('scrub'),play=document.getElementById('play'),clock=document.getElementById('clock'),chapter=document.getElementById('chapter'),headline=document.getElementById('headline'),caption=document.getElementById('caption'),telemetry=document.getElementById('telemetry');let t=0,running=true,last=0;
+const scenes=[
+{a:0,b:15,n:'01 / RECONNAISSANCE',h:'A city under rising water',p:'Survey streets, homes and safe access corridors before responders enter.',m:'WATER LEVEL: RISING • ROUTE MAPPING'},
+{a:15,b:31,n:'02 / AMPHIBIOUS TRAVERSE',h:'Walk, stabilize, float',p:'Four articulated legs step over shallow debris; the buoyant chassis supports controlled movement.',m:'GAIT: SLOW • DEPTH CHECK: REQUIRED'},
+{a:31,b:48,n:'03 / HUMAN ASSISTANCE',h:'Bring help within reach',p:'The robot offers a handhold / flotation aid while a trained responder supervises transfer.',m:'HUMAN REVIEW: REQUIRED • NO AUTONOMOUS LIFT'},
+{a:48,b:62,n:'04 / ANIMAL ASSISTANCE',h:'Make space for every life',p:'A calm approach creates a safe contact point for an animal; the handler directs the handover.',m:'ANIMAL HANDLER: IN CONTROL'},
+{a:62,b:75,n:'05 / RESPONDER HANDOVER',h:'Verify the outcome',p:'Share location, route and uncertainty with the rescue team; record only confirmed outcomes.',m:'MISSION STATE: AWAITING HUMAN CONFIRMATION'}];
+function sceneAt(v){return scenes.find(s=>v>=s.a&&v<s.b)||scenes[scenes.length-1]}
+function line(x1,y1,x2,y2,col,w=2){x.strokeStyle=col;x.lineWidth=w;x.beginPath();x.moveTo(x1,y1);x.lineTo(x2,y2);x.stroke()}
+function poly(points,fill,stroke){x.beginPath();points.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.fillStyle=fill;x.fill();if(stroke){x.strokeStyle=stroke;x.lineWidth=2;x.stroke()}}
+function draw(v){let W=1280,H=720;x.clearRect(0,0,W,H);let sky=x.createLinearGradient(0,0,0,480);sky.addColorStop(0,'#071525');sky.addColorStop(.6,'#1a3c52');sky.addColorStop(1,'#31596a');x.fillStyle=sky;x.fillRect(0,0,W,H);
+// storm glow
+let g=x.createRadialGradient(880,180,20,880,180,470);g.addColorStop(0,'#64838b33');g.addColorStop(1,'#09182700');x.fillStyle=g;x.fillRect(0,0,W,500);
+// skyline
+for(let i=0;i<12;i++){let bx=i*115-18,hh=100+(i*47%190);x.fillStyle=['#122a3a','#193447','#203e4f'][i%3];x.fillRect(bx,270-hh,86,hh+170);for(let yy=285-hh;yy<290;yy+=23)for(let xx=bx+10;xx<bx+78;xx+=20){x.fillStyle=(i+Math.floor(xx+yy))%4?'#8dd9e733':'#ffd58a44';x.fillRect(xx,yy,8,11)}}
+// houses and roofline
+poly([[60,420],[170,340],[280,420]],'#455c68','#8aa4b0');x.fillStyle='#314c5b';x.fillRect(82,420,176,118);x.fillStyle='#9bc4cd';x.fillRect(110,444,36,38);x.fillRect(188,444,36,38);x.fillStyle='#101e2a';x.fillRect(151,470,32,68);
+poly([[970,420],[1080,335],[1190,420]],'#526571','#9ab1ba');x.fillStyle='#314957';x.fillRect(992,420,176,118);x.fillRect(1020,444,35,38);x.fillRect(1098,444,35,38);
+// water perspective
+let water=x.createLinearGradient(0,385,0,720);water.addColorStop(0,'#1e778c');water.addColorStop(1,'#073448');poly([[0,410],[240,438],[470,420],[730,449],[990,422],[1280,430],[1280,720],[0,720]],water,'#63d7e3');for(let i=0;i<35;i++){let yy=445+(i*23)%260,xx=((i*173+v*34)%1390)-60;line(xx,yy,xx+28+(i%5)*9,yy+((i%3)-1)*2,'#8be7ed55',1+(i%2))}
+// rain streaks
+for(let i=0;i<100;i++){let xx=(i*157+v*68)%1280,yy=(i*71+v*120)%520;line(xx,yy,xx-4,yy+13,'#b5eaff32',1)}
+// debris
+for(let i=0;i<8;i++){let xx=(i*167+v*12)%1300;poly([[xx,500+i%3*20],[xx+34,504+i%3*20],[xx+28,514+i%3*20],[xx-3,510+i%3*20]],'#594f45','#9c8c70')}
+// robot moves and bobs
+let rx=390+Math.min(v,68)*6.2,ry=438+Math.sin(v*2)*4;let legPhase=v*5; // pontoon/hull
+x.save();x.translate(rx,ry);
+poly([[-80,-25],[-60,-51],[54,-51],[83,-25],[65,5],[-65,5]],'#172a36','#9ac3d0');poly([[-65,-30],[-46,-46],[43,-46],[63,-28],[50,-17],[-51,-17]],'#4a6878','#c4f5ff');x.fillStyle='#182e3a';x.fillRect(-31,-55,62,8);x.fillStyle='#70e7ff';x.fillRect(-20,-52,40,3);
+// camera mast
+line(0,-48,0,-86,'#b4dce6',5);x.fillStyle='#102333';x.fillRect(-16,-99,32,19);x.fillStyle='#70e7ff';x.fillRect(-9,-94,18,6);x.beginPath();x.arc(0,-90,4,0,7);x.fillStyle='#b7f4ff';x.fill();
+// four articulated legs, gait animation
+[[-53,-26],[53,-26],[-49,-14],[49,-14]].forEach((p,i)=>{let ph=legPhase+i*Math.PI;let lift=Math.max(0,Math.sin(ph))*13,reach=Math.cos(ph)*9;let hip=[p[0],p[1]],knee=[p[0]+(i%2?14:-14)+reach,p[1]+25-lift*.5],foot=[knee[0]+(i%2?7:-7),43-lift];line(hip[0],hip[1],knee[0],knee[1],'#a7c9d4',9);line(hip[0],hip[1],knee[0],knee[1],'#284656',5);line(knee[0],knee[1],foot[0],foot[1],'#8eabb8',7);line(knee[0],knee[1],foot[0],foot[1],'#284656',3);x.fillStyle='#70e7ff';x.fillRect(foot[0]-8,foot[1]-2,17,5)});
+// rescue module/pontoon
+poly([[-89,-10],[-70,-19],[-65,8],[-92,7]],'#ffbf69','#ffe2a9');poly([[68,-12],[89,-20],[93,5],[70,8]],'#ffbf69','#ffe2a9');x.restore();
+// tether / rescue aid
+if(v>30&&v<63){line(rx+65,ry-13,rx+125,ry+14,'#ffcf7b',3);poly([[rx+112,ry+7],[rx+147,ry+8],[rx+154,ry+25],[rx+120,ry+27]],'#ffb95f','#fff0c6')}
+// people/animal silhouettes near right foreground
+function person(px,py,scale,coat){x.save();x.translate(px,py);x.scale(scale,scale);x.fillStyle=coat;x.beginPath();x.arc(0,-30,9,0,7);x.fill();poly([[-10,-20],[10,-20],[14,7],[-14,7]],coat);line(-5,5,-9,28,coat,6);line(5,5,10,28,coat,6);line(-8,-12,-23,2,coat,5);line(8,-12,21,-4,coat,5);x.restore()}
+if(v>27){person(890,520,1.05,'#e9a86c');if(v>45){ // dog silhouette
+x.fillStyle='#d8c5a5';x.beginPath();x.ellipse(1015,526,29,15,0,0,7);x.fill();x.beginPath();x.arc(1041,516,11,0,7);x.fill();line(1000,535,997,551,'#d8c5a5',5);line(1022,536,1025,551,'#d8c5a5',5);line(1021,513,1014,504,'#d8c5a5',4);line(987,519,975,511,'#d8c5a5',4)}}
+// scanning arcs
+if(v<31){x.strokeStyle='#70e7ff77';x.lineWidth=2;for(let r=34;r<180;r+=32){x.beginPath();x.arc(rx,ry-75,r,-1.25,.2);x.stroke()}}
+if(v>60){poly([[rx+145,ry-140],[rx+370,ry-140],[rx+370,ry-65],[rx+145,ry-65]],'#061724dd','#70e7ff');x.fillStyle='#70e7ff';x.font='bold 15px system-ui';x.fillText('RESCUE TEAM LINK',rx+160,ry-116);x.fillStyle='#e9f8ff';x.font='14px system-ui';x.fillText('Location shared • outcome pending',rx+160,ry-91)}
+// title / vignette
+let vign=x.createLinearGradient(0,0,0,250);vign.addColorStop(0,'#020a14bb');vign.addColorStop(1,'#020a1400');x.fillStyle=vign;x.fillRect(0,0,W,250);x.fillStyle='#d9f7ff';x.font='700 23px system-ui';x.fillText('PUI89  /  FLOOD RESCUE AI',38,48);x.fillStyle='#8ec6d9';x.font='14px system-ui';x.fillText('SYNTHETIC CONCEPT • HUMAN-SUPERVISED RESCUE SUPPORT',40,74);
+let s=sceneAt(v);chapter.textContent=s.n;headline.textContent=s.h;caption.textContent=s.p;telemetry.textContent=s.m;clock.textContent=String(Math.floor(v/60)).padStart(2,'0')+':'+String(Math.floor(v%60)).padStart(2,'0');scrub.value=v}
+function loop(ts){if(!last)last=ts;let dt=(ts-last)/1000;last=ts;if(running){t=Math.min(75,t+dt);if(t>=75)running=false;draw(t)}requestAnimationFrame(loop)}
+scrub.addEventListener('input',()=>{t=+scrub.value;draw(t)});play.addEventListener('click',()=>{running=!running;play.textContent=running?'❚❚ Pause':'▶ Play';if(t>=75&&running)t=0});draw(0);requestAnimationFrame(loop)})();
+</script></body></html>
