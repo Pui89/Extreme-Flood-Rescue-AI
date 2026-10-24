@@ -9,7 +9,7 @@
 - **Automated checks for the SAM 3 change:** security checks and Ruff helper review passed; the Python test workflow was still running at the last status check. Confirm its final result before treating the change as fully checked.
 - **Open review:** the shared fault-monitor contract remains a draft proposal in [PR #53](https://github.com/Pui89/Flood-Rescue-AI/pull/53); it is not merged into the default branch.
 - **Next:** confirm the Python test result; test one local image with a prompt such as “person” or “boat”; then build repeatable, clearly labelled simulation scenarios for perception, route safety, communications loss and safe-stop behaviour.
-- **Flood-depth boundary:** the interactive demo is being extended to 0–15 m simulated scenarios. These are visual scenario values, not evidence that a physical robot can operate safely at those depths. Ground-robot movement remains blocked in the demo at 5.5 m and above; real flood navigation, victim detection, waterproofing, flotation and rescue performance remain unvalidated.
+- **Flood-depth boundary:** the interactive demo explores 0–15 m simulated scenarios. These are visual scenario values, not evidence that a physical robot can operate safely at those depths. The demo has no fixed 5.5 m cutoff; its movement is illustrative only. Physical movement limits must be configured from platform-specific engineering evidence, and real flood navigation, victim detection, waterproofing, flotation and rescue performance remain unvalidated.
 
 
 ## Flood Rescue AI — Himalayan extreme-flood response concept
@@ -20,7 +20,7 @@
 
 ## Extreme-flood design target — up to 15 m simulated depth
 
-The interactive scenario slider covers **0–15 m** for extreme-flood hazard-awareness and mission-planning scenarios. This is a **simulation input, not a robot depth rating**. The demo blocks ground-robot movement at 5.5 m and above. At extreme depths, prioritise remote/aerial reconnaissance, hazard mapping, verified location relays and human-led decisions about whether a suitable craft can be used. Current speed, debris, waves, slope failure, communications and safe recovery must be modelled separately.
+The interactive scenario slider covers **0–15 m** for extreme-flood hazard-awareness and mission-planning scenarios. This is a **simulation input, not a robot depth rating**. The visual demo does not impose a fixed 5.5 m cutoff, but its movement is not a safety assessment. The software hazard gate requires explicit platform-specific limits and checks for current, slope, bank stability, debris, structures, localization, communications and sensor freshness. At extreme depths, prioritise remote/aerial reconnaissance and human-led decisions about suitable platforms.
 
 ## Optional local Hugging Face perception experiment
 
@@ -33,7 +33,7 @@ Try open-vocabulary detection on a local image with [`tools/huggingface_local_vi
 
 **Intended assistance workflow:** drone/overhead reconnaissance helps responders survey an area; the ground platform explores an accessible route; the system flags possible people or blocked paths for human review; communications or flotation/supply aids may be offered only when the situation and hardware are verified safe; trained emergency personnel make rescue and evacuation decisions. The concepts do not show or claim autonomous lifting of people.
 
-**Flood-level boundary:** the interactive demo now provides a 0–15 m *simulated scenario range for visual exploration only*. It does **not** mean the physical robot can safely operate at those depths. The demo conservatively blocks ground-robot movement at 5.5 m and above; higher values are for hazard awareness and mission planning, not physical-capability claims. A real system would need a separately engineered aerial/remote-search and suitable-craft response strategy, plus validated buoyancy, sealing, stability, current/debris resistance, sensors, communications, battery reserve, and safe recovery. At unsafe or unknown conditions, stop/hold and alert a human operator.
+**Flood-level boundary:** the interactive demo now provides a 0–15 m *simulated scenario range for visual exploration only*. It does **not** mean the physical robot can safely operate at those depths. The visual demo no longer uses a fixed 5.5 m movement cutoff. The full 0–15 m range is for scenario exploration only, not physical-capability claims; real platform limits must be explicitly configured and independently validated. A real system would need a separately engineered aerial/remote-search and suitable-craft response strategy, plus validated buoyancy, sealing, stability, current/debris resistance, sensors, communications, battery reserve, and safe recovery. At unsafe or unknown conditions, stop/hold and alert a human operator.
 
 **Evidence boundary:** “4D-style” means an interactive isometric scene changing over time, implemented with self-contained HTML/Canvas. It is not a physics-accurate digital twin, live flood map, trained victim detector, validated navigation stack, real sensor feed, or operational robot. All people and animals are synthetic scene markers. The demos use no external libraries or paid APIs and send no commands to hardware.
 

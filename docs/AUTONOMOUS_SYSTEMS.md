@@ -45,6 +45,18 @@ This test command uses Python's standard library and requires no extra package. 
 5. Review false-safe cases independently before any field trial.
 6. Keep physical actuation disabled until a separate hardware safety design is implemented and validated.
 
+## Terrain-aware flood hazard gate
+
+The separate [terrain-aware flood safety guide](TERRAIN_AWARE_FLOOD_SAFETY.md) describes the new `pui89_autonomy/flood_hazard.py` module and its tests. It checks supplied water depth/current, terrain slope, bank/debris/structure status, localization, communications, and sensor freshness. Missing/stale inputs fail safe; unstable routes request replanning; conflicting inputs request human review. The ground robot remains in safe hold at 5.5 m and above.
+
+Run the focused tests with:
+
+```bat
+python -m unittest discover -s tests -p "test_flood_hazard.py" -v
+```
+
+The gate only evaluates supplied values. It does not acquire sensors, infer hazards from images, save persistent audit logs, or command hardware. A simulation pass is not physical safety approval.
+
 ## Evidence status
 
 This is a rule-based autonomy-supervision component with unit tests. It is not an autonomous robot, a trained perception model, or evidence of field-ready operation. Passing unit tests would verify these software rules only.
