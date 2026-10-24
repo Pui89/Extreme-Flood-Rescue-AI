@@ -52,3 +52,40 @@ Report metrics per task:
 ## Project boundary
 
 This source plan does not claim that the robot can operate at any real-world flood depth. The project's 0–15 m slider is a simulation scenario range; it is not a physical rating. Ground-robot motion must remain blocked at the current 5.5 m safety boundary and above. Any amphibious platform, boat or drone capability requires its own engineering design and validation.
+
+
+## Best-robot training priorities: coordinated ground + boat + drone system
+
+The best design is a **coordinated multi-platform rescue system**, not one robot expected to cross every flood depth. Each platform needs a separate perception and safety envelope.
+
+### Priority 1 — drone / aerial perception (start here)
+
+Use [FloodNet](https://github.com/BinaLab/FloodNet-Supervised_v1.0) for its labelled aerial classes and [LADI](https://registry.opendata.aws/ladi/) for low-altitude disaster-scene diversity. Build a small, licence-approved subset first. Train/benchmark water, flooded road, building, vehicle, tree and visible-person/animal classes only when appropriate labels actually exist. Do not infer people or animals labels where the source does not provide them.
+
+### Priority 2 — ground robot perception
+
+Create a separate ground-camera dataset from openly licensed, item-level verified images of flooded streets, debris, road edges, people, animals and obstacles. Search [OpenAerialMap](https://imagery.hotosm.org/) for suitable low-angle/oblique views, but only accept images whose item metadata supports the intended use. Satellite images and aerial views must not be presented as ground-camera training examples. If the first licensed source set lacks ground-view images, record that gap instead of silently filling it with unlicensed images.
+
+### Priority 3 — boat perception and navigation
+
+Use separate water-level camera scenes for floating debris, submerged/hidden road edges, people/animals in water, banks, current indicators and safe landing points. Public flood imagery may support visible-scene perception, but it rarely supplies reliable current velocity, depth, boat stability or payload labels. Test navigation and stability in simulation and controlled trials, not by claiming image training proves safe operation.
+
+### Priority 4 — Nepal / Himalayan extreme-event holdout
+
+The [Nepal Flood 2026 building inventory](https://huggingface.co/datasets/hotosm/nepal_flood_2026) is listed under CC BY 4.0, but it is geospatial building-footprint/density data—not a labelled flood-photo dataset. Use it for map context and geospatial evaluation, with attribution, not for RGB object-detection training.
+
+Some imagery released for the 2026 Nepal flood by Vantor was made available under **CC BY-NC 4.0** according to HOT. That is non-commercial: exclude it from the commercial/product training corpus unless a separate commercial licence is obtained. It may be considered only for a clearly separate non-commercial experiment after reviewing exact image terms. See [HOT's Nepal flood imagery note](https://www.hotosm.org/en/news/mapping-the-nepal-floods/).
+
+### Depth and flow labels are a separate supervised task
+
+For water depth, consider [SERVIR-HKH's Flood Inundation Mapping Tool](https://servir.icimod.org/science-applications/flood-inundation-mapping-tool/), which describes satellite flood extent and depth estimates at approximately 30 m horizontal resolution. Confirm data access and reuse rights for each product. This is coarse geospatial context, not robot-scale ground truth, and it must not be used as a precise depth label for individual camera pixels or a robot's exact location without validation.
+
+### Build sequence
+
+1. Review licences and select a small set; no paid services and no automatic large downloads.
+2. Create a manifest with source URL, licence, event/location/date, modality, labels, file hash and attribution.
+3. Start with aerial segmentation using FloodNet's official splits, then test on separate events where licensed labelled data exists.
+4. Add ground-view and boat-view datasets only when lawful real imagery and defensible labels are available.
+5. Keep Nepal/Himalayan events as location/event holdouts where enough valid labelled data exists.
+6. Measure per-class precision/recall and segmentation IoU. Measure depth error only against trustworthy numeric depth labels.
+7. Validate each platform independently in simulation and controlled tests. The 0–15 m scenario range remains a simulation range, not a real robot rating; the ground robot remains in safe hold at 5.5 m and above.
