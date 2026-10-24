@@ -10,8 +10,6 @@ import math
 from typing import Optional
 
 
-GROUND_ROBOT_HARD_HOLD_DEPTH_M = 5.5
-
 
 class HazardState(str, Enum):
     PROCEED_SIMULATION = "proceed_simulation"
@@ -110,13 +108,9 @@ def assess_flood_hazard(
         if not _valid_nonnegative(inputs.current_speed_mps):
             hard_holds.append("current speed is missing or invalid")
         if inputs.water_depth_m is not None and _valid_nonnegative(inputs.water_depth_m):
-            if inputs.platform == "ground" and inputs.water_depth_m >= GROUND_ROBOT_HARD_HOLD_DEPTH_M:
-                hard_holds.append("ground robot is at or above the 5.5 m safe-hold boundary")
-            if (
-                inputs.platform_depth_limit_m is not None
-                and _valid_nonnegative(inputs.platform_depth_limit_m)
-                and inputs.water_depth_m > inputs.platform_depth_limit_m
-            ):
+            if inputs.platform_depth_limit_m is None:
+                hard_holds.append("platform depth limit is not configured")
+            elif inputs.water_depth_m > inputs.platform_depth_limit_m:
                 hard_holds.append("water depth exceeds the configured platform limit")
         if inputs.current_speed_mps is not None and _valid_nonnegative(inputs.current_speed_mps):
             if (
