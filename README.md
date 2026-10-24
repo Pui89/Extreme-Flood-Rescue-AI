@@ -6,6 +6,8 @@
 
 *Original project concept illustration. It depicts a proposed design; it is not a photograph, a built robot, or evidence of flood-rated performance.*
 
+*Related design reference: [Flood Rescue robot concept (SVG)](docs/images/flood-rescue-robot-concept-2026.svg). This is also a concept illustration, not evidence of a validated physical robot.*
+
 ## Optional local Hugging Face perception experiment
 
 Try open-vocabulary detection on a local image with [`tools/huggingface_local_vision_demo.py`](tools/huggingface_local_vision_demo.py). Read [`docs/HUGGINGFACE_LOCAL_VISION.md`](docs/HUGGINGFACE_LOCAL_VISION.md) first. This is an exploratory perception demo—not a validated flood-rescue capability or a safe navigation system.
