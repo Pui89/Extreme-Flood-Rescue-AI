@@ -1056,3 +1056,7 @@ This is a staged engineering roadmap, not a claim that the system can currently 
 - Model-agnostic input/output validation: [llm_interfaces.py](pui89_autonomy/llm_interfaces.py)
 - The scaffold uses only the Python standard library. It does not download models, call paid APIs, operate a simulator, or control a vehicle.
 
+## Development roadmap
+
+Track the five shared free-first development tasks in [docs/DEVELOPMENT_ROADMAP.md](docs/DEVELOPMENT_ROADMAP.md). Flood priority: define reproducible simulation scenarios and metrics for navigation, multi-robot task allocation, communication loss and localization failure. Simulation scenarios do not establish real-world flood-depth or rescue capability.
+
