@@ -1,5 +1,5 @@
 import unittest
-from scripts.free_first_project_tools import simulate_search_scenario
+from scripts.free_first_project_tools import simulate_search_scenario, binary_classification_metrics
 
 class FreeFirstTests(unittest.TestCase):
     def test_deterministic_coverage_avoids_obstacles(self):
@@ -20,5 +20,26 @@ class FreeFirstTests(unittest.TestCase):
 
     def test_invalid_grid_rejected(self):
         with self.assertRaises(ValueError): simulate_search_scenario(0,2,[],set())
+
+
+    def test_binary_metrics_match_hand_calculation(self):
+        result = binary_classification_metrics([1, 1, 0, 0], [1, 0, 1, 0])
+        self.assertEqual((result["tp"], result["tn"], result["fp"], result["fn"]), (1, 1, 1, 1))
+        self.assertEqual(result["accuracy"], 0.5)
+        self.assertEqual(result["precision"], 0.5)
+        self.assertEqual(result["recall"], 0.5)
+        self.assertEqual(result["f1"], 0.5)
+
+    def test_binary_metrics_reject_empty_or_mismatched_inputs(self):
+        with self.assertRaises(ValueError):
+            binary_classification_metrics([], [])
+        with self.assertRaises(ValueError):
+            binary_classification_metrics([1], [1, 0])
+
+    def test_binary_metrics_handle_zero_division(self):
+        result = binary_classification_metrics([0, 0], [0, 0])
+        self.assertEqual(result["precision"], 0.0)
+        self.assertEqual(result["recall"], 0.0)
+        self.assertEqual(result["f1"], 0.0)
 
 if __name__ == "__main__": unittest.main()
