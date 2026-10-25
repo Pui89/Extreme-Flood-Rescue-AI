@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "project": "Extreme Flood Rescue AI",
+  "policy": "Optional only. This registry does not request installation or download. The local probe performs no network access.",
+  "resources": [
+    {
+      "id": "opencv",
+      "name": "OpenCV Python",
+      "check": "python_module",
+      "module": "cv2",
+      "distributions": [
+        "opencv-python",
+        "opencv-contrib-python",
+        "opencv-python-headless"
+      ],
+      "priority": "high",
+      "purpose": "Image decoding, frame comparisons and local image-quality QA.",
+      "license_note": "OpenCV 4.5.0+ is Apache-2.0; verify release and bundled dependencies.",
+      "official_url": "https://opencv.org/license/",
+      "limitation": "Image-quality metrics do not prove person detection or rescue safety."
+    },
+    {
+      "id": "open3d",
+      "name": "Open3D",
+      "check": "python_module",
+      "module": "open3d",
+      "distributions": [
+        "open3d"
+      ],
+      "priority": "high",
+      "purpose": "Depth-image and point-cloud visualization/geometry when compatible data exist.",
+      "license_note": "MIT; review exact release/dependencies.",
+      "official_url": "https://www.open3d.org/",
+      "limitation": "Does not model water physics or infer calibrated water depth by itself."
+    },
+    {
+      "id": "cvat-community",
+      "name": "CVAT Community",
+      "check": "manual",
+      "priority": "medium",
+      "purpose": "Optional self-hosted annotation and review of licensed images/video.",
+      "license_note": "Community core MIT; review FFmpeg and third-party asset/dependency licences.",
+      "official_url": "https://github.com/cvat-ai/cvat",
+      "limitation": "Manual status only; the probe does not determine whether a CVAT service is installed or running."
+    },
+    {
+      "id": "openvino",
+      "name": "OpenVINO",
+      "check": "python_module",
+      "module": "openvino",
+      "distributions": [
+        "openvino"
+      ],
+      "priority": "future",
+      "purpose": "Optional CPU-inference comparison after baseline timing.",
+      "license_note": "Apache-2.0 toolkit; model weights have separate terms.",
+      "official_url": "https://github.com/openvinotoolkit/openvino",
+      "limitation": "A performance gain is not assumed; benchmark on target hardware."
+    },
+    {
+      "id": "tesseract",
+      "name": "Tesseract OCR engine",
+      "check": "command",
+      "command": "tesseract",
+      "priority": "low",
+      "purpose": "Only for a future task that needs visible sign/text extraction.",
+      "license_note": "Apache-2.0 engine; review language data/package details.",
+      "official_url": "https://tesseract-ocr.github.io/tessdoc/",
+      "limitation": "Does not detect people or determine water depth."
+    }
+  ]
+}
