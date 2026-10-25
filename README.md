@@ -3,6 +3,7 @@
 ## Free-first offline engineering tools
 
 - Free deterministic multi-agent grid scenario with communication-loss safe-hold tests: `scripts/free_first_project_tools.py`; tests: `tests/test_free_first_project_tools.py`. This is a toy scenario, not flood physics or validated rescue navigation.
+- Dependency-free binary metrics are available for future perception benchmarks. Grid coverage remains a toy simulation metric, not a real rescue-performance measure.
 
 ## Frontier AI technology and free-first upgrade plan
 
