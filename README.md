@@ -1047,3 +1047,12 @@ This is a staged engineering roadmap, not a claim that the system can currently 
 - Keep each capability marked **implemented**, **simulation-only**, **not yet tested**, or **future work**.
 
 **Release rule:** no feature is described as operationally capable until a reproducible test demonstrates it. Simulation success does not establish real-world rescue safety or a 15 m operating capability.
+
+## Vision-language and action-planning architecture
+
+**Planned next layer — not yet a connected model:** a vision-language model (VLM) may summarize simulated/recorded scenes; an action-planning LLM may propose structured search steps. Navigation, hazard checks, human oversight and the existing autonomy supervisor remain independent.
+
+- Design and safety contract: [Physical AI Stack](docs/PHYSICAL_AI_STACK.md)
+- Model-agnostic input/output validation: [llm_interfaces.py](pui89_autonomy/llm_interfaces.py)
+- The scaffold uses only the Python standard library. It does not download models, call paid APIs, operate a simulator, or control a vehicle.
+
