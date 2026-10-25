@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "project_id": "extreme-flood-rescue-ai",
+  "confidence_threshold": 0.65,
+  "action_if_ready": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY",
+  "project_limit": "0–15 m are simulated scenario parameters only; no physical depth, buoyancy, rescue or navigation capability is implied.",
+  "scenarios": [
+    {
+      "id": "nominal_surface_recon",
+      "seed": 201,
+      "steps": [
+        {
+          "state": {
+            "sensors_ok": true,
+            "comms_ok": true,
+            "target_visible": true,
+            "target_valid": true,
+            "confidence": 0.9,
+            "operator_approved": true,
+            "water_depth_m": 1,
+            "simulation_only": true
+          },
+          "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
+        }
+      ]
+    },
+    {
+      "id": "deep_scenario_simulated_only",
+      "seed": 202,
+      "steps": [
+        {
+          "state": {
+            "sensors_ok": true,
+            "comms_ok": true,
+            "target_visible": true,
+            "confidence": 0.88,
+            "operator_approved": true,
+            "water_depth_m": 15,
+            "simulation_only": true
+          },
+          "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
+        }
+      ]
+    },
+    {
+      "id": "person_not_located",
+      "seed": 203,
+      "steps": [
+        {
+          "state": {
+            "target_visible": false,
+            "confidence": 0.85,
+            "water_depth_m": 3,
+            "simulation_only": true
+          },
+          "expected_action": "SEARCH"
+        }
+      ]
+    },
+    {
+      "id": "sensor_fault",
+      "seed": 204,
+      "steps": [
+        {
+          "state": {
+            "sensors_ok": false,
+            "water_depth_m": 6,
+            "simulation_only": true
+          },
+          "expected_action": "SAFE_HOLD"
+        }
+      ]
+    },
+    {
+      "id": "communications_loss",
+      "seed": 205,
+      "steps": [
+        {
+          "state": {
+            "comms_ok": false,
+            "water_depth_m": 6,
+            "simulation_only": true
+          },
+          "expected_action": "SAFE_HOLD"
+        }
+      ]
+    },
+    {
+      "id": "emergency_stop",
+      "seed": 206,
+      "steps": [
+        {
+          "state": {
+            "emergency_stop": true,
+            "water_depth_m": 15,
+            "simulation_only": true
+          },
+          "expected_action": "SAFE_HOLD"
+        }
+      ]
+    }
+  ]
+}
