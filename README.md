@@ -33,9 +33,11 @@ Current gaps, recent technology directions, no-recurring-cost adoption gates, an
 - **Current evidence:** software decision support, concept visuals and simulations. No validated physical 15 m rescue capability is claimed.
 - **Cost approach:** free-first and local-first where feasible; no paid API or cloud GPU is required by the design plan.
 
-## Current verified status — 25 October 2026
+## Current verified status — 26 October 2026
 
 **Stage:** decision-support software, concept/simulation experiences and regression testing. This repository does not demonstrate a validated physical flood-rescue robot.
+
+- **Synthetic evaluation — 26 October 2026:** the labelled synthetic suite reports 7/7 scenarios passed, and adversarial workflow regression tests are merged. These are synthetic software checks only; they do not validate flood physics, real navigation, rescue outcomes, or physical operation at 15 m.
 
 ![Flood Rescue robot concept — illustrative design, not a validated physical robot](docs/images/flood-rescue-robot-concept-2026.svg)
 
