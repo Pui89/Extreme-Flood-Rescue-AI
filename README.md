@@ -1023,3 +1023,27 @@ Use a small, reproducible toolchain for the simulation-first rescue-support prot
 - **Agent workflow:** retain the current rule-based decision-support approach; add LangGraph or another agent framework only for a demonstrated multi-step need.
 
 **Cost and safety guardrails:** no paid API, cloud GPU, subscription, or automatic hardware control is required by this plan. Ask before introducing costs. AI output remains advisory; simulation results do not prove waterproofing, safe navigation, victim detection, or real-world rescue capability. Physical deployment requires independent safety systems and staged validation.
+
+
+## PUI89 Extreme Flood Rescue — evidence-first upgrade roadmap
+
+This is a staged engineering roadmap, not a claim that the system can currently rescue people or animals at any specified water depth. **0–15 m is a simulation and scenario-design range only** until each platform, sensor, communication link, and rescue operation is independently validated.
+
+### Upgrade gates
+
+1. **Reproducible baseline:** pin the Python environment where practical, document hardware/software assumptions, and make unit tests run without cloud services or paid APIs.
+2. **Scenario engine:** model water depth, current, debris, visibility, communications loss, battery limits, and platform-specific operating envelopes. Keep simulated values clearly labelled as simulated.
+3. **Perception evaluation:** use rights-cleared, consent-aware data and leakage-safe splits; report precision, recall, false alarms, missed detections, and performance by visibility/depth scenario. Never invent benchmark results.
+4. **Navigation and coordination:** test route planning and ground/boat/drone coordination in simulation before any field deployment. Include geofences, lost-link behavior, return/stop states, and operator override.
+5. **Human/animal rescue safety:** separate detection from rescue decisions. Require operator confirmation and platform-specific safety checks before approach, contact, lifting, or carrying.
+6. **Independent validation:** publish scenario definitions, test commands, failures, limitations, and measured results. Physical-water testing requires qualified supervision, risk assessment, and appropriate rescue support.
+
+### Free-first implementation order
+
+- Start with deterministic scenario and safety-state tests that run locally on a CPU.
+- Add small, synthetic test fixtures before considering large datasets or model weights.
+- Use local simulation where feasible; do not require a paid API, hosted inference, cloud GPU, subscription, or automatic model download.
+- Review licences, privacy, and data provenance before adding datasets or dependencies.
+- Keep each capability marked **implemented**, **simulation-only**, **not yet tested**, or **future work**.
+
+**Release rule:** no feature is described as operationally capable until a reproducible test demonstrates it. Simulation success does not establish real-world rescue safety or a 15 m operating capability.
