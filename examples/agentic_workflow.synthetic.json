@@ -1,0 +1,10 @@
+{
+  "scenario_id": "SYNTHETIC-CHECK-ONLY-FLOOD-001",
+  "sensor_ok": true,
+  "localization_ok": true,
+  "water_depth_m": 2,
+  "route_clear": false,
+  "person_detected": true,
+  "detection_confidence": 0.91,
+  "human_approved": false
+}
