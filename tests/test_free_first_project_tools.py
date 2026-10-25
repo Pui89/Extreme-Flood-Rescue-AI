@@ -18,6 +18,10 @@ class FreeFirstTests(unittest.TestCase):
         result=simulate_search_scenario(2,2,[{"cell":("bad",1)},{"cell":(0,0)}],set())
         self.assertEqual(result["accepted_agents"],1)
 
+    def test_non_integer_grid_dimensions_rejected(self):
+        with self.assertRaises(ValueError):
+            simulate_search_scenario(2.5, 2, [], set())
+
     def test_invalid_grid_rejected(self):
         with self.assertRaises(ValueError): simulate_search_scenario(0,2,[],set())
 
