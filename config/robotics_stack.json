@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "project_id": "extreme-flood-rescue-ai",
+  "stack": {
+    "ros2": {
+      "distribution": "jazzy",
+      "status": "source_scaffold_only",
+      "installed": false
+    },
+    "gazebo": {
+      "distribution": "harmonic",
+      "status": "dry_terrain_starter_world_only",
+      "installed": false,
+      "world": "simulation/gazebo/pui89_world.sdf",
+      "water_physics": false
+    },
+    "nav2": {
+      "status": "planned_not_configured",
+      "target": "appropriate_ground_or_amphibious_rover"
+    },
+    "ardupilot_sitl": {
+      "status": "candidate_not_installed",
+      "license": "GPL-3.0-or-later"
+    },
+    "px4_sitl": {
+      "status": "alternative_not_installed",
+      "license": "BSD-3-Clause",
+      "choose_only_one_autopilot_first": true
+    },
+    "smolvlm": {
+      "model_id": "HuggingFaceTB/SmolVLM-256M-Instruct",
+      "license": "Apache-2.0 as listed by publisher",
+      "main_weight_file_bytes": 513000000,
+      "full_repository_size_bytes_approx": 3540000000,
+      "status": "offline_smoke_test_tool_only",
+      "downloaded": false
+    }
+  },
+  "safety": {
+    "physical_actuation": false,
+    "real_water_physics": false,
+    "water_depth_m_is_scenario_metadata_only": true,
+    "vlm_is_not_a_rescue_authority": true
+  }
+}
