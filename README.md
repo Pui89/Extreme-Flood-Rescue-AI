@@ -2,6 +2,8 @@
 
 ## Free-first offline engineering tools
 
+- **Phased autonomy lab:** [test and simulation guide](docs/PUI89_AUTONOMY_LAB.md); runner: `tools/pui89_autonomy_lab.py`; project scenarios: `simulation/scenarios.json`. Includes logged world-state snapshots, safe-hold/UNKNOWN mock VLA gates, reproducible JSON/CSV reports and an offline model-resource preflight. No model is downloaded or installed automatically; no hardware is controlled.
+
 - Free deterministic multi-agent grid scenario with communication-loss safe-hold tests: `scripts/free_first_project_tools.py`; tests: `tests/test_free_first_project_tools.py`. This is a toy scenario, not flood physics or validated rescue navigation.
 - Dependency-free binary metrics are available for future perception benchmarks. Grid coverage remains a toy simulation metric, not a real rescue-performance measure.
 
