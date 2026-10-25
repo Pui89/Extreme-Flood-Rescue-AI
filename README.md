@@ -1082,3 +1082,12 @@ This is a staged engineering roadmap, not a claim that the system can currently 
 
 Track the five shared free-first development tasks in [docs/DEVELOPMENT_ROADMAP.md](docs/DEVELOPMENT_ROADMAP.md). Flood priority: define reproducible simulation scenarios and metrics for navigation, multi-robot task allocation, communication loss and localization failure. Simulation scenarios do not establish real-world flood-depth or rescue capability.
 
+## Engineering update — 26 October 2026
+
+**Current gate: reproducible simulation evidence before rescue-performance claims.** The software safety gate and automated tests are useful engineering components, but they are not a certified safety controller and do not prove field capability.
+
+- Capture the documented deterministic end-to-end demo output as an artifact, clearly labelled **synthetic input / software demonstration**.
+- Build repeatable scenario sets for water depth, current, debris, visibility, communications loss, localization failure, battery limits and human/animal detection. Record which scenarios are simulated, tested, or still **NOT RUN**.
+- Report navigation/task completion, detection errors, localization error, latency, resource use and safe-stop behavior only from reproducible runs with the commit, configuration and hardware recorded.
+- Flood depths up to 15 m may be explored as a simulation/design target; they are not evidence that a robot can operate or rescue people at that depth. Do not claim real-world amphibious mobility or successful evacuation without physical validation.
+- Free-first execution: prioritize existing Python tests and local simulation; no paid APIs, cloud GPU or automatic model downloads.
