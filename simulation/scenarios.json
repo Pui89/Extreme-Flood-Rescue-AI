@@ -98,6 +98,37 @@
           "expected_action": "SAFE_HOLD"
         }
       ]
+    },
+    {
+      "id": "communications_fault_and_recovery",
+      "seed": 207,
+      "steps": [
+        {
+          "state": {
+            "sensors_ok": true,
+            "sensor_data_fresh": true,
+            "comms_ok": true,
+            "target_visible": true,
+            "confidence": 0.9,
+            "operator_approved": true,
+            "water_depth_m": 2,
+            "simulation_only": true
+          },
+          "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
+        },
+        {
+          "state": {
+            "comms_ok": false
+          },
+          "expected_action": "SAFE_HOLD"
+        },
+        {
+          "state": {
+            "comms_ok": true
+          },
+          "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
+        }
+      ]
     }
   ]
 }
