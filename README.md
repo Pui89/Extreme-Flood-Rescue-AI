@@ -10,6 +10,7 @@
 - **Phased autonomy lab:** [test and simulation guide](docs/PUI89_AUTONOMY_LAB.md); runner: `tools/pui89_autonomy_lab.py`; project scenarios: `simulation/scenarios.json`. Includes logged world-state snapshots, safe-hold/UNKNOWN mock VLA gates, reproducible JSON/CSV reports and an offline model-resource preflight. No model is downloaded or installed automatically; no hardware is controlled.
 
 - Free deterministic multi-agent grid scenario with communication-loss safe-hold tests: `scripts/free_first_project_tools.py`; tests: `tests/test_free_first_project_tools.py`. This is a toy scenario, not flood physics or validated rescue navigation.
+- **Fail-closed platform-envelope scenario gate:** `scripts/platform_envelope_gate.py`; tests: `python -m unittest discover -s tests -p "test_platform_envelope_gate.py" -v`; [contract, limits and boundaries](docs/SIMULATION_PLATFORM_ENVELOPE_GATE.md). Missing/invalid inputs, stale sensors, communications loss, unreviewed limits or depth/current limit violations produce `SAFE_HOLD`. A pass is simulation-only and does not authorize physical operation.
 - Dependency-free binary metrics are available for future perception benchmarks. Grid coverage remains a toy simulation metric, not a real rescue-performance measure.
 
 - Shared world-state tracker: `pui89_autonomy/world_state.py` tracks time-stamped observations, hazards, stale data, low confidence and conflicting labels; uncertain tracks remain unknown.
