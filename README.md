@@ -102,6 +102,20 @@ Try open-vocabulary detection on a local image with [`tools/huggingface_local_vi
 
 
 
+## Project at a glance
+
+| Topic | Current position |
+|---|---|
+| Project type | AI-assisted flood reconnaissance and rescue robotics research prototype |
+| Available software | Local decision-support logic, regression tests, dataset/validation tooling, and documented demo/simulation workflows |
+| Robot architecture | Ground robot, boat, and drone coordination is a proposed development direction; complete physical deployment is not demonstrated |
+| AI and rescue performance | No representative held-out benchmark currently establishes real-world victim detection, flood mapping, or rescue success |
+| Safety boundary | Software checks and simulation are not proof of field safety; no autonomous real-world rescue readiness is claimed |
+| Development approach | Simulation-first, local-first, and free/open-source where practical |
+| Immediate focus | Freeze versioned scenarios, measure route safety and task outcomes, inject sensor/communication faults, and record recovery behavior |
+
+**Explore:** [Complete-system blueprint](docs/COMPLETE_SYSTEM_BLUEPRINT.md) · [Validation matrix](docs/VALIDATION_MATRIX.md) · [Local simulation quickstart](docs/LOCAL_SIMULATION_QUICKSTART.md) · [Automated tests](https://github.com/Pui89/Flood-Rescue-AI/actions)
+
 ## Local fault-monitoring software (initial implementation)
 
 A small, dependency-light Python module accepts explicit fault reports, suggests conservative responses, and keeps a bounded in-memory event log. It includes automated unit tests and a GitHub Actions test workflow. It is not an antivirus, intrusion detector, gunshot detector, or physical safety controller; hardware shutdown, persistent audit storage, alerts, and real-world threat detection require separate implementations and validation.
@@ -558,7 +572,7 @@ See the full architecture and mission flow in [docs/PIPELINE_OVERVIEW.md](docs/P
 This project is being developed on three parallel tracks:
 
 - **Real-world rescue robotics:** rugged mobility, multimodal sensing, GNSS-denied navigation, rescue payloads, degraded-mode operation and deterministic safety.
-- **PhD research:** a proposed **Trustworthy 4D Rescue World Model (T4D-RWM)** connecting multimodal perception, temporal prediction, uncertainty/OOD, active perception and risk-aware action. See [PhD research program](docs/PHd_RESEARCH_PROGRAM.md).
+- **World-model research direction:** a proposed **Trustworthy 4D Rescue World Model (T4D-RWM)** connecting multimodal perception, temporal prediction, uncertainty/OOD, active perception and risk-aware action. This remains a development direction, not a validated capability; see the [3D/4D world model implementation](flood_robot/world_model.py) and [robustness benchmark](docs/ROBUSTNESS_BENCHMARK.md).
 
 See also:
 - [Research dataset specification](docs/RESEARCH_DATASET_SPEC.md)
