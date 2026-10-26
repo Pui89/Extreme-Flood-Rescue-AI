@@ -1,5 +1,11 @@
 # Extreme Flood Rescue AI
 
+## Real-world flood-rescue reference photograph
+
+![FEMA rescue team in a boat operating in flooded streets in Kingfisher, Oklahoma](https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/FEMA_-_32076_-_A_water_rescue_team_in_a_boat_searching_for_people_in_Oklahoma.jpg/960px-FEMA_-_32076_-_A_water_rescue_team_in_a_boat_searching_for_people_in_Oklahoma.jpg)
+
+*Real flood-response photograph: Marvin Nauman/FEMA, Kingfisher, Oklahoma, 19 August 2007. [Source and public-domain information](https://commons.wikimedia.org/wiki/File:FEMA_-_32076_-_A_water_rescue_team_in_a_boat_searching_for_people_in_Oklahoma.jpg). Shown as real-world emergency-response context only; it is not a photograph of the Pui89 robot and does not validate autonomous rescue, passenger-carrying capability, or operation at any specified water depth.*
+
 ## Free-first offline engineering tools
 
 - **Free robotics stack selection:** [open-source systems, licence notes and adoption gates](docs/FREE_ROBOTICS_STACK_ADOPTION.md). These are recommendations only; no robotics packages or model weights are installed or downloaded by this PR.
