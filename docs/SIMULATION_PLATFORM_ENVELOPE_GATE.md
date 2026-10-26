@@ -11,7 +11,7 @@ It does **not** model fluid dynamics, establish a real platform's safe operating
 From the repository root, with Python installed:
 
 ```powershell
-python -m unittest tests.test_platform_envelope_gate -v
+python -m unittest discover -s tests -p "test_platform_envelope_gate.py" -v
 ```
 
 No model, package download, network connection, paid API, or GPU is required.
