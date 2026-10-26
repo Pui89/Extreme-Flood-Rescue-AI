@@ -1,5 +1,9 @@
 # Extreme Flood Rescue AI
 
+## One-command local verification
+
+Run `python tools/pui89_master_verify.py` for a free, standard-library-only Python syntax scan and inventory of this project's key verification tools. Add `--report verification-report.json` to save a JSON report. Use `--pytest` only when you want to run the full installed test suite; it installs nothing. The helper does not download models, call hosted APIs, change datasets, or control hardware. Tool presence is not proof that a gate passed, and software checks do not establish real-world performance.
+
 ## Real-world flood-rescue reference photograph
 
 ![FEMA rescue team in a boat operating in flooded streets in Kingfisher, Oklahoma](https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/FEMA_-_32076_-_A_water_rescue_team_in_a_boat_searching_for_people_in_Oklahoma.jpg/960px-FEMA_-_32076_-_A_water_rescue_team_in_a_boat_searching_for_people_in_Oklahoma.jpg)
