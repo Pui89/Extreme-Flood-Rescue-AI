@@ -4,6 +4,19 @@
 
 Run `python tools/pui89_master_verify.py` for a free, standard-library-only Python syntax scan and inventory of this project's key verification tools. Add `--report verification-report.json` to save a JSON report. Use `--pytest` only when you want to run the full installed test suite; it installs nothing. The helper does not download models, call hosted APIs, change datasets, or control hardware. Tool presence is not proof that a gate passed, and software checks do not establish real-world performance.
 
+## Free-first build policy and next upgrade
+
+**Default rule: prove the workflow with free local tools before adding dependencies.** No paid API, cloud GPU, hosted inference, or automatic model/data download is required for the current workflow.
+
+- **Gate 1 — deterministic baseline:** run `python tools/pui89_master_verify.py`, the existing standard-library tests and synthetic evaluation first. Label synthetic results clearly; they are not flood-physics or rescue-performance evidence.
+- **Gate 2 — simulate before integrating:** use the existing scenario and safety-gate tools before considering ROS 2, Gazebo, Nav2, Open3D or autopilot SITL installation. The current starter world does not validate water physics, currents, buoyancy or real navigation.
+- **Gate 3 — hardware fit and licence:** before optional installs or model weights, check licence, download size, RAM/VRAM/disk requirements, offline availability and maintenance burden. Do not install a large simulator/model automatically.
+- **Gate 4 — measurable evidence:** report scenario count, failures, decision latency, safety-gate outcomes and exact command/commit. Keep platform depth, passenger capacity and rescue capability unclaimed until independently validated for the actual hardware.
+- **Cost control:** no subscription or metered service by default; ask before any paid or recurring-cost choice.
+
+**Next action:** expand deterministic fault-injection scenarios for stale/conflicting sensors, communication loss, unknown water/current limits and multi-platform coordination. Keep every pass labelled **simulation-only** until real-world evidence exists.
+
+
 ## Real-world flood-rescue reference photograph
 
 ![FEMA rescue team in a boat operating in flooded streets in Kingfisher, Oklahoma](https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/FEMA_-_32076_-_A_water_rescue_team_in_a_boat_searching_for_people_in_Oklahoma.jpg/960px-FEMA_-_32076_-_A_water_rescue_team_in_a_boat_searching_for_people_in_Oklahoma.jpg)
