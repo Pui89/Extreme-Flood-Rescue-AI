@@ -28,6 +28,24 @@ class PlatformEnvelopeGateTests(unittest.TestCase):
         self.assertEqual(result["decision"], "SIMULATION_ONLY_GATE_PASS")
         self.assertIn("not a physical safety approval", result["warning"])
 
+    def test_exact_depth_and_current_limits_are_inclusive(self):
+        scenario = {**BASE_SCENARIO, "depth_m": 1.5, "current_mps": 0.5}
+        result = evaluate_platform_envelope(scenario, BASE_ENVELOPE)
+        self.assertEqual(result["decision"], "SIMULATION_ONLY_GATE_PASS")
+        self.assertEqual(result["reason_codes"], [])
+
+    def test_just_over_each_limit_fails_closed(self):
+        for key, value, reason in (
+            ("depth_m", 1.500001, "DEPTH_LIMIT_EXCEEDED"),
+            ("current_mps", 0.500001, "CURRENT_LIMIT_EXCEEDED"),
+        ):
+            with self.subTest(key=key):
+                result = evaluate_platform_envelope(
+                    {**BASE_SCENARIO, key: value}, BASE_ENVELOPE
+                )
+                self.assertEqual(result["decision"], "SAFE_HOLD")
+                self.assertIn(reason, result["reason_codes"])
+
     def test_missing_platform_limit_fails_closed(self):
         envelope = {key: value for key, value in BASE_ENVELOPE.items() if key != "max_depth_m"}
         result = evaluate_platform_envelope(BASE_SCENARIO, envelope)
@@ -62,6 +80,12 @@ class PlatformEnvelopeGateTests(unittest.TestCase):
                 result = evaluate_platform_envelope(scenario, BASE_ENVELOPE)
                 self.assertEqual(result["decision"], "SAFE_HOLD")
                 self.assertIn(reason, result["reason_codes"])
+
+    def test_unhealthy_safety_monitor_fails_closed(self):
+        scenario = {**BASE_SCENARIO, "safety_monitor_healthy": False}
+        result = evaluate_platform_envelope(scenario, BASE_ENVELOPE)
+        self.assertEqual(result["decision"], "SAFE_HOLD")
+        self.assertIn("SAFETY_MONITOR_UNHEALTHY", result["reason_codes"])
 
     def test_emergency_stop_and_missing_recovery_path_fail_closed(self):
         for key, value, reason in (
