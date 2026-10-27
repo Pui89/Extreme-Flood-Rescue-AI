@@ -31,8 +31,6 @@ class WorldStateTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             t.update({"object_id":"x","label":"A","timestamp":float("nan"),"confidence":0.9,"source":"s"})
 
-if __name__ == "__main__": unittest.main()
-
     def test_confidence_must_be_finite_and_not_boolean(self):
         tracker = WorldStateTracker()
         for confidence in (True, -0.01, 1.01, float("nan"), float("inf")):
@@ -66,3 +64,6 @@ if __name__ == "__main__": unittest.main()
         self.assertEqual([track["object_id"] for track in snapshot["tracks"]], ["a", "z"])
         self.assertEqual(snapshot["stale_ids"], [])
         self.assertEqual(snapshot["usable_track_count"], 2)
+
+
+if __name__ == "__main__": unittest.main()
