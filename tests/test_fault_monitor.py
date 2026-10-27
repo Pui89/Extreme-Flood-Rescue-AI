@@ -128,3 +128,20 @@ def test_overlong_fault_fields_are_rejected(field, value):
     report = FaultReport(**values)
     with pytest.raises(ValueError):
         FaultMonitor().report(report)
+
+def test_decide_response_rejects_non_fault_report():
+    with pytest.raises(TypeError, match="FaultReport"):
+        decide_response(None)
+
+
+@pytest.mark.parametrize(
+    "report",
+    [
+        FaultReport("BAD_DOMAIN", "sensor", Severity.CRITICAL, "bad domain"),
+        FaultReport("BAD_SEVERITY", Domain.SENSOR, "critical", "bad severity"),
+    ],
+)
+def test_decide_response_rejects_invalid_enum_fields(report):
+    with pytest.raises(ValueError, match="fault (domain|severity)"):
+        decide_response(report)
+
