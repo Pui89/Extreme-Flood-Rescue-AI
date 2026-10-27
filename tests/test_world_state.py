@@ -30,6 +30,7 @@ class WorldStateTests(unittest.TestCase):
             t.snapshot(0,-1)
         with self.assertRaises(ValueError):
             t.update({"object_id":"x","label":"A","timestamp":float("nan"),"confidence":0.9,"source":"s"})
+
 if __name__ == "__main__": unittest.main()
 
     def test_confidence_must_be_finite_and_not_boolean(self):
