@@ -1138,3 +1138,25 @@ See [Marketing, SEO and Sales Playbook](docs/MARKETING_SEO_SALES_PLAYBOOK.md) fo
 See [Free-First Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for curated tools, local model options, testing/security helpers, SEO resources, cost cautions, and project-specific evidence boundaries.
 
 **Recommended technology stack:** [PUI89 Free-First Technology Stack](docs/PUI89_FREE_FIRST_TECH_STACK.md) — stable, local-first tools; dependencies and costs reviewed before adoption.
+
+## Engineering maturity level — 27 October 2026
+
+**Current evidence-based level: Level 2 — concept/software prototype scaffolding.** This is an engineering-maturity assessment, not a certification or claim of operational readiness.
+
+| Level | Definition | Status |
+|---|---|---|
+| 1 — Concept | Requirements and architecture defined | Achieved |
+| 2 — Software prototype | Initial software, interfaces or evaluation scaffolding exist | **Current overall level** |
+| 3 — Automated testing | Repeatable tests pass and failures are reported for the relevant project workflows | Next target; verify the latest complete test run before claiming this level |
+| 4 — Validated simulation | Reproducible simulation results and measured performance are documented | Not yet established for the complete system |
+| 5 — Controlled hardware validation | Physical tests demonstrate bounded capabilities | Not validated |
+| 6 — Operational readiness | Safety, reliability and deployment requirements are independently demonstrated | Not established |
+
+### Next milestone: Level 3
+
+- Run the existing local verification and relevant test suites; record the exact command, environment, commit and result.
+- Add or strengthen repeatable tests for uncertain inputs, sensor/navigation failures, and safe-stop / human-review behavior.
+- Report only measured results. A passing syntax scan or synthetic test is evidence for that software path only—not real-world rescue performance.
+- Keep the workflow local-first: no paid API, cloud GPU, automatic model download or recurring-cost service by default.
+
+**Capability boundary:** extreme-flood scenarios, including depths up to 15 m, are design/simulation targets only. They do not prove the robot can operate or rescue people at those depths. Physical operation remains unvalidated until supported by separate, documented evidence.
