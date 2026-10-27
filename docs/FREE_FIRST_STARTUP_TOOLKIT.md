@@ -27,7 +27,7 @@ This project is built free-first. Prefer local simulation, synthetic scenarios, 
 - Never connect an unvalidated autonomy stack to a real rescue mission.
 - Test loss of GPS, network, power, sensor inputs, and safe stopping/recovery paths explicitly.
 - Use synthetic or permissioned data; document provenance and licence terms.
-- Treat 1–6 m water-depth scenarios as test targets, not proven operating limits, unless backed by suitable measurements and validated hardware tests.
+- Treat 0–15 m water-depth values as simulated scenario parameters only, not proven operating limits or evidence of buoyancy, navigation, or rescue capability. Physical limits require appropriate engineering analysis and controlled validation.
 
 ## Definition of done for each upgrade
 
