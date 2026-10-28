@@ -10,8 +10,6 @@ on:
       - "**/*.py"
       - ".github/workflows/free-helper-review.yml"
   workflow_dispatch:
-  schedule:
-    - cron: "41 3 * * 1"
 
 permissions:
   contents: read

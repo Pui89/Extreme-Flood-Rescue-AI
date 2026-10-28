@@ -10,8 +10,6 @@ on:
       - "data/**"
       - "tools/dataset_recovery_audit.py"
       - ".github/workflows/dataset-recovery.yml"
-  schedule:
-    - cron: "41 5 * * 1"
   workflow_dispatch:
 permissions:
   contents: read

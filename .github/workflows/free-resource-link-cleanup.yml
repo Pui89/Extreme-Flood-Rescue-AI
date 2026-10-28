@@ -1,7 +1,5 @@
 name: Free resource and paid-upgrade cleanup
 on:
-  schedule:
-    - cron: "17 5 * * 1"
   workflow_dispatch:
 permissions:
   contents: write
