@@ -108,11 +108,11 @@ class MockVLAGuardTests(unittest.TestCase):
                 "id": "fault-and-recovery",
                 "seed": 42,
                 "steps": [
-                    {"state": {"sensors_ok": True, "sensor_data_fresh": True, "confidence": 0.9},
+                    {"state": {"emergency_stop": False, "sensors_ok": True, "sensor_data_fresh": True, "comms_ok": True, "confidence": 0.9},
                      "expected_action": "CONTINUE_SIMULATION_ONLY"},
-                    {"state": {"sensor_data_fresh": False},
+                    {"state": {"emergency_stop": False, "sensors_ok": True, "sensor_data_fresh": False, "comms_ok": True},
                      "expected_action": "SAFE_HOLD"},
-                    {"state": {"sensor_data_fresh": True},
+                    {"state": {"emergency_stop": False, "sensors_ok": True, "sensor_data_fresh": True, "comms_ok": True},
                      "expected_action": "CONTINUE_SIMULATION_ONLY"}
                 ]
             }]
