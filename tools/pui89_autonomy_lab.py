@@ -42,8 +42,12 @@ class MockVLA:
         import math
         if not isinstance(state, dict):
             return "SAFE_HOLD", ["state_not_object: SAFE_HOLD"]
-        # Explicit safety flags must be real Booleans; truthy strings/integers
-        # must never be interpreted as safe sensor or approval states.
+        # Required safety telemetry must be present and be real Booleans.
+        # Missing, malformed, stale, or faulted telemetry always fails closed.
+        required_safety_flags = ("emergency_stop", "sensors_ok", "sensor_data_fresh", "comms_ok")
+        missing = [key for key in required_safety_flags if key not in state]
+        if missing:
+            return "SAFE_HOLD", [f"missing_safety_flag:{key}: SAFE_HOLD" for key in missing]
         for key in self.SAFETY_FLAGS:
             if key in state and not isinstance(state[key], bool):
                 return "SAFE_HOLD", [f"malformed_safety_flag:{key}: SAFE_HOLD"]
