@@ -17,6 +17,10 @@ Run `python tools/pui89_master_verify.py` for a free, standard-library-only Pyth
 - **Gate 4 — measurable evidence:** report scenario count, failures, decision latency, safety-gate outcomes and exact command/commit. Keep platform depth, passenger capacity and rescue capability unclaimed until independently validated for the actual hardware.
 - **Cost control:** no subscription or metered service by default; ask before any paid or recurring-cost choice.
 
+## Product quality and safety roadmap
+
+The [Product Quality and Safety Roadmap](docs/PRODUCT_QUALITY_AND_SAFETY_ROADMAP.md) sets staged safety, reliability, evidence, human-oversight and buyer-readiness gates. It is an engineering plan—not certification or proof of field performance.
+
 **Shared PUI89 AI Core contract:** [fault-injection matrix, missing-sensor handling, conservative safe-stop rules and evidence requirements](docs/SHARED_PUI89_AI_CORE_INTEGRATION.md).
 
 **Next action:** expand deterministic fault-injection scenarios for stale/conflicting sensors, communication loss, unknown water/current limits and multi-platform coordination. Keep every pass labelled **simulation-only** until real-world evidence exists.
