@@ -49,3 +49,9 @@ Test depth bias, current estimate error, localization drift, blocked sensor, sta
 6. Independent validation and authorized pilot demonstrate the specific rescue task before operational claims.
 
 No single software score proves rescue readiness, human safety, animal safety or flood survivability.
+
+## Fail-safe simulation contract
+
+Before a simulated task action is considered, the world-state input must explicitly include `emergency_stop`, `sensors_ok`, `sensor_data_fresh`, and `comms_ok`. If any field is absent, malformed, stale, or indicates a fault, the policy must return a non-actuating `SAFE_HOLD` result and record the reason in the failure report. Emergency stop, sensor faults, stale readings, and communication loss must never be treated as healthy defaults.
+
+This contract is a software design requirement for simulation and regression testing only. It does not establish flood survivability, rescue effectiveness, or physical safety.
