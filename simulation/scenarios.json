@@ -18,7 +18,9 @@
             "confidence": 0.9,
             "operator_approved": true,
             "water_depth_m": 1,
-            "simulation_only": true
+            "simulation_only": true,
+            "emergency_stop": false,
+            "sensor_data_fresh": true
           },
           "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
         }
@@ -36,7 +38,9 @@
             "confidence": 0.88,
             "operator_approved": true,
             "water_depth_m": 15,
-            "simulation_only": true
+            "simulation_only": true,
+            "emergency_stop": false,
+            "sensor_data_fresh": true
           },
           "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
         }
@@ -51,7 +55,11 @@
             "target_visible": false,
             "confidence": 0.85,
             "water_depth_m": 3,
-            "simulation_only": true
+            "simulation_only": true,
+            "emergency_stop": false,
+            "sensors_ok": true,
+            "sensor_data_fresh": true,
+            "comms_ok": true
           },
           "expected_action": "SEARCH"
         }
@@ -65,7 +73,10 @@
           "state": {
             "sensors_ok": false,
             "water_depth_m": 6,
-            "simulation_only": true
+            "simulation_only": true,
+            "emergency_stop": false,
+            "sensor_data_fresh": true,
+            "comms_ok": true
           },
           "expected_action": "SAFE_HOLD"
         }
@@ -79,7 +90,10 @@
           "state": {
             "comms_ok": false,
             "water_depth_m": 6,
-            "simulation_only": true
+            "simulation_only": true,
+            "emergency_stop": false,
+            "sensors_ok": true,
+            "sensor_data_fresh": true
           },
           "expected_action": "SAFE_HOLD"
         }
@@ -93,7 +107,10 @@
           "state": {
             "emergency_stop": true,
             "water_depth_m": 15,
-            "simulation_only": true
+            "simulation_only": true,
+            "sensors_ok": true,
+            "sensor_data_fresh": true,
+            "comms_ok": true
           },
           "expected_action": "SAFE_HOLD"
         }
@@ -112,19 +129,26 @@
             "confidence": 0.9,
             "operator_approved": true,
             "water_depth_m": 2,
-            "simulation_only": true
+            "simulation_only": true,
+            "emergency_stop": false
           },
           "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
         },
         {
           "state": {
-            "comms_ok": false
+            "comms_ok": false,
+            "emergency_stop": false,
+            "sensors_ok": true,
+            "sensor_data_fresh": true
           },
           "expected_action": "SAFE_HOLD"
         },
         {
           "state": {
-            "comms_ok": true
+            "comms_ok": true,
+            "emergency_stop": false,
+            "sensors_ok": true,
+            "sensor_data_fresh": true
           },
           "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
         }
