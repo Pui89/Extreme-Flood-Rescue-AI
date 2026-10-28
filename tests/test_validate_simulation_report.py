@@ -1,6 +1,7 @@
 import csv
 import hashlib
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -25,21 +26,15 @@ class SimulationReportValidatorTests(unittest.TestCase):
             writer.writerow({"project_id": "validator-test", "hardware_actuation": "false"})
         self.report_path = self.root / "report.json"
         self.report = {
-            "schema_version": 1,
-            "project_id": "validator-test",
-            "run_id": "test-run",
+            "schema_version": 1, "project_id": "validator-test", "run_id": "test-run",
             "scenario_config_sha256": hashlib.sha256(stable_json(self.config).encode()).hexdigest(),
             "status": "PASS",
-            "metrics": {
-                "scenario_count": 1, "scenario_pass_count": 1,
-                "step_count": 1, "step_pass_count": 1, "failure_count": 0,
-                "step_pass_rate": 1.0, "scenario_pass_rate": 1.0,
-                "action_counts": {"SAFE_HOLD": 1}, "safe_hold_count": 1
-            },
+            "metrics": {"scenario_count": 1, "scenario_pass_count": 1, "step_count": 1,
+                "step_pass_count": 1, "failure_count": 0, "step_pass_rate": 1.0,
+                "scenario_pass_rate": 1.0, "action_counts": {"SAFE_HOLD": 1}, "safe_hold_count": 1},
             "scenarios": [{"passed": True}],
             "steps": [{"passed": True, "hardware_actuation": False}],
-            "failures": [],
-            "output_files": {"csv": str(self.csv_path)}
+            "failures": [], "output_files": {"csv": str(self.csv_path)}
         }
         self.save_report()
 
@@ -63,6 +58,13 @@ class SimulationReportValidatorTests(unittest.TestCase):
         self.report["steps"][0]["hardware_actuation"] = True
         self.save_report()
         self.assertTrue(any("hardware_actuation" in error for error in validate(self.report_path, self.config_path)))
+
+    def test_cli_accepts_explicit_report_and_prints_metrics(self):
+        result = subprocess.run([sys.executable, str(ROOT / "tools" / "validate_simulation_report.py"),
+            "--report", str(self.report_path), "--config", str(self.config_path)],
+            capture_output=True, text=True, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertIn("VALID report project=validator-test", result.stdout)
 
 if __name__ == "__main__":
     unittest.main()
