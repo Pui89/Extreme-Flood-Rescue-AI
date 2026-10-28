@@ -6,20 +6,45 @@ from pui89_autonomy_lab import MockVLA, model_preflight, run_scenarios  # noqa: 
 
 class MockVLAGuardTests(unittest.TestCase):
     def setUp(self): self.policy = MockVLA(0.65)
+
+    HEALTHY_TELEMETRY = {
+        "emergency_stop": False, "sensors_ok": True,
+        "sensor_data_fresh": True, "comms_ok": True,
+    }
+
+    def propose_with_healthy_telemetry(self, state, action):
+        return self.policy.propose({**self.HEALTHY_TELEMETRY, **state}, action)
+
+    def test_missing_required_safety_telemetry_fails_safe(self):
+        for key in self.HEALTHY_TELEMETRY:
+            state = dict(self.HEALTHY_TELEMETRY)
+            del state[key]
+            with self.subTest(missing=key):
+                actual, trace = self.policy.propose(state, "SIM_ACTION")
+                self.assertEqual(actual, "SAFE_HOLD")
+                self.assertTrue(any(f"missing_safety_flag:{key}" in item for item in trace))
+
+    def test_malformed_required_safety_telemetry_fails_safe(self):
+        for key, value in (("emergency_stop", "false"), ("sensors_ok", 1),
+                           ("sensor_data_fresh", None), ("comms_ok", "true")):
+            state = dict(self.HEALTHY_TELEMETRY)
+            state[key] = value
+            with self.subTest(key=key):
+                self.assertEqual(self.policy.propose(state, "SIM_ACTION")[0], "SAFE_HOLD")
     def test_estop_sensor_stale_comms_hold(self):
         for state in ({"emergency_stop": True},{"sensors_ok": False},{"sensor_data_fresh": False},{"comms_ok": False}):
-            with self.subTest(state=state): self.assertEqual(self.policy.propose(state,"SIM_ACTION")[0],"SAFE_HOLD")
+            with self.subTest(state=state): self.assertEqual(self.propose_with_healthy_telemetry(state,"SIM_ACTION")[0],"SAFE_HOLD")
     def test_malformed_safety_flags_fail_safe(self):
         for state in ({"sensors_ok": "false"}, {"comms_ok": 1},
                       {"operator_approved": "yes"}, {"target_visible": 0},
                       {"human_review_required": None}):
             with self.subTest(state=state):
-                self.assertEqual(self.policy.propose(state, "SIM_ACTION")[0], "SAFE_HOLD")
+                self.assertEqual(self.propose_with_healthy_telemetry(state, "SIM_ACTION")[0], "SAFE_HOLD")
 
     def test_boolean_confidence_is_not_numeric(self):
         for value in (True, False):
             with self.subTest(value=value):
-                self.assertEqual(self.policy.propose({"confidence": value}, "SIM_ACTION")[0], "UNKNOWN")
+                self.assertEqual(self.propose_with_healthy_telemetry({"confidence": value}, "SIM_ACTION")[0], "UNKNOWN")
 
     def test_invalid_confidence_threshold_rejected(self):
         for value in (True, -0.1, 1.1, float("nan"), float("inf"), "0.65"):
@@ -46,16 +71,16 @@ class MockVLAGuardTests(unittest.TestCase):
 
     def test_low_confidence_or_conflicting_modalities_abstain(self):
         for state in ({"confidence":0.2},{"modalities_conflict":True},{"missing_required_modality":True},{"confidence":2.0},{"confidence":None},{"confidence":"not-a-number"},{"confidence":float("nan")},{"confidence":float("inf")}):
-            with self.subTest(state=state): self.assertEqual(self.policy.propose(state,"SIM_ACTION")[0],"UNKNOWN")
+            with self.subTest(state=state): self.assertEqual(self.propose_with_healthy_telemetry(state,"SIM_ACTION")[0],"UNKNOWN")
     def test_missing_target_searches(self):
-        self.assertEqual(self.policy.propose({"target_visible":False},"SIM_ACTION")[0],"SEARCH")
+        self.assertEqual(self.propose_with_healthy_telemetry({"target_visible":False},"SIM_ACTION")[0],"SEARCH")
     def test_human_review_blocks_nominal_action(self):
-        self.assertEqual(self.policy.propose({"human_review_required":True},"ENFORCEMENT_ACTION")[0],"REQUEST_HUMAN_REVIEW")
+        self.assertEqual(self.propose_with_healthy_telemetry({"human_review_required":True},"ENFORCEMENT_ACTION")[0],"REQUEST_HUMAN_REVIEW")
 
     def test_high_impact_action_labels_always_require_human_review(self):
         for action in ("ENFORCEMENT_ACTION", "DETENTION", "ARREST_PERSON", "SEIZE_ITEM", "ACCUSE_SUBJECT", "PROSECUTE_CASE"):
             with self.subTest(action=action):
-                actual, trace = self.policy.propose({"confidence": 0.99}, action)
+                actual, trace = self.propose_with_healthy_telemetry({"confidence": 0.99}, action)
                 self.assertEqual(actual, "REQUEST_HUMAN_REVIEW")
                 self.assertIn("high_impact_action_blocked", trace[0])
     def test_simulation_has_stable_id_and_never_actuates(self):
@@ -83,11 +108,11 @@ class MockVLAGuardTests(unittest.TestCase):
                 "id": "fault-and-recovery",
                 "seed": 42,
                 "steps": [
-                    {"state": {"sensors_ok": True, "sensor_data_fresh": True, "confidence": 0.9},
+                    {"state": {"emergency_stop": False, "sensors_ok": True, "sensor_data_fresh": True, "comms_ok": True, "confidence": 0.9},
                      "expected_action": "CONTINUE_SIMULATION_ONLY"},
-                    {"state": {"sensor_data_fresh": False},
+                    {"state": {"emergency_stop": False, "sensors_ok": True, "sensor_data_fresh": False, "comms_ok": True},
                      "expected_action": "SAFE_HOLD"},
-                    {"state": {"sensor_data_fresh": True},
+                    {"state": {"emergency_stop": False, "sensors_ok": True, "sensor_data_fresh": True, "comms_ok": True},
                      "expected_action": "CONTINUE_SIMULATION_ONLY"}
                 ]
             }]
