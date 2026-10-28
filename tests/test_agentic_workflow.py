@@ -73,6 +73,30 @@ class AgenticWorkflowTests(unittest.TestCase):
         self.assertFalse(report["actuator_commands_issued"])
         self.assertTrue(report["human_review_required"])
 
+    def test_policy_gate_rejects_malformed_contract_fields(self):
+        malformed_decisions = [
+            {"requires_human_approval": "true", "actuator_command": None, "status": "READY", "reasons": [], "recommendation": "HOLD"},
+            {"requires_human_approval": True, "actuator_command": "", "status": "READY", "reasons": [], "recommendation": "HOLD"},
+            {"requires_human_approval": True, "actuator_command": None, "status": None, "reasons": [], "recommendation": "HOLD"},
+            {"requires_human_approval": True, "actuator_command": None, "status": "READY", "reasons": "none", "recommendation": "HOLD"},
+            {"requires_human_approval": True, "actuator_command": None, "status": "READY", "reasons": [], "recommendation": {"action": "go"}},
+        ]
+        for fields in malformed_decisions:
+            with self.subTest(fields=fields):
+                class MalformedDecision:
+                    def to_dict(self):
+                        return {"project": "test", **fields}
+
+                with patch("agents.agentic_workflow.run_agent", return_value=MalformedDecision()):
+                    report = run_agentic_workflow({"sensor_ok": True})
+
+                self.assertEqual(report["status"], "BLOCKED_BY_POLICY")
+                self.assertIsNone(report["decision"])
+                self.assertTrue(report["issues"])
+                self.assertTrue(report["human_review_required"])
+                self.assertFalse(report["execution_performed"])
+                self.assertFalse(report["actuator_commands_issued"])
+
 
 if __name__ == "__main__":
     unittest.main()
