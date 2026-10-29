@@ -1,0 +1,72 @@
+name: Flood Rescue AI Simulation Evaluation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'simulation/**'
+      - 'tools/pui89_autonomy_lab.py'
+      - '.github/workflows/flood-simulation-evaluation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'simulation/**'
+      - 'tools/pui89_autonomy_lab.py'
+      - '.github/workflows/flood-simulation-evaluation.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flood-simulation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  evaluate:
+    name: Hosted rule-based simulation and report
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run simulation scenarios
+        id: simulate
+        run: |
+          python tools/pui89_autonomy_lab.py simulate --config simulation/scenarios.json --output-dir reports/flood-simulation-run
+
+      - name: Print report summary, including failures
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          files = sorted(Path("reports/flood-simulation-run").glob("simulation-report-*.json"))
+          if not files:
+              print("REPORT_NOT_FOUND: simulation may have failed before writing a report")
+              raise SystemExit(0)
+          report = json.loads(files[-1].read_text(encoding="utf-8"))
+          print(json.dumps({
+              "project_id": report.get("project_id"),
+              "status": report.get("status"),
+              "run_id": report.get("run_id"),
+              "metrics": report.get("metrics"),
+              "failures": report.get("failures", []),
+              "hardware_actuation": False,
+              "report_path": str(files[-1])
+          }, indent=2))
+          PY
+
+      - name: Upload JSON and CSV reports, including failure reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flood-simulation-report-${{ github.run_id }}
+          path: reports/flood-simulation-run/
+          if-no-files-found: warn
+          retention-days: 14
