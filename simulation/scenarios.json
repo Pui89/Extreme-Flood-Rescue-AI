@@ -153,6 +153,66 @@
           "expected_action": "PLAN_RESCUE_ROUTE_SIMULATION_ONLY"
         }
       ]
+    },
+    {
+      "id": "missing_emergency_stop_telemetry",
+      "seed": 208,
+      "steps": [
+        {
+          "state": {
+            "sensors_ok": true,
+            "sensor_data_fresh": true,
+            "comms_ok": true,
+            "target_visible": true,
+            "target_valid": true,
+            "confidence": 0.95,
+            "operator_approved": true,
+            "water_depth_m": 3,
+            "simulation_only": true
+          },
+          "expected_action": "SAFE_HOLD"
+        }
+      ]
+    },
+    {
+      "id": "malformed_sensor_boolean",
+      "seed": 209,
+      "steps": [
+        {
+          "state": {
+            "emergency_stop": false,
+            "sensors_ok": "false",
+            "sensor_data_fresh": true,
+            "comms_ok": true,
+            "target_visible": true,
+            "confidence": 0.95,
+            "operator_approved": true,
+            "water_depth_m": 3,
+            "simulation_only": true
+          },
+          "expected_action": "SAFE_HOLD"
+        }
+      ]
+    },
+    {
+      "id": "boolean_confidence",
+      "seed": 210,
+      "steps": [
+        {
+          "state": {
+            "emergency_stop": false,
+            "sensors_ok": true,
+            "sensor_data_fresh": true,
+            "comms_ok": true,
+            "target_visible": true,
+            "confidence": true,
+            "operator_approved": true,
+            "water_depth_m": 3,
+            "simulation_only": true
+          },
+          "expected_action": "UNKNOWN"
+        }
+      ]
     }
   ]
 }
