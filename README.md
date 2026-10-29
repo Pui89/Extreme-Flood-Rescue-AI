@@ -7,6 +7,22 @@
 
 Run `python tools/pui89_master_verify.py` for a free, standard-library-only Python syntax scan and inventory of this project's key verification tools. Add `--report verification-report.json` to save a JSON report. Use `--pytest` only when you want to run the full installed test suite; it installs nothing. The helper does not download models, call hosted APIs, change datasets, or control hardware. Tool presence is not proof that a gate passed, and software checks do not establish real-world performance.
 
+
+## Current project status — 29 October 2026
+
+**Overall status: software prototype, safety-gate checks and simulation planning.** The combined PUI89 workflow verified 13 shared-core tests for this project. This is software evidence only; it is not a validated flood simulator, trained detector or real rescue capability.
+
+| Workstream | Current evidence | Status |
+|---|---|---|
+| Shared software core | 13 tests passed in the combined run | **Unit-tested** |
+| Sensor/input safety gates | Software checks evaluate supplied status values and can recommend a simulated safe hold | **Software prototype; not a physical stop** |
+| Scenario matrix | Repeatable fault and environment scenarios documented | **Test plan; not proof the scenarios ran** |
+| Flood depth up to 15 m | Design/simulation target only | **NOT FIELD-VALIDATED** |
+| Human/animal detection, SLAM and navigation | No validated field performance established by the combined run | **Performance not measured here** |
+| Ground, boat and aerial platforms | Separate concepts; results cannot be transferred between platforms | **Physical platforms not validated** |
+
+**Next gate:** implement or configure a repeatable simulator, record simulator/version, scenario parameters and random seeds, then report observed route completion, collisions, safe-stop outcomes and detection errors separately for each scenario and platform. Do not claim rescue capability at every flood level.
+
 ## Shared PUI89 AI Core — verification update (28 October 2026)
 
 This project now shares a common set of software-contract and simulation-evidence checks with the other PUI89 AI applications. The latest test additions check that benchmark validation rejects inconsistent CSV row counts, a success status that conflicts with reported failures, and missing CSV evidence.
