@@ -73,9 +73,9 @@ class MockVLAGuardTests(unittest.TestCase):
         for state in ({"confidence":0.2},{"modalities_conflict":True},{"missing_required_modality":True},{"confidence":2.0},{"confidence":None},{"confidence":"not-a-number"},{"confidence":float("nan")},{"confidence":float("inf")}):
             with self.subTest(state=state): self.assertEqual(self.propose_with_healthy_telemetry(state,"SIM_ACTION")[0],"UNKNOWN")
     def test_missing_target_searches(self):
-        self.assertEqual(self.propose_with_healthy_telemetry({"target_visible":False},"SIM_ACTION")[0],"SEARCH")
+        self.assertEqual(self.propose_with_healthy_telemetry({"target_visible":False, "confidence":0.95},"SIM_ACTION")[0],"SEARCH")
     def test_human_review_blocks_nominal_action(self):
-        self.assertEqual(self.propose_with_healthy_telemetry({"human_review_required":True},"ENFORCEMENT_ACTION")[0],"REQUEST_HUMAN_REVIEW")
+        self.assertEqual(self.propose_with_healthy_telemetry({"human_review_required":True, "confidence":0.95},"ENFORCEMENT_ACTION")[0],"REQUEST_HUMAN_REVIEW")
 
     def test_high_impact_action_labels_always_require_human_review(self):
         for action in ("ENFORCEMENT_ACTION", "DETENTION", "ARREST_PERSON", "SEIZE_ITEM", "ACCUSE_SUBJECT", "PROSECUTE_CASE"):
