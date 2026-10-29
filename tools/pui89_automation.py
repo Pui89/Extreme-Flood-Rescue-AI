@@ -27,7 +27,7 @@ def main() -> int:
         if folder.is_dir() and not compileall.compile_dir(str(folder), quiet=1, force=True):
             compile_errors.append({"path": str(folder.relative_to(ROOT)), "error": "Python compilation failed"})
     tests_dir = ROOT / "tests"
-    suite = unittest.defaultTestLoader.discover(str(tests_dir), top_level_dir=str(ROOT)) if tests_dir.is_dir() else unittest.TestSuite()
+    suite = unittest.defaultTestLoader.discover(str(tests_dir)) if tests_dir.is_dir() else unittest.TestSuite()
     result = unittest.TextTestRunner(stream=sys.stdout, verbosity=2, resultclass=JsonTestResult).run(suite)
     failures = compile_errors + result.failures_json
     report = {
