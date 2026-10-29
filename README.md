@@ -1222,3 +1222,10 @@ See also [repeatable simulation scenario matrix](docs/REPEATABLE_SCENARIO_MATRIX
 ## PUI89 master roadmap and next validation gates
 
 See the [PUI89 Master Roadmap](https://github.com/Pui89/Pui89.github.io/blob/main/PUI89_MASTER_ROADMAP.md) for current status, unfinished work, checks, known issues, the ordered next process and future upgrade levels across all three projects. Project-specific validation boundaries remain documented in [Safety and validation gates](docs/PUI89_SAFETY_AND_VALIDATION_GATES.md).
+
+
+## Latest automated verification (29 October 2026)
+
+The [lightweight verification run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954) completed successfully. Its report recorded Python 3.11.17, zero Python compile errors, a passing dependency-free observability smoke check, and zero reported failures. [Verification report artifact](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954/artifacts/12898129816).
+
+This lightweight job explicitly does **not** run the full dependency-backed unit-test suite. The selected PUI89 combined run passed 13 shared-core tests for this project, but no new Flood simulator scenario results are established by those software checks. The documented 15 m depth is a simulation/design target, not a validated operating envelope; physical rescue performance remains unvalidated.
