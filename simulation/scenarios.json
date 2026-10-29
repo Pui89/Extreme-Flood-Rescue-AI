@@ -213,6 +213,70 @@
           "expected_action": "UNKNOWN"
         }
       ]
+    },
+    {
+      "id": "conflicting_observations",
+      "seed": 211,
+      "steps": [
+        {
+          "state": {
+            "emergency_stop": false,
+            "sensors_ok": true,
+            "sensor_data_fresh": true,
+            "comms_ok": true,
+            "modalities_conflict": true,
+            "confidence": 0.96,
+            "target_visible": true,
+            "operator_approved": true,
+            "water_depth_m": 4,
+            "simulation_only": true
+          },
+          "expected_action": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "id": "required_observation_missing",
+      "seed": 212,
+      "steps": [
+        {
+          "state": {
+            "emergency_stop": false,
+            "sensors_ok": true,
+            "sensor_data_fresh": true,
+            "comms_ok": true,
+            "missing_required_modality": true,
+            "confidence": 0.96,
+            "target_visible": true,
+            "operator_approved": true,
+            "water_depth_m": 4,
+            "simulation_only": true
+          },
+          "expected_action": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "id": "operator_approval_missing",
+      "seed": 213,
+      "steps": [
+        {
+          "state": {
+            "emergency_stop": false,
+            "sensors_ok": true,
+            "sensor_data_fresh": true,
+            "comms_ok": true,
+            "confidence": 0.96,
+            "target_visible": true,
+            "target_valid": true,
+            "operator_approved": false,
+            "human_review_required": false,
+            "water_depth_m": 4,
+            "simulation_only": true
+          },
+          "expected_action": "REQUEST_APPROVAL"
+        }
+      ]
     }
   ]
 }
