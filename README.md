@@ -8,6 +8,12 @@
 Run `python tools/pui89_master_verify.py` for a free, standard-library-only Python syntax scan and inventory of this project's key verification tools. Add `--report verification-report.json` to save a JSON report. Use `--pytest` only when you want to run the full installed test suite; it installs nothing. The helper does not download models, call hosted APIs, change datasets, or control hardware. Tool presence is not proof that a gate passed, and software checks do not establish real-world performance.
 
 
+## Latest engineering update — 30 October 2026
+
+The merged rule-based simulation evaluation completed **7/7 scenarios and 9/9 steps, with 0 reported failures**. [Open the recorded simulation run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40919457152).
+
+The shared PUI89 AI Core conformance checks and main-branch automated verification are also integrated. These are software and scenario-level results—not evidence of validated flood physics, real-world detection, navigation, buoyancy, rescue performance, or operation at 15 m depth. The 15 m figure remains a design/simulation target, and each ground, boat or aerial platform requires separate validation.
+
 ## Current project status — 30 October 2026
 
 **Overall status: software prototype, safety-gate checks and simulation planning.** The combined PUI89 workflow verified 13 shared-core tests for this project. This is software evidence only; it is not a validated flood simulator, trained detector or real rescue capability.
