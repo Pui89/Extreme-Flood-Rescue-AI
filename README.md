@@ -8,13 +8,14 @@
 Run `python tools/pui89_master_verify.py` for a free, standard-library-only Python syntax scan and inventory of this project's key verification tools. Add `--report verification-report.json` to save a JSON report. Use `--pytest` only when you want to run the full installed test suite; it installs nothing. The helper does not download models, call hosted APIs, change datasets, or control hardware. Tool presence is not proof that a gate passed, and software checks do not establish real-world performance.
 
 
-## Current project status — 29 October 2026
+## Current project status — 30 October 2026
 
 **Overall status: software prototype, safety-gate checks and simulation planning.** The combined PUI89 workflow verified 13 shared-core tests for this project. This is software evidence only; it is not a validated flood simulator, trained detector or real rescue capability.
 
 | Workstream | Current evidence | Status |
 |---|---|---|
 | Shared software core | 13 tests passed in the combined run | **Unit-tested** |
+| Observation provenance guard | Regression coverage for missing, blank, whitespace-only and non-string source values; associated PR checks passed before merge on 30 October | **Software regression checks passed** |
 | Sensor/input safety gates | Software checks evaluate supplied status values and can recommend a simulated safe hold | **Software prototype; not a physical stop** |
 | Scenario matrix | Repeatable fault and environment scenarios documented | **Test plan; not proof the scenarios ran** |
 | Flood depth up to 15 m | Design/simulation target only | **NOT FIELD-VALIDATED** |
@@ -26,6 +27,8 @@ Run `python tools/pui89_master_verify.py` for a free, standard-library-only Pyth
 ## Shared PUI89 AI Core — verification update (28 October 2026)
 
 This project now shares a common set of software-contract and simulation-evidence checks with the other PUI89 AI applications. The latest test additions check that benchmark validation rejects inconsistent CSV row counts, a success status that conflicts with reported failures, and missing CSV evidence.
+
+On 30 October, the shared observation-provenance guard was tightened to reject non-string, empty and whitespace-only source identifiers by routing them to human review. The focused regression checks passed in the pull-request workflows, and the fix is now merged into this repository's `main` branch. This validates input-handling behavior only; it does not verify sensor provenance in the real world or authorize hardware action.
 
 - **Scope:** software tests and simulation-report integrity; not physical robot validation.
 - **Safety boundary:** action proposals remain simulation-only; human review is retained where relevant.
