@@ -103,6 +103,8 @@ Current gaps, recent technology directions, no-recurring-cost adoption gates, an
 
 ## Amphibious rescue-raft robot — retractable-wheel concept
 
+**Detailed design specification:** [Amphibious Rescue-Raft Robot Concept](docs/AMPHIBIOUS_RESCUE_RAFT_CONCEPT.md) — hull layout, retractable-wheel land/water modes, people/animal/supply transport concept, marine propulsion, fast-current simulation variables and staged validation gates.
+
 **Updated platform direction:** a low-profile, raft/boat-shaped amphibious rescue robot with a buoyant, load-bearing hull. It is designed as one platform that changes its mobility configuration with the water conditions—not as a conventional wheeled rover expected to drive through every flood.
 
 ### Two mobility configurations
