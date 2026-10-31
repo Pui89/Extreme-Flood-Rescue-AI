@@ -1,0 +1,31 @@
+name: Flood Rescue — Mock Adapter Checks
+
+on:
+  push:
+    paths:
+      - "tools/pui89_project_adapter_common.py"
+      - "tools/pui89_flood_model_adapter.py"
+      - "tests/test_pui89_flood_model_adapter.py"
+      - ".github/workflows/pui89-flood-adapter.yml"
+  pull_request:
+    paths:
+      - "tools/pui89_project_adapter_common.py"
+      - "tools/pui89_flood_model_adapter.py"
+      - "tests/test_pui89_flood_model_adapter.py"
+      - ".github/workflows/pui89-flood-adapter.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  mock-adapter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run project adapter tests
+        env:
+          PYTHONPATH: tools
+        run: python -m unittest discover -s tests -p "test_pui89_flood_model_adapter.py" -v
