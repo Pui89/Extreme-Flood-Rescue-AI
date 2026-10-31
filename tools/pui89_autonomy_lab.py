@@ -88,6 +88,13 @@ class MockVLA:
 def validate_config(config: dict[str, Any]) -> None:
     if config.get("schema_version") != 1 or not config.get("project_id"):
         raise ValueError("scenario config requires schema_version=1 and project_id")
+    import math
+    confidence_threshold = config.get("confidence_threshold", 0.65)
+    if (isinstance(confidence_threshold, bool)
+            or not isinstance(confidence_threshold, (int, float))
+            or not math.isfinite(confidence_threshold)
+            or not 0.0 <= confidence_threshold <= 1.0):
+        raise ValueError("confidence_threshold must be a finite number in [0, 1]")
     scenarios = config.get("scenarios")
     if not isinstance(scenarios, list) or not scenarios:
         raise ValueError("scenarios must be a non-empty list")
