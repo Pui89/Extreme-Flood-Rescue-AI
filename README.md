@@ -8,6 +8,12 @@
 Run `python tools/pui89_master_verify.py` for a free, standard-library-only Python syntax scan and inventory of this project's key verification tools. Add `--report verification-report.json` to save a JSON report. Use `--pytest` only when you want to run the full installed test suite; it installs nothing. The helper does not download models, call hosted APIs, change datasets, or control hardware. Tool presence is not proof that a gate passed, and software checks do not establish real-world performance.
 
 
+## Latest engineering update — 1 November 2026
+
+The new PUI89 Evidence Benchmark Engine is now exercised in hosted CI for this project. Its **6 standard-library tests passed**, and the simulation workflow completed successfully while generating a machine-readable evidence-integrity summary. [Open the benchmark-enabled simulation run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/41222937936).
+
+The benchmark checks report structure and metric consistency, hashes the source report and ordered world-state snapshots, and rejects any step that claims hardware actuation. It does not measure real AI accuracy, compare unlike projects, or validate physical performance. [Review the proposed implementation](https://github.com/Pui89/Extreme-Flood-Rescue-AI/pulls/124).
+
 ## Latest engineering update — 30 October 2026
 
 The merged rule-based simulation evaluation completed **7/7 scenarios and 9/9 steps, with 0 reported failures**. [Open the recorded simulation run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40919457152).
