@@ -42,7 +42,7 @@ A low numerical demand ratio does not mean safe. A high ratio is a prompt for en
 Run the standard-library tests:
 
 ```bash
-python -m unittest tests.test_four_pole_screening -v
+python -m unittest discover -s tests -p "test_four_pole_screening.py" -v
 ```
 
 Tests verify arithmetic, input rejection and report disclaimers only. They do not validate the equations against physical tests or certify the design.
