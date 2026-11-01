@@ -1294,3 +1294,8 @@ See the [PUI89 Master Roadmap](https://github.com/Pui89/Pui89.github.io/blob/mai
 The [lightweight verification run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954) completed successfully. Its report recorded Python 3.11.17, zero Python compile errors, a passing dependency-free observability smoke check, and zero reported failures. [Verification report artifact](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954/artifacts/12898129816).
 
 This lightweight job explicitly does **not** run the full dependency-backed unit-test suite. The selected PUI89 combined run passed 13 shared-core tests for this project, but no new Flood simulator scenario results are established by those software checks. The documented 15 m depth is a simulation/design target, not a validated operating envelope; physical rescue performance remains unvalidated.
+
+
+## Four-pole stabiliser — preliminary calculation aid
+
+The merged [four-pole engineering feasibility study](docs/FOUR_POLE_STABILISER_ENGINEERING_STUDY.md) now has a companion [screening calculator guide](docs/FOUR_POLE_SCREENING_CALCULATOR.md) and standard-library script, `tools/four_pole_screening.py`. It requires explicit engineer-supplied inputs and reports simplified drag, moment and ideal Euler-column estimates for one pole/load case. It assumes no four-pole load sharing and returns **no safety verdict**. Example values in the guide are software-test inputs only—not design parameters or safe limits. The tool does not validate 15 m operation, flood-current resistance, anchoring, hull stability or rescue readiness.
