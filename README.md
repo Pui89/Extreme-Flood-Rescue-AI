@@ -1314,3 +1314,22 @@ This lightweight job explicitly does **not** run the full dependency-backed unit
 ## Four-pole stabiliser — preliminary calculation aid
 
 The merged [four-pole engineering feasibility study](docs/FOUR_POLE_STABILISER_ENGINEERING_STUDY.md) now has a companion [screening calculator guide](docs/FOUR_POLE_SCREENING_CALCULATOR.md) and standard-library script, `tools/four_pole_screening.py`. It requires explicit engineer-supplied inputs and reports simplified drag, moment and ideal Euler-column estimates for one pole/load case. It assumes no four-pole load sharing and returns **no safety verdict**. Example values in the guide are software-test inputs only—not design parameters or safe limits. The tool does not validate 15 m operation, flood-current resistance, anchoring, hull stability or rescue readiness.
+
+## Strategic adoption — why partner with this project
+
+**The opportunity:** explore an amphibious, human-supervised rescue-support concept for environments where flood conditions can make access difficult. The proposed platform combines a low-water wheeled mode with a floating hull and water propulsion concept; this remains a design direction, not a demonstrated vehicle.
+
+**Why it matters:** emergency teams need better situational awareness and practical ways to move supplies or support people and animals when roads and normal access routes are disrupted. Any future system must complement trained responders, not replace them.
+
+**What a partner can support now**
+- **Emergency-management partners:** review realistic mission needs, responder workflows, communications constraints and safe operating boundaries.
+- **Research and simulation partners:** help define reproducible land/water scenarios, current, depth, visibility, navigation and failure conditions.
+- **Engineering and funding partners:** support hull and stability analysis, propulsion feasibility, energy budgeting, communications and controlled prototype planning.
+
+**Evidence before promises:** the 15 m flood depth is a simulation/design target, not a validated operating envelope. Software checks and scenario plans do not prove buoyancy, stability, current resistance, payload capacity, autonomous navigation or rescue readiness. No real-world rescue capability is claimed.
+
+**Next collaboration milestone:** agree on a responder-reviewed mission profile and measurable simulation acceptance criteria, then test the land-to-water transition and safe-stop behaviour in simulation before considering physical trials.
+
+**Explore a collaboration:** open a [GitHub Discussion](https://github.com/Pui89/Extreme-Flood-Rescue-AI/discussions) or contact the PUI89 project owner through the public GitHub profile. A first step can be a technical or operational review; no purchase commitment is implied.
+
+*Partner message: help shape a responsible rescue-support concept around real responder needs, measurable tests and clear safety limits.*
