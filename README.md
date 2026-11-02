@@ -265,16 +265,31 @@ python -m pytest -q tests/test_project_agent.py
 
 A dedicated [GitHub Actions workflow](https://github.com/Pui89/Flood-Rescue-AI/actions/workflows/agent-tests.yml) is configured to run the agent tests on Python 3.10, 3.11, and 3.12 when relevant files change. Check the Actions page for the actual run status; adding this workflow does not itself mean the tests have passed.
 
-## Support, sponsorship and open-source collaboration
+## Strategic partnerships, funding and collaboration
 
-PUI89 welcomes robotics and disaster-response research feedback, simulation testing, safety-focused code review, open-source contributions, introductions to authorised stakeholders, and scoped sponsorship discussions.
+### Help advance safer flood-response technology
 
-- **Support and sponsorship brief:** [ways to collaborate with PUI89](https://github.com/Pui89/Pui89.github.io/blob/main/SUPPORT_AND_SPONSORSHIP.md)
-- **Project website:** [PUI89 AI Robotics](https://pui89.github.io/)
-- **Open-source resources and support pathways:** [project resource guide](docs/OPEN_SOURCE_FREE_RESOURCES_AND_SUPPORT.md)
+Extreme Flood Rescue AI explores an amphibious rescue-raft concept and simulation-first decision-support software for difficult flood environments. We welcome partners who can help define realistic response needs, test engineering assumptions, and improve evidence and safety.
 
-Contributions should improve reproducibility, simulation, reliability, or safety. This remains a research/prototype project; real rescue capability and field performance are not claimed.
+**Who we would like to hear from**
+- **Disaster-response organisations and authorised public agencies** — operational requirements, responder workflows, safety constraints and expert review.
+- **Rescue, humanitarian and community organisations** — user needs, accessibility, animal-rescue considerations and scenario feedback.
+- **Robotics, marine engineering and mobility companies** — hull, propulsion, retractable-wheel, stability, power and maintainability reviews.
+- **Universities and research teams** — flood modelling, hydrology, robotics, autonomy, simulation, navigation, human factors and independent evaluation.
+- **Grant makers and innovation programmes** — support for scoped milestones such as scenario development, simulation validation, safety analysis, or prototype engineering.
 
+**Potential first collaboration**
+Agree on a specific flood-response scenario and operating assumptions; define measurable simulation and safety criteria; review failure cases with domain experts; then determine whether a supervised prototype study is justified. Any real-world water test would require suitable equipment, qualified operators, site permission, risk assessment and formal authorisation.
+
+**Current boundary:** the amphibious platform is a concept and the software/simulation evidence is limited to the configurations and tests documented in this repository. A 0–15 m simulation envelope is not a rated operating depth. Real flood navigation, strong-current operation, evacuation, carrying capacity, physical safety and rescue outcomes are not validated or offered as a ready-to-deploy service.
+
+**Start a conversation**
+- [Strategic partnership and funding enquiries](https://pui89.github.io/support.html#partner-pathways)
+- [ภาษาไทย: ความร่วมมือเชิงกลยุทธ์](https://pui89.github.io/support-th.html#partner-pathways)
+- [PUI89 project website](https://pui89.github.io/)
+- [PUI89 support and sponsorship brief](https://github.com/Pui89/Pui89.github.io/blob/main/SUPPORT_AND_SPONSORSHIP.md)
+
+Please identify the response challenge, operating environment, expertise or resources you can contribute, and the milestone you would like to discuss. No funding, agency endorsement, field deployment or rescue capability is implied by an enquiry. Any data, site access, costs, responsibilities, intellectual property and testing scope must be agreed in writing before work begins.
 ## Latest engineering update — 21 October 2026
 
 - **Safety-gate hardening merged:** [PR #25](https://github.com/Pui89/Flood-Rescue-AI/pull/25) is merged. It rejects extremely large localization-confidence inputs safely and adds a regression test for `10**10000`. This is software-level input-validation evidence only; check the PR's Actions results for the exact CI status.
