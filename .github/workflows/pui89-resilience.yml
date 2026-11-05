@@ -1,0 +1,37 @@
+name: PUI89 Resilience Policy
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pui89-resilience-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate-resilience-profile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PUI89 standard and project profile
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          standard = Path("docs/PUI89_RESILIENCE_STANDARD.md")
+          profile = Path(".github/pui89-resilience.json")
+          required = {"cybersecurity", "water_environment", "fire_heat_power", "communications", "ai_data", "mechanical", "human_mission"}
+          if not standard.is_file() or not profile.is_file():
+              raise SystemExit("Missing PUI89 resilience standard or project profile")
+          data = json.loads(profile.read_text(encoding="utf-8"))
+          missing = required - set(data.get("protection_domains", {}))
+          if missing:
+              raise SystemExit("Missing protection domains: " + ", ".join(sorted(missing)))
+          if data.get("standard") != "PUI89-TOTAL-RESILIENCE":
+              raise SystemExit("Unexpected standard identifier")
+          if not data.get("project_specific_hazards"):
+              raise SystemExit("Project-specific hazards must be declared")
+          print("PUI89 resilience declarations are structurally valid.")
+          print("This check does not certify physical resistance or deployment safety.")
+          PY

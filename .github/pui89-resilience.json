@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "standard": "PUI89-TOTAL-RESILIENCE",
+  "project": "Extreme Flood Rescue AI",
+  "project_type": "flood-rescue-robot-concept",
+  "status": "policy-baseline-only; physical protections not verified",
+  "protection_domains": {
+    "cybersecurity": "authenticated commands, secure updates, network isolation, credential/dependency protection",
+    "water_environment": "immersion, ingress, corrosion, debris, silt, pressure and current; IP rating not established",
+    "fire_heat_power": "battery isolation, BMS, thermal monitoring, overcurrent, emergency power isolation",
+    "communications": "GPS denial, radio/network loss, stale telemetry, sensor failure, delayed commands",
+    "ai_data": "person/animal detection uncertainty, depth/current estimation, conflicting sensors",
+    "mechanical": "capsize, buoyancy, propulsion, wheel retraction, debris impact, rescue-load limits",
+    "human_mission": "rescue capacity, passenger stability, emergency stop, safe abort and recovery"
+  },
+  "project_specific_hazards": [
+    "strong currents",
+    "15 m flood-depth concept requires feasibility review",
+    "land-water transition",
+    "wheel retraction",
+    "people/animal carriage",
+    "debris and communications loss"
+  ]
+}
