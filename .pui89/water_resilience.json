@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "project": "Extreme Flood Rescue AI",
+  "exposure": "Floodwater, temporary immersion, strong currents, debris impact and contaminated water",
+  "sensors": [
+    "watertight_compartment_leak_sensor",
+    "internal_humidity_sensor",
+    "pressure_depth_sensor",
+    "electronics_temperature_sensor",
+    "battery_health_monitor",
+    "stability_sensor"
+  ],
+  "temperature_limit_c": 60,
+  "physical_validation": "NOT_PERFORMED",
+  "hardware_integration": "NOT_CONFIRMED",
+  "ip_rating": "NOT_CLAIMED",
+  "project_notes": "Requires independently sealed compartments, buoyancy and stability analysis, protected propulsion, current/depth limits and physical testing. IP ratings alone do not establish flood-current survivability."
+}\n
