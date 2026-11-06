@@ -59,4 +59,4 @@ jobs:
           name: synthetic-agent-evaluation-python-${{ matrix.python-version }}
           path: evaluation-report.json
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 7

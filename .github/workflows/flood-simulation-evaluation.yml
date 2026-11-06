@@ -78,4 +78,4 @@ jobs:
           name: flood-simulation-report-${{ github.run_id }}
           path: reports/flood-simulation-run/
           if-no-files-found: warn
-          retention-days: 14
+          retention-days: 7

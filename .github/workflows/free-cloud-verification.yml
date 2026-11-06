@@ -35,4 +35,4 @@ jobs:
           name: verification-report-${{ github.run_number }}
           path: verification-report.json
           if-no-files-found: warn
-          retention-days: 14
+          retention-days: 7
