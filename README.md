@@ -1333,3 +1333,13 @@ The merged [four-pole engineering feasibility study](docs/FOUR_POLE_STABILISER_E
 **Explore a collaboration:** open a [GitHub Discussion](https://github.com/Pui89/Extreme-Flood-Rescue-AI/discussions) or contact the PUI89 project owner through the public GitHub profile. A first step can be a technical or operational review; no purchase commitment is implied.
 
 *Partner message: help shape a responsible rescue-support concept around real responder needs, measurable tests and clear safety limits.*
+
+
+## Hugging Face vision models — opt-in local integration
+
+This repository now includes real Hugging Face checkpoint adapters in [`pui89_models/hf_vision.py`](pui89_models/hf_vision.py), with project-specific usage boundaries in [`docs/HUGGING_FACE_MODEL_INTEGRATION.md`](docs/HUGGING_FACE_MODEL_INTEGRATION.md).
+
+- **OWLv2:** `google/owlv2-base-patch16-ensemble` for text-conditioned object proposals.
+- **Intel DPT-Hybrid:** `Intel/dpt-hybrid-midas` for relative scene depth where appropriate; not calibrated distance or physical depth.
+- **Zero-cost default:** no packages or model weights are installed/downloaded automatically; CPU-only inference, local cache only by default, no hosted inference API or cloud GPU.
+- **Evidence status:** adapter code is added; model inference and project-specific accuracy are NOT YET TESTED. Outputs remain uncertain observations for human review, never actuator commands.
