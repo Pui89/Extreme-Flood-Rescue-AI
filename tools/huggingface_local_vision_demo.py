@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 MODEL_ID = "google/owlvit-base-patch32"
-MODEL_REVISION = "main"
+MODEL_REVISION = "cbc355fb364588351c5d51c7f74465e8e7ec6f72"
 PROJECT = "Extreme-Flood-Rescue-AI"
 DEFAULT_LABELS = ["person","dog","cat","boat","floating debris","vehicle"]
 TASK_SCOPE = "Flood-scene object localization only; not distress assessment, water depth, current strength, safe access, or rescue readiness."
