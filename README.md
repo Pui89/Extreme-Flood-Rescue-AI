@@ -1013,6 +1013,23 @@ Do not execute outside the validated control layer.
 
 Gemma, Qwen and other foundation models remain subordinate to deterministic safety logic and authorized robot-control policy.
 
+## Hugging Face model candidates — Non-Chinese origin only
+
+**PUI89 mandatory rule:** use only models with verified non-Chinese developer and checkpoint provenance. Unknown or unclear origin means exclude. This section is a candidate list only; no weights have been downloaded, installed, or evaluated.
+
+| Candidate checkpoint | Research role | Status |
+|---|---|---|
+| [microsoft/Florence-2-base](https://huggingface.co/microsoft/Florence-2-base) | Scene descriptions, candidate object localization and OCR research | CANDIDATE — review required |
+| [facebook/dinov2-base](https://huggingface.co/facebook/dinov2-base) | Visual features for scene comparison and representation learning | CANDIDATE — review required |
+| [google/siglip2-base-patch16-224](https://huggingface.co/google/siglip2-base-patch16-224) | Text-image similarity for candidate scene and object categories | CANDIDATE — review required |
+| [openai/whisper-tiny](https://huggingface.co/openai/whisper-tiny) | Optional multilingual speech-to-text for operator communication | CANDIDATE — review required |
+
+No model output authorizes entering floodwater, approaching people, navigation, propulsion or rescue actions. Validate separately across water, weather, lighting, occlusion and local conditions.
+
+**Adoption gates:** verify the exact checkpoint's developer, origin, immutable revision, model-card and file licence, training-data disclosures, code/dependency security, file format, hardware fit and total cost before any download or execution. No paid APIs, hosted inference, cloud GPUs, automatic downloads or direct physical control. Florence-2 requires extra source review because its documented loader uses trust_remote_code=True. All models remain research-only until independently evaluated and approved.
+
+**Shared policy:** [PUI89 Hugging Face Model Policy](https://github.com/Pui89/Pui89.github.io/blob/main/docs/PUI89_HUGGINGFACE_MODEL_POLICY.md).
+
 ## License
 
 MIT. See the repository license for the applicable terms. Third-party models, datasets, simulators, SDKs and checkpoints may have separate licenses and usage restrictions.
