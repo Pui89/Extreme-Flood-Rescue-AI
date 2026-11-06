@@ -1333,3 +1333,8 @@ The merged [four-pole engineering feasibility study](docs/FOUR_POLE_STABILISER_E
 **Explore a collaboration:** open a [GitHub Discussion](https://github.com/Pui89/Extreme-Flood-Rescue-AI/discussions) or contact the PUI89 project owner through the public GitHub profile. A first step can be a technical or operational review; no purchase commitment is implied.
 
 *Partner message: help shape a responsible rescue-support concept around real responder needs, measurable tests and clear safety limits.*
+
+
+## Commercial product readiness
+
+This project follows the [PUI89 Commercial Product & Company-Readiness Standard](PUI89_COMMERCIAL_PRODUCT_STANDARD.md). Commercial use of original materials is governed by the root [LICENSE](LICENSE); third-party assets retain their own terms. Commercial readiness, safety, certification and product performance must be demonstrated with evidence before sale or deployment.
