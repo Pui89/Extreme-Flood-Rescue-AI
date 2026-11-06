@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "flood_robot/**"
+      - "schemas/**"
       - "tests/**"
       - "tools/**"
       - "scripts/**"
