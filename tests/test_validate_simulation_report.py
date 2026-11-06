@@ -83,3 +83,5 @@ class SimulationReportValidatorTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+# PUI89 deterministic simulation benchmark re-run requested 2026-11-06; no behavior change.
