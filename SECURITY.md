@@ -33,3 +33,8 @@ Security should be managed together with trustworthy-AI practices such as validi
 Report suspected vulnerabilities privately through GitHub security channels when available. Do not publish exploitable details before a fix or coordinated disclosure.
 
 This policy is an engineering baseline, not a claim of certification or field security.
+
+
+## Automated security verification
+
+Security checks are run through the repository's GitHub Actions security workflow when relevant source, dependency, workflow, or security-policy files change. Depending on the workflow configuration, checks may include secret-pattern detection, dependency vulnerability auditing, static analysis, and CodeQL. A configured check is not evidence of a clean result: verify the latest workflow run and retain its logs before marking a control as passed. No AI model or robot/vehicle command is authorized by a successful software scan. Verify current GitHub Actions billing terms and usage limits before enabling additional workflows or services.
