@@ -1025,19 +1025,10 @@ Use GitHub Issues and Discussions for technical questions, collaboration, bug re
 
 ## Project website
 
-The PUI89 Flood Recon project website introduces the product scope, system architecture, benchmark protocol, engineering roadmap, safety boundaries, and third-party licensing policy.
+- **English:** https://pui89.github.io/flood-rescue.html
+- **ภาษาไทย:** https://pui89.github.io/flood-rescue-th.html
+- **PUI89 main website:** https://pui89.github.io/
 
-- Website entry point: [index.html](index.html)
-- [Architecture diagram](docs/architecture.svg)
-- [Benchmark protocol](docs/benchmark-protocol.md)
-- [Engineering roadmap](docs/roadmap.md)
-- [Safety and operating boundaries](docs/safety.md)
-- [Third-party licensing policy](docs/third-party-licenses.md)
-- [Website deployment instructions](docs/website-deployment.md)
-
-The GitHub Pages workflow is at [\.github/workflows/pages.yml](.github/workflows/pages.yml). After merging the website to `main`, set **Settings → Pages → Source** to **GitHub Actions**. The expected project URL is https://pui89.github.io/flood-rescue-ai-robot/ after a successful deployment.
-
-The site describes a research prototype; it does not claim measured benchmark results, safety certification, or readiness for real floodwater operations.
 
 ## Open-source tools, funding and hardware support
 
