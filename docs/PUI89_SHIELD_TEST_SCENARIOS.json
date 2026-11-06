@@ -71,6 +71,28 @@
       "domain": "mechanical",
       "expected_warning": "CRITICAL_OR_UNKNOWN_DEGRADED",
       "expected_behavior": "Inhibit operation that depends on the unavailable safety function until inspected."
+    },
+    {
+      "id": "FLOOD-001",
+      "name": "Capsize or loss of platform stability",
+      "domain": "mechanical",
+      "expected_warning": "CRITICAL",
+      "expected_behavior": "Request validated flotation and mission-abort procedure; do not assume propulsion can restore stability."
+    },
+    {
+      "id": "FLOOD-002",
+      "name": "Water ingress near battery or electrical enclosure",
+      "domain": "water_environment",
+      "expected_warning": "CRITICAL",
+      "expected_behavior": "Request independently engineered electrical isolation and human recovery; AI warning is supplemental."
+    },
+    {
+      "id": "FLOOD-003",
+      "name": "Current, depth or visibility outside tested envelope",
+      "domain": "human_mission",
+      "expected_warning": "UNKNOWN_DEGRADED",
+      "expected_behavior": "Mark mission state unknown and require human review; do not continue rescue approach based on extrapolated limits."
     }
-  ]
+  ],
+  "project": "flood-rescue-ai"
 }
