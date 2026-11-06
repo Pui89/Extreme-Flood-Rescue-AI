@@ -31,4 +31,4 @@ jobs:
           name: dataset-recovery-queue
           path: reports/dataset-recovery/
           if-no-files-found: warn
-          retention-days: 30
+          retention-days: 7
