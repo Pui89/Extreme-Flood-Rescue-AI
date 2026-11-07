@@ -278,7 +278,7 @@ The rescue-robot concept should use three modes: **AI operation**, **limited saf
 
 ## Decision-support agent (current scope)
 
-**This rule-based agent uses repository code and supplied inputs without a hosted AI API, cloud service or model download.** It uses the repository's Python code and supplied inputs; it does not require a paid AI API, cloud service, or model download. Local Python/test tooling and GitHub usage remain subject to their own terms and limits.
+**This rule-based agent uses the repository's Python code and supplied inputs.** It does not call a hosted AI API or cloud service, or download model weights. Local Python/test tooling and GitHub usage remain subject to their own terms and limits.
 
 **What it does:** Checks supplied sensor status, localization, water depth, route clearance, and possible-person alerts. It does not autonomously navigate or perform a rescue.
 
