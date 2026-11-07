@@ -1382,3 +1382,30 @@ This repository now includes real Hugging Face checkpoint adapters in [`pui89_mo
 - **Intel DPT-Hybrid:** `Intel/dpt-hybrid-midas` for relative scene depth where appropriate; not calibrated distance or physical depth.
 - **local-first default:** no packages or model weights are installed/downloaded automatically; CPU-only inference, local cache only by default, no hosted inference API or cloud GPU.
 - **Evidence status:** adapter code is added; model inference and project-specific accuracy are NOT YET TESTED. Outputs remain uncertain observations for human review, never actuator commands.
+
+<!-- PUI89_DAILY_PROGRESS:START -->
+## Daily project progress
+
+**🟠 46% — Foundation and prototype stage**  
+**Evidence score:** 46/100 · **Review date:** 7 November 2026 (Asia/Bangkok)  
+**Progress graph:** 🟦🟦🟦🟦🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 46%
+
+This is an evidence-weighted commercial-readiness estimate, not a code-completion percentage, sales forecast, certification, or measured real-world performance. Scores change only when repository evidence is reviewed and the evidence credits below are updated. The daily run refreshes the review date; it never increases the score merely because time has passed.
+
+| Readiness gate | Evidence credit | Visual score |
+|---|---:|---|
+| Purpose & requirements | 9/10 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ |
+| Architecture & engineering | 9/10 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ |
+| Working software baseline | 10/15 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ |
+| Reproducible tests & evaluation | 12/15 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ |
+| Integrated product prototype | 0/15 | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ |
+| Safety & real-world validation | 2/15 | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ |
+| Licensing & regulatory readiness | 2/10 | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ |
+| Release package & support | 2/10 | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ |
+| **Total** | **46/100** | **🟦🟦🟦🟦🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜** |
+
+**Next milestone:** Improve the lowest-scoring applicable gate with reproducible project-specific evidence. Planned work, concept artwork, unrun tests, synthetic-only results and tool inventories do not earn evidence credit.
+
+**Status boundary:** Software tests and simulations do not establish a built, certified, field-tested or commercially validated physical product. Real-world claims require separate, traceable validation.
+
+<!-- PUI89_DAILY_PROGRESS:END -->
