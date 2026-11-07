@@ -1,0 +1,35 @@
+{
+  "project": "Extreme Flood Rescue AI",
+  "score_basis": "weighted_evidence_credits",
+  "review_timezone": "Asia/Bangkok",
+  "evidence_credit": [
+    9,
+    9,
+    10,
+    12,
+    0,
+    2,
+    2,
+    2
+  ],
+  "gate_weights": [
+    10,
+    10,
+    15,
+    15,
+    15,
+    15,
+    10,
+    10
+  ],
+  "gate_names": [
+    "Purpose & requirements",
+    "Architecture & engineering",
+    "Working software baseline",
+    "Reproducible tests & evaluation",
+    "Integrated product prototype",
+    "Safety & real-world validation",
+    "Licensing & regulatory readiness",
+    "Release package & support"
+  ]
+}
