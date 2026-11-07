@@ -10,7 +10,7 @@ def test_core_project_evidence_files_exist():
         "README.md",
         "docs/COMPLETE_SYSTEM_BLUEPRINT.md",
         "docs/VALIDATION_MATRIX.md",
-        "docs/images/flood-rescue-robot-concept-2026.svg",
+        "docs/images/flood-rescue-amphibious-robot-concept.svg",
     ]
     missing = [path for path in required if not (ROOT / path).is_file()]
     assert not missing, f"Missing project evidence/documentation files: {missing}"
@@ -21,13 +21,13 @@ def test_readme_links_to_architecture_validation_and_visual():
     for relative_path in (
         "docs/COMPLETE_SYSTEM_BLUEPRINT.md",
         "docs/VALIDATION_MATRIX.md",
-        "docs/images/flood-rescue-robot-concept-2026.svg",
+        "docs/images/flood-rescue-amphibious-robot-concept.svg",
     ):
         assert relative_path in readme, f"README should link to {relative_path}"
 
 
 def test_robot_concept_svg_is_well_formed():
-    root = ET.parse(ROOT / "docs/images/flood-rescue-robot-concept-2026.svg").getroot()
+    root = ET.parse(ROOT / "docs/images/flood-rescue-amphibious-robot-concept.svg").getroot()
     assert root.tag.endswith("svg"), "Robot concept must have an SVG root element"
 
 
