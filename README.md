@@ -98,7 +98,7 @@ On 30 October, the shared observation-provenance guard was tightened to reject n
 - **Gate 2 — simulate before integrating:** use the existing scenario and safety-gate tools before considering ROS 2, Gazebo, Nav2, Open3D or autopilot SITL installation. The current starter world does not validate water physics, currents, buoyancy or real navigation.
 - **Gate 3 — hardware fit and licence:** before optional installs or model weights, check licence, download size, RAM/VRAM/disk requirements, offline availability and maintenance burden. Do not install a large simulator/model automatically.
 - **Gate 4 — measurable evidence:** report scenario count, failures, decision latency, safety-gate outcomes and exact command/commit. Keep platform depth, passenger capacity and rescue capability unclaimed until independently validated for the actual hardware.
-- **Cost control:** no subscription or metered service by default; ask before any paid or recurring-cost choice.
+- **resource and service controls:** no subscription or metered service by default; ask before any external service or recurring commitment.
 
 ## Product quality and safety roadmap
 
@@ -126,7 +126,7 @@ The [Product Quality and Safety Roadmap](docs/PRODUCT_QUALITY_AND_SAFETY_ROADMAP
 
 - Deterministic multi-agent grid scenario with communication-loss safe-hold tests: `scripts/free_first_project_tools.py`; tests: `tests/test_free_first_project_tools.py`. This is a toy scenario, not flood physics or validated rescue navigation.
 - **Fail-closed platform-envelope scenario gate:** `scripts/platform_envelope_gate.py`; tests: `python -m unittest discover -s tests -p "test_platform_envelope_gate.py" -v`; [contract, limits and boundaries](docs/SIMULATION_PLATFORM_ENVELOPE_GATE.md). Missing/invalid inputs, stale sensors, communications loss, unreviewed limits or depth/current limit violations produce `SAFE_HOLD`. A pass is simulation-only and does not authorize physical operation.
-- Dependency-free binary metrics are available for future perception benchmarks. Grid coverage remains a toy simulation metric, not a real rescue-performance measure.
+- standard-library-only binary metrics are available for future perception benchmarks. Grid coverage remains a toy simulation metric, not a real rescue-performance measure.
 
 - Shared world-state tracker: `pui89_autonomy/world_state.py` tracks time-stamped observations, hazards, stale data, low confidence and conflicting labels; uncertain tracks remain unknown.
 - Reproducible experiment report builder: `pui89_autonomy/experiment_report.py` summarizes supplied metrics, dataset SHA-256, code version and latency samples without inventing missing measurements.
@@ -136,7 +136,7 @@ The [Product Quality and Safety Roadmap](docs/PRODUCT_QUALITY_AND_SAFETY_ROADMAP
 
 ## Frontier AI technology and local-first upgrade plan
 
-Current gaps, recent technology directions, no-recurring-cost adoption gates, and project-specific next steps: [Frontier technology gap and local-first plan](docs/FRONTIER_TECHNOLOGY_GAP_AND_FREE_PLAN.md). No large model or simulator is installed automatically; verify licences, download size, hardware fit and costs first. Project-specific implementation priorities: [Frontier AI upgrade plan](docs/FRONTIER_AI_UPGRADE_PLAN.md).
+Current gaps, recent technology directions, open-source-first adoption gates, and project-specific next steps: [Frontier technology gap and local-first plan](docs/FRONTIER_TECHNOLOGY_GAP_AND_FREE_PLAN.md). No large model or simulator is installed automatically; verify licences, download size, hardware fit and licences and resource requirements first. Project-specific implementation priorities: [Frontier AI upgrade plan](docs/FRONTIER_AI_UPGRADE_PLAN.md).
 
 **A PUI89 AI-assisted disaster-response platform for extreme-flood search, hazard assessment and multi-platform rescue planning.**
 
@@ -278,7 +278,7 @@ The rescue-robot concept should use three modes: **AI operation**, **limited saf
 
 ## Decision-support agent (current scope)
 
-**Additional cost for this rule-based agent: $0.** It uses the repository's Python code and supplied inputs; it does not require a paid AI API, cloud service, or model download. Local Python/test tooling and GitHub usage remain subject to their own terms and limits.
+**This rule-based agent uses repository code and supplied inputs without a hosted AI API, cloud service or model download.** It uses the repository's Python code and supplied inputs; it does not require a paid AI API, cloud service, or model download. Local Python/test tooling and GitHub usage remain subject to their own terms and limits.
 
 **What it does:** Checks supplied sensor status, localization, water depth, route clearance, and possible-person alerts. It does not autonomously navigate or perform a rescue.
 
@@ -287,7 +287,7 @@ Sensor / perception inputs → localization and route-safety checks → operator
 ```
 
 - **Run guide:** [Agent guide](docs/AGENT_GUIDE.md)
-- **Important limitation:** this is a rule-based decision-support prototype, not proof of real-world performance. Hardware, optional third-party services, or future model training may have separate costs.
+- **Important limitation:** this is a rule-based decision-support prototype, not proof of real-world performance. Hardware, optional third-party services, or future model training may have separate funding requirements.
  Application
 
 > **Product quality standard:** [benchmark protocol and fair comparison criteria](docs/PRODUCT_BENCHMARK_STANDARD.md). Simulation results must remain separate from real-world rescue claims.
@@ -331,7 +331,7 @@ Agree on a specific flood-response scenario and operating assumptions; define me
 - [PUI89 project website](https://pui89.github.io/)
 - [PUI89 support and sponsorship brief](https://github.com/Pui89/Pui89.github.io/blob/main/SUPPORT_AND_SPONSORSHIP.md)
 
-Please identify the response challenge, operating environment, expertise or resources you can contribute, and the milestone you would like to discuss. No funding, agency endorsement, field deployment or rescue capability is implied by an enquiry. Any data, site access, costs, responsibilities, intellectual property and testing scope must be agreed in writing before work begins.
+Please identify the response challenge, operating environment, expertise or resources you can contribute, and the milestone you would like to discuss. No funding, agency endorsement, field deployment or rescue capability is implied by an enquiry. Any data, site access, funding and resource requirements, responsibilities, intellectual property and testing scope must be agreed in writing before work begins.
 ## Latest engineering update — 21 October 2026
 
 - **Safety-gate hardening merged:** [PR #25](https://github.com/Pui89/Flood-Rescue-AI/pull/25) is merged. It rejects extremely large localization-confidence inputs safely and adds a regression test for `10**10000`. This is software-level input-validation evidence only; check the PR's Actions results for the exact CI status.
@@ -561,7 +561,7 @@ See:
 - [Failure and UNKNOWN Protocol](docs/PUI89_FAILURE_AND_UNKNOWN_PROTOCOL.md)
 - [MLOps Model Lifecycle](docs/PUI89_MLOPS_MODEL_LIFECYCLE.md)
 - [12-Month Roadmap](docs/PUI89_12_MONTH_ROADMAP.md)
-- [Cost Safety and Billing Policy](docs/COST_SAFETY_AND_BILLING.md)
+- [resource requirements Safety and Billing Policy](docs/resource requirements_SAFETY_AND_BILLING.md)
 
 ### Commercial selected stack and release readiness
 
@@ -1082,7 +1082,7 @@ This project includes an optional guide for adding local text-to-speech announce
 
 ## Robot Design Concept
 
-See the [low-cost robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, hosted integrations only after review, and human supervision.
+See the [low-resource requirements robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, hosted integrations only after review, and human supervision.
 
 ## Interactive visual simulation (no external packages required)
 
@@ -1280,9 +1280,9 @@ See [local-first Product and Engineering Toolkit](docs/FREE_FIRST_STARTUP_TOOLKI
 
 See [Marketing, SEO and Sales Playbook](docs/MARKETING_SEO_SALES_PLAYBOOK.md) for a local-first product page, evidence-led messaging, customer discovery, search visibility, and outreach guidance. No marketing subscription or ad spend is required.
 
-See [local-first Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for curated tools, local model options, testing/security helpers, SEO resources, cost cautions, and project-specific evidence boundaries.
+See [local-first Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for curated tools, local model options, testing/security helpers, SEO resources, resource cautions, and project-specific evidence boundaries.
 
-**Recommended technology stack:** [PUI89 local-first Technology Stack](docs/PUI89_FREE_FIRST_TECH_STACK.md) — stable, local-first tools; dependencies and costs reviewed before adoption.
+**Recommended technology stack:** [PUI89 local-first Technology Stack](docs/PUI89_FREE_FIRST_TECH_STACK.md) — stable, local-first tools; dependencies and resource requirements reviewed before adoption.
 
 ## Engineering maturity level — 27 October 2026
 
@@ -1308,12 +1308,12 @@ See [local-first Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for 
 
 ## local-first engineering resources
 
-See the [PUI89 local-first Engineering Resource Roadmap](docs/PUI89_FREE_RESOURCE_ROADMAP.md) for approved-first tools, adoption gates, licence/cost checks and project-specific next steps. The default is to reuse existing Python and GitHub automation; optional packages and model weights are not installed or downloaded automatically.
+See the [PUI89 local-first Engineering Resource Roadmap](docs/PUI89_FREE_RESOURCE_ROADMAP.md) for approved-first tools, adoption gates, licence and resource checks and project-specific next steps. The default is to reuse existing Python and GitHub automation; optional packages and model weights are not installed or downloaded automatically.
 
 
-## Quality, tolerance and cost gates
+## quality, tolerance, resource and performance gates
 
-See [Quality, Tolerance, Performance, Safety and Cost Gates](docs/QUALITY_TOLERANCE_PERFORMANCE_COST_GATES.md) for measurable acceptance criteria, fault-injection scenarios, human/animal safety requirements and local-first engineering constraints. This is a proposed test plan, not a claim of validated performance or certification.
+See [quality, tolerance, performance and safety gates](docs/QUALITY_TOLERANCE_PERFORMANCE_resource requirements_GATES.md) for measurable acceptance criteria, fault-injection scenarios, human/animal safety requirements and local-first engineering constraints. This is a proposed test plan, not a claim of validated performance or certification.
 
 ## Shared PUI89 AI Safety Contract
 
@@ -1339,7 +1339,7 @@ See the [PUI89 Master Roadmap](https://github.com/Pui89/Pui89.github.io/blob/mai
 
 ## Latest automated verification (29 October 2026)
 
-The [lightweight verification run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954) completed successfully. Its report recorded Python 3.11.17, zero Python compile errors, a passing dependency-free observability smoke check, and zero reported failures. [Verification report artifact](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954/artifacts/12898129816).
+The [lightweight verification run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954) completed successfully. Its report recorded Python 3.11.17, zero Python compile errors, a passing standard-library-only observability smoke check, and zero reported failures. [Verification report artifact](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954/artifacts/12898129816).
 
 This lightweight job explicitly does **not** run the full dependency-backed unit-test suite. The selected PUI89 combined run passed 13 shared-core tests for this project, but no new Flood simulator scenario results are established by those software checks. The documented 15 m depth is a simulation/design target, not a validated operating envelope; physical rescue performance remains unvalidated.
 
@@ -1419,7 +1419,7 @@ Project-specific controls and review requirements:
 - AI plans must remain proposals; no model, network service or dashboard may bypass deterministic safety controls, human authorisation or emergency-stop design.
 - Preserve offline-safe behaviour and least-privilege CI permissions; never expose secrets to untrusted pull-request code.
 
-A scan or passing test is evidence only for the checks actually run; it does not prove the repository is free of malware or vulnerabilities.
+A scan or passing test is evidence only for the checks actually run; it does not prove the repository is absence of malware or vulnerabilities.
 
 ## PUI89 seven-dimension quality recommendations
 
