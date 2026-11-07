@@ -134,7 +134,7 @@ Current gaps, recent technology directions, no-recurring-cost adoption gates, an
 - **AI support:** explore person/animal candidate detection, flood-scene understanding, hazard mapping, route proposals, uncertainty reporting and operator alerts.
 - **Safety principle:** each platform must stay within its own evidence-backed operating envelope; unknown or unsafe conditions trigger hold, replan or human review.
 - **Current evidence:** software decision support, concept visuals and simulations. No validated physical 15 m rescue capability is claimed.
-- **Cost approach:** local-first and local-first where feasible; no paid API or cloud GPU is required by the design plan.
+- **Development approach:** local-first where feasible; the design plan prioritises local-first workflows.
 
 ## Amphibious rescue-raft robot — retractable-wheel concept
 
@@ -340,7 +340,7 @@ The cinematic storyboard and interactive simulation above are the primary visual
 
 This repository's recommended local model, intended tasks, licence checks, setup notes, and no-surprise-billing rules are documented in **[HUGGINGFACE_LOCAL_MODELS.md](docs/HUGGINGFACE_LOCAL_MODELS.md)**.
 
-**Cost boundary:** the plan uses downloaded local weights only; it does not require paid Hugging Face inference, cloud GPUs, paid notebooks, or a subscription. Model integration and performance must be verified by running tests locally.
+**Resource boundary:** the plan uses downloaded local weights only; it does not require paid Hugging Face inference, cloud GPUs, paid notebooks, or a subscription. Model integration and performance must be verified by running tests locally.
 
 **Dataset and labelling workflow:** see [dataset sources, licence checks, annotation and training plan](docs/DATASET_ACQUISITION_AND_LABELING.md), the [Windows opt-in dataset helper](scripts/prepare_free_datasets.ps1), the [image inventory/manifest generator](tools/dataset_inventory.py), the [manifest template](data/manifest.template.csv), the [group-aware train/validation/test splitter](tools/group_split_manifest.py), and the [local manifest audit tool](tools/audit_dataset_manifest.py). Downloads require local user confirmation; no images are automatically considered licensed or correctly labelled. Keep datasets and weights out of Git.
 
@@ -361,7 +361,7 @@ The latest Python test workflow passed on the current main-branch change in [run
 - **Next checks:** audit permitted data and labels; freeze leakage-safe splits; establish separate baselines for person detection and flood-scene segmentation; report held-out precision/recall, false negatives, latency and failure cases; then test missing/stale/conflicting sensors, communication loss and fail-closed behavior in repeatable simulation.
 - **Not yet demonstrated:** independently validated victim/person detection, validated water-depth estimates, safe real-world navigation, physical rescue, or field-tested robot safety. Synthetic observations and concept images are not real model detections.
 - **Future path:** reproducible ROS 2/Nav2/Gazebo scenarios, sensor-failure and stop tests, independent safety review, and only then any authorised, supervised hardware or field trial.
-- **Cost and safety boundary:** keep the workflow cost-conscious and local-first where feasible; do not claim a rescue outcome or allow an AI hypothesis to replace trained human responders.
+- **Safety boundary:** keep the workflow cost-conscious and local-first where feasible; do not claim a rescue outcome or allow an AI hypothesis to replace trained human responders.
 
 ## Previous status update — 18 October 2026
 
@@ -432,7 +432,7 @@ flowchart TD
 
 **Practical development path:** start with public satellite reports and appropriately licensed photographs as contextual references, then use legally accessible, labelled datasets and simulated flood scenes for evaluation. Measure victim-detection recall, false alarms, mapping error, route safety, communications reliability and performance in rain, darkness and partial submersion. Before field trials, require rescue-agency authorization, independent safety testing, privacy protections and human supervision.
 
-**Evidence boundary:** these are proposed applications, not evidence that this repository's robot has been used in a Thai flood or has validated victim-detection/rescue performance. The 2010 photograph and GISTDA satellite images are contextual references, not a labelled training dataset. External image hosting can change; no paid image subscription is needed for the CC BY photo under its stated licence, but this does not guarantee every future hosting, cloud or AI service will remain available at no additional cost.
+**Evidence boundary:** these are proposed applications, not evidence that this repository's robot has been used in a Thai flood or has validated victim-detection/rescue performance. The 2010 photograph and GISTDA satellite images are contextual references, not a labelled training dataset. External image hosting can change; 
 
 AI application concept for flood reconnaissance and rescue support, combining multimodal sensing, hazard mapping, uncertainty-aware planning, and human-supervised mission proposals.
 
@@ -599,7 +599,7 @@ The selected Himalayan concept illustration at the top of this README is the onl
 
 **Safety-first workflow:** AI flags possible people and hazards → the system reports evidence and uncertainty → deterministic checks and a trained coordinator review proposals → only an authorized, validated control system may execute a response. Unknown or occluded targets remain unconfirmed. Never send an unvalidated robot into fast-flowing, electrically hazardous, or otherwise unsafe floodwater.
 
-**Image note:** this is an original SVG vector illustration stored in this repository. It requires no paid stock-photo subscription or paid image-generation API to view or reuse under the repository's applicable license. Third-party assets and software elsewhere in the project may have separate terms.
+**Image note:** this is an original SVG vector illustration stored in this repository.  Third-party assets and software elsewhere in the project may have separate terms.
 
 ## Detailed engineering notes
 
@@ -1069,7 +1069,7 @@ This project includes an optional guide for adding local text-to-speech announce
 
 ## Robot Design Concept
 
-See the [low-cost robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, no paid hosted APIs, and human supervision.
+See the [low-cost robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, hosted integrations only after review, and human supervision.
 
 ## Interactive visual simulation (no external packages required)
 
@@ -1205,7 +1205,7 @@ Use a small, reproducible toolchain for the simulation-first rescue-support prot
 - **Testing and observability:** pytest, structured logs, versioned scenarios, and repeatable reports that distinguish synthetic/simulation evidence from field evidence.
 - **Agent workflow:** retain the current rule-based decision-support approach; add LangGraph or another agent framework only for a demonstrated multi-step need.
 
-**Cost and safety guardrails:** no paid API, cloud GPU, subscription, or automatic hardware control is required by this plan. Ask before introducing costs. AI output remains advisory; simulation results do not prove waterproofing, safe navigation, victim detection, or real-world rescue capability. Physical deployment requires independent safety systems and staged validation.
+**Safety and evidence guardrails:** Keep AI output advisory; require independent safety systems and staged validation before physical deployment. AI output remains advisory; simulation results do not prove waterproofing, safe navigation, victim detection, or real-world rescue capability. Physical deployment requires independent safety systems and staged validation.
 
 
 ## PUI89 Extreme Flood Rescue — evidence-first upgrade roadmap
@@ -1251,7 +1251,7 @@ Track the five shared local-first development tasks in [docs/DEVELOPMENT_ROADMAP
 - Build repeatable scenario sets for water depth, current, debris, visibility, communications loss, localization failure, battery limits and human/animal detection. Record which scenarios are simulated, tested, or still **NOT RUN**.
 - Report navigation/task completion, detection errors, localization error, latency, resource use and safe-stop behavior only from reproducible runs with the commit, configuration and hardware recorded.
 - Flood depths up to 15 m may be explored as a simulation/design target; they are not evidence that a robot can operate or rescue people at that depth. Do not claim real-world amphibious mobility or successful evacuation without physical validation.
-- local-first execution: prioritize existing Python tests and local simulation; no paid APIs, cloud GPU or automatic model downloads.
+- local-first execution: prioritize existing Python tests and local simulation; external services and model downloads.
 
 ## Offline local-first audit tool — 26 October 2026
 
@@ -1263,7 +1263,7 @@ Run `python tools/free_first_audit.py` from the repository root to create a loca
 
 ## local-first startup toolkit
 
-See [local-first Product and Engineering Toolkit](docs/FREE_FIRST_STARTUP_TOOLKIT.md) for cost guardrails, recommended local-first workflows, project-specific validation rules, and evidence standards. The guide does not require paid APIs, subscriptions, cloud GPUs, or automatic model downloads.
+See [local-first Product and Engineering Toolkit](docs/FREE_FIRST_STARTUP_TOOLKIT.md) for resource-adoption checks, recommended local-first workflows, project-specific validation rules, and evidence standards. The guide does not require paid APIs, subscriptions, cloud GPUs, or automatic model downloads.
 
 See [Marketing, SEO and Sales Playbook](docs/MARKETING_SEO_SALES_PLAYBOOK.md) for a local-first product page, evidence-led messaging, customer discovery, search visibility, and outreach guidance. No marketing subscription or ad spend is required.
 
@@ -1289,7 +1289,7 @@ See [local-first Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for 
 - Run the existing local verification and relevant test suites; record the exact command, environment, commit and result.
 - Add or strengthen repeatable tests for uncertain inputs, sensor/navigation failures, and safe-stop / human-review behavior.
 - Report only measured results. A passing syntax scan or synthetic test is evidence for that software path only—not real-world rescue performance.
-- Keep the workflow local-first: no paid API, cloud GPU, automatic model download or recurring-cost service by default.
+- Keep the workflow local-first: external integrations require prior review.
 
 **Capability boundary:** extreme-flood scenarios, including depths up to 15 m, are design/simulation targets only. They do not prove the robot can operate or rescue people at those depths. Physical operation remains unvalidated until supported by separate, documented evidence.
 
