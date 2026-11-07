@@ -1418,3 +1418,23 @@ Project-specific controls and review requirements:
 - Preserve offline-safe behaviour and least-privilege CI permissions; never expose secrets to untrusted pull-request code.
 
 A scan or passing test is evidence only for the checks actually run; it does not prove the repository is free of malware or vulnerabilities.
+
+## PUI89 seven-dimension quality recommendations
+
+**Last reviewed: 8 November 2026 · Review month: November 2026**
+
+This project uses the shared PUI89 quality framework. The indicators are guidance/status labels, not scores, certification or proof that work is complete.
+
+| Dimension | Recommendation for this project | Indicator |
+|---|---|---|
+| Brand identity | Maintain the PUI89 Deep Navy + Electric Cyan system, consistent project naming and the approved project accent. | 🔵 Guidance |
+| Website and accessibility | Keep English and Thai pages aligned, responsive, accessible, correctly linked and date-stamped. | 🔵 Guidance |
+| AI software and applications | Version contracts, preserve provenance, propagate uncertainty, abstain on insufficient evidence and test safe human-review boundaries. | 🟢 Quality target |
+| Physical products and robotics | Define measurable structural, power, thermal, water-ingress, fire-risk, maintenance and emergency-stop requirements; do not claim untested ratings. | 🟠 Evidence required |
+| Documentation and research evidence | Maintain architecture, requirements, reproducible tests, data/model licences, limitations and traceable evidence links. | 🔵 Guidance |
+| Product and commercial readiness | Validate the user problem, intended operator, value, support model, lawful IP/data position and release gates before commercial claims. | 🟠 Evidence required |
+| Professional environment and presentation | Use consistent technical diagrams, demonstrations and partner-facing materials; do not imply facilities or partnerships without evidence. | ⚪ Not assessed |
+
+**Project-specific priority:** Prioritise scenario traceability, sensor/localisation fault injection, safe-stop and human-operated recovery. Treat buoyancy, current resistance, water ingress, propulsion, 15 m stabilising poles and rescue performance as unvalidated until controlled physical tests.
+
+**Status legend:** 🔵 framework guidance added · 🟢 engineering quality target · 🟠 evidence or validation still required · ⚪ not assessed. These labels describe the review state of recommendations, not overall project maturity. Project maturity changes only when supported by verified repository evidence, reproducible tests or controlled validation.
