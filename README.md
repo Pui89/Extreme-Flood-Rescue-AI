@@ -1,5 +1,24 @@
 # Extreme Flood Rescue AI
 
+
+## PUI89 — Intelligent Systems. Verifiable Decisions. Safer Outcomes.
+
+PUI89 develops intelligent software and next-generation robotic systems for practical challenges across agriculture, emergency response, multimodal inspection, home environments and mobility. Our engineering approach integrates perception, contextual reasoning, decision intelligence, safety engineering and evidence-led validation.
+
+### Engineering capabilities
+
+- **Perception and sensing:** visual, spatial and multimodal information processing.
+- **Context and reasoning:** world-state representation, uncertainty handling and evidence alignment.
+- **Decision intelligence:** structured recommendations, action proposals and human approval boundaries.
+- **Safety engineering:** risk-aware operating limits, safe-state logic and failure reporting.
+- **Verification and assurance:** reproducible tests, benchmark records, provenance and traceable engineering evidence.
+
+### Technology governance
+
+PUI89 selects and integrates technologies according to capability, provenance, security, licence obligations, maintainability, interoperability and operational suitability. Product claims are grounded in documented implementation and validation rather than a list of underlying components. Required third-party notices and attributions remain in the appropriate technical and legal records.
+
+**Development principle:** distinguish implemented capabilities, tested software behaviour, simulation results, proposed designs and independently validated real-world performance. A concept or passing software test is not represented as a commercially validated physical product.
+
 ## Commercial readiness progress
 
 **46% — evidence-based commercial-readiness estimate**  
@@ -104,7 +123,7 @@ The [Product Quality and Safety Roadmap](docs/PRODUCT_QUALITY_AND_SAFETY_ROADMAP
 
 ## local-first offline engineering tools
 
-- **Robotics stack selection:** [open-source systems, licence notes and adoption gates](docs/FREE_ROBOTICS_STACK_ADOPTION.md). These are recommendations only; no robotics packages or model weights are installed or downloaded by this PR.
+- **Robotics stack selection:** [selected systems, licence notes and adoption gates](docs/FREE_ROBOTICS_STACK_ADOPTION.md). These are recommendations only; no robotics packages or model weights are installed or downloaded by this PR.
 - **local agentic AI:** [optional agents, local runtimes, licence notes and safety gates](docs/LOCAL_AGENTIC_AI.md); discover what's already installed with `python tools/check_optional_resources.py`. No models or packages are downloaded automatically.
 - **Model-optional agentic workflow:** `agents/agentic_workflow.py` sequences input validation, the existing decision agent, a policy gate and an evidence-hash report; it requires human review and never runs actions.
 - **Run the local agentic workflow:** `python -m tools.run_agentic_workflow --input examples/agentic_workflow.synthetic.json` — standard-library only; synthetic inputs, review output, no model download or actuator control.
@@ -369,7 +388,7 @@ The latest Python test workflow passed on the current main-branch change in [run
 - **Continuing:** verify dataset licences and labels; test missing/stale/conflicting sensors, uncertainty, communication loss and fail-closed behavior.
 - **Next:** separate flood-scene segmentation from person detection; audit manifests and data splits; run repeatable fixed-seed scenarios and report failures as well as successes.
 - **Future:** evaluate geographic/weather shifts, then reproducible ROS 2/Nav2/Gazebo simulation and independent safety review before any hardware/field trial.
-- **Corrections:** FloodNet scene labels do not prove person detection; synthetic observations are not model detections; a supplied collision-check flag is not itself a collision checker. No real rescue performance is validated. Open-source-first.
+- **Corrections:** FloodNet scene labels do not prove person detection; synthetic observations are not model detections; a supplied collision-check flag is not itself a collision checker. No real rescue performance is validated. selected-first.
 
 
 
@@ -550,9 +569,9 @@ See:
 - [12-Month Roadmap](docs/PUI89_12_MONTH_ROADMAP.md)
 - [Cost Safety and Billing Policy](docs/COST_SAFETY_AND_BILLING.md)
 
-### Commercial open-source stack and release readiness
+### Commercial selected stack and release readiness
 
-- [Commercial open-source integration plan](docs/OPEN_SOURCE_COMMERCIAL_STACK.md) — DINOv2, Anomalib, Open3D, ROS 2 Nav2, ONNX Runtime, nvblox, optional Visual SLAM, licensing gates, and staged integration.
+- [Commercial selected integration plan](docs/OPEN_SOURCE_COMMERCIAL_STACK.md) — DINOv2, Anomalib, Open3D, ROS 2 Nav2, ONNX Runtime, nvblox, optional Visual SLAM, licensing gates, and staged integration.
 - [Optional stack manifest](config/open_source_stack.yaml) — optional backends remain disabled until adapters, license review, and validation pass.
 - [Commercial readiness checklist](docs/COMMERCIAL_READINESS_CHECKLIST.md) — software supply chain, sensor/robot validation, safety, benchmark evidence, and commercial operations.
 - [Commercial implementation plan](docs/COMMERCIAL_IMPLEMENTATION_PLAN.md) — Jetson Orin/AGX Orin deployment, component/license shortlist, repository implementation map, integration order, release gates, and product packaging.
@@ -1059,9 +1078,9 @@ Use GitHub Issues and Discussions for technical questions, collaboration, bug re
 - **PUI89 main website:** https://pui89.github.io/
 
 
-## Open-source tools, funding and hardware support
+## selected tools, funding and hardware support
 
-See [Open-Source Resources, Funding, Compute and Hardware Support](docs/OPEN_SOURCE_FREE_RESOURCES_AND_SUPPORT.md) for open-source tools, eligible grant and cloud-credit routes, potential hardware-loan contacts, project-specific priorities, and 2026–2028 planning. Support is competitive and subject to each program's current eligibility and terms; no funding or hardware is guaranteed.
+See [selected Resources, Funding, Compute and Hardware Support](docs/OPEN_SOURCE_FREE_RESOURCES_AND_SUPPORT.md) for selected tools, eligible grant and cloud-credit routes, potential hardware-loan contacts, project-specific priorities, and 2026–2028 planning. Support is competitive and subject to each program's current eligibility and terms; no funding or hardware is guaranteed.
 
 ## Optional Local Voice Alerts
 
@@ -1200,7 +1219,7 @@ The supervisor evaluates supplied status values and recommends an advisory mode:
 Use a small, reproducible toolchain for the simulation-first rescue-support prototype.
 
 - **Perception and sensor processing:** OpenCV and PyTorch when a defined, lawful dataset and suitable local hardware are available.
-- **Simulation and robotics:** prefer open-source local simulation components only when needed for a specific acceptance test; check each dependency's licence and laptop resource requirements before installation.
+- **Simulation and robotics:** prefer selected local simulation components only when needed for a specific acceptance test; check each dependency's licence and laptop resource requirements before installation.
 - **Automation:** Python scripts and GitHub Actions for repeatable checks and test summaries, subject to applicable GitHub quotas.
 - **Testing and observability:** pytest, structured logs, versioned scenarios, and repeatable reports that distinguish synthetic/simulation evidence from field evidence.
 - **Agent workflow:** retain the current rule-based decision-support approach; add LangGraph or another agent framework only for a demonstrated multi-step need.
@@ -1259,7 +1278,7 @@ Run `python tools/free_first_audit.py` from the repository root to create a loca
 
 - Prioritise reproducible scenario inventories, synthetic-versus-real labels, Python syntax checks and explicit NOT RUN status for simulation metrics.
 - The report inventories data files and hashes manageable files, flags Python syntax errors, and notes candidate dataset documentation. It does **not** verify licences, annotations, model accuracy, physical safety, or real-world performance; a human must review those items.
-- Suggested open-source technology is already documented in this repository's adoption plan. Evaluate ROS 2/Gazebo or MoveIt only when the project needs simulation or manipulation integration; these tools are not installed by this audit.
+- Suggested selected technology is already documented in this repository's adoption plan. Evaluate ROS 2/Gazebo or MoveIt only when the project needs simulation or manipulation integration; these tools are not installed by this audit.
 
 ## local-first startup toolkit
 
