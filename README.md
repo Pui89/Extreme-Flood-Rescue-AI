@@ -1339,7 +1339,7 @@ See the [PUI89 Master Roadmap](https://github.com/Pui89/Pui89.github.io/blob/mai
 
 ## Latest automated verification (29 October 2026)
 
-The [lightweight verification run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954) completed successfully. Its report recorded Python 3.11.17, zero Python compile errors, a passing standard-library-only observability smoke check, and zero reported failures. [Verification report artifact](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954/artifacts/12898129816).
+The [lightweight verification run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954) completed successfully. Its report recorded Python 3.11.17, no Python compile errors, a passing standard-library-only observability smoke check, and no reported failures. [Verification report artifact](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/40878523954/artifacts/12898129816).
 
 This lightweight job explicitly does **not** run the full dependency-backed unit-test suite. The selected PUI89 combined run passed 13 shared-core tests for this project, but no new Flood simulator scenario results are established by those software checks. The documented 15 m depth is a simulation/design target, not a validated operating envelope; physical rescue performance remains unvalidated.
 
