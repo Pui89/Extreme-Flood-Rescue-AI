@@ -31,11 +31,10 @@ _Last readiness review: 7 November 2026. This estimate can rise or fall as evide
 <table><tr><td align="center"><strong>English website</strong><br><a href="https://pui89.github.io/flood-rescue.html"><img src="https://pui89.github.io/qr/flood-rescue-en.png" width="160" alt="Extreme Flood Rescue AI English website QR code"></a><br><a href="https://pui89.github.io/flood-rescue.html">Open English website</a></td><td align="center"><strong>เว็บไซต์ภาษาไทย</strong><br><a href="https://pui89.github.io/flood-rescue-th.html"><img src="https://pui89.github.io/qr/flood-rescue-th.png" width="160" alt="QR Code เว็บไซต์ภาษาไทย Extreme Flood Rescue AI"></a><br><a href="https://pui89.github.io/flood-rescue-th.html">เปิดเว็บไซต์ภาษาไทย</a></td></tr></table>
 
 
-> **Free-source / cost guard:** [PUI89 zero-cost upgrade policy](docs/PUI89_ZERO_COST_UPGRADE_POLICY.md) — no paid API, cloud GPU, scheduled jobs, or automatic model downloads by default.
 
 ## One-command local verification
 
-Run `python tools/pui89_master_verify.py` for a free, standard-library-only Python syntax scan and inventory of this project's key verification tools. Add `--report verification-report.json` to save a JSON report. Use `--pytest` only when you want to run the full installed test suite; it installs nothing. The helper does not download models, call hosted APIs, change datasets, or control hardware. Tool presence is not proof that a gate passed, and software checks do not establish real-world performance.
+Run `python tools/pui89_master_verify.py` for a standard-library-only Python syntax scan and inventory of this project's key verification tools. Add `--report verification-report.json` to save a JSON report. Use `--pytest` only when you want to run the full installed test suite; it installs nothing. The helper does not download models, call hosted APIs, change datasets, or control hardware. Tool presence is not proof that a gate passed, and software checks do not establish real-world performance.
 
 
 ## Latest engineering update — 1 November 2026
@@ -78,9 +77,9 @@ On 30 October, the shared observation-provenance guard was tightened to reject n
 - **Cross-project report:** [PUI89 Cross-Project Verification Snapshot](https://github.com/Pui89/Pui89.github.io/blob/main/PUI89_CROSS_PROJECT_VERIFICATION.md).
 - **Latest automated checks:** [GitHub Actions](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions).
 
-## Free-first build policy and next upgrade
+## local-first build policy and next upgrade
 
-**Default rule: prove the workflow with free local tools before adding dependencies.** No paid API, cloud GPU, hosted inference, or automatic model/data download is required for the current workflow.
+**Default rule: prove the workflow with local tools before adding dependencies.** The current workflow prioritises local execution and explicit review of external services.
 
 - **Gate 1 — deterministic baseline:** run `python tools/pui89_master_verify.py`, the existing standard-library tests and synthetic evaluation first. Label synthetic results clearly; they are not flood-physics or rescue-performance evidence.
 - **Gate 2 — simulate before integrating:** use the existing scenario and safety-gate tools before considering ROS 2, Gazebo, Nav2, Open3D or autopilot SITL installation. The current starter world does not validate water physics, currents, buoyancy or real navigation.
@@ -103,10 +102,10 @@ The [Product Quality and Safety Roadmap](docs/PRODUCT_QUALITY_AND_SAFETY_ROADMAP
 
 *Real flood-response photograph: Marvin Nauman/FEMA, Kingfisher, Oklahoma, 19 August 2007. [Source and public-domain information](https://commons.wikimedia.org/wiki/File:FEMA_-_32076_-_A_water_rescue_team_in_a_boat_searching_for_people_in_Oklahoma.jpg). Shown as real-world emergency-response context only; it is not a photograph of the Pui89 robot and does not validate autonomous rescue, passenger-carrying capability, or operation at any specified water depth.*
 
-## Free-first offline engineering tools
+## local-first offline engineering tools
 
-- **Free robotics stack selection:** [open-source systems, licence notes and adoption gates](docs/FREE_ROBOTICS_STACK_ADOPTION.md). These are recommendations only; no robotics packages or model weights are installed or downloaded by this PR.
-- **Free local agentic AI:** [optional agents, local runtimes, licence notes and safety gates](docs/LOCAL_AGENTIC_AI.md); discover what's already installed with `python tools/check_optional_resources.py`. No models or packages are downloaded automatically.
+- **Robotics stack selection:** [open-source systems, licence notes and adoption gates](docs/FREE_ROBOTICS_STACK_ADOPTION.md). These are recommendations only; no robotics packages or model weights are installed or downloaded by this PR.
+- **local agentic AI:** [optional agents, local runtimes, licence notes and safety gates](docs/LOCAL_AGENTIC_AI.md); discover what's already installed with `python tools/check_optional_resources.py`. No models or packages are downloaded automatically.
 - **Model-optional agentic workflow:** `agents/agentic_workflow.py` sequences input validation, the existing decision agent, a policy gate and an evidence-hash report; it requires human review and never runs actions.
 - **Run the local agentic workflow:** `python -m tools.run_agentic_workflow --input examples/agentic_workflow.synthetic.json` — standard-library only; synthetic inputs, review output, no model download or actuator control.
 - **Synthetic agent evaluation:** `python -m tools.evaluate_agentic_workflow` runs the labelled synthetic suite; the protocol documents measured decision-workflow latency and limitations. No model, network, third-party package or hardware action is used.
@@ -118,13 +117,13 @@ The [Product Quality and Safety Roadmap](docs/PRODUCT_QUALITY_AND_SAFETY_ROADMAP
 
 - Shared world-state tracker: `pui89_autonomy/world_state.py` tracks time-stamped observations, hazards, stale data, low confidence and conflicting labels; uncertain tracks remain unknown.
 - Reproducible experiment report builder: `pui89_autonomy/experiment_report.py` summarizes supplied metrics, dataset SHA-256, code version and latency samples without inventing missing measurements.
-- Tests: `tests/test_world_state.py` and `tests/test_experiment_report.py`; free CI runs these standard-library tests. These tools are software scaffolds, not proof of physical performance or safety.
+- Tests: `tests/test_world_state.py` and `tests/test_experiment_report.py`; CI runs these standard-library tests. These tools are software scaffolds, not proof of physical performance or safety.
 
 - **Full robotics stack integration:** [ROS 2 Jazzy, Gazebo Harmonic, Nav2, optional ArduPilot/PX4 SITL choice, and offline SmolVLM test](docs/PUI89_FULL_ROBOTICS_STACK_INTEGRATION.md). The current world is dry-terrain starter scenery; it does not simulate water physics or validate rescue capabilities.
 
-## Frontier AI technology and free-first upgrade plan
+## Frontier AI technology and local-first upgrade plan
 
-Current gaps, recent technology directions, no-recurring-cost adoption gates, and project-specific next steps: [Frontier technology gap and free-first plan](docs/FRONTIER_TECHNOLOGY_GAP_AND_FREE_PLAN.md). No large model or simulator is installed automatically; verify licences, download size, hardware fit and costs first. Project-specific implementation priorities: [Frontier AI upgrade plan](docs/FRONTIER_AI_UPGRADE_PLAN.md).
+Current gaps, recent technology directions, no-recurring-cost adoption gates, and project-specific next steps: [Frontier technology gap and local-first plan](docs/FRONTIER_TECHNOLOGY_GAP_AND_FREE_PLAN.md). No large model or simulator is installed automatically; verify licences, download size, hardware fit and costs first. Project-specific implementation priorities: [Frontier AI upgrade plan](docs/FRONTIER_AI_UPGRADE_PLAN.md).
 
 **A PUI89 AI-assisted disaster-response platform for extreme-flood search, hazard assessment and multi-platform rescue planning.**
 
@@ -135,7 +134,7 @@ Current gaps, recent technology directions, no-recurring-cost adoption gates, an
 - **AI support:** explore person/animal candidate detection, flood-scene understanding, hazard mapping, route proposals, uncertainty reporting and operator alerts.
 - **Safety principle:** each platform must stay within its own evidence-backed operating envelope; unknown or unsafe conditions trigger hold, replan or human review.
 - **Current evidence:** software decision support, concept visuals and simulations. No validated physical 15 m rescue capability is claimed.
-- **Cost approach:** free-first and local-first where feasible; no paid API or cloud GPU is required by the design plan.
+- **Cost approach:** local-first and local-first where feasible; no paid API or cloud GPU is required by the design plan.
 
 ## Amphibious rescue-raft robot — retractable-wheel concept
 
@@ -264,7 +263,7 @@ The rescue-robot concept should use three modes: **AI operation**, **limited saf
 - **Limits:** passing unit tests does not establish real-world flood navigation, victim detection, waterproofing, or rescue capability. Simulation and field results must be reported separately.
 
 
-## Free decision-support agent (current scope)
+## Decision-support agent (current scope)
 
 **Additional cost for this rule-based agent: $0.** It uses the repository's Python code and supplied inputs; it does not require a paid AI API, cloud service, or model download. Local Python/test tooling and GitHub usage remain subject to their own terms and limits.
 
@@ -1150,7 +1149,7 @@ A passing software test only verifies the tested software behavior. It does not 
 A local, standard-library-only agent module is available in [`agents/project_agent.py`](agents/project_agent.py), with focused tests in [`tests/test_project_agent.py`](tests/test_project_agent.py) and integration notes in [`docs/AGENT_GUIDE.md`](docs/AGENT_GUIDE.md). It produces reviewable recommendations from supplied observations; it does not run a perception model, call a hosted API, or issue actuator commands. These rules and tests are not evidence of trained-model accuracy or real-world validation.
 
 
-## Automation roadmap (free-first)
+## Automation roadmap (local-first)
 
 The GitHub Actions workflow runs on relevant changes, manual dispatch, and a weekly schedule. Each test run writes test counts to the workflow summary; inspect the run logs if a report is missing.
 
@@ -1165,9 +1164,9 @@ The GitHub Actions workflow runs on relevant changes, manual dispatch, and a wee
 
 ---
 
-## Free Local Automation Framework
+## local Automation Framework
 
-This repository includes a shared PUI89 health-check script for repeatable, zero-cost local checks.
+This repository includes a shared PUI89 health-check script for repeatable, local-first local checks.
 
 - [Automation guide](docs/PROJECT_AUTOMATION.md)
 - [Local health-check script](scripts/pui89_project_health_check.py)
@@ -1196,7 +1195,7 @@ The checker verifies repository structure, scans Python source syntax, discovers
 
 The supervisor evaluates supplied status values and recommends an advisory mode: autonomous candidate, safe hold, manual recovery, or stopped. It does not acquire sensor data or command hardware. An autonomous-candidate result is not a safety certification; physical systems require independent safety controls and validation.
 
-## Free-first AI engineering stack
+## local-first AI engineering stack
 
 Use a small, reproducible toolchain for the simulation-first rescue-support prototype.
 
@@ -1222,7 +1221,7 @@ This is a staged engineering roadmap, not a claim that the system can currently 
 5. **Human/animal rescue safety:** separate detection from rescue decisions. Require operator confirmation and platform-specific safety checks before approach, contact, lifting, or carrying.
 6. **Independent validation:** publish scenario definitions, test commands, failures, limitations, and measured results. Physical-water testing requires qualified supervision, risk assessment, and appropriate rescue support.
 
-### Free-first implementation order
+### local-first implementation order
 
 - Start with deterministic scenario and safety-state tests that run locally on a CPU.
 - Add small, synthetic test fixtures before considering large datasets or model weights.
@@ -1242,7 +1241,7 @@ This is a staged engineering roadmap, not a claim that the system can currently 
 
 ## Development roadmap
 
-Track the five shared free-first development tasks in [docs/DEVELOPMENT_ROADMAP.md](docs/DEVELOPMENT_ROADMAP.md). Flood priority: define reproducible simulation scenarios and metrics for navigation, multi-robot task allocation, communication loss and localization failure. Simulation scenarios do not establish real-world flood-depth or rescue capability.
+Track the five shared local-first development tasks in [docs/DEVELOPMENT_ROADMAP.md](docs/DEVELOPMENT_ROADMAP.md). Flood priority: define reproducible simulation scenarios and metrics for navigation, multi-robot task allocation, communication loss and localization failure. Simulation scenarios do not establish real-world flood-depth or rescue capability.
 
 ## Engineering update — 26 October 2026
 
@@ -1252,25 +1251,25 @@ Track the five shared free-first development tasks in [docs/DEVELOPMENT_ROADMAP.
 - Build repeatable scenario sets for water depth, current, debris, visibility, communications loss, localization failure, battery limits and human/animal detection. Record which scenarios are simulated, tested, or still **NOT RUN**.
 - Report navigation/task completion, detection errors, localization error, latency, resource use and safe-stop behavior only from reproducible runs with the commit, configuration and hardware recorded.
 - Flood depths up to 15 m may be explored as a simulation/design target; they are not evidence that a robot can operate or rescue people at that depth. Do not claim real-world amphibious mobility or successful evacuation without physical validation.
-- Free-first execution: prioritize existing Python tests and local simulation; no paid APIs, cloud GPU or automatic model downloads.
+- local-first execution: prioritize existing Python tests and local simulation; no paid APIs, cloud GPU or automatic model downloads.
 
-## Offline free-first audit tool — 26 October 2026
+## Offline local-first audit tool — 26 October 2026
 
 Run `python tools/free_first_audit.py` from the repository root to create a local inventory using Python's standard library. Optionally save a report with `python tools/free_first_audit.py --json audit-report.json`. The tool does not access the network, install dependencies, download model weights, or upload data. The optional JSON file is written only to your local working copy unless you choose to commit it.
 
 - Prioritise reproducible scenario inventories, synthetic-versus-real labels, Python syntax checks and explicit NOT RUN status for simulation metrics.
 - The report inventories data files and hashes manageable files, flags Python syntax errors, and notes candidate dataset documentation. It does **not** verify licences, annotations, model accuracy, physical safety, or real-world performance; a human must review those items.
-- Suggested free/open-source technology is already documented in this repository's adoption plan. Evaluate ROS 2/Gazebo or MoveIt only when the project needs simulation or manipulation integration; these tools are not installed by this audit.
+- Suggested open-source technology is already documented in this repository's adoption plan. Evaluate ROS 2/Gazebo or MoveIt only when the project needs simulation or manipulation integration; these tools are not installed by this audit.
 
-## Free-first startup toolkit
+## local-first startup toolkit
 
-See [Free-First Product and Engineering Toolkit](docs/FREE_FIRST_STARTUP_TOOLKIT.md) for cost guardrails, recommended free-first workflows, project-specific validation rules, and evidence standards. The guide does not require paid APIs, subscriptions, cloud GPUs, or automatic model downloads.
+See [local-first Product and Engineering Toolkit](docs/FREE_FIRST_STARTUP_TOOLKIT.md) for cost guardrails, recommended local-first workflows, project-specific validation rules, and evidence standards. The guide does not require paid APIs, subscriptions, cloud GPUs, or automatic model downloads.
 
-See [Marketing, SEO and Sales Playbook](docs/MARKETING_SEO_SALES_PLAYBOOK.md) for a free-first product page, evidence-led messaging, customer discovery, search visibility, and outreach guidance. No marketing subscription or ad spend is required.
+See [Marketing, SEO and Sales Playbook](docs/MARKETING_SEO_SALES_PLAYBOOK.md) for a local-first product page, evidence-led messaging, customer discovery, search visibility, and outreach guidance. No marketing subscription or ad spend is required.
 
-See [Free-First Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for curated tools, local model options, testing/security helpers, SEO resources, cost cautions, and project-specific evidence boundaries.
+See [local-first Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for curated tools, local model options, testing/security helpers, SEO resources, cost cautions, and project-specific evidence boundaries.
 
-**Recommended technology stack:** [PUI89 Free-First Technology Stack](docs/PUI89_FREE_FIRST_TECH_STACK.md) — stable, local-first tools; dependencies and costs reviewed before adoption.
+**Recommended technology stack:** [PUI89 local-first Technology Stack](docs/PUI89_FREE_FIRST_TECH_STACK.md) — stable, local-first tools; dependencies and costs reviewed before adoption.
 
 ## Engineering maturity level — 27 October 2026
 
@@ -1294,14 +1293,14 @@ See [Free-First Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for c
 
 **Capability boundary:** extreme-flood scenarios, including depths up to 15 m, are design/simulation targets only. They do not prove the robot can operate or rescue people at those depths. Physical operation remains unvalidated until supported by separate, documented evidence.
 
-## Free-first engineering resources
+## local-first engineering resources
 
-See the [PUI89 Free-First Engineering Resource Roadmap](docs/PUI89_FREE_RESOURCE_ROADMAP.md) for approved-first tools, adoption gates, licence/cost checks and project-specific next steps. The default is to reuse existing Python and GitHub automation; optional packages and model weights are not installed or downloaded automatically.
+See the [PUI89 local-first Engineering Resource Roadmap](docs/PUI89_FREE_RESOURCE_ROADMAP.md) for approved-first tools, adoption gates, licence/cost checks and project-specific next steps. The default is to reuse existing Python and GitHub automation; optional packages and model weights are not installed or downloaded automatically.
 
 
 ## Quality, tolerance and cost gates
 
-See [Quality, Tolerance, Performance, Safety and Cost Gates](docs/QUALITY_TOLERANCE_PERFORMANCE_COST_GATES.md) for measurable acceptance criteria, fault-injection scenarios, human/animal safety requirements and free-first engineering constraints. This is a proposed test plan, not a claim of validated performance or certification.
+See [Quality, Tolerance, Performance, Safety and Cost Gates](docs/QUALITY_TOLERANCE_PERFORMANCE_COST_GATES.md) for measurable acceptance criteria, fault-injection scenarios, human/animal safety requirements and local-first engineering constraints. This is a proposed test plan, not a claim of validated performance or certification.
 
 ## Shared PUI89 AI Safety Contract
 
@@ -1362,5 +1361,5 @@ This repository now includes real Hugging Face checkpoint adapters in [`pui89_mo
 
 - **OWLv2:** `google/owlv2-base-patch16-ensemble` for text-conditioned object proposals.
 - **Intel DPT-Hybrid:** `Intel/dpt-hybrid-midas` for relative scene depth where appropriate; not calibrated distance or physical depth.
-- **Zero-cost default:** no packages or model weights are installed/downloaded automatically; CPU-only inference, local cache only by default, no hosted inference API or cloud GPU.
+- **local-first default:** no packages or model weights are installed/downloaded automatically; CPU-only inference, local cache only by default, no hosted inference API or cloud GPU.
 - **Evidence status:** adapter code is added; model inference and project-specific accuracy are NOT YET TESTED. Outputs remain uncertain observations for human review, never actuator commands.
