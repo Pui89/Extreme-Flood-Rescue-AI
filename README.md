@@ -136,7 +136,7 @@ The [Product Quality and Safety Roadmap](docs/PRODUCT_QUALITY_AND_SAFETY_ROADMAP
 
 ## Frontier AI technology and local-first upgrade plan
 
-Current gaps, recent technology directions, open-source-first adoption gates, and project-specific next steps: [Frontier technology gap and local-first plan](docs/FRONTIER_TECHNOLOGY_GAP_AND_FREE_PLAN.md). No large model or simulator is installed automatically; verify licences, download size, hardware fit and licences and resource requirements first. Project-specific implementation priorities: [Frontier AI upgrade plan](docs/FRONTIER_AI_UPGRADE_PLAN.md).
+Current gaps, recent technology directions, open-source-first adoption gates, and project-specific next steps: [Frontier technology gap and local-first plan](docs/FRONTIER_TECHNOLOGY_GAP_AND_FREE_PLAN.md). No large model or simulator is installed automatically; verify licences, download size, hardware fit and resource requirements first. Project-specific implementation priorities: [Frontier AI upgrade plan](docs/FRONTIER_AI_UPGRADE_PLAN.md).
 
 **A PUI89 AI-assisted disaster-response platform for extreme-flood search, hazard assessment and multi-platform rescue planning.**
 
@@ -561,7 +561,7 @@ See:
 - [Failure and UNKNOWN Protocol](docs/PUI89_FAILURE_AND_UNKNOWN_PROTOCOL.md)
 - [MLOps Model Lifecycle](docs/PUI89_MLOPS_MODEL_LIFECYCLE.md)
 - [12-Month Roadmap](docs/PUI89_12_MONTH_ROADMAP.md)
-- [resource requirements Safety and Billing Policy](docs/resource requirements_SAFETY_AND_BILLING.md)
+- [Resource, service and billing policy](docs/COST_SAFETY_AND_BILLING.md)
 
 ### Commercial selected stack and release readiness
 
@@ -1082,7 +1082,7 @@ This project includes an optional guide for adding local text-to-speech announce
 
 ## Robot Design Concept
 
-See the [low-resource requirements robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, hosted integrations only after review, and human supervision.
+See the [lightweight robot design concept and staged safety plan](docs/ROBOT_DESIGN.md). This is a concept and prototype roadmap, not a claim of a tested or field-ready robot. The initial approach prioritizes local software, existing hardware, hosted integrations only after review, and human supervision.
 
 ## Interactive visual simulation (no external packages required)
 
@@ -1278,7 +1278,7 @@ Run `python tools/free_first_audit.py` from the repository root to create a loca
 
 See [local-first Product and Engineering Toolkit](docs/FREE_FIRST_STARTUP_TOOLKIT.md) for resource-adoption checks, recommended local-first workflows, project-specific validation rules, and evidence standards. The guide does not require paid APIs, subscriptions, cloud GPUs, or automatic model downloads.
 
-See [Marketing, SEO and Sales Playbook](docs/MARKETING_SEO_SALES_PLAYBOOK.md) for a local-first product page, evidence-led messaging, customer discovery, search visibility, and outreach guidance. No marketing subscription or ad spend is required.
+See [Marketing, SEO and Sales Playbook](docs/MARKETING_SEO_SALES_PLAYBOOK.md) for a local-first product page, evidence-led messaging, customer discovery, search visibility, and outreach guidance. Prioritise evidence-led organic outreach, partner channels and clear project documentation.
 
 See [local-first Resource Catalogue](docs/FREE_FIRST_RESOURCE_CATALOGUE.md) for curated tools, local model options, testing/security helpers, SEO resources, resource cautions, and project-specific evidence boundaries.
 
@@ -1313,7 +1313,7 @@ See the [PUI89 local-first Engineering Resource Roadmap](docs/PUI89_FREE_RESOURC
 
 ## quality, tolerance, resource and performance gates
 
-See [quality, tolerance, performance and safety gates](docs/QUALITY_TOLERANCE_PERFORMANCE_resource requirements_GATES.md) for measurable acceptance criteria, fault-injection scenarios, human/animal safety requirements and local-first engineering constraints. This is a proposed test plan, not a claim of validated performance or certification.
+See [quality, tolerance, performance and safety gates](docs/QUALITY_TOLERANCE_PERFORMANCE_COST_GATES.md) for measurable acceptance criteria, fault-injection scenarios, human/animal safety requirements and local-first engineering constraints. This is a proposed test plan, not a claim of validated performance or certification.
 
 ## Shared PUI89 AI Safety Contract
 
@@ -1419,7 +1419,7 @@ Project-specific controls and review requirements:
 - AI plans must remain proposals; no model, network service or dashboard may bypass deterministic safety controls, human authorisation or emergency-stop design.
 - Preserve offline-safe behaviour and least-privilege CI permissions; never expose secrets to untrusted pull-request code.
 
-A scan or passing test is evidence only for the checks actually run; it does not prove the repository is absence of malware or vulnerabilities.
+A scan or passing test is evidence only for the checks actually run; it does not establish whether the repository contains malware or vulnerabilities.
 
 ## PUI89 seven-dimension quality recommendations
 
