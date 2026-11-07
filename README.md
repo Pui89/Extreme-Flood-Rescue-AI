@@ -1,5 +1,31 @@
 # Extreme Flood Rescue AI
 
+## Commercial readiness progress
+
+**46% — evidence-based commercial-readiness estimate**  
+**Target: 100% = ready for an appropriately scoped commercial release or formal commercial procurement submission.** This is not a code-completion percentage, a sales forecast, or a claim of product certification. Scores are provisional and based on the evidence currently documented in this repository; they must be revised when new evidence is verified.
+
+The repository documents software decision-support, safety-gate checks and synthetic simulation scenarios. These do not validate flood physics, real-world navigation, buoyancy, rescue performance or any 15 m operating capability; no physical rescue platform is validated.
+
+| Readiness gate | Weight | Evidence credit |
+|---|---:|---:|
+| Product purpose & requirements | 10 | 9 |
+| Architecture & engineering design | 10 | 9 |
+| Working software baseline | 15 | 10 |
+| Reproducible tests & evaluation | 15 | 12 |
+| Integrated product prototype | 15 | 0 |
+| Safety, reliability & real-world validation | 15 | 2 |
+| Licensing, IP & regulatory readiness | 10 | 2 |
+| Commercial release package & support | 10 | 2 |
+| **Total** | **100** | **46** |
+
+**What 100% requires:** a defined product and acceptance criteria; integrated release candidate; reproducible performance and reliability evidence; appropriate safety and real-world validation; verified rights/licences and applicable regulatory conformity; manufacturing/deployment, pricing, warranty, maintenance, user documentation and support arrangements. A score of 100% is awarded only after all applicable release gates are evidenced and reviewed. Partner or research discussions may happen earlier, but must be labelled as development-stage collaboration—not a ready-to-sell product.
+
+**Next commercial-readiness gate:** close the missing evidence above, beginning with project-specific working-product validation and safety evidence. Never count a planned feature, concept image, tool inventory, synthetic-only result or unrun test as a completed gate.
+
+_Last readiness review: 7 November 2026. This estimate can rise or fall as evidence changes._
+
+
 ## Project website QR codes
 
 <table><tr><td align="center"><strong>English website</strong><br><a href="https://pui89.github.io/flood-rescue.html"><img src="https://pui89.github.io/qr/flood-rescue-en.png" width="160" alt="Extreme Flood Rescue AI English website QR code"></a><br><a href="https://pui89.github.io/flood-rescue.html">Open English website</a></td><td align="center"><strong>เว็บไซต์ภาษาไทย</strong><br><a href="https://pui89.github.io/flood-rescue-th.html"><img src="https://pui89.github.io/qr/flood-rescue-th.png" width="160" alt="QR Code เว็บไซต์ภาษาไทย Extreme Flood Rescue AI"></a><br><a href="https://pui89.github.io/flood-rescue-th.html">เปิดเว็บไซต์ภาษาไทย</a></td></tr></table>
