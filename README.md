@@ -1338,3 +1338,9 @@ This repository now includes real Hugging Face checkpoint adapters in [`pui89_mo
 - **Intel DPT-Hybrid:** `Intel/dpt-hybrid-midas` for relative scene depth where appropriate; not calibrated distance or physical depth.
 - **Zero-cost default:** no packages or model weights are installed/downloaded automatically; CPU-only inference, local cache only by default, no hosted inference API or cloud GPU.
 - **Evidence status:** adapter code is added; model inference and project-specific accuracy are NOT YET TESTED. Outputs remain uncertain observations for human review, never actuator commands.
+
+## AI Agents and Hugging Face integration
+
+- **Shared roadmap:** [AI Agent and Hugging Face Integration](docs/AI_AGENT_HUGGING_FACE_ROADMAP.md)
+- **Machine-readable candidate registry:** [config/huggingface-model-registry.yaml](config/huggingface-model-registry.yaml)
+- **Status:** research candidates only; no model weights are downloaded and no paid inference is enabled.
