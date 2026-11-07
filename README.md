@@ -361,7 +361,7 @@ The latest Python test workflow passed on the current main-branch change in [run
 - **Next checks:** audit permitted data and labels; freeze leakage-safe splits; establish separate baselines for person detection and flood-scene segmentation; report held-out precision/recall, false negatives, latency and failure cases; then test missing/stale/conflicting sensors, communication loss and fail-closed behavior in repeatable simulation.
 - **Not yet demonstrated:** independently validated victim/person detection, validated water-depth estimates, safe real-world navigation, physical rescue, or field-tested robot safety. Synthetic observations and concept images are not real model detections.
 - **Future path:** reproducible ROS 2/Nav2/Gazebo scenarios, sensor-failure and stop tests, independent safety review, and only then any authorised, supervised hardware or field trial.
-- **Safety boundary:** keep the workflow cost-conscious and local-first where feasible; do not claim a rescue outcome or allow an AI hypothesis to replace trained human responders.
+- **Safety boundary:** keep the workflow resource-conscious and local-first where feasible; do not claim a rescue outcome or allow an AI hypothesis to replace trained human responders.
 
 ## Previous status update — 18 October 2026
 
