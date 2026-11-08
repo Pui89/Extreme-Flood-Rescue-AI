@@ -1,5 +1,10 @@
 # Extreme Flood Rescue AI
 
+
+## Public privacy boundary
+
+This public README is limited to the project overview, approved concept material and evidence that can be shared openly. Do not publish API keys, passwords, private tokens, Wi-Fi or internal network settings, private camera footage, personal or precise location data, detailed security configurations, unreleased engineering specifications, or confidential commercial plans. Keep sensitive material in an appropriately access-controlled private location. If a credential may have been exposed, revoke it; removing it from the latest commit does not remove it from Git history.
+
 <!-- PUI89_PINNED_CONCEPT_ILLUSTRATION:START -->
 ![Extreme Flood Rescue AI amphibious rescue robot concept](docs/images/flood-rescue-robot-concept-2026.svg)
 
@@ -160,56 +165,6 @@ Current gaps, recent technology directions, open-source-first adoption gates, an
 - **Current evidence:** software decision support, concept visuals and simulations. No validated physical 15 m rescue capability is claimed.
 - **Development approach:** local-first where feasible; the design plan prioritises local-first workflows.
 
-## Amphibious rescue-raft robot — retractable-wheel concept
-
-**Detailed design specification:** [Amphibious Rescue-Raft Robot Concept](docs/AMPHIBIOUS_RESCUE_RAFT_CONCEPT.md) — hull layout, retractable-wheel land/water modes, people/animal/supply transport concept, marine propulsion, fast-current simulation variables and staged validation gates.
-
-**Updated platform direction:** a low-profile, raft/boat-shaped amphibious rescue robot with a buoyant, load-bearing hull. It is designed as one platform that changes its mobility configuration with the water conditions—not as a conventional wheeled rover expected to drive through every flood.
-
-### Two mobility configurations
-
-1. **Shallow-water / exposed-road mode — wheels deployed:** four or more protected, retractable wheels support slow movement across verified firm ground, shallow water and accessible roads. The wheel system is intended to lift clear of the water when the platform transitions to floating mode. Wheel use must be disabled on unstable banks, deep water, strong currents, debris fields or surfaces outside the validated traction and slope limits.
-2. **Floating / deeper-water mode — wheels retracted:** sealed buoyant hull compartments provide flotation while the wheels fold or retract into protected recesses to reduce drag and avoid snagging. Dedicated marine propulsion and steering (for example, guarded electric thrusters or waterjets selected after engineering review) provide controlled movement. The hull, propulsion and control system must be designed and tested for the intended current, waves, debris and loading envelope.
-
-**The transition is conditional, not automatic by water depth alone.** A controller would use redundant water-level/depth sensing, wheel-load or contact feedback, hull-state and propulsion checks, current estimation, battery reserve and operator authorization. If readings conflict, the transition fails, or the operating envelope is unknown, the system must stop/hold and request human review. Do not retract wheels or enter water solely because one sensor crosses a threshold.
-
-### Rescue and transport layout
-
-- **People:** a low, non-slip rescue deck with handholds, perimeter protection, a controlled boarding point/ramp and secure seating or restraint locations designed with rescue professionals. Boarding and transfer should be assisted by trained responders; do not claim autonomous lifting or safe passenger transport before testing.
-- **Animals:** a separate, washable, ventilated and securely contained area with suitable non-slip flooring and restraint points, sized and configured for the animal types being considered. Avoid mixing animals and people in a way that creates injury risk.
-- **Supplies and equipment:** tie-down points and separated storage for first-aid kits, drinking water, flotation aids, communications equipment and other approved payloads. Payload mass and its position must be monitored because uneven loading changes stability and freeboard.
-- **Modular layout:** keep the rescue deck, animal compartment and supply modules low and near the hull centreline; preserve clear access for responders and an emergency unloading route.
-
-### Stability and fast-current design priorities
-
-A raft-like hull can offer a broad waterplane and useful buoyancy, but **a raft shape alone does not make a craft safe in fast-flowing floodwater**. The engineering programme must assess hull stability, freeboard, centre of gravity, payload shift, roll/pitch response, water ingress, reserve buoyancy, propulsion authority, steering at low speed, turning radius, snag hazards, debris impact, capsize recovery, tether/recovery points and safe evacuation. Propulsion guards and protected wheel cavities are important to reduce entanglement and injury risks.
-
-Strong currents, waves, floating debris, hydraulic features, submerged obstacles, damaged structures and uncertain water conditions may exceed the craft's capability. The system must calculate or receive validated platform-specific operating limits and refuse a mission outside them. A human operator and trained rescue team remain responsible for deployment and rescue decisions.
-
-### AI and control workflow (proposed)
-
-`camera / thermal / depth / IMU / GNSS / water-level / current inputs` → sensor-health and uncertainty checks → water/terrain classification and hazard map → platform-envelope and payload checks → proposed wheel/float configuration → independent deterministic safety gate → human authorization → low-level vehicle controller → telemetry and event log.
-
-The AI application may estimate scene conditions, identify possible people/animals, map hazards and recommend a route or configuration. It must not directly bypass the independent stability, propulsion, collision, emergency-stop or operator-approval safeguards.
-
-### Capability and evidence boundary
-
-- **0–15 m:** remains an extreme-flood scenario-design/simulation range for the wider response system. It is **not** a 15 m submergence rating, water-depth operating limit, or demonstrated capability of this surface craft.
-- **Strong-current operation:** a design objective for carefully bounded engineering tests, **not a verified claim**. No current-speed rating is published until measured with the actual hull, propulsion, payload and safety systems.
-- **Passenger / animal capacity:** not yet specified or validated. Do not publish a number of people, animal weight, payload mass, speed, endurance or operating current until engineering calculations and controlled tests support it.
-- **Current status:** concept architecture only. No physical raft robot, retractable-wheel mechanism, flotation system, passenger system or fast-current performance is claimed as built or tested.
-
-### Required validation gates before any water trial
-
-1. Calculate displacement, reserve buoyancy, freeboard, centre of gravity and stability for empty, nominal and worst-case asymmetric payloads.
-2. Bench-test wheel deployment/retraction, mechanical locks, ingress protection, snag protection, emergency release and failure states without people or animals aboard.
-3. Test propulsion and steering on a controlled test stand; verify emergency stop, loss-of-link behavior, manual override and recovery procedure.
-4. Conduct unmanned, tethered, staged still-water trials with ballast before any current testing. Measure leakage, trim, roll/pitch, freeboard, turning, stopping distance, battery reserve and recovery.
-5. Progress to controlled current testing only under qualified marine/rescue supervision, with a separate safety craft, exclusion zone, abort criteria and independent review.
-6. Only after those gates, define a documented passenger/animal transport envelope and conduct supervised trials under relevant regulatory and rescue-agency requirements.
-
-**This is a research and engineering proposal, not an operational rescue vessel.** Simulation, concept artwork and software tests do not establish buoyancy, stability, fast-current capability or safe human/animal transport.
-
 ## Current verified status — 26 October 2026
 
 **Stage:** decision-support software, concept/simulation experiences and regression testing. This repository does not demonstrate a validated physical flood-rescue robot.
@@ -231,10 +186,6 @@ n policy:** [Automated protection and fail-safe policy](docs/AUTOMATED_PROTECTIO
 ![Flood Rescue AI Himalayan extreme-flood concept: aerial reconnaissance, a suitable rescue craft, and a ground robot held on higher terrain; concept art only](docs/images/flood-rescue-amphibious-robot-concept.svg)
 
 *Updated Himalayan extreme-flood concept illustration. It proposes coordinated aerial reconnaissance, a suitable craft only when conditions allow, and a ground robot held on verified accessible terrain. It is not a photograph, a built robot, or evidence of flood-rated performance.*
-
-## Extreme-flood simulation envelope — 0–15 m (not a power or depth rating)
-
-The interactive scenario slider covers **0–15 m of simulated water depth** for hazard-awareness and mission-planning experiments. This does **not** mean the robot has the power, buoyancy, pressure resistance, waterproofing, stability, communications or structural strength to operate at 15 m. Water depth is not a measure of robot power. The visual demo does not impose a fixed 5.5 m cutoff, but its movement is illustrative and is not a safety assessment. The software hazard gate must use evidence-backed, platform-specific limits and check current, slope, bank stability, debris, structures, localization, communications and sensor freshness. At extreme depths, prioritise remote/aerial reconnaissance and human-led decisions about suitable platforms; do not send a platform beyond its verified operating envelope.
 
 ## Optional local Hugging Face perception experiment
 
@@ -623,35 +574,9 @@ The selected Himalayan concept illustration at the top of this README is the onl
 
 **Image note:** this is an original SVG vector illustration stored in this repository.  Third-party assets and software elsewhere in the project may have separate terms.
 
-## Detailed engineering notes
-
-See [docs/3D_ROBOT_CONCEPT.md](docs/3D_ROBOT_CONCEPT.md) for the written design discussion. Older concept images are no longer embedded in this README.
-
 ## Real-time upgrade
 
 The system supports live processing from a webcam or RTSP stream. The pipeline estimates depth per frame, tracks detected objects, builds a hazard map, and overlays the result in a live OpenCV window.
-
-## Embodied AI architecture
-
-RGB / thermal / NIR / depth / LiDAR / IMU -> YOLO + SAM3 + tracking -> 3D semantic world model -> Qwen3-VL + Gemma 4 E4B reasoning -> V-JEPA2 future prediction -> GR00T N1.7 / FLUX 3 Action candidate actions -> deterministic safety gate -> ROS2/Nav2 + MoveIt2/RRT* -> robot -> action verification.
-
-### Models and roles
-
-- YOLO: fast detection and tracking.
-- SAM 3: open-vocabulary segmentation, occlusion boundaries and video tracking.
-- Qwen3-VL: primary multimodal scene and rescue reasoning.
-- Gemma 4 31B IT: high-capacity multimodal flood-scene reasoning, victim verification, occlusion analysis, route/debris reasoning and rescue-plan cross-checking.
-- Gemma 4 E4B-it: lightweight fallback multimodal reasoning.
-- LeRobot: datasets, teleoperation, training and deployment.
-- SmolVLA, pi0/pi0.5, X-VLA, VLA-JEPA: action/VLA candidates.
-- NVIDIA GR00T N1.7 3B: embodied action-policy candidate for adaptation to the flood-robot embodiment.
-- FLUX 3 Action Base: world-action adaptation base; not a complete robot policy and requires an embodiment-specific action head.
-- V-JEPA2/VLA-JEPA: temporal world-model and future-state prediction.
-- LTX-2.5-Diffusers: offline synthetic video/audio scenario generation and visual diversity.
-- MiniMax H3 Turbo LoRA: offline synthetic audio-visual scenario generation and rare-event prototyping.
-- RGB-D + LiDAR + Open3D: 3D semantic mapping.
-- Thermal + NIR + depth/LiDAR: darkness and low-visibility perception.
-- Isaac Sim + Isaac Lab: realistic 3D robot simulation, synthetic data and sim-to-real testing.
 
 ## Gemma 4 31B IT multimodal reasoning
 
@@ -704,7 +629,7 @@ python scripts/run_demo.py --source 0 --display
 Run from an RTSP stream:
 
 ```bash
-python scripts/run_demo.py --source "rtsp://username:password@ip:554/stream"
+python scripts/run_demo.py --source "rtsp://<camera-host>/<stream>"
 ```
 
 Run the smoke test:
@@ -944,7 +869,7 @@ python scripts/run_demo.py --source 0 --display
 RTSP:
 
 ```bash
-python scripts/run_demo.py --source "rtsp://username:password@ip:554/stream"
+python scripts/run_demo.py --source "rtsp://<camera-host>/<stream>"
 ```
 
 Start with recorded or simulated data when validating new sensors, models or deployment configurations.
@@ -1490,24 +1415,3 @@ Scores are awarded only through a dated review with a defined scope, version/com
 This score is separate from any commercial-readiness estimate and is not certification, safety approval or an investment rating.
 <!-- PUI89_PROJECT_STRENGTH_SCORECARD:END -->
 
-## Materials & Hardware — Research Plan
-
-**Status: proposed architecture and sourcing research only.** This is not a bill of materials for a validated or built rescue vehicle.
-
-| Subsystem | Candidate materials / hardware | Purpose and checks before selection |
-|---|---|---|
-| Hull and chassis | Marine-grade aluminium, suitable marine composite or engineered polymer; corrosion-resistant fasteners | Verify displacement, stability, impact, fatigue, corrosion and repairability |
-| Buoyancy | Sealed flotation chambers, bulkheads, inspection ports and cable glands | Verify reserve buoyancy, compartment isolation and leak-test procedure |
-| Propulsion | Marine-rated electric thrusters/guarded propulsors, motor controllers | Verify thrust, current, entanglement, debris tolerance, thermal limits and emergency stop |
-| Land mobility option | Sealed wheel modules, retractable mechanisms, bearings and geared motors | Verify transition reliability, mud/debris ingress, ground clearance and pinch hazards |
-| Current station-keeping | Research-stage anchoring/stabilisation concept, load-rated lines and controlled winch | Calculate current forces, line loads, entanglement and safe release; long poles are not assumed effective |
-| Rescue interface | Stable boarding surface, grab handles, recovery sling, tether points and non-slip surfaces | Verify human factors, entrapment, rated loads and trained-responder procedures |
-| Perception | RGB/low-light camera, optional thermal camera and depth sensor | Verify rain/night performance, false negatives, privacy and environmental ratings |
-| Navigation/state | GNSS, IMU, compass, leak/water-contact sensors | Verify signal-loss behaviour, drift, timestamps and degraded modes |
-| Communications | Suitable radio link, antenna, local logging and recovery beacon | Verify coverage, interference, ingress protection and cybersecurity |
-| Power/enclosure | Battery with BMS, fuses, contactors, isolated converters and sealed connectors | Verify water-ingress tests, corrosion, thermal runaway mitigation and service isolation |
-| Compute/control | Edge computer and independent low-level controller | Verify watchdogs, manual override, emergency stop and safe loss-of-compute behaviour |
-
-Differentiate freshwater, saltwater, sewage-contaminated water and chemical exposure. Select hull, seals, coatings and connectors for the actual environment; never infer a waterproof rating from appearance. Buoyancy, stability, propulsion, rescue loads, current resistance and human/animal safety require qualified engineering and controlled trials. No rescue capability or water-resistance rating is claimed.
-
-**Procurement rule:** research only; no purchases, supplier contact, subscriptions or paid services without explicit approval. Verify datasheets, ratings, certification scope, seller, price, shipping and warranty.
