@@ -1,5 +1,11 @@
 # Extreme Flood Rescue AI
 
+<!-- PUI89_PINNED_CONCEPT_ILLUSTRATION:START -->
+![Extreme Flood Rescue AI amphibious rescue robot concept](docs/images/flood-rescue-robot-concept-2026.svg)
+
+*Conceptual design illustration — not a built or validated rescue robot. Buoyancy, flood-current resistance, navigation, rescue performance and operating limits remain unvalidated.*
+<!-- PUI89_PINNED_CONCEPT_ILLUSTRATION:END -->
+
 ## Open-source-first engineering
 
 PUI89 prioritises open-source software, transparent licensing, reproducible workflows and evidence-led collaboration. Model weights, datasets, hosted services and hardware are assessed separately for provenance, licence terms, security, data handling, resource requirements and intended use. Public availability alone does not establish permission for reuse or commercial deployment.
@@ -210,9 +216,7 @@ The AI application may estimate scene conditions, identify possible people/anima
 
 - **Synthetic evaluation — 26 October 2026:** the labelled synthetic suite reports 7/7 scenarios passed, and adversarial workflow regression tests are merged. These are synthetic software checks only; they do not validate flood physics, real navigation, rescue outcomes, or physical operation at 15 m.
 
-![Flood Rescue robot concept — illustrative design, not a validated physical robot](docs/images/flood-rescue-robot-concept-2026.svg)
-
-**Protection policy:** [Automated protection and fail-safe policy](docs/AUTOMATED_PROTECTION_POLICY.md). This documents required software safeguards and validation gates; it does not claim physical safety or validated operational performance. **Extreme-flood design:** [Mission architecture and verification plan for 0–15 m scenarios](docs/EXTREME_FLOOD_MISSION_ARCHITECTURE.md) separates aerial reconnaissance, surface craft, ground/amphibious platforms, and a future pressure-rated submersible; it is a design proposal, not a claim of tested 15 m capability.
+n policy:** [Automated protection and fail-safe policy](docs/AUTOMATED_PROTECTION_POLICY.md). This documents required software safeguards and validation gates; it does not claim physical safety or validated operational performance. **Extreme-flood design:** [Mission architecture and verification plan for 0–15 m scenarios](docs/EXTREME_FLOOD_MISSION_ARCHITECTURE.md) separates aerial reconnaissance, surface craft, ground/amphibious platforms, and a future pressure-rated submersible; it is a design proposal, not a claim of tested 15 m capability.
 
 - **SAM 3 segmentation:** the optional local smoke-test script and guide are merged ([PR #54](https://github.com/Pui89/Flood-Rescue-AI/pull/54)). No SAM 3 inference result has been verified yet. Model weights are downloaded only when the script is run; check compatibility, access terms, disk space and GPU memory first.
 - **Automated checks for the SAM 3 change:** see [PR #54](https://github.com/Pui89/Extreme-Flood-Rescue-AI/pull/54) for the merged change and its recorded checks. No local SAM 3 inference result has been verified, so no segmentation-quality claim is made.
