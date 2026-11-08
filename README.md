@@ -1489,3 +1489,25 @@ Scores are awarded only through a dated review with a defined scope, version/com
 
 This score is separate from any commercial-readiness estimate and is not certification, safety approval or an investment rating.
 <!-- PUI89_PROJECT_STRENGTH_SCORECARD:END -->
+
+## Materials & Hardware — Research Plan
+
+**Status: proposed architecture and sourcing research only.** This is not a bill of materials for a validated or built rescue vehicle.
+
+| Subsystem | Candidate materials / hardware | Purpose and checks before selection |
+|---|---|---|
+| Hull and chassis | Marine-grade aluminium, suitable marine composite or engineered polymer; corrosion-resistant fasteners | Verify displacement, stability, impact, fatigue, corrosion and repairability |
+| Buoyancy | Sealed flotation chambers, bulkheads, inspection ports and cable glands | Verify reserve buoyancy, compartment isolation and leak-test procedure |
+| Propulsion | Marine-rated electric thrusters/guarded propulsors, motor controllers | Verify thrust, current, entanglement, debris tolerance, thermal limits and emergency stop |
+| Land mobility option | Sealed wheel modules, retractable mechanisms, bearings and geared motors | Verify transition reliability, mud/debris ingress, ground clearance and pinch hazards |
+| Current station-keeping | Research-stage anchoring/stabilisation concept, load-rated lines and controlled winch | Calculate current forces, line loads, entanglement and safe release; long poles are not assumed effective |
+| Rescue interface | Stable boarding surface, grab handles, recovery sling, tether points and non-slip surfaces | Verify human factors, entrapment, rated loads and trained-responder procedures |
+| Perception | RGB/low-light camera, optional thermal camera and depth sensor | Verify rain/night performance, false negatives, privacy and environmental ratings |
+| Navigation/state | GNSS, IMU, compass, leak/water-contact sensors | Verify signal-loss behaviour, drift, timestamps and degraded modes |
+| Communications | Suitable radio link, antenna, local logging and recovery beacon | Verify coverage, interference, ingress protection and cybersecurity |
+| Power/enclosure | Battery with BMS, fuses, contactors, isolated converters and sealed connectors | Verify water-ingress tests, corrosion, thermal runaway mitigation and service isolation |
+| Compute/control | Edge computer and independent low-level controller | Verify watchdogs, manual override, emergency stop and safe loss-of-compute behaviour |
+
+Differentiate freshwater, saltwater, sewage-contaminated water and chemical exposure. Select hull, seals, coatings and connectors for the actual environment; never infer a waterproof rating from appearance. Buoyancy, stability, propulsion, rescue loads, current resistance and human/animal safety require qualified engineering and controlled trials. No rescue capability or water-resistance rating is claimed.
+
+**Procurement rule:** research only; no purchases, supplier contact, subscriptions or paid services without explicit approval. Verify datasheets, ratings, certification scope, seller, price, shipping and warranty.
