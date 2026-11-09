@@ -1,31 +1,52 @@
-name: Flood Rescue — Mock Adapter Checks
-
+name: Flood Rescue Shared AI Core v0.1 Adapter Checks
 on:
   push:
     paths:
-      - "tools/pui89_project_adapter_common.py"
       - "tools/pui89_flood_model_adapter.py"
+      - "tools/pui89_shared_core_v01.py"
+      - "tools/pui89_project_adapter_common.py"
       - "tests/test_pui89_flood_model_adapter.py"
+      - "tests/test_pui89_shared_core_v01.py"
       - ".github/workflows/pui89-flood-adapter.yml"
   pull_request:
     paths:
-      - "tools/pui89_project_adapter_common.py"
       - "tools/pui89_flood_model_adapter.py"
+      - "tools/pui89_shared_core_v01.py"
+      - "tools/pui89_project_adapter_common.py"
       - "tests/test_pui89_flood_model_adapter.py"
+      - "tests/test_pui89_shared_core_v01.py"
       - ".github/workflows/pui89-flood-adapter.yml"
   workflow_dispatch:
-
 permissions:
   contents: read
+concurrency:
+  group: flood-shared-core-adapter-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  mock-adapter:
+  adapter-contract:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out Flood Rescue
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check out pinned Shared AI Core schemas
+        uses: actions/checkout@v4
+        with:
+          repository: Pui89/PUI89-Shared-AI-Core
+          ref: e762f38f1e34ddf2ce9e22e12605bc08aa493ff9
+          path: shared-ai-core
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-      - name: Run project adapter tests
+          python-version: "3.11"
+      - name: Run existing Flood Rescue adapter tests
         env:
           PYTHONPATH: tools
         run: python -m unittest discover -s tests -p "test_pui89_flood_model_adapter.py" -v
+      - name: Check Flood mapping against pinned Shared AI Core v0.1
+        env:
+          PYTHONPATH: tools
+          PUI89_SHARED_CORE_DIR: shared-ai-core
+        run: python -m unittest discover -s tests -p "test_pui89_shared_core_v01.py" -v
