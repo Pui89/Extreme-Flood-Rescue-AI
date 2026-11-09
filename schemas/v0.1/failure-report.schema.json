@@ -1,0 +1,24 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://pui89.github.io/schemas/v0.1/failure-report.schema.json",
+ "title":"PUI89 FailureReport",
+ "description":"A traceable record of a failure, near miss, degraded condition, or unexpected result.",
+ "type":"object","additionalProperties":false,
+ "required":["schema_version","failure_id","occurred_at","system_or_component","severity","summary","observed_result","evidence_refs","response_status"],
+ "properties":{
+  "schema_version":{"const":"0.1.0"},
+  "failure_id":{"type":"string","minLength":1},
+  "occurred_at":{"type":"string","format":"date-time"},
+  "system_or_component":{"type":"string","minLength":1},
+  "severity":{"type":"string","enum":["informational","low","moderate","high","critical","unknown"]},
+  "summary":{"type":"string","minLength":1},
+  "observed_result":{"type":"string"},
+  "expected_result":{"type":"string"},
+  "evidence_refs":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+  "suspected_causes":{"type":"array","items":{"type":"string"}},
+  "response_status":{"type":"string","enum":["open","contained","investigating","resolved","unknown"]},
+  "corrective_actions":{"type":"array","items":{"type":"string"}},
+  "verified_by":{"type":"string"},
+  "verification_evidence_refs":{"type":"array","items":{"type":"string"},"uniqueItems":true}
+ }
+}

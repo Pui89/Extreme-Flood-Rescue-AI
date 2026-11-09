@@ -1,0 +1,19 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://pui89.github.io/schemas/v0.1/action-proposal.schema.json",
+ "title":"PUI89 ActionProposal",
+ "description":"A non-executable recommendation. This contract grants no actuation authority.",
+ "type":"object","additionalProperties":false,
+ "required":["schema_version","proposal_id","created_at","objective","actions","authority"],
+ "properties":{
+  "schema_version":{"const":"0.1.0"},
+  "proposal_id":{"type":"string","minLength":1},
+  "created_at":{"type":"string","format":"date-time"},
+  "objective":{"type":"string","minLength":1},
+  "world_state_ref":{"type":"string"},
+  "actions":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["action_id","description","risk_level","preconditions","expected_effect"],"properties":{"action_id":{"type":"string","minLength":1},"description":{"type":"string","minLength":1},"risk_level":{"type":"string","enum":["low","moderate","high","critical","unknown"]},"preconditions":{"type":"array","items":{"type":"string"}},"expected_effect":{"type":"string"},"hazards":{"type":"array","items":{"type":"string"}},"evidence_refs":{"type":"array","items":{"type":"string"},"uniqueItems":true}}}},
+  "authority":{"type":"object","additionalProperties":false,"required":["mode","human_approval_required","execution_authorized"],"properties":{"mode":{"const":"advisory_only"},"human_approval_required":{"const":true},"execution_authorized":{"const":false}}},
+  "uncertainties":{"type":"array","items":{"type":"string"}},
+  "expires_at":{"type":"string","format":"date-time"}
+ }
+}
