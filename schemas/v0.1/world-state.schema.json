@@ -1,0 +1,19 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://pui89.github.io/schemas/v0.1/world-state.schema.json",
+ "title":"PUI89 WorldState",
+ "description":"A time-bounded state estimate assembled from referenced evidence, including unknowns.",
+ "type":"object","additionalProperties":false,
+ "required":["schema_version","state_id","updated_at","evidence_refs","entities","unknowns"],
+ "properties":{
+  "schema_version":{"const":"0.1.0"},
+  "state_id":{"type":"string","minLength":1},
+  "updated_at":{"type":"string","format":"date-time"},
+  "valid_until":{"type":"string","format":"date-time"},
+  "evidence_refs":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+  "entities":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["entity_id","category","state"],"properties":{"entity_id":{"type":"string","minLength":1},"category":{"type":"string","minLength":1},"state":{},"confidence":{"type":"number","minimum":0,"maximum":1},"evidence_refs":{"type":"array","items":{"type":"string"},"uniqueItems":true}}}},
+  "unknowns":{"type":"array","items":{"type":"string"}},
+  "conflicts":{"type":"array","items":{"type":"string"}},
+  "notes":{"type":"string"}
+ }
+}

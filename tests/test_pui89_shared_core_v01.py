@@ -47,10 +47,7 @@ class FloodSharedCoreV01Tests(unittest.TestCase):
             build_flood_v01_records(envelope)
 
     def test_shared_core_schema_required_fields_match(self):
-        core_dir = os.environ.get("PUI89_SHARED_CORE_DIR")
-        if not core_dir:
-            self.skipTest("Shared AI Core checkout is supplied by GitHub Actions")
-        schema_dir = Path(core_dir) / "schemas" / "v0.1"
+        schema_dir = ROOT / "schemas" / "v0.1"
         bundle = build_flood_v01_records(adapt_flood_mock(request()))
         for key, filename in (
             ("observation", "observation.schema.json"),

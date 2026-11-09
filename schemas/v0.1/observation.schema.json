@@ -1,0 +1,19 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://pui89.github.io/schemas/v0.1/observation.schema.json",
+ "title":"PUI89 Observation",
+ "description":"A sourced observation; it does not authorise an action.",
+ "type":"object","additionalProperties":false,
+ "required":["schema_version","observation_id","observed_at","source","modality","payload","quality","provenance"],
+ "properties":{
+  "schema_version":{"const":"0.1.0"},
+  "observation_id":{"type":"string","minLength":1},
+  "observed_at":{"type":"string","format":"date-time"},
+  "source":{"type":"object","additionalProperties":false,"required":["source_id","source_type"],"properties":{"source_id":{"type":"string","minLength":1},"source_type":{"type":"string","enum":["sensor","human","dataset","simulation","software","external"]},"device_or_system":{"type":"string"}}},
+  "modality":{"type":"string","enum":["rgb","depth","thermal","audio","lidar","radar","imu","gps","xray","chemical","text","other"]},
+  "payload":{},
+  "quality":{"type":"object","additionalProperties":false,"required":["status"],"properties":{"status":{"type":"string","enum":["usable","degraded","invalid","unknown"]},"notes":{"type":"string"}}},
+  "uncertainty":{"type":"object","additionalProperties":false,"properties":{"description":{"type":"string"},"value":{"type":"number","minimum":0,"maximum":1},"method":{"type":"string"}}},
+  "provenance":{"type":"object","additionalProperties":false,"required":["recorded_at"],"properties":{"recorded_at":{"type":"string","format":"date-time"},"dataset_or_file":{"type":"string"},"license":{"type":"string"},"content_hash":{"type":"string"},"operator":{"type":"string"}}}
+ }
+}
