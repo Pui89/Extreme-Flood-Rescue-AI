@@ -1,6 +1,6 @@
 # LiDAR Drainage & Terrain Intelligence
 
-**Status:** proposed software architecture and implementation plan. No LiDAR survey, drainage inventory, hydrological model, or field validation is claimed by this document.
+**Status:** architecture plus initial dependency-free software reference tools. The metadata gate and small synthetic-grid terrain functions are implemented on a feature branch; tests are added but have not yet been executed. No LAS/LAZ ingestion, drainage detection, hydrological model, LiDAR survey, or field validation is claimed.
 
 ## Purpose
 
@@ -87,3 +87,16 @@ Start with standard-library contract checks and small synthetic grids. Evaluate 
 6. Run tests and publish observed results, commit, configuration and limitations. Keep field validation as a separate future gate.
 
 **Current implementation status:** this document records the proposed design and acceptance criteria only. The processing algorithms, data ingestion, drainage detection, GIS exports and hydrological/hydraulic coupling are not implemented or validated by this change.
+
+
+## Initial software implementation (feature branch)
+
+The feature branch `feature/lidar-metadata-terrain-reference` adds:
+
+- `tools/pui89_lidar.py`: fail-closed metadata validation for source ID/hash, timezone-aware acquisition time, CRS presence, horizontal/vertical units and datum, classification scheme, and optional finite XYZ coordinate checks.
+- A dependency-free central-difference slope reference with explicit NoData-neighbour and border handling.
+- A deterministic D8 steepest-descent direction reference. Flats and sinks remain terminal; no automatic sink filling or flat resolution is performed.
+- A topological flow-accumulation reference with explicit optional NoData mask and cycle/invalid-edge rejection.
+- `tests/test_lidar_terrain.py`: synthetic tests for metadata rejection, finite coordinates, analytic planar slope, NoData/borders, D8 routing, converging accumulation and cycle rejection.
+
+**Verification status:** tests are authored but not yet run. Do not interpret the reference algorithms as validated GIS/hydrology. They operate on small in-memory grids only; no LAS/LAZ parser, CRS transformation, point-cloud interpolation, drainage feature detector, hydraulic model, or field validation is included. To avoid unexpected dependency downloads, the full repository CI workflow has not been triggered from this branch.
