@@ -1,0 +1,39 @@
+{
+  "profile_version": "0.1.0",
+  "project_id": "extreme-flood-rescue-ai",
+  "project_name": "Extreme Flood Rescue AI",
+  "integration_status": "profile_added_runtime_integration_pending",
+  "shared_core": {
+    "repository": "Pui89/PUI89-Shared-AI-Core",
+    "pull_request": "https://github.com/Pui89/PUI89-Shared-AI-Core/pull/26",
+    "release_status": "draft_not_merged"
+  },
+  "intended_use": "Advisory geometry for visible obstacles, structures and relative scene layout in flood scenarios.",
+  "recommended_modalities": [
+    "rgb",
+    "lidar",
+    "depth",
+    "imu"
+  ],
+  "planned_spatial_tasks": [
+    "Visible obstacle and structure geometry",
+    "Relative position of visible people/objects where lawful and appropriate",
+    "Map-frame consistency checks for simulation fixtures"
+  ],
+  "limitations_and_safety_boundaries": [
+    "Water surface, current, submerged hazards, depth and buoyancy are not inferred by this module.",
+    "No rescue performance or navigation safety is validated.",
+    "Do not interpret missing point returns as free passage."
+  ],
+  "common_gates": [
+    "usable evidence quality",
+    "valid calibration status before sensor fusion",
+    "matching coordinate frames",
+    "timestamp synchronization within a validated project-specific tolerance",
+    "uncertainty and sensor-health assessment",
+    "human review required",
+    "execution_authorized=false"
+  ],
+  "evidence_status": "No real sensor integration, model accuracy, field validation, hardware safety or certification is claimed.",
+  "cost_policy": "standard-library-first; no paid APIs, subscriptions, cloud GPU, automatic model downloads or additional sensor purchases"
+}
