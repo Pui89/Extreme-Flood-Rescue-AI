@@ -84,13 +84,19 @@ class SyntheticTerrainTests(unittest.TestCase):
 
     def test_flow_accumulation_counts_converging_upstream_cells(self):
         directions = [
-            [(1, 0), (1, 0), (1, 0)],
-            [(0, 1), None, (0, -1)],
+            [(1, 1), (1, 0), (1, -1)],
+            [None, (1, 0), None],
             [None, None, None],
         ]
         result = flow_accumulation(directions)
-        self.assertEqual(result[1][1], 3)
-        self.assertEqual(result[2][1], 7)
+        self.assertEqual(result[1][1], 4)
+        self.assertEqual(result[2][1], 5)
+
+    def test_flow_accumulation_preserves_explicit_nodata_mask(self):
+        directions = [[None, (0, 1)], [None, None]]
+        mask = [[False, True], [False, True]]
+        result = flow_accumulation(directions, valid_mask=mask)
+        self.assertEqual(result, [[None, 2], [None, 1]])
 
     def test_flow_accumulation_rejects_cycles(self):
         directions = [[(0, 1), (0, -1)]]
