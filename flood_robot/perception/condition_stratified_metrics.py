@@ -49,11 +49,12 @@ def _count(value: Any, field: str) -> int:
 def _metrics(tp: int, fp: int, fn: int) -> dict[str, int | float | None]:
     precision = tp / (tp + fp) if tp + fp else None
     recall = tp / (tp + fn) if tp + fn else None
-    f1 = (
-        2 * precision * recall / (precision + recall)
-        if precision is not None and recall is not None and precision + recall
-        else None
-    )
+    if precision is None or recall is None:
+        f1 = None
+    elif precision + recall == 0:
+        f1 = 0.0
+    else:
+        f1 = 2 * precision * recall / (precision + recall)
     false_negative_rate = fn / (tp + fn) if tp + fn else None
     return {
         "tp": tp,
