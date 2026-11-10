@@ -1,0 +1,93 @@
+name: PUI89 PR Status Monitor
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_run:
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Pull request number to inspect
+        required: true
+        default: "183"
+
+permissions:
+  contents: read
+  pull-requests: read
+  checks: read
+  actions: read
+
+concurrency:
+  group: pui89-pr-status-monitor-${{ github.event.pull_request.number || github.event.workflow_run.head_sha || inputs.pr_number }}
+  cancel-in-progress: true
+
+jobs:
+  report:
+    name: Read-only PR check summary
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.event == 'pull_request' &&
+       github.event.workflow_run.name != 'PUI89 PR Status Monitor')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Collect check status
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number || github.event.workflow_run.pull_requests[0].number || inputs.pr_number }}
+          EVENT_SHA: ${{ github.event.pull_request.head.sha || github.event.workflow_run.head_sha }}
+          REPOSITORY: ${{ github.repository }}
+          API_URL: ${{ github.api_url }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            pr_json="$(curl --fail-with-body --silent --show-error \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "$API_URL/repos/$REPOSITORY/pulls/$PR_NUMBER")"
+            head_sha="$(jq -r '.head.sha' <<< "$pr_json")"
+            pr_url="$(jq -r '.html_url' <<< "$pr_json")"
+          else
+            head_sha="$EVENT_SHA"
+            pr_url="https://github.com/$REPOSITORY/pull/$PR_NUMBER"
+          fi
+
+          if [[ -z "$head_sha" || "$head_sha" == "null" ]]; then
+            echo "Unable to resolve a pull-request head SHA." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          checks_json="$(curl --fail-with-body --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "$API_URL/repos/$REPOSITORY/commits/$head_sha/check-runs?per_page=100")"
+
+          {
+            echo "# PUI89 PR status report"
+            echo
+            echo "- Pull request: [$PR_NUMBER]($pr_url)"
+            echo "- Commit: `$head_sha`"
+            echo "- Scope: read-only GitHub check metadata; no source code is executed."
+            echo
+            echo "| Check | Status | Conclusion |"
+            echo "|---|---|---|"
+            jq -r '.check_runs[]
+              | select(.name != "PUI89 PR Status Monitor" and .name != "Read-only PR check summary")
+              | "| " + (.name | gsub("\\|"; "/")) + " | " + .status + " | " + (.conclusion // "pending") + " |"' <<< "$checks_json"
+            echo
+            echo "## Counts"
+            jq -r '
+              [.check_runs[]
+                | select(.name != "PUI89 PR Status Monitor" and .name != "Read-only PR check summary")]
+              | "Total: \(length)",
+                "Passed: \([.[] | select(.status == "completed" and .conclusion == "success")] | length)",
+                "Failed: \([.[] | select(.status == "completed" and (.conclusion == "failure" or .conclusion == "timed_out" or .conclusion == "action_required"))] | length)",
+                "Pending: \([.[] | select(.status != "completed")] | length)",
+                "Skipped/neutral/cancelled: \([.[] | select(.status == "completed" and (.conclusion == "skipped" or .conclusion == "neutral" or .conclusion == "cancelled"))] | length)"
+            ' <<< "$checks_json"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          echo "Report generated. This workflow does not rerun checks, modify files, approve, or merge the PR."
