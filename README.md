@@ -1511,3 +1511,8 @@ This score is separate from any commercial-readiness estimate and is not certifi
 Differentiate freshwater, saltwater, sewage-contaminated water and chemical exposure. Select hull, seals, coatings and connectors for the actual environment; never infer a waterproof rating from appearance. Buoyancy, stability, propulsion, rescue loads, current resistance and human/animal safety require qualified engineering and controlled trials. No rescue capability or water-resistance rating is claimed.
 
 **Procurement rule:** research only; no purchases, supplier contact, subscriptions or paid services without explicit approval. Verify datasheets, ratings, certification scope, seller, price, shipping and warranty.
+
+
+## Spatial Intelligence integration
+
+See [the project-specific spatial integration profile](docs/spatial-intelligence/README.md). This is a documented integration contract; runtime sensor integration and physical validation remain pending.
