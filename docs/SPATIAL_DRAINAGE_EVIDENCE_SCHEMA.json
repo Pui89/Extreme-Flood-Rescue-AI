@@ -1,0 +1,36 @@
+{
+  "schema_version": "pui89.spatial-drainage.v1",
+  "status": "REVIEW_REQUIRED",
+  "evidence_type": "SUPPLIED_CLASSIFIED_POINTS_AND_SYNTHETIC_DEM",
+  "required_top_level_fields": [
+    "source_dataset_id",
+    "features",
+    "terrain",
+    "summary",
+    "limitations",
+    "decision_authority",
+    "physical_safety_validated",
+    "robot_commands_emitted",
+    "integrity_sha256"
+  ],
+  "required_feature_fields": [
+    "feature_id",
+    "feature_type",
+    "x",
+    "y",
+    "z",
+    "confidence",
+    "source_ids",
+    "review_required"
+  ],
+  "safety_invariants": {
+    "decision_authority": "HUMAN_REVIEW_ONLY",
+    "physical_safety_validated": false,
+    "robot_commands_emitted": false
+  },
+  "notes": [
+    "Output contract, not a JSON Schema validator.",
+    "Consumes upstream class labels; does not classify raw point clouds.",
+    "Terrain indicators are not a hydrological or hydraulic model."
+  ]
+}
