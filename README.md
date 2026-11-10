@@ -730,6 +730,7 @@ See also:
 - [Research dataset specification](docs/RESEARCH_DATASET_SPEC.md)
 - [Cybersecurity policy](SECURITY.md)
 - [3D/4D world model implementation](flood_robot/world_model.py)
+- [Spatial drainage intelligence — LiDAR-derived candidates and DEM terrain indicators](docs/SPATIAL_DRAINAGE_INTELLIGENCE.md)
 
 - **Product direction:** turn the validated software and simulation workflow into a dependable decision-support product, with repeatable tests, deployment documentation, operator review and explicit safety limits.
 
