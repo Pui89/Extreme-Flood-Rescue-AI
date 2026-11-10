@@ -16,7 +16,7 @@ This project-specific utility makes flood-scene detector evaluation harder to ov
 ## Run
 
 ```bash
-python -m unittest tests.test_condition_stratified_metrics -v
+python -m unittest discover -s tests -p "test_condition_stratified_metrics.py" -v
 python -m flood_robot.perception.condition_stratified_metrics path/to/matched-counts.json --output reports/flood-condition-evaluation.json
 ```
 
