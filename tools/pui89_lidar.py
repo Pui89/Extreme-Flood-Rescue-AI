@@ -195,38 +195,63 @@ def d8_flow_direction(
 
 def flow_accumulation(
     flow_direction: Sequence[Sequence[tuple[int, int] | None]],
+    valid_mask: Sequence[Sequence[bool]] | None = None,
 ) -> list[list[int | None]]:
-    """Count upstream cells including each valid cell; NoData is represented by None.
+    """Count upstream cells including each valid cell; masked NoData stays None.
 
-    Flow directions must point to an adjacent in-grid cell. A deterministic
-    topological traversal rejects cycles rather than returning partial totals.
+    A valid cell with no direction is a terminal sink. Supply valid_mask to
+    distinguish such sinks from NoData cells. Directions must point to adjacent
+    valid in-grid cells. A deterministic topological traversal rejects cycles.
     """
-    rows, cols = _validate_grid(
-        [[0.0 if step is not None else None for step in row] for row in flow_direction]
-    )
+    if not isinstance(flow_direction, Sequence) or not flow_direction:
+        raise ValueError("flow_direction must be a non-empty rectangular sequence")
+    if any(not isinstance(row, Sequence) or isinstance(row, (str, bytes)) for row in flow_direction):
+        raise ValueError("each flow_direction row must be a sequence")
+    rows, cols = len(flow_direction), len(flow_direction[0])
+    if cols == 0 or any(len(row) != cols for row in flow_direction):
+        raise ValueError("flow_direction must be rectangular and non-empty")
+
+    if valid_mask is None:
+        mask = [[True] * cols for _ in range(rows)]
+    else:
+        if (
+            not isinstance(valid_mask, Sequence)
+            or len(valid_mask) != rows
+            or any(not isinstance(row, Sequence) or len(row) != cols for row in valid_mask)
+        ):
+            raise ValueError("valid_mask shape must match flow_direction")
+        if any(type(value) is not bool for row in valid_mask for value in row):
+            raise ValueError("valid_mask values must be booleans")
+        mask = [list(row) for row in valid_mask]
+
     accumulation: list[list[int | None]] = [
-        [None if step is None and flow_direction[r][c] is None else 1 for c, step in enumerate(row)]
-        for r, row in enumerate(flow_direction)
+        [1 if mask[r][c] else None for c in range(cols)] for r in range(rows)
     ]
-    # A None direction can mean either a valid sink or NoData. Callers can mark
-    # NoData by supplying the parallel mask through None is ambiguous, so this
-    # reference treats every None as a valid terminal cell.
     downstream_count = [[0] * cols for _ in range(rows)]
     downstream: dict[tuple[int, int], tuple[int, int]] = {}
+    valid_total = sum(sum(row) for row in mask)
+
     for r in range(rows):
         for c in range(cols):
+            if not mask[r][c]:
+                if flow_direction[r][c] is not None:
+                    raise ValueError(f"NoData cell has flow direction at ({r}, {c})")
+                continue
             step = flow_direction[r][c]
             if step is None:
                 continue
             if not isinstance(step, tuple) or len(step) != 2 or any(type(v) is not int for v in step):
                 raise ValueError(f"invalid flow direction at ({r}, {c})")
-            nr, nc = r + step[0], c + step[1]
-            if abs(step[0]) > 1 or abs(step[1]) > 1 or step == (0, 0) or not (0 <= nr < rows and 0 <= nc < cols):
+            dr, dc = step
+            nr, nc = r + dr, c + dc
+            if abs(dr) > 1 or abs(dc) > 1 or step == (0, 0) or not (0 <= nr < rows and 0 <= nc < cols):
                 raise ValueError(f"flow direction leaves grid or is not adjacent at ({r}, {c})")
+            if not mask[nr][nc]:
+                raise ValueError(f"flow direction enters NoData at ({r}, {c})")
             downstream[(r, c)] = (nr, nc)
             downstream_count[nr][nc] += 1
 
-    queue = [(r, c) for r in range(rows) for c in range(cols) if downstream_count[r][c] == 0]
+    queue = [(r, c) for r in range(rows) for c in range(cols) if mask[r][c] and downstream_count[r][c] == 0]
     heapq.heapify(queue)
     processed = 0
     while queue:
@@ -240,6 +265,6 @@ def flow_accumulation(
         downstream_count[nr][nc] -= 1
         if downstream_count[nr][nc] == 0:
             heapq.heappush(queue, (nr, nc))
-    if processed != rows * cols:
+    if processed != valid_total:
         raise ValueError("flow direction contains a cycle")
     return accumulation
