@@ -96,6 +96,20 @@ class ConditionStratifiedMetricsTests(unittest.TestCase):
         with self.assertRaises(EvaluationInputError):
             evaluate_condition_strata(payload)
 
+    def test_f1_is_zero_when_precision_and_recall_are_both_zero(self) -> None:
+        payload = sample_payload()
+        payload["records"] = [{
+            "sample_id": "all-errors",
+            "condition_tags": ["night"],
+            "tp": 0,
+            "fp": 2,
+            "fn": 3,
+        }]
+        report = evaluate_condition_strata(payload)
+        self.assertEqual(report["overall"]["precision"], 0.0)
+        self.assertEqual(report["overall"]["recall"], 0.0)
+        self.assertEqual(report["overall"]["f1"], 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()
