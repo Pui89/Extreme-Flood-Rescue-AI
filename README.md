@@ -24,30 +24,16 @@ PUI89 prioritises open-source software, transparent licensing, reproducible work
 > 
 > **Validation boundary:** Synthetic scenarios do not validate flood physics, buoyancy, navigation, rescue performance or operation at proposed depths.
 
-## Commercial readiness progress
+## Development stage
 
-**46% — evidence-based commercial-readiness estimate**  
-**Target: 100% = ready for an appropriately scoped commercial release or formal commercial procurement submission.** This is not a code-completion percentage, a sales forecast, or a claim of product certification. Scores are provisional and based on the evidence currently documented in this repository; they must be revised when new evidence is verified.
+**Current stage:** Software & synthetic-scenario evaluation  
+**ขั้นการพัฒนา:** ซอฟต์แวร์และการประเมินสถานการณ์จำลอง
 
-The repository documents software decision-support, safety-gate checks and synthetic simulation scenarios. These do not validate flood physics, real-world navigation, buoyancy, rescue performance or any 15 m operating capability; no physical rescue platform is validated.
+**Evidence:** Software checks, safety gates and synthetic scenario tooling are documented.
 
-| Readiness gate | Weight | Evidence credit |
-|---|---:|---:|
-| Product purpose & requirements | 10 | 9 |
-| Architecture & engineering design | 10 | 9 |
-| Working software baseline | 15 | 10 |
-| Reproducible tests & evaluation | 15 | 12 |
-| Integrated product prototype | 15 | 0 |
-| Safety, reliability & real-world validation | 15 | 2 |
-| Licensing, IP & regulatory readiness | 10 | 2 |
-| Commercial release package & support | 10 | 2 |
-| **Total** | **100** | **46** |
+**Limitations:** Flood physics, buoyancy, current resistance, navigation, payload, rescue outcomes and field performance are not validated; 0–15 m remains a design/simulation target.
 
-**What 100% requires:** a defined product and acceptance criteria; integrated release candidate; reproducible performance and reliability evidence; appropriate safety and real-world validation; verified rights/licences and applicable regulatory conformity; manufacturing/deployment, pricing, warranty, maintenance, user documentation and support arrangements. A score of 100% is awarded only after all applicable release gates are evidenced and reviewed. Partner or research discussions may happen earlier, but must be labelled as development-stage collaboration—not a ready-to-sell product.
-
-**Next commercial-readiness gate:** close the missing evidence above, beginning with project-specific working-product validation and safety evidence. Never count a planned feature, concept image, tool inventory, synthetic-only result or unrun test as a completed gate.
-
-_Last readiness review: 7 November 2026. This estimate can rise or fall as evidence changes._
+**Next milestone:** Define physics-grounded flood scenarios and measurable acceptance tests.
 
 
 ## Project website QR codes
@@ -218,7 +204,7 @@ The AI application may estimate scene conditions, identify possible people/anima
 
 n policy:** [Automated protection and fail-safe policy](docs/AUTOMATED_PROTECTION_POLICY.md). This documents required software safeguards and validation gates; it does not claim physical safety or validated operational performance. **Extreme-flood design:** [Mission architecture and verification plan for 0–15 m scenarios](docs/EXTREME_FLOOD_MISSION_ARCHITECTURE.md) separates aerial reconnaissance, surface craft, ground/amphibious platforms, and a future pressure-rated submersible; it is a design proposal, not a claim of tested 15 m capability.
 
-- **SAM 3 segmentation:** the optional local smoke-test script and guide are merged ([PR #54](https://github.com/Pui89/Flood-Rescue-AI/pull/54)). No SAM 3 inference result has been verified yet. Model weights are downloaded only when the script is run; check compatibility, access terms, disk space and GPU memory first.
+- **SAM 3 segmentation:** the optional local smoke-test script and guide are merged ([PR #54](https://github.com/Pui89/Extreme-Flood-Rescue-AI/pull/54)). No SAM 3 inference result has been verified yet. Model weights are downloaded only when the script is run; check compatibility, access terms, disk space and GPU memory first.
 - **Automated checks for the SAM 3 change:** see [PR #54](https://github.com/Pui89/Extreme-Flood-Rescue-AI/pull/54) for the merged change and its recorded checks. No local SAM 3 inference result has been verified, so no segmentation-quality claim is made.
 - **Fault-monitor contract:** merged in [PR #53](https://github.com/Pui89/Extreme-Flood-Rescue-AI/pull/53). It documents software-level fault reporting and conservative response semantics; it does not replace physical safety controls.
 - **Next:** run one optional local image smoke test only after checking model access terms, disk space and GPU memory; then build repeatable, clearly labelled simulation scenarios for perception, route safety, communications loss and safe-stop behaviour. Treat the model test as unrun until an output is recorded and reviewed.
@@ -279,7 +265,7 @@ The rescue-robot concept should use three modes: **AI operation**, **limited saf
 
 **Current stage:** rule-based operator decision support and software regression testing; not a validated autonomous rescue robot.
 
-- **Verified CI:** the latest Python tests, Flood Rescue regression checks, and agent unit tests completed successfully. [Latest Python-test run](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39729381023) · [Latest regression-check run](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39729380999).
+- **Verified CI:** the latest Python tests, Flood Rescue regression checks, and agent unit tests completed successfully. [Latest Python-test run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/39729381023) · [Latest regression-check run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/39729380999).
 - **Implemented:** input validation and safety gates for supplied sensor status, localization, water depth, route clearance, and possible-person alerts; human operators retain rescue decisions.
 - **Next milestone:** freeze a lawful, versioned dataset or clearly labelled synthetic scenario set; run repeatable simulation tests; report mapping/navigation outputs, failure cases, and fail-safe behaviour with exact test conditions.
 - **Limits:** passing unit tests does not establish real-world flood navigation, victim detection, waterproofing, or rescue capability. Simulation and field results must be reported separately.
@@ -314,7 +300,7 @@ python -m py_compile agents/project_agent.py tests/test_project_agent.py
 python -m pytest -q tests/test_project_agent.py
 ```
 
-A dedicated [GitHub Actions workflow](https://github.com/Pui89/Flood-Rescue-AI/actions/workflows/agent-tests.yml) is configured to run the agent tests on Python 3.10, 3.11, and 3.12 when relevant files change. Check the Actions page for the actual run status; adding this workflow does not itself mean the tests have passed.
+A dedicated [GitHub Actions workflow](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/workflows/agent-tests.yml) is configured to run the agent tests on Python 3.10, 3.11, and 3.12 when relevant files change. Check the Actions page for the actual run status; adding this workflow does not itself mean the tests have passed.
 
 ## Strategic partnerships, funding and collaboration
 
@@ -343,7 +329,7 @@ Agree on a specific flood-response scenario and operating assumptions; define me
 Please identify the response challenge, operating environment, expertise or resources you can contribute, and the milestone you would like to discuss. No funding, agency endorsement, field deployment or rescue capability is implied by an enquiry. Any data, site access, funding and resource requirements, responsibilities, intellectual property and testing scope must be agreed in writing before work begins.
 ## Latest engineering update — 21 October 2026
 
-- **Safety-gate hardening merged:** [PR #25](https://github.com/Pui89/Flood-Rescue-AI/pull/25) is merged. It rejects extremely large localization-confidence inputs safely and adds a regression test for `10**10000`. This is software-level input-validation evidence only; check the PR's Actions results for the exact CI status.
+- **Safety-gate hardening merged:** [PR #25](https://github.com/Pui89/Extreme-Flood-Rescue-AI/pull/25) is merged. It rejects extremely large localization-confidence inputs safely and adds a regression test for `10**10000`. This is software-level input-validation evidence only; check the PR's Actions results for the exact CI status.
 - **Existing software boundary:** the deterministic safety gate validates candidate actions in software; it does not directly command hardware and is not a certified safety controller.
 - **Evidence boundary:** passing software tests cannot establish real-world flood navigation, amphibious mobility, human evacuation performance, or physical rescue safety. Simulation and supervised validation remain necessary.
 
@@ -374,11 +360,11 @@ See [docs/PRODUCT_BRIEF.md](docs/PRODUCT_BRIEF.md) for a concise description of 
 
 ## Latest automated CI verification — 20 October 2026
 
-The latest Python test workflow passed on the current main-branch change in [run 39276988264](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39276988264). The workflow includes the dataset-tool checks and deterministic end-to-end demo. This is software-level evidence only; it does **not** validate real-world person detection, safe navigation, or a rescue outcome.
+The latest Python test workflow passed on the current main-branch change in [run 39276988264](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/39276988264). The workflow includes the dataset-tool checks and deterministic end-to-end demo. This is software-level evidence only; it does **not** validate real-world person detection, safe navigation, or a rescue outcome.
 
 ## Latest status update — 20 October 2026
 
-- **Current status: software prototype and evaluation planning.** The validation matrix was refreshed on 20 October to match [the latest passing CI run](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39276988264). This is evidence for those automated checks only, not proof of real-world person detection, flood mapping, navigation or rescue.
+- **Current status: software prototype and evaluation planning.** The validation matrix was refreshed on 20 October to match [the latest passing CI run](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/39276988264). This is evidence for those automated checks only, not proof of real-world person detection, flood mapping, navigation or rescue.
 - **Data readiness:** dataset sourcing, source-rights/licence checks, annotation, manifest auditing and group-aware splitting remain required before training or reporting real-image metrics. A dataset source or scene-segmentation label must not be treated as a validated person-detection label.
 - **Next checks:** audit permitted data and labels; freeze leakage-safe splits; establish separate baselines for person detection and flood-scene segmentation; report held-out precision/recall, false negatives, latency and failure cases; then test missing/stale/conflicting sensors, communication loss and fail-closed behavior in repeatable simulation.
 - **Not yet demonstrated:** independently validated victim/person detection, validated water-depth estimates, safe real-world navigation, physical rescue, or field-tested robot safety. Synthetic observations and concept images are not real model detections.
@@ -387,7 +373,7 @@ The latest Python test workflow passed on the current main-branch change in [run
 
 ## Previous status update — 18 October 2026
 
-- **Successful:** Python CI passed on 3.10/3.11/3.12 in [run 39096446071](https://github.com/Pui89/Flood-Rescue-AI/actions/runs/39096446071); repository has workflow/safety tests, dataset manifest tools and a benchmark protocol. This does not establish real-world detection or rescue performance.
+- **Successful:** Python CI passed on 3.10/3.11/3.12 in [run 39096446071](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions/runs/39096446071); repository has workflow/safety tests, dataset manifest tools and a benchmark protocol. This does not establish real-world detection or rescue performance.
 - **Continuing:** verify dataset licences and labels; test missing/stale/conflicting sensors, uncertainty, communication loss and fail-closed behavior.
 - **Next:** separate flood-scene segmentation from person detection; audit manifests and data splits; run repeatable fixed-seed scenarios and report failures as well as successes.
 - **Future:** evaluate geographic/weather shifts, then reproducible ROS 2/Nav2/Gazebo simulation and independent safety review before any hardware/field trial.
@@ -407,7 +393,7 @@ The latest Python test workflow passed on the current main-branch change in [run
 | **Next** | (1) Select a lawful, licensed dataset and record its version; (2) define train/validation/test splits before training; (3) train or integrate a baseline detector/segmenter; (4) report precision, recall, false negatives, latency and failure cases on held-out data; (5) test navigation and fail-safe behavior in simulation. |
 | **Future** | Reproducible multi-scenario simulation, sensor-failure and communication-loss tests, hardware-in-the-loop testing, then controlled field trials with qualified safety oversight. |
 
-**Evidence boundary:** CI success means the tested software checks passed; it does not mean a trained model achieved real-world accuracy or that a robot has rescued anyone. No real-world model metrics should be claimed until a documented independent evaluation exists. See the [validation and commercial roadmap](docs/VALIDATION_AND_COMMERCIAL_ROADMAP.md) and [GitHub Actions](https://github.com/Pui89/Flood-Rescue-AI/actions).
+**Evidence boundary:** CI success means the tested software checks passed; it does not mean a trained model achieved real-world accuracy or that a robot has rescued anyone. No real-world model metrics should be claimed until a documented independent evaluation exists. See the [validation and commercial roadmap](docs/VALIDATION_AND_COMMERCIAL_ROADMAP.md) and [GitHub Actions](https://github.com/Pui89/Extreme-Flood-Rescue-AI/actions).
 
 ---
 
@@ -499,7 +485,7 @@ streamlit run apps/pui89_app/web_demo.py
 Clone the renamed repository and install the project dependencies:
 
 ```bash
-git clone https://github.com/Pui89/Flood-Rescue-AI.git
+git clone https://github.com/Pui89/Extreme-Flood-Rescue-AI.git
 cd Flood-Rescue-AI
 python -m pip install --upgrade pip
 python -m pip install -e .
@@ -672,7 +658,7 @@ See docs/EMBODIED_AI_STACK.md, docs/ADVANCED_MODEL_INTEGRATION.md, config/ai_sta
 ## Installation
 
 ```bash
-git clone https://github.com/Pui89/Flood-Rescue-AI.git
+git clone https://github.com/Pui89/Extreme-Flood-Rescue-AI.git
 cd Flood-Rescue-AI
 python -m venv .venv
 source .venv/bin/activate
@@ -910,7 +896,7 @@ Foundation and generative models are advisory components. They are never the fin
 ### Clone and Install
 
 ```bash
-git clone https://github.com/Pui89/Flood-Rescue-AI.git
+git clone https://github.com/Pui89/Extreme-Flood-Rescue-AI.git
 cd Flood-Rescue-AI
 python -m venv .venv
 source .venv/bin/activate
@@ -1071,7 +1057,7 @@ MIT. See the repository license for the applicable terms. Third-party models, da
 
 ## Contact Us
 
-GitHub: [Pui89/flood-rescue-ai-robot](https://github.com/Pui89/Flood-Rescue-AI)
+GitHub: [Pui89/flood-rescue-ai-robot](https://github.com/Pui89/Extreme-Flood-Rescue-AI)
 
 Use GitHub Issues and Discussions for technical questions, collaboration, bug reports, feature requests, and research/engineering feedback.
 
@@ -1096,7 +1082,7 @@ See the [lightweight robot design concept and staged safety plan](docs/ROBOT_DES
 
 ## Interactive visual simulation (no external packages required)
 
-Open [the standalone visual flood simulation](demos/visual_flood_sim.html) in a browser, or view its [source on GitHub](https://github.com/Pui89/Flood-Rescue-AI/blob/main/demos/visual_flood_sim.html). It includes a synthetic hazard map, step-by-step rover movement, a proposed route, possible-person markers, an event log, and buttons to inject communication loss or an unknown hazard and trigger a fail-closed stop.
+Open [the standalone visual flood simulation](demos/visual_flood_sim.html) in a browser, or view its [source on GitHub](https://github.com/Pui89/Extreme-Flood-Rescue-AI/blob/main/demos/visual_flood_sim.html). It includes a synthetic hazard map, step-by-step rover movement, a proposed route, possible-person markers, an event log, and buttons to inject communication loss or an unknown hazard and trigger a fail-closed stop.
 
 The page uses only browser-native HTML, CSS and JavaScript: no install, network request, API, subscription, cloud GPU or hardware connection is required. **All map cells and person markers are synthetic.** This is not flood physics, a trained detector, or proof of safe navigation/rescue.
 
@@ -1387,32 +1373,7 @@ This repository now includes real Hugging Face checkpoint adapters in [`pui89_mo
 - **local-first default:** no packages or model weights are installed/downloaded automatically; CPU-only inference, local cache only by default, no hosted inference API or cloud GPU.
 - **Evidence status:** adapter code is added; model inference and project-specific accuracy are NOT YET TESTED. Outputs remain uncertain observations for human review, never actuator commands.
 
-<!-- PUI89_DAILY_PROGRESS:START -->
-## Daily project progress
 
-**🟠 46% — Foundation and prototype stage**  
-**Evidence score:** 46/100 · **Review date:** 7 November 2026 (Asia/Bangkok)  
-**Progress graph:** 🟦🟦🟦🟦🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ 46%
-
-This is an evidence-weighted commercial-readiness estimate, not a code-completion percentage, sales forecast, certification, or measured real-world performance. Scores change only when repository evidence is reviewed and the evidence credits below are updated. The daily run refreshes the review date; it never increases the score merely because time has passed.
-
-| Readiness gate | Evidence credit | Visual score |
-|---|---:|---|
-| Purpose & requirements | 9/10 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ |
-| Architecture & engineering | 9/10 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ |
-| Working software baseline | 10/15 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ |
-| Reproducible tests & evaluation | 12/15 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ |
-| Integrated product prototype | 0/15 | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ |
-| Safety & real-world validation | 2/15 | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ |
-| Licensing & regulatory readiness | 2/10 | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ |
-| Release package & support | 2/10 | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ |
-| **Total** | **46/100** | **🟦🟦🟦🟦🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜** |
-
-**Next milestone:** Improve the lowest-scoring applicable gate with reproducible project-specific evidence. Planned work, concept artwork, unrun tests, synthetic-only results and tool inventories do not earn evidence credit.
-
-**Status boundary:** Software tests and simulations do not establish a built, certified, field-tested or commercially validated physical product. Real-world claims require separate, traceable validation.
-
-<!-- PUI89_DAILY_PROGRESS:END -->
 
 
 ---
@@ -1488,7 +1449,7 @@ Scores are awarded only through a dated review with a defined scope, version/com
 
 **Scoring method / รายละเอียดเกณฑ์:** [English](https://github.com/Pui89/Pui89.github.io/blob/main/docs/PROJECT_STRENGTH_SCORECARD.md) · [ภาษาไทย](https://github.com/Pui89/Pui89.github.io/blob/main/docs/PROJECT_STRENGTH_SCORECARD_TH.md)
 
-This score is separate from any commercial-readiness estimate and is not certification, safety approval or an investment rating.
+This project-strength review is separate from the documented development stage; it is not certification, safety approval or an investment rating.
 <!-- PUI89_PROJECT_STRENGTH_SCORECARD:END -->
 
 ## Materials & Hardware — Research Plan
