@@ -4,10 +4,13 @@
 
 <table><tr><td align="center"><strong>English website</strong><br><a href="https://pui89.github.io/flood-rescue.html"><img src="https://pui89.github.io/qr/flood-rescue-en.png" width="160" alt="Extreme Flood Rescue AI English website QR code"></a><br><a href="https://pui89.github.io/flood-rescue.html">Open English website</a></td><td align="center"><strong>เว็บไซต์ภาษาไทย</strong><br><a href="https://pui89.github.io/flood-rescue-th.html"><img src="https://pui89.github.io/qr/flood-rescue-th.png" width="160" alt="QR Code เว็บไซต์ภาษาไทย Extreme Flood Rescue AI"></a><br><a href="https://pui89.github.io/flood-rescue-th.html">เปิดเว็บไซต์ภาษาไทย</a></td></tr></table>
 
-## PUI89 product maturity snapshot — 7 November 2026
+## PUI89 development maturity snapshot — 12 November 2026
 
 **Strategic direction: From AI Projects to AI Products.**  
-**Current maturity: Grade 2 — Engineering Foundation.** The repository has tested software contracts, safety-gate logic and synthetic scenario evaluation; it does not yet demonstrate a validated flood-rescue system.
+**Current maturity: Level 4 — Tested Prototype.** This project has tested decision-support software and synthetic scenario evaluation; flood physics and physical rescue capability remain unvalidated.
+
+
+**Shared platform evidence (separate from project validation):** the PUI89 Shared AI Core main-branch CI reported 187 dependency-free tests passed on 11 November 2026. This platform-level result does not establish this project's model accuracy, physical integration or field performance.
 
 | Area | Verified position |
 |---|---|
