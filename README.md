@@ -40,6 +40,27 @@ PUI89 prioritises open-source software, transparent licensing, reproducible work
 
 <table><tr><td align="center"><strong>English website</strong><br><a href="https://pui89.github.io/flood-rescue.html"><img src="https://pui89.github.io/qr/flood-rescue-en.png" width="160" alt="Extreme Flood Rescue AI English website QR code"></a><br><a href="https://pui89.github.io/flood-rescue.html">Open English website</a></td><td align="center"><strong>เว็บไซต์ภาษาไทย</strong><br><a href="https://pui89.github.io/flood-rescue-th.html"><img src="https://pui89.github.io/qr/flood-rescue-th.png" width="160" alt="QR Code เว็บไซต์ภาษาไทย Extreme Flood Rescue AI"></a><br><a href="https://pui89.github.io/flood-rescue-th.html">เปิดเว็บไซต์ภาษาไทย</a></td></tr></table>
 
+## PUI89 development maturity snapshot — 12 November 2026
+
+**Strategic direction: From AI Projects to AI Products.**  
+**Current maturity: Level 4 — Tested Prototype.** This project has tested decision-support software and synthetic scenario evaluation; flood physics and physical rescue capability remain unvalidated.
+
+
+**Shared platform evidence (separate from project validation):** the PUI89 Shared AI Core main-branch CI reported 187 dependency-free tests passed on 11 November 2026. This platform-level result does not establish this project's model accuracy, physical integration or field performance.
+
+| Area | Verified position |
+|---|---|
+| Software foundation | Shared-core and evidence-benchmark checks are present; the 1 November benchmark workflow reported 6 standard-library tests passing. |
+| Synthetic evaluation | Earlier recorded rule-based evaluation completed 7/7 scenarios and 9/9 steps, with 0 reported failures in those defined scenarios. This does not validate water physics or field performance. |
+| Simulation and autonomy | A repeatable, physically credible flood simulator and validated perception/navigation performance are not established by these results. |
+| Physical product | Amphibious mobility, buoyancy, stability, current resistance, rescue capacity and the 15 m design target remain unvalidated. Ground, boat and aerial platforms require separate evidence. |
+
+**Next product gate:** define a bounded simulator and scenario protocol; record simulator/version, environment parameters and seeds; measure stability, buoyancy, current response, collision/contact risk, route completion and safe-stop behaviour separately. Prioritise a safe remotely supervised rescue concept before adding autonomy. Treat the proposed 15 m stabilising poles as an unvalidated design idea requiring snag, overturning, deployment and recovery analysis.
+
+**Product discipline:** do not claim real rescue capability, depth rating, passenger/payload capacity or field readiness without hardware-specific independent evidence. No paid API, cloud GPU, automatic model download or physical robot actuation is part of this update.
+
+
+
 
 
 ## One-command local verification
