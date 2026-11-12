@@ -93,7 +93,7 @@ class SyntheticTerrainTests(unittest.TestCase):
         self.assertEqual(result[2][1], 5)
 
     def test_flow_accumulation_preserves_explicit_nodata_mask(self):
-        directions = [[None, (0, 1)], [None, None]]
+        directions = [[None, None], [None, (-1, 0)]]
         mask = [[False, True], [False, True]]
         result = flow_accumulation(directions, valid_mask=mask)
         self.assertEqual(result, [[None, 2], [None, 1]])
