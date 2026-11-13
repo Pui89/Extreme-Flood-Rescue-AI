@@ -122,6 +122,12 @@ On 30 October, the shared observation-provenance guard was tightened to reject n
 
 The [Product Quality and Safety Roadmap](docs/PRODUCT_QUALITY_AND_SAFETY_ROADMAP.md) sets staged safety, reliability, evidence, human-oversight and buyer-readiness gates. It is an engineering plan—not certification or proof of field performance.
 
+
+
+## Aerial Rescue Intelligence — RGB + thermal
+
+PUI89 is defining a vendor-neutral aerial observation interface for RGB and thermal imagery as a capability under Extreme Flood Rescue AI. The first executable component validates observation metadata only; it does not inspect imagery, detect people, fuse sensors, connect to a drone or authorise actuation. See [Aerial Rescue Intelligence contract and verification boundaries](docs/AERIAL_RESCUE_INTELLIGENCE.md) and run `python -m unittest tests.test_aerial_observation_contract -v` from the repository root. Tests in this PR are authored but must be executed before being reported as passing.
+
 **Shared PUI89 AI Core contract:** [fault-injection matrix, missing-sensor handling, conservative safe-stop rules and evidence requirements](docs/SHARED_PUI89_AI_CORE_INTEGRATION.md).
 
 **Next action:** expand deterministic fault-injection scenarios for stale/conflicting sensors, communication loss, unknown water/current limits and multi-platform coordination. Keep every pass labelled **simulation-only** until real-world evidence exists.
