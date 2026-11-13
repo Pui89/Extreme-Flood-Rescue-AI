@@ -24,6 +24,24 @@ PUI89 prioritises open-source software, transparent licensing, reproducible work
 > 
 > **Validation boundary:** Synthetic scenarios do not validate flood physics, buoyancy, navigation, rescue performance or operation at proposed depths.
 
+## Perception & Task Intelligence (PTI)
+
+**Role in this product:** organise flood-scene observations into conservative situational awareness and human-reviewed route-risk advice. PTI is the shared PUI89 perception-and-task framework; this section defines intended tasks, not validated flood or rescue capability.
+
+**Priority perception tasks**
+- Check image quality, visibility, timestamp, sensor availability and observation provenance.
+- Detect people, vehicles, visible obstacles and relevant scene elements where supported by the input.
+- Segment visible water-covered regions and road boundaries only where image evidence supports them; appearance alone is not a reliable water-depth measurement.
+- Compare repeated observations for visible water-boundary or scene changes.
+- Fuse authorised water-level, weather, map and location observations with source, units, freshness and uncertainty recorded.
+- Flag blocked, unknown or potentially hazardous route segments and explain the evidence behind each warning.
+
+**Task flow:** OBSERVE → PERCEIVE → ASSESS → DECIDE → RESPOND → LEARN FROM EVIDENCE. Outputs are alerts, situational summaries and conservative route-risk advisories for qualified human review. Unknown depth or passability means **avoid / do not enter**, not safe.
+
+**First evidence gate:** modality-specific labelled data and clearly bounded synthetic scenarios; measure detection/segmentation quality, missed-person and missed-obstacle cases, false-safe versus false-warning behaviour, stale-data rejection and safe-hold logic. Record simulator/version and scenario parameters for every simulation result.
+
+**Not established:** flood depth inferred from appearance, validated 0–15 m sensing, current resistance, safe flood crossing, autonomous rescue or physical rescue performance. No PTI output authorises physical movement or rescue action. See the [shared PTI specification](https://github.com/Pui89/PUI89-Shared-AI-Core/blob/main/docs/perception/PUI89_PERCEPTION_TASK_INTELLIGENCE_V1.0.md) (maintainer repository access required).
+
 ## Development stage
 
 **Current stage:** Software & synthetic-scenario evaluation  
