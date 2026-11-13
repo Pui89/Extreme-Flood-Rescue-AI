@@ -27,7 +27,7 @@ PUI89 prioritises open-source software, transparent licensing, reproducible work
 ## Development stage
 
 **Stage:** Stage 2 of 5 — Software decision support and synthetic-scenario evaluation
-**ขั้นการพัฒนา:** Software and simulation prototype
+**ระยะการพัฒนา:** ซอฟต์แวร์สนับสนุนการตัดสินใจและการประเมินสถานการณ์จำลอง
 
 **Shared framework:** [PUI89 Development Stage Standard](https://github.com/Pui89/Pui89.github.io/blob/main/docs/PUI89_DEVELOPMENT_STAGE_STANDARD.md)
 
