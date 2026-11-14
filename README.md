@@ -1537,3 +1537,22 @@ The portfolio-wide count is published on the [PUI89 website](https://pui89.githu
 
 จะนับเมื่อมีสถานะเสร็จสมบูรณ์ วันที่ ขอบเขต บทบาทผู้ทบทวน ผลการทบทวน และหลักฐานอ้างอิงอย่างน้อยหนึ่งรายการครบถ้วนเท่านั้น รายการร่าง คะแนน ดาว ยอดเข้าชม และความคิดเห็นจะไม่นับ
 <!-- PUI89_EVIDENCE_BACKED_REVIEW:END -->
+
+## AI Engineering Intelligence & Flood-Resilient Product Design
+
+This project adopts PUI89 Engineering Intelligence for flood-scene understanding, mission planning, simulation and evidence review. **Flood operation is a hazard-critical engineering domain:** AI-generated designs or simulations do not establish buoyancy, stability, watertightness, current resistance or rescue capability.
+
+**Product-specific design priorities**
+- **Platform trade study:** compare ground, amphibious, surface-vessel and aerial support concepts separately; do not assume one chassis can safely perform every role.
+- **Buoyancy and stability:** define displacement, reserve buoyancy, centre of gravity, freeboard, trim, roll/pitch stability, payload envelope and capsize recovery as measurable engineering requirements.
+- **Water ingress protection:** partition electronics, connectors, motors, batteries and service compartments; define ingress paths, seals, drainage, corrosion protection and post-exposure inspection.
+- **Current and debris:** model current speed/direction, turbulence, floating debris, entanglement, snagging, impact, tether loads and loss-of-communications scenarios.
+- **Rescue interface:** prioritise victim contact safety, entrapment prevention, payload stability, controlled recovery and human-supervised handoff. Do not deploy unvalidated lifting or towing concepts.
+- **Navigation and communications:** evaluate GNSS degradation, visual/thermal visibility, radio loss, map uncertainty, return-to-safe-state and recovery procedures.
+- **Human safety:** remote supervision, independent emergency stop, geofenced test areas, operator line-of-sight and explicit no-go conditions are required before field trials.
+
+**Flood Intelligence System (proposed):** water-region detection; sensor-based depth/level ingestion; current and flow context; submerged-road/obstacle uncertainty; route and mission risk assessment; platform-specific operating-envelope checks; component ingress/thermal monitoring; and emergency reporting. Image appearance alone must never be treated as a reliable depth or current measurement. Unknown depth, current, stability or passability means **do not enter / hold position / request human assessment**.
+
+**AI engineering methods to evaluate:** physics-based hydrodynamics, CFD where suitable, FEA for structures, stability analysis, digital-twin scenarios, multimodal perception, temporal change detection, robust planning and fault-injection tests.
+
+**Evidence gates:** simulator credibility review → synthetic and recorded-sensor scenario tests → tank/basin and controlled-current tests by qualified teams → supervised closed-area trials → independent rescue and safety validation. Proposed 15 m sensing/reach concepts remain unvalidated targets. No flood-depth rating or rescue performance is claimed.
