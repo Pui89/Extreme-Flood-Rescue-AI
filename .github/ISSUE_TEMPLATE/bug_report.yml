@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a reproducible problem or safety concern\ntitle: "[Bug]: "
+description: Report a reproducible problem or safety concern "[Bug]: "
 labels: []
 body:
   - type: markdown
