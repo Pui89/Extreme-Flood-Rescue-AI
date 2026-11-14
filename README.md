@@ -68,6 +68,36 @@ A remotely supervised surface platform for environmental observation and rescue-
 
 **Not established:** flood depth inferred from appearance, validated 0–15 m sensing, current resistance, safe flood crossing, autonomous rescue or physical rescue performance. No PTI output authorises physical movement or rescue action. See the [shared PTI specification](https://github.com/Pui89/PUI89-Shared-AI-Core/blob/main/docs/perception/PUI89_PERCEPTION_TASK_INTELLIGENCE_V1.0.md) (maintainer repository access required).
 
+## Six Core Intelligence Groups — Product Allocation
+
+PUI89 uses six shared intelligence groups across its seven independent products. This product allocation is a target architecture and capability map; it does not claim that every model, sensor, integration or physical function is implemented or validated.
+
+- Vision Intelligence — image/video understanding, detection, classification, segmentation, tracking, depth and spatial cues.
+- Audio Intelligence — speech recognition, sound/event perception, speaker diarisation where justified, audio-visual association, acoustic diagnostics and speech response.
+- Multimodal Intelligence — context-aware fusion of vision, audio, text, video and authorised sensor/time-series data with provenance and uncertainty.
+- Robotics Intelligence — robot/environment understanding, localisation, navigation, motion planning and manipulation where the product has suitable hardware.
+- Action & Reaction Intelligence — task planning, bounded proposals, event response, prediction, recovery and escalation.
+- Safety & Control Intelligence — independent permissions, operating limits, verification, human approval, fault handling, safe hold and emergency-stop boundaries.
+
+### Extreme Flood Rescue AI capability allocation
+
+- **Vision:** People, boats, vehicles, water regions, debris and scene-change perception.
+- **Audio:** Distress speech, sirens, environmental sounds and rescue-team communication.
+- **Multimodal:** RGB/thermal/audio/weather/water-level/map evidence fusion.
+- **Robotics:** Search coverage, mapping and conservative route planning.
+- **Action & Reaction:** Distress/rising-water/blocked-route alerts and communication-loss response.
+- **Safety & Control:** Unknown depth means do not enter; human rescue command and fail-safe hold.
+
+**Integration rule:** each product uses only the modules justified by its mission, data rights, hardware, compute budget and validation evidence. Model outputs remain observations or bounded proposals. Safety policy is product-specific and independent of model confidence. Unknown, stale, conflicting or out-of-scope inputs must be surfaced rather than guessed.
+
+**Evidence status:** proposed capability allocation unless a separate implementation record, reproducible test or domain-specific validation explicitly says otherwise. Audio models, speaker diarisation, sound classifiers, VLM/VLA policies and robotics stacks require separate provenance, licence, compute, privacy and suitability review before adoption. No automatic model download or installation is authorised.
+
+### Six-intelligence concept visual
+
+![Extreme Flood Rescue AI six-group AI architecture concept](docs/images/flood-rescue-six-intelligence-concept.svg)
+
+*Concept diagram only: it illustrates intended software intelligence domains, not a built product, installed model stack, integrated sensor suite or validated capability.*
+
 ## Development stage
 
 **Current stage:** Software & synthetic-scenario evaluation  
