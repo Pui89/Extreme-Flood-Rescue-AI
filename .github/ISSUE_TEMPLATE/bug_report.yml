@@ -1,0 +1,71 @@
+name: Bug report
+description: Report a reproducible problem or safety concern\ntitle: "[Bug]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report only information you are authorized to share. Do not upload personal data, credentials, restricted records, or unlicensed imagery. Physical safety concerns must be clearly identified.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Product area
+      options:
+      - "Flood-depth and water-level sensing"
+      - "Route and hazard assessment"
+      - "Rescue robot or vehicle mobility"
+      - "Communications and connectivity"
+      - "Power and environmental protection"
+      - "Simulation and validation"
+      - "Documentation or website"
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the observed behaviour. Separate observation from assumptions.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps or conditions to reproduce
+      placeholder: Include version, configuration, and safe test conditions.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected versus actual result
+    validations:
+      required: true
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact
+      options:
+        - Documentation or usability
+        - Software correctness
+        - Performance or resource use
+        - Privacy or security
+        - Potential physical safety impact
+        - Unknown / needs assessment
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and provenance
+      description: Link authorized logs, synthetic examples, test results, or licensed media. State what is simulated versus field-validated.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety and data checks
+      options:
+        - label: I have removed secrets, personal data, and restricted information.
+          required: true
+        - label: I have not presented a simulation or concept as field-validated capability.
+          required: true
