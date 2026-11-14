@@ -1,0 +1,42 @@
+{
+  "profile_version": "0.1.0",
+  "project_id": "extreme-flood-rescue-ai",
+  "project_name": "Extreme Flood Rescue AI",
+  "integration_status": "profile_documented_runtime_adapter_pending",
+  "shared_core": {
+    "repository": "Pui89/PUI89-Shared-AI-Core",
+    "contract": "anomaly_evidence",
+    "contract_version": "0.1.0",
+    "connection_status": "not_connected"
+  },
+  "intended_modalities": [
+    "rgb",
+    "lidar",
+    "depth",
+    "imu"
+  ],
+  "candidate_scope": [
+    "Camera/LiDAR point-cloud corruption or dropout",
+    "Unexpected scene/equipment changes and sensor disagreement"
+  ],
+  "explicit_non_goals": [
+    "Does not estimate safe flood depth, current, buoyancy or submerged hazards",
+    "Does not detect/identify victims by anomaly score or command a rescue robot"
+  ],
+  "required_gates": [
+    "Require sensor calibration, coordinate-frame and timestamp consistency",
+    "Missing returns never mean clear passage; preserve uncertainty and sensor health",
+    "Human review required; no physical actuation",
+    "execution_authorized=false",
+    "no paid API, subscription, cloud GPU, model download or new dependency without explicit approval"
+  ],
+  "model_adapters": {
+    "PaDiM": "not_configured",
+    "PatchCore": "not_configured",
+    "EfficientAD": "not_configured"
+  },
+  "model_weights": "not_downloaded",
+  "dataset_status": "no_dataset_authorised_or_loaded_by_this_profile",
+  "evidence_status": "documentation_only; no model accuracy, runtime integration, hardware validation or field safety is claimed",
+  "cost_policy": "zero-cost-first; no external services or downloads"
+}
