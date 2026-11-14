@@ -28,6 +28,28 @@ PUI89 prioritises open-source software, transparent licensing, reproducible work
 
 PUI89 uses a traceable sourcing workflow for materials, mechanical parts, sensors, compute, power and control components. See the [bilingual Hardware & Materials Sourcing guide](https://pui89.github.io/materials.html) for the process covering exact manufacturer/model identification, Thailand and international supplier discovery, country-of-origin evidence, dated pricing and availability, lead times, shipping, compatibility checks and verification gates. Product-specific candidates are added only when supported by evidence; research candidates are not purchases or validated hardware.
 
+### Prototype materials & cost snapshot
+
+**Planning allowance for one research prototype: ฿34,500–105,000.** This is a preliminary estimate from the [PUI89 project-specific BOM](https://pui89.github.io/materials.html#project-boms), not a supplier quotation or verified current market price.
+
+A remotely supervised surface platform for environmental observation and rescue-support research.
+
+| Main item | Prototype quantity | Purpose |
+|---|---:|---|
+| Buoyant hull / float structure | 1 | Buoyancy and payload |
+| Sealed propulsion thrusters + motor controllers | 2 + 2 | Water propulsion and drive control |
+| Waterproof enclosure | 1 | Electronics protection |
+| RGB camera + IMU | 1 each | Observation and motion |
+| Water-level/depth sensors | 1–2 | Environmental measurement |
+| Leak sensors | 2 | Water-ingress detection |
+| Battery, BMS and sealed connectors | 1 set | Protected power |
+
+**Special engineering / purchase gate:** Hull stability, buoyancy margin, rollover recovery, corrosion resistance, cable sealing and communication-loss behaviour require engineering and staged tests. The existing 15 m simulation is not a validated operating depth.
+
+**Shared engineering bench (tracked separately):** approximately ฿16,500–46,000 if the existing development computer is reused. This is a portfolio-level allowance for reusable compute, one RGB-D camera, bench power supply/multimeter, two microcontroller boards and reusable tools/wiring/adapters; it is not added to each project total. Allocate each shared item once, not once per product.
+
+**Cost status:** exact manufacturer/model, manufacturing origin, supplier, stock, lead time and dated prices remain to be verified. Freight, insurance, duty, VAT, brokerage, local delivery, custom fabrication labour and certification are not priced here; calculate Thai landed cost only from dated quotations. Quantities are for one prototype; no purchase or supplier commitment is authorised. Software-first work can continue with available computing and appropriately licensed open-source tools before hardware procurement.
+
 ## Perception & Task Intelligence (PTI)
 
 **Role in this product:** organise flood-scene observations into conservative situational awareness and human-reviewed route-risk advice. PTI is the shared PUI89 perception-and-task framework; this section defines intended tasks, not validated flood or rescue capability.
