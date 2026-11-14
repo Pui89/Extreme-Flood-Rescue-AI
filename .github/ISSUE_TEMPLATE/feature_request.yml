@@ -1,0 +1,67 @@
+name: Feature or research proposal
+description: Propose a capability, improvement, or evidence-backed research task
+title: "[Proposal]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe a testable user need. New capabilities remain proposals until implemented and supported by evidence. Do not include secrets, personal data, restricted records, or unlicensed media.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Product area
+      options:
+      - "Flood-depth and water-level sensing"
+      - "Route and hazard assessment"
+      - "Rescue robot or vehicle mobility"
+      - "Communications and connectivity"
+      - "Power and environmental protection"
+      - "Simulation and validation"
+      - "Documentation or website"
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: User need and problem
+      description: Who needs this, in what conditions, and what limitation does it address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Explain the smallest useful change. Identify concept, software, sensor, or physical-system dependencies.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Provide sources, licensed data, synthetic test cases, or reproducible observations. State evidence limitations.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List observable tests or measurable outcomes. Do not invent target results.
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk and authority boundary
+      options:
+        - Documentation or read-only software only
+        - Data privacy or cybersecurity review needed
+        - Human approval or operator workflow needed
+        - Physical device or real-world safety review needed
+        - Unknown / needs assessment
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Cost, licensing, and dependencies
+      description: Identify open-source license, provenance, hardware, compute, data, and ongoing cost constraints. PUI89 prioritizes open-source and low-cost approaches.
